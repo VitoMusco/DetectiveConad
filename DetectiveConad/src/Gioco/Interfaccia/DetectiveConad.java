@@ -18,8 +18,7 @@ public class DetectiveConad {
 
 	private JFrame frame;
 	private JTextField textField;
-	//ciao
-
+	
 	// Lancia applicazione
 	
 	public static void main(String[] args) {
