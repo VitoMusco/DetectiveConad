@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class DetectiveConad {
 
@@ -59,6 +60,7 @@ public class DetectiveConad {
 		frame.getContentPane().add(scrollPane);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
 		textField.setForeground(new Color(255, 255, 255));
 		textField.setEditable(false);
 		textField.setBorder(null);
@@ -67,6 +69,7 @@ public class DetectiveConad {
 		textField.setColumns(10);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
 		textArea.setBorder(null);
 		textArea.setBackground(Color.decode("#858585"));
 		textArea.setBounds(243, 572, 727, 53);
