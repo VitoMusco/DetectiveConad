@@ -19,7 +19,7 @@ public class DetectiveConad {
 	private JFrame frame;
 	private JTextField textField;
 	
-	// Lancia applicazione abla
+	// Lancia applicazione
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
