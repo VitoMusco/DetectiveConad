@@ -68,8 +68,8 @@ public class DetectiveConad {
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBorder(null);
-		textArea.setBackground(Color.BLACK);
-		textArea.setBounds(238, 41, 739, 511);
+		textArea.setBackground(Color.decode("#858585"));
+		textArea.setBounds(243, 572, 727, 53);
 		frame.getContentPane().add(textArea);
 		
 		JButton Usa = new JButton("");
