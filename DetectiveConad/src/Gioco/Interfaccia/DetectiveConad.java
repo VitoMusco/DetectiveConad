@@ -20,7 +20,7 @@ public class DetectiveConad {
 	private JTextField textField;
 
 
-	// Launch the application.
+	// Lancia applicazione
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
