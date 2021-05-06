@@ -81,13 +81,18 @@ public class Mappa {
         Oggetto coltello = new Oggetto("un","coltello");
         Oggetto mappa = new Oggetto("una","mappa");
         Oggetto monetina = new Oggetto("una","moentina");
+        Oggetto impronta = new OggettoNonRaccoglibile("una", "impronta");
         
+                
         this.ingresso.inserisciOggetto(mappa);
         this.studio.inserisciOggetto(monetina);
         this.camioncino.inserisciOggetto(pila);
         this.camioncino.inserisciOggetto(torcia);
         this.camioncino.inserisciOggetto(guanti);
         this.salumeria.inserisciOggetto(coltello);
+        this.studio.inserisciOggetto(impronta);
+        this.salumeria.inserisciOggetto(impronta);
+        this.retro.inserisciOggetto(impronta);
         
         this.corrente = this.esterno;
         
