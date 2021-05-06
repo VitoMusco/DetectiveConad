@@ -19,27 +19,27 @@ public class ParserOutput {
         this.inventario = inventario;
     }
 
-    public Comando getCommand() {
+    public Comando getComando() {
         return comando;
     }
 
-    public void setCommand(Comando comando) {
+    public void setComando(Comando comando) {
         this.comando = comando;
     }
 
-    public Oggetto getObject() {
-        return oggetto;
+    public Oggetto getOggetto() {
+        return this.oggetto;
     }
 
-    public void setObject(Oggetto oggetto) {
+    public void setOggetto(Oggetto oggetto) {
         this.oggetto = oggetto;
     }
 
-    public Oggetto getInvObject() {
+    public Oggetto getInventario() {
         return inventario;
     }
 
-    public void setInvObject(Oggetto inventario) {
+    public void setInventario(Oggetto inventario) {
         this.inventario = inventario;
     }
 
