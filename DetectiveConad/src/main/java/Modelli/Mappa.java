@@ -1,5 +1,7 @@
 package Modelli;
 
+import Eccezioni.*;
+
 public class Mappa {
 
     Stanza esterno;
@@ -84,5 +86,42 @@ public class Mappa {
         this.corrente = corrente;
     }
     
-    
+    public void spostamento(String s){
+        Stanza appoggio;
+        appoggio = this.corrente;
+        switch(s){
+            case "n":
+                try{
+                    this.corrente = this.corrente.vaiNord();
+                    this.corrente.assegnaSud(appoggio);
+                }catch(StanzaException ex){
+                    System.err.println(ex.getMessage());
+                }
+                break;
+            case "s":
+                try{
+                    this.corrente = this.corrente.vaiSud();
+                    this.corrente.assegnaNord(appoggio);
+                }catch(StanzaException ex){
+                    System.err.println(ex.getMessage());
+                }
+                break;
+            case "e":
+                try{
+                    this.corrente = this.corrente.vaiEst();
+                    this.corrente.assegnaOvest(appoggio);
+                }catch(StanzaException ex){
+                    System.err.println(ex.getMessage());
+                }
+                break;
+            case "o":
+                try{
+                    this.corrente = this.corrente.vaiOvest();
+                    this.corrente.assegnaEst(appoggio);
+                }catch(StanzaException ex){
+                    System.err.println(ex.getMessage());
+                }
+                break;
+        }
+    }
 }
