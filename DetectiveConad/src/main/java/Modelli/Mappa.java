@@ -1,0 +1,88 @@
+package Modelli;
+
+public class Mappa {
+
+    Stanza esterno;
+    Stanza ingresso;
+    Stanza camioncino;
+    Stanza cassa;
+    Stanza studio;
+    Stanza retro;
+    Stanza salumeria;
+    Stanza corridoio1;
+    Stanza corridoio2;
+    Stanza corridoio3;
+    Stanza corridoio4;
+    Stanza corridoio5;
+    Stanza corridoio6;
+    Stanza zona_detersivi;
+    Stanza zona_frutta;
+    Stanza zona_frigo;
+    Stanza corrente;
+
+    public Mappa() {
+        this.esterno = new Stanza("Esterno");
+        this.ingresso = new Stanza("Ingresso");
+        this.camioncino = new Stanza("Camioncino");
+        this.cassa = new Stanza("Cassa");
+        this.studio = new Stanza("Studio");
+        this.retro = new Stanza("Cella frigorifera");
+        this.salumeria = new Stanza("Salumeria");
+        this.corridoio1 = new Stanza("Corridoio 1");
+        this.corridoio2 = new Stanza("Corridoio 2");
+        this.corridoio3 = new Stanza("Corridoio 3");
+        this.corridoio4 = new Stanza("Corridoio 4");
+        this.corridoio5 = new Stanza("Corridoio 5");
+        this.corridoio6 = new Stanza("Corridoio 6");
+        this.zona_detersivi = new Stanza("Zona detersiva");
+        this.zona_frutta = new Stanza("Zona frutta");
+        this.zona_frigo = new Stanza("Zona frigo");
+
+        this.esterno.assegnaNord(this.ingresso);
+        this.esterno.assegnaSud(this.camioncino);
+        this.ingresso.assegnaNord(this.cassa);
+        this.ingresso.assegnaSud(this.esterno);
+        this.camioncino.assegnaNord(this.esterno);
+        this.cassa.assegnaNord(this.studio);
+        this.cassa.assegnaSud(this.ingresso);
+        this.cassa.assegnaEst(this.corridoio1);
+        this.corridoio1.assegnaNord(this.zona_detersivi);
+        this.corridoio1.assegnaEst(this.corridoio2);
+        this.corridoio1.assegnaOvest(this.cassa);
+        this.corridoio2.assegnaNord(this.zona_frutta);
+        this.corridoio2.assegnaEst(this.corridoio3);
+        this.corridoio2.assegnaOvest(this.corridoio1);
+        this.corridoio3.assegnaNord(this.zona_frigo);
+        this.corridoio3.assegnaOvest(this.corridoio2);
+        this.zona_detersivi.assegnaNord(this.corridoio4);
+        this.zona_detersivi.assegnaSud(this.corridoio1);
+        this.zona_frutta.assegnaNord(this.corridoio5);
+        this.zona_frutta.assegnaSud(this.corridoio2);
+        this.zona_frigo.assegnaNord(this.corridoio6);
+        this.zona_frigo.assegnaSud(this.corridoio3);
+        this.corridoio4.assegnaSud(this.zona_detersivi);
+        this.corridoio4.assegnaEst(this.corridoio5);
+        this.corridoio5.assegnaSud(this.zona_frutta);
+        this.corridoio5.assegnaEst(this.corridoio6);
+        this.corridoio5.assegnaOvest(this.corridoio4);
+        this.corridoio6.assegnaNord(this.salumeria);
+        this.corridoio6.assegnaSud(this.zona_frigo);
+        this.corridoio6.assegnaOvest(this.corridoio5);
+        this.salumeria.assegnaNord(this.retro);
+        this.salumeria.assegnaSud(this.corridoio6);
+        this.retro.assegnaSud(this.salumeria);
+        this.studio.assegnaSud(this.cassa);
+
+        this.corrente = this.esterno;
+    }
+
+    public Stanza getCorrente() {
+        return this.corrente;
+    }
+
+    public void setCorrente(Stanza corrente) {
+        this.corrente = corrente;
+    }
+    
+    
+}
