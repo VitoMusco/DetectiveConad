@@ -75,7 +75,22 @@ public class Mappa {
         this.retro.assegnaSud(this.salumeria);
         this.studio.assegnaSud(this.cassa);
 
+        Oggetto pila = new Oggetto("una","pila");
+        Oggetto torcia = new Oggetto("una","torcia");
+        Oggetto guanti = new Oggetto("dei","guanti");
+        Oggetto coltello = new Oggetto("un","coltello");
+        Oggetto mappa = new Oggetto("una","mappa");
+        Oggetto monetina = new Oggetto("una","moentina");
+        
+        this.ingresso.inserisciOggetto(mappa);
+        this.studio.inserisciOggetto(monetina);
+        this.camioncino.inserisciOggetto(pila);
+        this.camioncino.inserisciOggetto(torcia);
+        this.camioncino.inserisciOggetto(guanti);
+        this.salumeria.inserisciOggetto(coltello);
+        
         this.corrente = this.esterno;
+        
     }
 
     public Stanza getCorrente() {
