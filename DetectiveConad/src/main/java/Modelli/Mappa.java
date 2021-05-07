@@ -20,6 +20,7 @@ public class Mappa {
     Stanza zona_detersivi;
     Stanza zona_frutta;
     Stanza zona_frigo;
+    Stanza condotto;
     Stanza corrente;
 
     public Mappa() {
@@ -39,6 +40,7 @@ public class Mappa {
         this.zona_detersivi = new Stanza("Zona detersiva");
         this.zona_frutta = new Stanza("Zona frutta");
         this.zona_frigo = new Stanza("Zona frigo");
+        this.condotto = new Stanza("Condotto");
 
         this.esterno.assegnaNord(this.ingresso);
         this.esterno.assegnaSud(this.camioncino);
@@ -70,10 +72,12 @@ public class Mappa {
         this.corridoio6.assegnaNord(this.salumeria);
         this.corridoio6.assegnaSud(this.zona_frigo);
         this.corridoio6.assegnaOvest(this.corridoio5);
-        this.salumeria.assegnaNord(this.retro);
+     //   this.salumeria.assegnaNord(this.retro);
         this.salumeria.assegnaSud(this.corridoio6);
-        this.retro.assegnaSud(this.salumeria);
+     //   this.retro.assegnaSud(this.salumeria);
         this.studio.assegnaSud(this.cassa);
+        this.studio.assegnaNord(condotto);
+        this.retro.assegnaOvest(studio);
 
         Oggetto pila = new Oggetto("una","pila");
         Oggetto torcia = new Oggetto("una","torcia");
