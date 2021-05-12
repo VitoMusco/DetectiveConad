@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class Database {
 
-    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto INT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita INT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
+    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto INT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita INT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
     public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita INT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), PRIMARY KEY(id_partita));";
 
     public Database() {
@@ -82,31 +82,31 @@ public class Database {
                 stm.executeUpdate(CREA_OGGETTI);
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('pila', 'una', 'camioncino','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('pila', 'una', 'camioncino','" + id_partita + "', '1')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('torcia', 'una', 'camioncino','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('torcia', 'una', 'camioncino','" + id_partita + "', '1')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('guanti', 'dei', 'camioncino','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('guanti', 'dei', 'camioncino','" + id_partita + "', '1')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('coltello', 'un', 'salumeria','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('coltello', 'un', 'salumeria','" + id_partita + "', '1')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('mappa', 'una', 'ingresso','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('mappa', 'una', 'ingresso','" + id_partita + "', '1')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('monetina', 'una', 'studio','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('monetina', 'una', 'studio','" + id_partita + "', '1')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('impronta', 'una', 'studio','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('impronta', 'una', 'studio','" + id_partita + "', '0')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('impronta', 'una', 'salumeria','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('impronta', 'una', 'salumeria','" + id_partita + "', '0')");
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita) VALUES('impronta', 'una', 'cella frigorifera','" + id_partita + "')");
+                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('impronta', 'una', 'cella frigorifera','" + id_partita + "', '0')");
                 stm.close();
                 connessione.close();
             } catch (SQLException ex) {
