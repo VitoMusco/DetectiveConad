@@ -1,7 +1,6 @@
 package Modelli;
 
 import java.util.*;
-import Eccezioni.*;
 
 public class Stanza {
     private Stanza nord;
@@ -11,8 +10,9 @@ public class Stanza {
     private List<Oggetto> oggetti;
     private Map<String,Impiegato> impiegati;
     private String nome;
+    private String descrizione;
     
-    public Stanza(String nome){
+    public Stanza(String nome,String desc){
         this.nord = null;
         this.sud = null;
         this.est = null;
@@ -20,15 +20,17 @@ public class Stanza {
         this.oggetti = new ArrayList<>();
         this.impiegati = new HashMap<>();
         this.nome = nome;
+        this.descrizione = desc;
     }
     
-    public Stanza(Stanza n,Stanza s,Stanza e,Stanza o,String nome){
+    public Stanza(Stanza n,Stanza s,Stanza e,Stanza o,String nome,String desc){
         this.nord = n;
         this.sud = s;
         this.est = e;
         this.ovest = o;
         this.oggetti = new ArrayList<>();
         this.nome = nome;
+        this.descrizione = desc;
     }
     
     public void inserisciOggetto(Oggetto o){
@@ -70,39 +72,39 @@ public class Stanza {
         this.ovest = s;
     }
     
-    public Stanza vaiNord() throws StanzaException{
+    public Stanza vaiNord(){
         if(this.nord != null){
             return this.nord;
         }
         else{
-            throw new StanzaException();
+            return null;
         }
     }
     
-    public Stanza vaiSud() throws StanzaException{
+    public Stanza vaiSud(){
         if(this.sud != null){
             return this.sud;
         }
         else{
-            throw new StanzaException();
+            return null;
         }
     }
     
-    public Stanza vaiEst() throws StanzaException{
+    public Stanza vaiEst(){
         if(this.est != null){
             return this.est;
         }
         else{
-            throw new StanzaException();
+            return null;
         }
     }
     
-    public Stanza vaiOvest() throws StanzaException{
+    public Stanza vaiOvest(){
         if(this.ovest != null){
             return this.ovest;
         }
         else{
-            throw new StanzaException();
+            return null;
         }
     }
     
