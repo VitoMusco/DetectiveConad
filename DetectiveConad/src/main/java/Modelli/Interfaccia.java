@@ -88,6 +88,7 @@ public class Interfaccia extends javax.swing.JFrame {
         interfaccia.caricaImmaginiCaricamento();
         interfaccia.riproduciIntro();
         interfaccia.riproduciIntroduzione();
+        interfaccia.riproduciAudio("menu");
         interfaccia.inizializzaMenu();
     }
 
