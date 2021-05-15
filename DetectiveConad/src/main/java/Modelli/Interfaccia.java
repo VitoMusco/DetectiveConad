@@ -13,7 +13,6 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public Interfaccia() {
         initComponents();
-        caricaIntroduzione();
     }
 
     @SuppressWarnings("unchecked")
@@ -86,12 +85,10 @@ public class Interfaccia extends javax.swing.JFrame {
                 interfaccia.setVisible(true);
             }
         });
-        interfaccia.riproduciAudioIntro();
+        interfaccia.caricaImmaginiCaricamento();
         interfaccia.riproduciIntro();
-        interfaccia.riproduciAudioIntroduzione();
         interfaccia.riproduciIntroduzione();
-        interfaccia.riproduciAudioMenu();
-        interfaccia.impostaMenuIniziale();
+        interfaccia.inizializzaMenu();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -101,10 +98,18 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    private ImageIcon[] introduzione = new ImageIcon[925];
-    
-    public void riproduciAudioIntro() {
-        File fileAudio = new File("./risorse/audio/intro.wav");
+
+    private ImageIcon[] caricamento = new ImageIcon[4];
+    private ImageIcon menu = new ImageIcon("./risorse/immagini/menu/menu.png");
+
+    public void caricaImmaginiCaricamento() {
+        for (int i = 0; i <= 3; i++) {
+            caricamento[i] = new ImageIcon("./risorse/immagini/caricamento/caricamento" + i + ".png");
+        }
+    }
+
+    public void riproduciAudio(String nome) {
+        File fileAudio = new File("./risorse/audio/" + nome + ".wav");
         AudioInputStream audioStream;
         try {
             audioStream = AudioSystem.getAudioInputStream(fileAudio);
@@ -121,40 +126,71 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void riproduciIntro() {
+        ImageIcon[] intro = new ImageIcon[100];
+        jLabel1.setIcon(caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 99; i++) {
+            if (i == 30) {
+                jLabel1.setIcon(caricamento[1]);
+            }
+            if (i == 60) {
+                jLabel1.setIcon(caricamento[2]);
+            }
+            if (i == 90) {
+                jLabel1.setIcon(caricamento[3]);
+            }
             if (i < 10) {
                 prefisso = "000";
-            } else if (i < 100) {
+            }
+            if (i < 100) {
                 prefisso = "00";
             }
-            jLabel1.setIcon(new ImageIcon("./risorse/immagini/intro/image" + prefisso + i + ".jpg"));
+            intro[i] = new ImageIcon("./risorse/immagini/intro/image" + prefisso + i + ".jpg");
+        }
+        riproduciAudio("intro");
+        for (int i = 0; i <= 99; i++) {
+            jLabel1.setIcon(intro[i]);
             try {
-                TimeUnit.MILLISECONDS.sleep(29);
+                TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-    
-    public void riproduciAudioMenu(){
-        File fileAudio = new File("./risorse/audio/menu.wav");
-        AudioInputStream audioStream;
-        try {
-            audioStream = AudioSystem.getAudioInputStream(fileAudio);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+
+    public void riproduciIntroduzione() {
+        ImageIcon[] introduzione = new ImageIcon[925];
+        jLabel1.setIcon(caricamento[0]);
+        String prefisso = "";
+        for (int i = 0; i <= 924; i++) {
+            if (i == 300) {
+                jLabel1.setIcon(caricamento[1]);
+            } else if (i == 600) {
+                jLabel1.setIcon(caricamento[2]);
+            } else if (i == 900) {
+                jLabel1.setIcon(caricamento[3]);
+            }
+            if (i < 10) {
+                prefisso = "000";
+            } else if (i < 100) {
+                prefisso = "00";
+            } else if (i < 1000) {
+                prefisso = "0";
+            }
+            introduzione[i] = new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg");
+        }
+        riproduciAudio("introduzione");
+        for (int i = 0; i <= 924; i++) {
+            jLabel1.setIcon(introduzione[i]);
+            try {
+                TimeUnit.MILLISECONDS.sleep(39);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-    
-    public void impostaMenuIniziale() {
+
+    public void inizializzaMenu() {
         jButton2.setOpaque(true);
         jButton2.setContentAreaFilled(true);
         jButton2.setBorderPainted(true);
@@ -170,48 +206,6 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton4.setBorderPainted(true);
         jButton4.setEnabled(true);
         jButton4.setText("CARICA PARTITA");
-        jLabel1.setIcon(new ImageIcon("./risorse/immagini/menu/menu.png"));
-    }
-    
-    public void riproduciAudioIntroduzione(){
-        File fileAudio = new File("./risorse/audio/introduzione.wav");
-        AudioInputStream audioStream;
-        try {
-            audioStream = AudioSystem.getAudioInputStream(fileAudio);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void caricaIntroduzione(){
-        String prefisso = "";
-        for (int i = 0; i <= 924; i++) {
-            if (i < 10) {
-                prefisso = "000";
-            } else if (i < 100) {
-                prefisso = "00";
-            } else if (i < 1000) {
-                prefisso = "0";
-            }
-            introduzione[i] = new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg");
-        }
-    }
-    
-    public void riproduciIntroduzione(){
-        for(int i=0;i<=924;i++){
-            jLabel1.setIcon(introduzione[i]);
-            try {
-                TimeUnit.MILLISECONDS.sleep(39);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        jLabel1.setIcon(menu);
     }
 }
