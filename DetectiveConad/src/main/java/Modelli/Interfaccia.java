@@ -26,6 +26,7 @@ public class Interfaccia extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("Detective Conad"); // NOI18N
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -80,11 +81,14 @@ public class Interfaccia extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                interfaccia.setLocationRelativeTo(null);
                 interfaccia.setVisible(true);
             }
         });
         interfaccia.riproduciAudioIntro();
         interfaccia.riproduciIntro();
+        interfaccia.riproduciAudioIntroduzione();
+        interfaccia.riproduciIntroduzione();
         interfaccia.riproduciAudioMenu();
         interfaccia.impostaMenuIniziale();
     }
@@ -124,7 +128,7 @@ public class Interfaccia extends javax.swing.JFrame {
             }
             jLabel1.setIcon(new ImageIcon("./risorse/immagini/intro/image" + prefisso + i + ".jpg"));
             try {
-                TimeUnit.MILLISECONDS.sleep(24);
+                TimeUnit.MILLISECONDS.sleep(29);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -165,5 +169,41 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton4.setEnabled(true);
         jButton4.setText("CARICA PARTITA");
         jLabel1.setIcon(new ImageIcon("./risorse/immagini/menu/menu.png"));
+    }
+    
+    public void riproduciAudioIntroduzione(){
+        File fileAudio = new File("./risorse/audio/introduzione.wav");
+        AudioInputStream audioStream;
+        try {
+            audioStream = AudioSystem.getAudioInputStream(fileAudio);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void riproduciIntroduzione(){
+        String prefisso = "";
+        for (int i = 0; i <= 924; i++) {
+            if (i < 10) {
+                prefisso = "000";
+            } else if (i < 100) {
+                prefisso = "00";
+            } else if (i < 1000) {
+                prefisso = "0";
+            }
+            jLabel1.setIcon(new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg"));
+            try {
+                TimeUnit.MILLISECONDS.sleep(29);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
