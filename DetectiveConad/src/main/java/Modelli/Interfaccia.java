@@ -13,6 +13,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public Interfaccia() {
         initComponents();
+        caricaIntroduzione();
     }
 
     @SuppressWarnings("unchecked")
@@ -100,7 +101,8 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
+    private ImageIcon[] introduzione = new ImageIcon[925];
+    
     public void riproduciAudioIntro() {
         File fileAudio = new File("./risorse/audio/intro.wav");
         AudioInputStream audioStream;
@@ -188,7 +190,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
     }
     
-    public void riproduciIntroduzione(){
+    public void caricaIntroduzione(){
         String prefisso = "";
         for (int i = 0; i <= 924; i++) {
             if (i < 10) {
@@ -198,9 +200,15 @@ public class Interfaccia extends javax.swing.JFrame {
             } else if (i < 1000) {
                 prefisso = "0";
             }
-            jLabel1.setIcon(new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg"));
+            introduzione[i] = new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg");
+        }
+    }
+    
+    public void riproduciIntroduzione(){
+        for(int i=0;i<=924;i++){
+            jLabel1.setIcon(introduzione[i]);
             try {
-                TimeUnit.MILLISECONDS.sleep(29);
+                TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
             }
