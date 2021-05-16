@@ -5,9 +5,11 @@ import java.awt.event.ActionListener;
 
 public class Eseguibile {
     Mappa mappa = new Mappa();
+    Stanza stanzaCorrente;
     GestoreAzioni g = new GestoreAzioni();
     Interfaccia interfaccia = new Interfaccia(g);
-
+    Database db = new Database();
+    Dialoghi dialoghi = new Dialoghi();
     
     public Eseguibile(){
         interfaccia.caricaImmaginiCaricamento();
@@ -40,7 +42,12 @@ public class Eseguibile {
                     System.exit(0);
                     break;
                 case "NUOVA PARTITA":
-                    interfaccia.creaNuovaPartita();
+                    interfaccia.chiediNomePartita();
+                    break;
+                case "INIZIA PARTITA":
+                    db.inizializzaDatabase();
+                    db.inserisciPartita(interfaccia.getNomePartita());
+                    dialoghi.prelevaTesti();
                     break;
                 default:
                     break;

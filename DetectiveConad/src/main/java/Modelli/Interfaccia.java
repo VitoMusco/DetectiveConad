@@ -13,6 +13,11 @@ import Modelli.Eseguibile.GestoreAzioni;
 
 public class Interfaccia extends javax.swing.JFrame {
 
+    private ImageIcon[] caricamento;
+    private ImageIcon menu;
+    private boolean creazioneNuovaPartita = false;
+    private String nomePartita;
+    
     public Interfaccia(GestoreAzioni g) {
         initComponents();
         inizializzaFinestra();
@@ -31,6 +36,10 @@ public class Interfaccia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -42,6 +51,25 @@ public class Interfaccia extends javax.swing.JFrame {
         setName("Detective Conad"); // NOI18N
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Dai un nome alla tua partita");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 160, -1));
+
+        jTextField1.setText("Inserisci nome partita");
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 150, -1));
+
+        jButton1.setText("Inserisci");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 330, 180));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,17 +98,22 @@ public class Interfaccia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        nomePartita = jTextField1.getText();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    private ImageIcon[] caricamento;
-    private ImageIcon menu;
-    private boolean creazioneNuovaPartita = false;
     
     public void inizializzaFinestra() {
         setLocationRelativeTo(null);
@@ -110,6 +143,14 @@ public class Interfaccia extends javax.swing.JFrame {
         }
     }
 
+    public void chiediNomePartita(){
+        //rendi visualizzabile la finestra
+    }
+    
+    public String getNomePartita(){
+        return nomePartita;
+    }
+    
     public void creaNuovaPartita(){
         creazioneNuovaPartita = true;
     }
@@ -233,6 +274,5 @@ public class Interfaccia extends javax.swing.JFrame {
         attivaPulsanti();
         jLabel1.setIcon(menu);
     }
-    
-    
+
 }
