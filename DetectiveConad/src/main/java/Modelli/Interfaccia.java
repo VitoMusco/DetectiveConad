@@ -13,6 +13,9 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public Interfaccia() {
         initComponents();
+        inizializzaFinestra();
+        this.caricamento = new ImageIcon[4];
+        this.menu = new ImageIcon("./risorse/immagini/menu/menu.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -76,22 +79,6 @@ public class Interfaccia extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public static void main(String args[]) {
-        Interfaccia interfaccia = new Interfaccia();
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                interfaccia.setLocationRelativeTo(null);
-                interfaccia.setVisible(true);
-            }
-        });
-        interfaccia.caricaImmaginiCaricamento();
-        interfaccia.riproduciIntro();
-        interfaccia.riproduciIntroduzione();
-        interfaccia.riproduciAudio("menu");
-        interfaccia.inizializzaMenu();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -100,12 +87,17 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    private ImageIcon[] caricamento = new ImageIcon[4];
-    private ImageIcon menu = new ImageIcon("./risorse/immagini/menu/menu.png");
+    private ImageIcon[] caricamento;
+    private ImageIcon menu;
+
+    public void inizializzaFinestra() {
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
 
     public void caricaImmaginiCaricamento() {
         for (int i = 0; i <= 3; i++) {
-            caricamento[i] = new ImageIcon("./risorse/immagini/caricamento/caricamento" + i + ".png");
+            this.caricamento[i] = new ImageIcon("./risorse/immagini/caricamento/caricamento" + i + ".png");
         }
     }
 
@@ -128,17 +120,17 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void riproduciIntro() {
         ImageIcon[] intro = new ImageIcon[100];
-        jLabel1.setIcon(caricamento[0]);
+        this.jLabel1.setIcon(this.caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 99; i++) {
             if (i == 30) {
-                jLabel1.setIcon(caricamento[1]);
+                this.jLabel1.setIcon(this.caricamento[1]);
             }
             if (i == 60) {
-                jLabel1.setIcon(caricamento[2]);
+                this.jLabel1.setIcon(this.caricamento[2]);
             }
             if (i == 90) {
-                jLabel1.setIcon(caricamento[3]);
+                this.jLabel1.setIcon(this.caricamento[3]);
             }
             if (i < 10) {
                 prefisso = "000";
@@ -150,7 +142,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         riproduciAudio("intro");
         for (int i = 0; i <= 99; i++) {
-            jLabel1.setIcon(intro[i]);
+            this.jLabel1.setIcon(intro[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -161,15 +153,15 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void riproduciIntroduzione() {
         ImageIcon[] introduzione = new ImageIcon[925];
-        jLabel1.setIcon(caricamento[0]);
+        this.jLabel1.setIcon(this.caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 924; i++) {
             if (i == 300) {
-                jLabel1.setIcon(caricamento[1]);
+                this.jLabel1.setIcon(this.caricamento[1]);
             } else if (i == 600) {
-                jLabel1.setIcon(caricamento[2]);
+                this.jLabel1.setIcon(this.caricamento[2]);
             } else if (i == 900) {
-                jLabel1.setIcon(caricamento[3]);
+                this.jLabel1.setIcon(this.caricamento[3]);
             }
             if (i < 10) {
                 prefisso = "000";
@@ -182,7 +174,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         riproduciAudio("introduzione");
         for (int i = 0; i <= 924; i++) {
-            jLabel1.setIcon(introduzione[i]);
+            this.jLabel1.setIcon(introduzione[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -192,21 +184,21 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void inizializzaMenu() {
-        jButton2.setOpaque(true);
-        jButton2.setContentAreaFilled(true);
-        jButton2.setBorderPainted(true);
-        jButton2.setEnabled(true);
-        jButton2.setText("ESCI");
-        jButton3.setOpaque(true);
-        jButton3.setContentAreaFilled(true);
-        jButton3.setBorderPainted(true);
-        jButton3.setEnabled(true);
-        jButton3.setText("NUOVA PARTITA");
-        jButton4.setOpaque(true);
-        jButton4.setContentAreaFilled(true);
-        jButton4.setBorderPainted(true);
-        jButton4.setEnabled(true);
-        jButton4.setText("CARICA PARTITA");
-        jLabel1.setIcon(menu);
+        this.jButton2.setOpaque(true);
+        this.jButton2.setContentAreaFilled(true);
+        this.jButton2.setBorderPainted(true);
+        this.jButton2.setEnabled(true);
+        this.jButton2.setText("ESCI");
+        this.jButton3.setOpaque(true);
+        this.jButton3.setContentAreaFilled(true);
+        this.jButton3.setBorderPainted(true);
+        this.jButton3.setEnabled(true);
+        this.jButton3.setText("NUOVA PARTITA");
+        this.jButton4.setOpaque(true);
+        this.jButton4.setContentAreaFilled(true);
+        this.jButton4.setBorderPainted(true);
+        this.jButton4.setEnabled(true);
+        this.jButton4.setText("CARICA PARTITA");
+        this.jLabel1.setIcon(this.menu);
     }
 }
