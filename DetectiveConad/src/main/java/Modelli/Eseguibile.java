@@ -1,0 +1,51 @@
+package Modelli;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Eseguibile {
+    Mappa mappa = new Mappa();
+    GestoreAzioni g = new GestoreAzioni();
+    Interfaccia interfaccia = new Interfaccia(g);
+
+    
+    public Eseguibile(){
+        interfaccia.caricaImmaginiCaricamento();
+        interfaccia.riproduciIntro();
+        //interfaccia.riproduciAudio("menu");
+        interfaccia.inizializzaMenu();
+    }
+    
+    public static void main(String args[]){
+        Eseguibile e = new Eseguibile();
+        e.controllaStato();
+    }
+    
+    public void controllaStato(){
+        if(interfaccia.controllaStato()==true){
+            interfaccia.riproduciIntroduzione();
+        }
+    }
+    
+    class GestoreAzioni implements ActionListener{
+        String comando;
+        public GestoreAzioni(){
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            comando = e.getActionCommand();
+            switch(comando){
+                case "ESCI":
+                    System.exit(0);
+                    break;
+                case "NUOVA PARTITA":
+                    interfaccia.creaNuovaPartita();
+                    break;
+                default:
+                    break;
+            }
+        }
+       
+    }
+}

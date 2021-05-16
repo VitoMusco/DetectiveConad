@@ -9,13 +9,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
+import Modelli.Eseguibile.GestoreAzioni;
+
 public class Interfaccia extends javax.swing.JFrame {
 
-    public Interfaccia() {
+    public Interfaccia(GestoreAzioni g) {
         initComponents();
         inizializzaFinestra();
-        this.caricamento = new ImageIcon[4];
-        this.menu = new ImageIcon("./risorse/immagini/menu/menu.png");
+        caricamento = new ImageIcon[4];
+        menu = new ImageIcon("./risorse/immagini/menu/menu.png");
+        
+        jButton2.addActionListener(g);
+        jButton2.setActionCommand("ESCI");
+        
+        jButton3.addActionListener(g);
+        jButton3.setActionCommand("NUOVA PARTITA");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -41,22 +50,12 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 150, 40));
 
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setEnabled(false);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 150, 40));
 
         jButton4.setBorder(null);
@@ -71,14 +70,6 @@ public class Interfaccia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -89,15 +80,16 @@ public class Interfaccia extends javax.swing.JFrame {
 
     private ImageIcon[] caricamento;
     private ImageIcon menu;
-
+    private boolean creazioneNuovaPartita = false;
+    
     public void inizializzaFinestra() {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    
     public void caricaImmaginiCaricamento() {
         for (int i = 0; i <= 3; i++) {
-            this.caricamento[i] = new ImageIcon("./risorse/immagini/caricamento/caricamento" + i + ".png");
+            caricamento[i] = new ImageIcon("./risorse/immagini/caricamento/caricamento" + i + ".png");
         }
     }
 
@@ -118,19 +110,37 @@ public class Interfaccia extends javax.swing.JFrame {
         }
     }
 
+    public void creaNuovaPartita(){
+        creazioneNuovaPartita = true;
+    }
+    
+    public boolean controllaStato(){
+        do{
+            if(creazioneNuovaPartita == false){
+                System.out.print("");
+            }
+            if(creazioneNuovaPartita == true){
+                creazioneNuovaPartita = false;
+                return true;
+            }
+        }while(creazioneNuovaPartita == false);
+        return true;
+    }
+    
     public void riproduciIntro() {
+        disattivaPulsanti();
         ImageIcon[] intro = new ImageIcon[100];
-        this.jLabel1.setIcon(this.caricamento[0]);
+        this.jLabel1.setIcon(caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 99; i++) {
             if (i == 30) {
-                this.jLabel1.setIcon(this.caricamento[1]);
+                jLabel1.setIcon(caricamento[1]);
             }
             if (i == 60) {
-                this.jLabel1.setIcon(this.caricamento[2]);
+                jLabel1.setIcon(caricamento[2]);
             }
             if (i == 90) {
-                this.jLabel1.setIcon(this.caricamento[3]);
+                jLabel1.setIcon(caricamento[3]);
             }
             if (i < 10) {
                 prefisso = "000";
@@ -142,7 +152,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         riproduciAudio("intro");
         for (int i = 0; i <= 99; i++) {
-            this.jLabel1.setIcon(intro[i]);
+            jLabel1.setIcon(intro[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -152,16 +162,17 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void riproduciIntroduzione() {
+        disattivaPulsanti();
         ImageIcon[] introduzione = new ImageIcon[925];
-        this.jLabel1.setIcon(this.caricamento[0]);
+        jLabel1.setIcon(caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 924; i++) {
             if (i == 300) {
-                this.jLabel1.setIcon(this.caricamento[1]);
+                jLabel1.setIcon(caricamento[1]);
             } else if (i == 600) {
-                this.jLabel1.setIcon(this.caricamento[2]);
+                jLabel1.setIcon(caricamento[2]);
             } else if (i == 900) {
-                this.jLabel1.setIcon(this.caricamento[3]);
+                jLabel1.setIcon(caricamento[3]);
             }
             if (i < 10) {
                 prefisso = "000";
@@ -174,7 +185,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         riproduciAudio("introduzione");
         for (int i = 0; i <= 924; i++) {
-            this.jLabel1.setIcon(introduzione[i]);
+            jLabel1.setIcon(introduzione[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -183,22 +194,45 @@ public class Interfaccia extends javax.swing.JFrame {
         }
     }
 
-    public void inizializzaMenu() {
-        this.jButton2.setOpaque(true);
-        this.jButton2.setContentAreaFilled(true);
-        this.jButton2.setBorderPainted(true);
-        this.jButton2.setEnabled(true);
-        this.jButton2.setText("ESCI");
-        this.jButton3.setOpaque(true);
-        this.jButton3.setContentAreaFilled(true);
-        this.jButton3.setBorderPainted(true);
-        this.jButton3.setEnabled(true);
-        this.jButton3.setText("NUOVA PARTITA");
-        this.jButton4.setOpaque(true);
-        this.jButton4.setContentAreaFilled(true);
-        this.jButton4.setBorderPainted(true);
-        this.jButton4.setEnabled(true);
-        this.jButton4.setText("CARICA PARTITA");
-        this.jLabel1.setIcon(this.menu);
+    public void attivaPulsanti(){
+        jButton2.setOpaque(true);
+        jButton2.setContentAreaFilled(true);
+        jButton2.setBorderPainted(true);
+        jButton2.setEnabled(true);
+        jButton2.setText("ESCI");
+        jButton3.setOpaque(true);
+        jButton3.setContentAreaFilled(true);
+        jButton3.setBorderPainted(true);
+        jButton3.setEnabled(true);
+        jButton3.setText("NUOVA PARTITA");
+        jButton4.setOpaque(true);
+        jButton4.setContentAreaFilled(true);
+        jButton4.setBorderPainted(true);
+        jButton4.setEnabled(true);
+        jButton4.setText("CARICA PARTITA");
     }
+    public void disattivaPulsanti(){
+        jButton2.setOpaque(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setBorderPainted(false);
+        jButton2.setEnabled(false);
+        jButton2.setText("");
+        jButton3.setOpaque(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setBorderPainted(false);
+        jButton3.setEnabled(false);
+        jButton3.setText("");
+        jButton4.setOpaque(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setBorderPainted(false);
+        jButton4.setEnabled(false);
+        jButton4.setText("");
+    }
+    
+    public void inizializzaMenu() {
+        attivaPulsanti();
+        jLabel1.setIcon(menu);
+    }
+    
+    
 }
