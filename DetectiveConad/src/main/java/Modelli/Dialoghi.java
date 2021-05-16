@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelli;
 
 import java.io.BufferedReader;
@@ -22,7 +18,7 @@ public class Dialoghi {
     }
     public void prelevaTesti() {
         Scanner scanner = null;
-        File file = new File("C:/Users/miki_/Desktop/Testi/testi.txt");
+        File file = new File("./risorse/dialoghi/dialoghi.txt");
         String frase = null, chiave = null;
         String[] parti = new String[2];
         try {
