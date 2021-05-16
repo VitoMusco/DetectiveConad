@@ -16,7 +16,6 @@ public class Interfaccia extends javax.swing.JFrame {
     private ImageIcon[] caricamento;
     private ImageIcon menu;
     private boolean creazioneNuovaPartita = false;
-    private String nomePartita;
     
     public Interfaccia(GestoreAzioni g) {
         initComponents();
@@ -31,7 +30,7 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton3.setActionCommand("NUOVA_PARTITA");
         
         jButton1.addActionListener(g);
-        jButton3.setActionCommand("INIZIA_PARTITA");
+        jButton1.setActionCommand("INIZIA_PARTITA");
     }
 
     @SuppressWarnings("unchecked")
@@ -70,11 +69,6 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 330, 180));
@@ -105,10 +99,6 @@ public class Interfaccia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        nomePartita = jTextField1.getText();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -178,7 +168,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public String getNomePartita(){
-        return nomePartita;
+        return jTextField1.getText();
     }
     
     public void creaNuovaPartita(){

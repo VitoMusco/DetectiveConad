@@ -41,14 +41,15 @@ public class Eseguibile {
                 case "ESCI":
                     System.exit(0);
                     break;
-                case "NUOVA PARTITA":
+                case "NUOVA_PARTITA":
                     interfaccia.chiediNomePartita();
                     break;
-                case "INIZIA PARTITA":
+                case "INIZIA_PARTITA":
                     db.inizializzaDatabase();
                     db.inserisciPartita(interfaccia.getNomePartita());
                     interfaccia.disabilitaChiediNomePartita();
                     dialoghi.prelevaTesti();
+                    interfaccia.creaNuovaPartita();
                     break;
                 default:
                     break;
