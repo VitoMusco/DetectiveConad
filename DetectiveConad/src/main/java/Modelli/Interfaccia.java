@@ -26,6 +26,7 @@ public class Interfaccia extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage((new ImageIcon("./risorse/immagini/icona/icona.png")).getImage());
         setName("Detective Conad"); // NOI18N
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
