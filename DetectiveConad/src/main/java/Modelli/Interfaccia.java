@@ -77,7 +77,6 @@ public class Interfaccia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
-        Mappa mappa = new Mappa();
         Interfaccia interfaccia = new Interfaccia();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
