@@ -28,8 +28,10 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton2.setActionCommand("ESCI");
         
         jButton3.addActionListener(g);
-        jButton3.setActionCommand("NUOVA PARTITA");
+        jButton3.setActionCommand("NUOVA_PARTITA");
         
+        jButton1.addActionListener(g);
+        jButton3.setActionCommand("INIZIA_PARTITA");
     }
 
     @SuppressWarnings("unchecked")
@@ -55,13 +57,19 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Dai un nome alla tua partita");
+        jLabel2.setToolTipText("");
+        jLabel2.setEnabled(false);
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 160, -1));
 
-        jTextField1.setText("Inserisci nome partita");
+        jTextField1.setToolTipText("");
+        jTextField1.setBorder(null);
+        jTextField1.setEnabled(false);
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 150, -1));
 
-        jButton1.setText("Inserisci");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -144,7 +152,29 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void chiediNomePartita(){
-        //rendi visualizzabile la finestra
+        jButton1.setOpaque(true);
+        jButton1.setContentAreaFilled(true);
+        jButton1.setBorderPainted(true);
+        jButton1.setEnabled(true);
+        jButton1.setText("INIZIA PARTITA");
+        jTextField1.setOpaque(true);
+        jTextField1.setEnabled(true);
+        jTextField1.setToolTipText("Inserisci nome partita");
+        jLabel2.setEnabled(true);
+        jLabel2.setText("Dai un nome alla tua partita");
+    }
+    
+    public void disabilitaChiediNomePartita(){
+        jButton1.setOpaque(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setBorderPainted(false);
+        jButton1.setEnabled(false);
+        jButton1.setText("");
+        jTextField1.setOpaque(false);
+        jTextField1.setEnabled(false);
+        jTextField1.setToolTipText("");
+        jLabel2.setEnabled(false);
+        jLabel2.setText("");
     }
     
     public String getNomePartita(){

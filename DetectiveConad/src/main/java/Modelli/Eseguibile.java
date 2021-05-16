@@ -47,6 +47,7 @@ public class Eseguibile {
                 case "INIZIA PARTITA":
                     db.inizializzaDatabase();
                     db.inserisciPartita(interfaccia.getNomePartita());
+                    interfaccia.disabilitaChiediNomePartita();
                     dialoghi.prelevaTesti();
                     break;
                 default:
