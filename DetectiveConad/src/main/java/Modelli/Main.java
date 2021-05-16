@@ -12,7 +12,9 @@ package Modelli;
 public class Main {
     public static void main(String args[]){
         Interfaccia interfaccia = new Interfaccia();
-
+        Mappa mappa = new Mappa();
+        
+        
         interfaccia.caricaImmaginiCaricamento();
         interfaccia.riproduciIntro();
         interfaccia.riproduciIntroduzione();
