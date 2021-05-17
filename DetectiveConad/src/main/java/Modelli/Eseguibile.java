@@ -14,7 +14,7 @@ public class Eseguibile {
     public Eseguibile(){
         interfaccia.caricaImmaginiCaricamento();
         interfaccia.riproduciIntro();
-        //interfaccia.riproduciAudio("menu");
+        interfaccia.riproduciAudio("menu");
         interfaccia.inizializzaMenu();
     }
     
@@ -60,7 +60,10 @@ public class Eseguibile {
                     db.inserisciPartita(interfaccia.getNomePartita());
                     interfaccia.disabilitaChiediNomePartita();
                     dialoghi.prelevaTesti();*/
-                    interfaccia.creaNuovaPartita();
+                    if(interfaccia.controllaNomePartita() == true){
+                        interfaccia.creaNuovaPartita();
+                    }
+                    
                     break;
                 default:
                     break;

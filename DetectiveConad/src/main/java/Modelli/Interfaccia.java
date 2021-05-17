@@ -16,6 +16,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private ImageIcon[] caricamento;
     private ImageIcon menu,selettorePartita;
     private boolean creazioneNuovaPartita = false;
+    Clip audio;
     
     public Interfaccia(GestoreAzioni g) {
         initComponents();
@@ -23,6 +24,8 @@ public class Interfaccia extends javax.swing.JFrame {
         caricamento = new ImageIcon[4];
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
+        
+        inizializzaInterfaccia();
         
         jButton2.addActionListener(g);
         jButton2.setActionCommand("ESCI");
@@ -54,6 +57,8 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita = new javax.swing.JButton();
         CreaSalvataggioEsci = new javax.swing.JButton();
         IniziaPartita = new javax.swing.JButton();
+        NomePartita = new javax.swing.JTextField();
+        ErroreMaxCaratteri = new javax.swing.JLabel();
         CreaSalvataggioLabel = new javax.swing.JLabel();
         MediaLabel = new javax.swing.JLabel();
 
@@ -83,7 +88,6 @@ public class Interfaccia extends javax.swing.JFrame {
         SalvataggiEsci.setBorderPainted(false);
         SalvataggiEsci.setContentAreaFilled(false);
         SalvataggiEsci.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        SalvataggiEsci.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_piccolo_disabilitato.png"));
         SalvataggiEsci.setEnabled(false);
         SalvataggiEsci.setMargin(null);
         SalvataggiEsci.setMinimumSize(new java.awt.Dimension(44, 44));
@@ -94,7 +98,6 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita.setBorder(null);
         NuovaPartita.setBorderPainted(false);
         NuovaPartita.setContentAreaFilled(false);
-        NuovaPartita.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_medio_disabilitato.png"));
         NuovaPartita.setEnabled(false);
         NuovaPartita.setMargin(null);
         NuovaPartita.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita_highlited.png"));
@@ -105,7 +108,6 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioEsci.setBorder(null);
         CreaSalvataggioEsci.setBorderPainted(false);
         CreaSalvataggioEsci.setContentAreaFilled(false);
-        CreaSalvataggioEsci.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_piccolo_disabilitato.png"));
         CreaSalvataggioEsci.setEnabled(false);
         CreaSalvataggioEsci.setMargin(null);
         CreaSalvataggioEsci.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_uscita_highlited.png"));
@@ -115,10 +117,26 @@ public class Interfaccia extends javax.swing.JFrame {
         IniziaPartita.setBorder(null);
         IniziaPartita.setBorderPainted(false);
         IniziaPartita.setContentAreaFilled(false);
-        IniziaPartita.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_medio_disabilitato.png"));
         IniziaPartita.setEnabled(false);
         IniziaPartita.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/inizia_partita_highlited.png"));
         jPanel1.add(IniziaPartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 367, 81));
+
+        NomePartita.setBackground(new java.awt.Color(255, 251, 250));
+        NomePartita.setColumns(16);
+        NomePartita.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
+        NomePartita.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        NomePartita.setToolTipText("");
+        NomePartita.setAutoscrolls(false);
+        NomePartita.setBorder(null);
+        NomePartita.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        NomePartita.setEnabled(false);
+        NomePartita.setMargin(null);
+        NomePartita.setName(""); // NOI18N
+        jPanel1.add(NomePartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 210, 35));
+
+        ErroreMaxCaratteri.setIcon(new ImageIcon("./risorse/immagini/menu/errore_max_caratteri.png"));
+        ErroreMaxCaratteri.setEnabled(false);
+        jPanel1.add(ErroreMaxCaratteri, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 270, 50));
 
         CreaSalvataggioLabel.setIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio.png"));
         CreaSalvataggioLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
@@ -134,8 +152,10 @@ public class Interfaccia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreaSalvataggioEsci;
     private javax.swing.JLabel CreaSalvataggioLabel;
+    private javax.swing.JLabel ErroreMaxCaratteri;
     private javax.swing.JButton IniziaPartita;
     private javax.swing.JLabel MediaLabel;
+    private javax.swing.JTextField NomePartita;
     private javax.swing.JButton NuovaPartita;
     private javax.swing.JButton SalvataggiEsci;
     private javax.swing.JButton jButton2;
@@ -160,9 +180,9 @@ public class Interfaccia extends javax.swing.JFrame {
         AudioInputStream audioStream;
         try {
             audioStream = AudioSystem.getAudioInputStream(fileAudio);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
+            audio = AudioSystem.getClip();
+            audio.open(audioStream);
+            audio.start();
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
@@ -170,6 +190,10 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void stoppaAudio(){
+        audio.stop();
     }
     
     public void creaNuovaPartita(){
@@ -246,6 +270,7 @@ public class Interfaccia extends javax.swing.JFrame {
             }
             introduzione[i] = new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg");
         }
+        stoppaAudio();
         riproduciAudio("introduzione");
         for (int i = 0; i <= 924; i++) {
             MediaLabel.setIcon(introduzione[i]);
@@ -291,12 +316,16 @@ public class Interfaccia extends javax.swing.JFrame {
         disattivaPulsanti();
         SalvataggiEsci.setEnabled(true);
         NuovaPartita.setEnabled(true);
+        SalvataggiEsci.setVisible(true);
+        NuovaPartita.setVisible(true);
         MediaLabel.setIcon(selettorePartita);
     }
     
     public void esciDaSelettorePartita(){
         SalvataggiEsci.setEnabled(false);
         NuovaPartita.setEnabled(false);
+        SalvataggiEsci.setVisible(false);
+        NuovaPartita.setVisible(false);
         esciDaCreatorePartita();
         inizializzaMenu();
     }
@@ -304,6 +333,8 @@ public class Interfaccia extends javax.swing.JFrame {
     public void chiudiSelettorePartita(){
         SalvataggiEsci.setEnabled(false);
         NuovaPartita.setEnabled(false);
+        SalvataggiEsci.setVisible(false);
+        NuovaPartita.setVisible(false);
         esciDaCreatorePartita();
     }
     
@@ -311,12 +342,51 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioLabel.setEnabled(true);
         CreaSalvataggioEsci.setEnabled(true);
         IniziaPartita.setEnabled(true);
+        NomePartita.setEnabled(true);
+        CreaSalvataggioLabel.setVisible(true);
+        CreaSalvataggioEsci.setVisible(true);
+        IniziaPartita.setVisible(true);
+        NomePartita.setVisible(true);
     }
     
     public void esciDaCreatorePartita(){
         CreaSalvataggioLabel.setEnabled(false);
         CreaSalvataggioEsci.setEnabled(false);
         IniziaPartita.setEnabled(false);
+        NomePartita.setEnabled(false);
+        ErroreMaxCaratteri.setEnabled(false);
+        CreaSalvataggioLabel.setVisible(false);
+        CreaSalvataggioEsci.setVisible(false);
+        IniziaPartita.setVisible(false);
+        NomePartita.setVisible(false);
+        ErroreMaxCaratteri.setVisible(false);
     }
     
+    public void inizializzaInterfaccia(){
+        SalvataggiEsci.setEnabled(false);
+        NuovaPartita.setEnabled(false);
+        SalvataggiEsci.setVisible(false);
+        NuovaPartita.setVisible(false);
+        CreaSalvataggioLabel.setEnabled(false);
+        CreaSalvataggioEsci.setEnabled(false);
+        IniziaPartita.setEnabled(false);
+        NomePartita.setEnabled(false);
+        CreaSalvataggioLabel.setVisible(false);
+        CreaSalvataggioEsci.setVisible(false);
+        IniziaPartita.setVisible(false);
+        NomePartita.setVisible(false);
+        ErroreMaxCaratteri.setEnabled(false);
+        ErroreMaxCaratteri.setVisible(false);
+    }
+    
+    public boolean controllaNomePartita(){
+        if(NomePartita.getText().length() > 16){
+            ErroreMaxCaratteri.setEnabled(true);
+            ErroreMaxCaratteri.setVisible(true);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
