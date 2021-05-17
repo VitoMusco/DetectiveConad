@@ -14,7 +14,7 @@ import Modelli.Eseguibile.GestoreAzioni;
 public class Interfaccia extends javax.swing.JFrame {
 
     private ImageIcon[] caricamento;
-    private ImageIcon menu;
+    private ImageIcon menu,selettorePartita;
     private boolean creazioneNuovaPartita = false;
     
     public Interfaccia(GestoreAzioni g) {
@@ -22,6 +22,7 @@ public class Interfaccia extends javax.swing.JFrame {
         inizializzaFinestra();
         caricamento = new ImageIcon[4];
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
+        selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
         
         jButton2.addActionListener(g);
         jButton2.setActionCommand("ESCI");
@@ -29,49 +30,38 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton3.addActionListener(g);
         jButton3.setActionCommand("NUOVA_PARTITA");
         
-        jButton1.addActionListener(g);
-        jButton1.setActionCommand("INIZIA_PARTITA");
+        IniziaPartita.addActionListener(g);
+        IniziaPartita.setActionCommand("INIZIA_PARTITA");
+        
+        SalvataggiEsci.addActionListener(g);
+        SalvataggiEsci.setActionCommand("MENU_INIZIALE");
+        
+        CreaSalvataggioEsci.addActionListener(g);
+        CreaSalvataggioEsci.setActionCommand("CREA_SALVATAGGIO_ESCI");
+        
+        NuovaPartita.addActionListener(g);
+        NuovaPartita.setActionCommand("CREA_PARTITA");
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        SalvataggiEsci = new javax.swing.JButton();
+        NuovaPartita = new javax.swing.JButton();
+        CreaSalvataggioEsci = new javax.swing.JButton();
+        IniziaPartita = new javax.swing.JButton();
+        CreaSalvataggioLabel = new javax.swing.JLabel();
+        MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage((new ImageIcon("./risorse/immagini/icona/icona.png")).getImage());
         setName("Detective Conad"); // NOI18N
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setToolTipText("");
-        jLabel2.setEnabled(false);
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 160, -1));
-
-        jTextField1.setToolTipText("");
-        jTextField1.setBorder(null);
-        jTextField1.setEnabled(false);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 150, -1));
-
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setEnabled(false);
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 330, 180));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,7 +70,7 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setEnabled(false);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 150, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 150, 40));
 
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
@@ -88,12 +78,53 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton3.setEnabled(false);
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 150, 40));
 
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setEnabled(false);
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 150, 40));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        SalvataggiEsci.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_uscita.png"));
+        SalvataggiEsci.setBorder(null);
+        SalvataggiEsci.setBorderPainted(false);
+        SalvataggiEsci.setContentAreaFilled(false);
+        SalvataggiEsci.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalvataggiEsci.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_piccolo_disabilitato.png"));
+        SalvataggiEsci.setEnabled(false);
+        SalvataggiEsci.setMargin(null);
+        SalvataggiEsci.setMinimumSize(new java.awt.Dimension(44, 44));
+        SalvataggiEsci.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_uscita_highlited.png"));
+        jPanel1.add(SalvataggiEsci, new org.netbeans.lib.awtextra.AbsoluteConstraints(1175, 40, 44, 44));
+
+        NuovaPartita.setIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita.png"));
+        NuovaPartita.setBorder(null);
+        NuovaPartita.setBorderPainted(false);
+        NuovaPartita.setContentAreaFilled(false);
+        NuovaPartita.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_medio_disabilitato.png"));
+        NuovaPartita.setEnabled(false);
+        NuovaPartita.setMargin(null);
+        NuovaPartita.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita_highlited.png"));
+        jPanel1.add(NuovaPartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 367, 81));
+
+        CreaSalvataggioEsci.setIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_uscita.png"));
+        CreaSalvataggioEsci.setToolTipText("");
+        CreaSalvataggioEsci.setBorder(null);
+        CreaSalvataggioEsci.setBorderPainted(false);
+        CreaSalvataggioEsci.setContentAreaFilled(false);
+        CreaSalvataggioEsci.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_piccolo_disabilitato.png"));
+        CreaSalvataggioEsci.setEnabled(false);
+        CreaSalvataggioEsci.setMargin(null);
+        CreaSalvataggioEsci.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_uscita_highlited.png"));
+        jPanel1.add(CreaSalvataggioEsci, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, 44, 44));
+
+        IniziaPartita.setIcon(new ImageIcon("./risorse/immagini/menu/inizia_partita.png"));
+        IniziaPartita.setBorder(null);
+        IniziaPartita.setBorderPainted(false);
+        IniziaPartita.setContentAreaFilled(false);
+        IniziaPartita.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/pulsante_medio_disabilitato.png"));
+        IniziaPartita.setEnabled(false);
+        IniziaPartita.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/inizia_partita_highlited.png"));
+        jPanel1.add(IniziaPartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 367, 81));
+
+        CreaSalvataggioLabel.setIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio.png"));
+        CreaSalvataggioLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
+        CreaSalvataggioLabel.setEnabled(false);
+        jPanel1.add(CreaSalvataggioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -101,15 +132,15 @@ public class Interfaccia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton CreaSalvataggioEsci;
+    private javax.swing.JLabel CreaSalvataggioLabel;
+    private javax.swing.JButton IniziaPartita;
+    private javax.swing.JLabel MediaLabel;
+    private javax.swing.JButton NuovaPartita;
+    private javax.swing.JButton SalvataggiEsci;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     
@@ -140,36 +171,6 @@ public class Interfaccia extends javax.swing.JFrame {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void chiediNomePartita(){
-        jButton1.setOpaque(true);
-        jButton1.setContentAreaFilled(true);
-        jButton1.setBorderPainted(true);
-        jButton1.setEnabled(true);
-        jButton1.setText("INIZIA PARTITA");
-        jTextField1.setOpaque(true);
-        jTextField1.setEnabled(true);
-        jTextField1.setToolTipText("Inserisci nome partita");
-        jLabel2.setEnabled(true);
-        jLabel2.setText("Dai un nome alla tua partita");
-    }
-    
-    public void disabilitaChiediNomePartita(){
-        jButton1.setOpaque(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setBorderPainted(false);
-        jButton1.setEnabled(false);
-        jButton1.setText("");
-        jTextField1.setOpaque(false);
-        jTextField1.setEnabled(false);
-        jTextField1.setToolTipText("");
-        jLabel2.setEnabled(false);
-        jLabel2.setText("");
-    }
-    
-    public String getNomePartita(){
-        return jTextField1.getText();
-    }
     
     public void creaNuovaPartita(){
         creazioneNuovaPartita = true;
@@ -191,17 +192,17 @@ public class Interfaccia extends javax.swing.JFrame {
     public void riproduciIntro() {
         disattivaPulsanti();
         ImageIcon[] intro = new ImageIcon[100];
-        this.jLabel1.setIcon(caricamento[0]);
+        this.MediaLabel.setIcon(caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 99; i++) {
             if (i == 30) {
-                jLabel1.setIcon(caricamento[1]);
+                MediaLabel.setIcon(caricamento[1]);
             }
             if (i == 60) {
-                jLabel1.setIcon(caricamento[2]);
+                MediaLabel.setIcon(caricamento[2]);
             }
             if (i == 90) {
-                jLabel1.setIcon(caricamento[3]);
+                MediaLabel.setIcon(caricamento[3]);
             }
             if (i < 10) {
                 prefisso = "000";
@@ -213,7 +214,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         riproduciAudio("intro");
         for (int i = 0; i <= 99; i++) {
-            jLabel1.setIcon(intro[i]);
+            MediaLabel.setIcon(intro[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -225,15 +226,15 @@ public class Interfaccia extends javax.swing.JFrame {
     public void riproduciIntroduzione() {
         disattivaPulsanti();
         ImageIcon[] introduzione = new ImageIcon[925];
-        jLabel1.setIcon(caricamento[0]);
+        MediaLabel.setIcon(caricamento[0]);
         String prefisso = "";
         for (int i = 0; i <= 924; i++) {
             if (i == 300) {
-                jLabel1.setIcon(caricamento[1]);
+                MediaLabel.setIcon(caricamento[1]);
             } else if (i == 600) {
-                jLabel1.setIcon(caricamento[2]);
+                MediaLabel.setIcon(caricamento[2]);
             } else if (i == 900) {
-                jLabel1.setIcon(caricamento[3]);
+                MediaLabel.setIcon(caricamento[3]);
             }
             if (i < 10) {
                 prefisso = "000";
@@ -246,7 +247,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         riproduciAudio("introduzione");
         for (int i = 0; i <= 924; i++) {
-            jLabel1.setIcon(introduzione[i]);
+            MediaLabel.setIcon(introduzione[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -266,11 +267,6 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton3.setBorderPainted(true);
         jButton3.setEnabled(true);
         jButton3.setText("NUOVA PARTITA");
-        jButton4.setOpaque(true);
-        jButton4.setContentAreaFilled(true);
-        jButton4.setBorderPainted(true);
-        jButton4.setEnabled(true);
-        jButton4.setText("CARICA PARTITA");
     }
     public void disattivaPulsanti(){
         jButton2.setOpaque(false);
@@ -283,16 +279,37 @@ public class Interfaccia extends javax.swing.JFrame {
         jButton3.setBorderPainted(false);
         jButton3.setEnabled(false);
         jButton3.setText("");
-        jButton4.setOpaque(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setBorderPainted(false);
-        jButton4.setEnabled(false);
-        jButton4.setText("");
     }
     
     public void inizializzaMenu() {
         attivaPulsanti();
-        jLabel1.setIcon(menu);
+        MediaLabel.setIcon(menu);
     }
 
+    public void inizializzaSelettorePartita(){
+        disattivaPulsanti();
+        SalvataggiEsci.setEnabled(true);
+        NuovaPartita.setEnabled(true);
+        MediaLabel.setIcon(selettorePartita);
+    }
+    
+    public void esciDaSelettorePartita(){
+        SalvataggiEsci.setEnabled(false);
+        NuovaPartita.setEnabled(false);
+        esciDaCreatorePartita();
+        inizializzaMenu();
+    }
+    
+    public void inizializzaCreatorePartita(){
+        CreaSalvataggioLabel.setEnabled(true);
+        CreaSalvataggioEsci.setEnabled(true);
+        IniziaPartita.setEnabled(true);
+    }
+    
+    public void esciDaCreatorePartita(){
+        CreaSalvataggioLabel.setEnabled(false);
+        CreaSalvataggioEsci.setEnabled(false);
+        IniziaPartita.setEnabled(false);
+    }
+    
 }

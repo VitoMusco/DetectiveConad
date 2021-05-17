@@ -42,13 +42,24 @@ public class Eseguibile {
                     System.exit(0);
                     break;
                 case "NUOVA_PARTITA":
-                    interfaccia.chiediNomePartita();
+                    interfaccia.inizializzaSelettorePartita();
+                    //interfaccia.chiediNomePartita();
+                    break;                   
+                case "MENU_INIZIALE":
+                    interfaccia.esciDaSelettorePartita();
+                    break;
+                case "CREA_PARTITA":
+                    interfaccia.inizializzaCreatorePartita();
+                    break;
+                case "CREA_SALVATAGGIO_ESCI":
+                    interfaccia.esciDaCreatorePartita();
                     break;
                 case "INIZIA_PARTITA":
+                    /*
                     db.inizializzaDatabase();
                     db.inserisciPartita(interfaccia.getNomePartita());
                     interfaccia.disabilitaChiediNomePartita();
-                    dialoghi.prelevaTesti();
+                    dialoghi.prelevaTesti();*/
                     interfaccia.creaNuovaPartita();
                     break;
                 default:
