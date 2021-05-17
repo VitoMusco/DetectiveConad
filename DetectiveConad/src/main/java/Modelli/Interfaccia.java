@@ -157,8 +157,6 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
         CreaSalvataggioLabel.setEnabled(false);
         jPanel1.add(CreaSalvataggioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
-        MediaLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vito\\DetectiveConad\\DetectiveConad\\risorse\\immagini\\menu\\menu.png")); // NOI18N
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
