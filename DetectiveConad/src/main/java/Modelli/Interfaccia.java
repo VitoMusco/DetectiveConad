@@ -79,7 +79,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteEsci.setEnabled(false);
         PulsanteEsci.setMargin(null);
         PulsanteEsci.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/esci_highlighted.png"));
-        jPanel1.add(PulsanteEsci, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 230, 50));
+        jPanel1.add(PulsanteEsci, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 230, 50));
 
         PulsanteCrediti.setIcon(new ImageIcon("./risorse/immagini/menu/crediti.png"));
         PulsanteCrediti.setBorder(null);
@@ -87,7 +87,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteCrediti.setContentAreaFilled(false);
         PulsanteCrediti.setEnabled(false);
         PulsanteCrediti.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/crediti_highlighted.png"));
-        jPanel1.add(PulsanteCrediti, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 230, 50));
+        jPanel1.add(PulsanteCrediti, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 230, 50));
 
         PulsanteIndaga.setIcon(new ImageIcon("./risorse/immagini/menu/indaga.png"));
         PulsanteIndaga.setBorder(null);
@@ -96,7 +96,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteIndaga.setEnabled(false);
         PulsanteIndaga.setMargin(null);
         PulsanteIndaga.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/indaga_highlighted.png"));
-        jPanel1.add(PulsanteIndaga, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 230, 50));
+        jPanel1.add(PulsanteIndaga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 230, 50));
 
         SalvataggiEsci.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_uscita.png"));
         SalvataggiEsci.setBorder(null);
