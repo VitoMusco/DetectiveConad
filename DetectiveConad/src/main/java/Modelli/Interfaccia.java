@@ -359,6 +359,7 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioEsci.setVisible(false);
         IniziaPartita.setVisible(false);
         NomePartita.setVisible(false);
+        NomePartita.setText(null);
         ErroreMaxCaratteri.setVisible(false);
     }
     
