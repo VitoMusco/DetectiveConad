@@ -173,6 +173,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public void creaNuovaPartita(){
+        chiudiSelettorePartita();
         creazioneNuovaPartita = true;
     }
     
@@ -298,6 +299,12 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita.setEnabled(false);
         esciDaCreatorePartita();
         inizializzaMenu();
+    }
+    
+    public void chiudiSelettorePartita(){
+        SalvataggiEsci.setEnabled(false);
+        NuovaPartita.setEnabled(false);
+        esciDaCreatorePartita();
     }
     
     public void inizializzaCreatorePartita(){
