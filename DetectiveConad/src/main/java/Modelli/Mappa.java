@@ -82,7 +82,7 @@ public class Mappa {
         Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto coltello = new Oggetto("un", "coltello");
         Oggetto mappa = new Oggetto("una", "mappa");
-        Oggetto monetina = new Oggetto("una", "moentina");
+        Oggetto monetina = new Oggetto("una", "monetina");
         Oggetto impronta = new OggettoNonRaccoglibile("una", "impronta");
 
         this.ingresso.inserisciOggetto(mappa);
