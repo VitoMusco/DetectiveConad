@@ -253,7 +253,11 @@ public class Interfaccia extends javax.swing.JFrame {
     public boolean controllaStato(){
         do{
             if(creazioneNuovaPartita == false){
-                System.out.print("");
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             if(creazioneNuovaPartita == true){
                 creazioneNuovaPartita = false;
