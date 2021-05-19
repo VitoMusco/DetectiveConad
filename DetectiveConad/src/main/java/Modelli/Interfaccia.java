@@ -65,6 +65,12 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita3 = new javax.swing.JButton();
         NuovaPartita4 = new javax.swing.JButton();
         MediaLabel = new javax.swing.JLabel();
+        ApriCasellaTesto = new javax.swing.JButton();
+        ApriCellulare = new javax.swing.JButton();
+        CasellaTesto = new javax.swing.JScrollPane();
+        ScritturaTesto = new javax.swing.JTextArea();
+        ScriviTesto = new javax.swing.JTextField();
+        Cellulare = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage((new ImageIcon("./risorse/immagini/icona/icona.png")).getImage());
@@ -137,7 +143,7 @@ public class Interfaccia extends javax.swing.JFrame {
         NomePartita.setToolTipText("");
         NomePartita.setAutoscrolls(false);
         NomePartita.setBorder(null);
-        NomePartita.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        NomePartita.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         NomePartita.setEnabled(false);
         NomePartita.setMargin(null);
         NomePartita.setName(""); // NOI18N
@@ -189,12 +195,41 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.add(NuovaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 367, 81));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        ApriCasellaTesto.setText("Testo");
+        ApriCasellaTesto.setBorder(null);
+        ApriCasellaTesto.setContentAreaFilled(false);
+        jPanel1.add(ApriCasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 90, 90));
+
+        ApriCellulare.setText("Cellulare");
+        ApriCellulare.setBorder(null);
+        ApriCellulare.setContentAreaFilled(false);
+        jPanel1.add(ApriCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 90, 90));
+
+        CasellaTesto.setAutoscrolls(true);
+
+        ScritturaTesto.setEditable(false);
+        ScritturaTesto.setColumns(20);
+        ScritturaTesto.setRows(5);
+        CasellaTesto.setViewportView(ScritturaTesto);
+
+        jPanel1.add(CasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 790, 540));
+
+        ScriviTesto.setText("Scrivi Testo");
+        jPanel1.add(ScriviTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 790, 30));
+
+        Cellulare.setText("label1");
+        jPanel1.add(Cellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 340, 590));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ApriCasellaTesto;
+    private javax.swing.JButton ApriCellulare;
+    private javax.swing.JScrollPane CasellaTesto;
+    private java.awt.Label Cellulare;
     private javax.swing.JButton CreaSalvataggioEsci;
     private javax.swing.JLabel CreaSalvataggioLabel;
     private javax.swing.JLabel ErroreMaxCaratteri;
@@ -209,6 +244,8 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
     private javax.swing.JButton SalvataggiEsci;
+    private javax.swing.JTextArea ScritturaTesto;
+    private javax.swing.JTextField ScriviTesto;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
