@@ -16,6 +16,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private final ImageIcon[] caricamento;
     private final ImageIcon menu,selettorePartita;
     private boolean creazioneNuovaPartita = false;
+    private int contatoreFotogrammi = 0;
     Clip audio;
     
     public Interfaccia(GestoreAzioni g) {
@@ -375,15 +376,16 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void riproduciIntroduzione() {
         disattivaPulsantiMenu();
-        ImageIcon[] introduzione = new ImageIcon[925];
+        //ImageIcon[] introduzione = new ImageIcon[925];
+        ImageIcon[] introduzione = new ImageIcon[300];
         MediaLabel.setIcon(caricamento[0]);
         String prefisso = "";
-        for (int i = 0; i <= 924; i++) {
-            if (i == 300) {
+        for (int i = 0; i < 300; i++) {
+            if (i == 100) {
                 MediaLabel.setIcon(caricamento[1]);
-            } else if (i == 600) {
+            } else if (i == 175) {
                 MediaLabel.setIcon(caricamento[2]);
-            } else if (i == 900) {
+            } else if (i == 250) {
                 MediaLabel.setIcon(caricamento[3]);
             }
             if (i < 10) {
@@ -397,8 +399,12 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         stoppaAudio();
         riproduciAudio("introduzione");
-        for (int i = 0; i <= 924; i++) {
-            MediaLabel.setIcon(introduzione[i]);
+        riproduciECarica(riproduciECarica(riproduciECarica(introduzione,contatoreFotogrammi,300),contatoreFotogrammi,300),contatoreFotogrammi,24);
+    }
+
+    public void riproduci(ImageIcon[] immagini){
+        for (int i = 0; i <300; i++) {
+            MediaLabel.setIcon(immagini[i]);
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
             } catch (InterruptedException ex) {
@@ -406,7 +412,22 @@ public class Interfaccia extends javax.swing.JFrame {
             }
         }
     }
-
+    
+    public ImageIcon[] riproduciECarica(ImageIcon[] immagini,int cont,int max){
+        ImageIcon[] nuoveImmagini = new ImageIcon[300];
+        for (int i = 0; i <max; i++) {
+            MediaLabel.setIcon(immagini[i]);
+            nuoveImmagini[i] = new ImageIcon("./risorse/immagini/iniziogioco/image0" + cont + ".jpg");
+            contatoreFotogrammi++;
+            try {
+                TimeUnit.MILLISECONDS.sleep(39);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return nuoveImmagini;
+    }
+    
     public void attivaPulsantiMenu(){
         PulsanteIndaga.setEnabled(true);
         PulsanteCrediti.setEnabled(true);
