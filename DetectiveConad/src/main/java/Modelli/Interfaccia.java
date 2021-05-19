@@ -242,14 +242,15 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setContentAreaFilled(false);
         ApriEditor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ApriEditor.setMargin(null);
-        jPanel1.add(ApriEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 144));
+        jPanel1.add(ApriEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 40, 120, 144));
 
         ApriTelefono.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_telefono.png"));
         ApriTelefono.setBorder(null);
         ApriTelefono.setBorderPainted(false);
         ApriTelefono.setContentAreaFilled(false);
+        ApriTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ApriTelefono.setMargin(null);
-        jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 120, 144));
+        jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 120, 144));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
