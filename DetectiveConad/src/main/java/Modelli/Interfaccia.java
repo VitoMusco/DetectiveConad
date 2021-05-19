@@ -556,11 +556,17 @@ public class Interfaccia extends javax.swing.JFrame {
     public void mostraCellulare(){
         GraficaCellulare.setEnabled(true);
         GraficaCellulare.setVisible(true);
+        
+        ApriTelefono.setEnabled(false);
+        ApriTelefono.setVisible(false);
     }
     
     public void disattivaCellulare(){
         GraficaCellulare.setEnabled(false);
         GraficaCellulare.setVisible(false);
+        
+        ApriTelefono.setEnabled(true);
+        ApriTelefono.setVisible(true);
     }
     
     //Mostra l'interfaccia dell'editor di testo
@@ -574,6 +580,9 @@ public class Interfaccia extends javax.swing.JFrame {
         ScriviTesto.setEnabled(true);
         CasellaTesto.setEnabled(true);
         ScritturaTesto.setEnabled(true);
+        
+        ApriEditor.setVisible(false);
+        ApriEditor.setEnabled(false);
     }
     
     public void disattivaEditorTesto(){
@@ -586,6 +595,9 @@ public class Interfaccia extends javax.swing.JFrame {
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
+        
+        ApriEditor.setVisible(true);
+        ApriEditor.setEnabled(true);
     }
     
     public boolean controllaNomePartita(){
