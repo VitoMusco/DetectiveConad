@@ -399,7 +399,7 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         stoppaAudio();
         riproduciAudio("introduzione");
-        riproduciECarica(riproduciECarica(riproduciECarica(introduzione,contatoreFotogrammi,300),contatoreFotogrammi,300),contatoreFotogrammi,24);
+        riproduciECarica(riproduciECarica(riproduciECarica(introduzione,300),300),24);
     }
 
     public void riproduci(ImageIcon[] immagini){
@@ -413,11 +413,11 @@ public class Interfaccia extends javax.swing.JFrame {
         }
     }
     
-    public ImageIcon[] riproduciECarica(ImageIcon[] immagini,int cont,int max){
+    public ImageIcon[] riproduciECarica(ImageIcon[] immagini,int max){
         ImageIcon[] nuoveImmagini = new ImageIcon[300];
         for (int i = 0; i <max; i++) {
             MediaLabel.setIcon(immagini[i]);
-            nuoveImmagini[i] = new ImageIcon("./risorse/immagini/iniziogioco/image0" + cont + ".jpg");
+            nuoveImmagini[i] = new ImageIcon("./risorse/immagini/iniziogioco/image0" + contatoreFotogrammi + ".jpg");
             contatoreFotogrammi++;
             try {
                 TimeUnit.MILLISECONDS.sleep(39);
