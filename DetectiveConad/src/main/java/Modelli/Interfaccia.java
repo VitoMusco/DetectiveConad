@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 import Modelli.Eseguibile.GestoreAzioni;
+import java.awt.Color;
 
 public class Interfaccia extends javax.swing.JFrame {
 
@@ -215,12 +216,14 @@ public class Interfaccia extends javax.swing.JFrame {
 
         CasellaTesto.setBackground(new java.awt.Color(0, 0, 0));
         CasellaTesto.setBorder(null);
+        CasellaTesto.setForeground(new java.awt.Color(255, 255, 255));
         CasellaTesto.setAutoscrolls(true);
-        CasellaTesto.setOpaque(false);
 
         ScritturaTesto.setEditable(false);
         ScritturaTesto.setBackground(new java.awt.Color(0, 0, 0));
         ScritturaTesto.setColumns(20);
+        ScritturaTesto.setForeground(new java.awt.Color(255, 255, 255));
+        ScritturaTesto.setLineWrap(true);
         ScritturaTesto.setRows(5);
         ScritturaTesto.setBorder(null);
         ScritturaTesto.setMargin(null);
@@ -239,7 +242,7 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setBorder(null);
         ApriEditor.setBorderPainted(false);
         ApriEditor.setContentAreaFilled(false);
-        ApriEditor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ApriEditor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ApriEditor.setMargin(null);
         jPanel1.add(ApriEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 40, 120, 144));
 
@@ -247,7 +250,7 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriTelefono.setBorder(null);
         ApriTelefono.setBorderPainted(false);
         ApriTelefono.setContentAreaFilled(false);
-        ApriTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ApriTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ApriTelefono.setMargin(null);
         jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 120, 144));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -580,6 +583,14 @@ public class Interfaccia extends javax.swing.JFrame {
         ScriviTesto.setEnabled(true);
         CasellaTesto.setEnabled(true);
         ScritturaTesto.setEnabled(true);
+        
+        CasellaTesto.setOpaque(true);
+        ScritturaTesto.setOpaque(true);
+        CasellaTesto.setBackground(Color.black);
+        ScritturaTesto.setBackground(Color.black);
+        
+        ScritturaTesto.setForeground(Color.white);
+        ScriviTesto.setForeground(Color.white);
         
         ApriEditor.setVisible(false);
         ApriEditor.setEnabled(false);
