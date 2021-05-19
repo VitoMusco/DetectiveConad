@@ -14,7 +14,7 @@ import Modelli.Eseguibile.GestoreAzioni;
 public class Interfaccia extends javax.swing.JFrame {
 
     private final ImageIcon[] caricamento;
-    private final ImageIcon menu,selettorePartita;
+    private final ImageIcon menu,selettorePartita,interfaccia;
     private boolean creazioneNuovaPartita = false;
     Clip audio;
     
@@ -24,6 +24,7 @@ public class Interfaccia extends javax.swing.JFrame {
         caricamento = new ImageIcon[4];
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
+        interfaccia = new ImageIcon("./risorse/immagini/interfaccia/sfondo.png");
         
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
@@ -45,6 +46,13 @@ public class Interfaccia extends javax.swing.JFrame {
         
         NuovaPartita1.addActionListener(g);
         NuovaPartita1.setActionCommand("CREA_PARTITA");
+        
+        ApriEditor.addActionListener(g);
+        ApriEditor.setActionCommand("APRI_EDITOR");
+        
+        ApriTelefono.addActionListener(g);
+        ApriTelefono.setActionCommand("APRI_TELEFONO");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -52,8 +60,6 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        ApriEditor = new javax.swing.JButton();
-        ApriTelefono = new javax.swing.JButton();
         PulsanteEsci = new javax.swing.JButton();
         PulsanteCrediti = new javax.swing.JButton();
         PulsanteIndaga = new javax.swing.JButton();
@@ -62,6 +68,7 @@ public class Interfaccia extends javax.swing.JFrame {
         IniziaPartita = new javax.swing.JButton();
         NomePartita = new javax.swing.JTextField();
         ErroreMaxCaratteri = new javax.swing.JLabel();
+        ErroreNoCaratteri = new javax.swing.JLabel();
         CreaSalvataggioLabel = new javax.swing.JLabel();
         NuovaPartita1 = new javax.swing.JButton();
         NuovaPartita2 = new javax.swing.JButton();
@@ -70,8 +77,10 @@ public class Interfaccia extends javax.swing.JFrame {
         ScriviTesto = new javax.swing.JTextField();
         CasellaTesto = new javax.swing.JScrollPane();
         ScritturaTesto = new javax.swing.JTextArea();
-        GraficaCellulare = new javax.swing.JLabel();
         GraficaEditor = new javax.swing.JLabel();
+        GraficaCellulare = new javax.swing.JLabel();
+        ApriEditor = new javax.swing.JButton();
+        ApriTelefono = new javax.swing.JButton();
         MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,20 +91,6 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ApriEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_testo.png"));
-        ApriEditor.setBorder(null);
-        ApriEditor.setBorderPainted(false);
-        ApriEditor.setContentAreaFilled(false);
-        ApriEditor.setMargin(null);
-        jPanel1.add(ApriEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 144));
-
-        ApriTelefono.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_telefono.png"));
-        ApriTelefono.setBorder(null);
-        ApriTelefono.setBorderPainted(false);
-        ApriTelefono.setContentAreaFilled(false);
-        ApriTelefono.setMargin(null);
-        jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 120, 144));
 
         PulsanteEsci.setIcon(new ImageIcon("./risorse/immagini/menu/esci.png"));
         PulsanteEsci.setBorder(null);
@@ -169,6 +164,10 @@ public class Interfaccia extends javax.swing.JFrame {
         ErroreMaxCaratteri.setEnabled(false);
         jPanel1.add(ErroreMaxCaratteri, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 270, 50));
 
+        ErroreNoCaratteri.setIcon(new ImageIcon("./risorse/immagini/menu/errore_no_caratteri.png"));
+        ErroreNoCaratteri.setEnabled(false);
+        jPanel1.add(ErroreNoCaratteri, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 270, 50));
+
         CreaSalvataggioLabel.setIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio.png"));
         CreaSalvataggioLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
         CreaSalvataggioLabel.setEnabled(false);
@@ -231,11 +230,26 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.add(CasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 920, 540));
 
+        GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo.png"));
+        jPanel1.add(GraficaEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 960, 670));
+
         GraficaCellulare.setIcon(new ImageIcon("./risorse/immagini/interfaccia/telefono.png"));
         jPanel1.add(GraficaCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 270, 670));
 
-        GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo.png"));
-        jPanel1.add(GraficaEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 960, 670));
+        ApriEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_testo.png"));
+        ApriEditor.setBorder(null);
+        ApriEditor.setBorderPainted(false);
+        ApriEditor.setContentAreaFilled(false);
+        ApriEditor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ApriEditor.setMargin(null);
+        jPanel1.add(ApriEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 144));
+
+        ApriTelefono.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_telefono.png"));
+        ApriTelefono.setBorder(null);
+        ApriTelefono.setBorderPainted(false);
+        ApriTelefono.setContentAreaFilled(false);
+        ApriTelefono.setMargin(null);
+        jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 120, 144));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -250,6 +264,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton CreaSalvataggioEsci;
     private javax.swing.JLabel CreaSalvataggioLabel;
     private javax.swing.JLabel ErroreMaxCaratteri;
+    private javax.swing.JLabel ErroreNoCaratteri;
     private javax.swing.JLabel GraficaCellulare;
     private javax.swing.JLabel GraficaEditor;
     private javax.swing.JButton IniziaPartita;
@@ -504,21 +519,13 @@ public class Interfaccia extends javax.swing.JFrame {
     
     //Inizializza l'interfaccia grafica sul quale si gioca
     public void inizializzaInterfacciaUtente(){
-        ScriviTesto.setVisible(true);
-        CasellaTesto.setVisible(true);
-        ScritturaTesto.setVisible(true);
-        GraficaCellulare.setVisible(true);
-        GraficaEditor.setVisible(true);
         ApriEditor.setVisible(true);
         ApriTelefono.setVisible(true);
         
-        ScriviTesto.setEnabled(true);
-        CasellaTesto.setEnabled(true);
-        ScritturaTesto.setEnabled(true);
-        GraficaCellulare.setEnabled(true);
-        GraficaEditor.setEnabled(true);
         ApriEditor.setEnabled(true);
         ApriTelefono.setEnabled(true);
+        
+        MediaLabel.setIcon(interfaccia);
     }
     
     //Disattiva l'interfaccia utente
@@ -540,10 +547,50 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriTelefono.setEnabled(false);
     }
     
+    //Mostra l'interfaccia del cellulare
+    public void mostraCellulare(){
+        GraficaCellulare.setEnabled(true);
+        GraficaCellulare.setVisible(true);
+    }
+    
+    public void disattivaCellulare(){
+        GraficaCellulare.setEnabled(false);
+        GraficaCellulare.setVisible(false);
+    }
+    
+    //Mostra l'interfaccia dell'editor di testo
+    public void mostraEditorTesto(){
+        GraficaEditor.setVisible(true);
+        ScriviTesto.setVisible(true);
+        CasellaTesto.setVisible(true);
+        ScritturaTesto.setVisible(true);
+        
+        GraficaEditor.setEnabled(true);
+        ScriviTesto.setEnabled(true);
+        CasellaTesto.setEnabled(true);
+        ScritturaTesto.setEnabled(true);
+    }
+    
+    public void disattivaEditorTesto(){
+        GraficaEditor.setVisible(false);
+        ScriviTesto.setVisible(false);
+        CasellaTesto.setVisible(false);
+        ScritturaTesto.setVisible(false);
+        
+        GraficaEditor.setEnabled(false);
+        ScriviTesto.setEnabled(false);
+        CasellaTesto.setEnabled(false);
+        ScritturaTesto.setEnabled(false);
+    }
+    
     public boolean controllaNomePartita(){
         if(NomePartita.getText().length() > 16){
             ErroreMaxCaratteri.setEnabled(true);
             ErroreMaxCaratteri.setVisible(true);
+            return false;
+        } else if(NomePartita.getText().length() == 0){
+            ErroreNoCaratteri.setEnabled(true);
+            ErroreNoCaratteri.setVisible(true);
             return false;
         }
         else{

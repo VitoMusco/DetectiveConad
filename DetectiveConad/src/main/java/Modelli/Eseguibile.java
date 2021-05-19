@@ -64,7 +64,12 @@ public class Eseguibile {
                     if(interfaccia.controllaNomePartita() == true){
                         interfaccia.creaNuovaPartita();
                     }
-                    
+                    break;
+                case "APRI_EDITOR":
+                    interfaccia.mostraEditorTesto();
+                    break;
+                case "APRI_TELEFONO":
+                    interfaccia.mostraCellulare();
                     break;
                 default:
                     break;
