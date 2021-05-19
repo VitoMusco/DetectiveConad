@@ -14,7 +14,7 @@ import Modelli.Eseguibile.GestoreAzioni;
 public class Interfaccia extends javax.swing.JFrame {
 
     private final ImageIcon[] caricamento;
-    private final ImageIcon menu,selettorePartita,interfaccia;
+    private final ImageIcon menu,selettorePartita;
     private boolean creazioneNuovaPartita = false;
     Clip audio;
     
@@ -24,7 +24,6 @@ public class Interfaccia extends javax.swing.JFrame {
         caricamento = new ImageIcon[4];
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
-        interfaccia = new ImageIcon("./risorse/immagini/interfaccia/sfondo.png");
         
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
@@ -530,7 +529,7 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setEnabled(true);
         ApriTelefono.setEnabled(true);
         
-        MediaLabel.setIcon(interfaccia);
+        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/interfaccia/sfondo.png"));
     }
     
     //Disattiva l'interfaccia utente
