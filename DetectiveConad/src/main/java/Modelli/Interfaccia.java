@@ -479,12 +479,14 @@ public class Interfaccia extends javax.swing.JFrame {
         IniziaPartita.setEnabled(false);
         NomePartita.setEnabled(false);
         ErroreMaxCaratteri.setEnabled(false);
+        ErroreNoCaratteri.setEnabled(false);
         CreaSalvataggioLabel.setVisible(false);
         CreaSalvataggioEsci.setVisible(false);
         IniziaPartita.setVisible(false);
         NomePartita.setVisible(false);
         NomePartita.setText(null);
         ErroreMaxCaratteri.setVisible(false);
+        ErroreNoCaratteri.setVisible(false);
     }
     
     //disattiva l'interfaccia del menu
@@ -497,6 +499,8 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita2.setEnabled(false);
         NuovaPartita3.setEnabled(false);
         NuovaPartita4.setEnabled(false);
+        ErroreMaxCaratteri.setEnabled(false);
+        ErroreNoCaratteri.setEnabled(false);
         SalvataggiEsci.setVisible(false);
         NuovaPartita1.setVisible(false);
         NuovaPartita2.setVisible(false);
@@ -513,8 +517,8 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioEsci.setVisible(false);
         IniziaPartita.setVisible(false);
         NomePartita.setVisible(false);
-        ErroreMaxCaratteri.setEnabled(false);
         ErroreMaxCaratteri.setVisible(false);
+        ErroreNoCaratteri.setVisible(false);
     }
     
     //Inizializza l'interfaccia grafica sul quale si gioca
