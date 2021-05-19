@@ -26,6 +26,7 @@ public class Eseguibile {
     public void controllaStato(){
         if(interfaccia.controllaStato()==true){
             interfaccia.riproduciIntroduzione();
+            interfaccia.inizializzaInterfacciaUtente();
         }
     }
     

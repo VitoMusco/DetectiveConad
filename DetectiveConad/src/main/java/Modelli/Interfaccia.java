@@ -13,8 +13,8 @@ import Modelli.Eseguibile.GestoreAzioni;
 
 public class Interfaccia extends javax.swing.JFrame {
 
-    private ImageIcon[] caricamento;
-    private ImageIcon menu,selettorePartita;
+    private final ImageIcon[] caricamento;
+    private final ImageIcon menu,selettorePartita;
     private boolean creazioneNuovaPartita = false;
     Clip audio;
     
@@ -25,7 +25,8 @@ public class Interfaccia extends javax.swing.JFrame {
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
         
-        inizializzaInterfaccia();
+        disattivaInterfacciaMenu();
+        disattivaInterfacciaUtente();
         
         PulsanteEsci.addActionListener(g);
         PulsanteEsci.setActionCommand("ESCI");
@@ -51,6 +52,8 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        ApriEditor = new javax.swing.JButton();
+        ApriTelefono = new javax.swing.JButton();
         PulsanteEsci = new javax.swing.JButton();
         PulsanteCrediti = new javax.swing.JButton();
         PulsanteIndaga = new javax.swing.JButton();
@@ -64,13 +67,12 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita2 = new javax.swing.JButton();
         NuovaPartita3 = new javax.swing.JButton();
         NuovaPartita4 = new javax.swing.JButton();
-        MediaLabel = new javax.swing.JLabel();
-        ApriCasellaTesto = new javax.swing.JButton();
-        ApriCellulare = new javax.swing.JButton();
+        ScriviTesto = new javax.swing.JTextField();
         CasellaTesto = new javax.swing.JScrollPane();
         ScritturaTesto = new javax.swing.JTextArea();
-        ScriviTesto = new javax.swing.JTextField();
-        Cellulare = new java.awt.Label();
+        GraficaCellulare = new javax.swing.JLabel();
+        GraficaEditor = new javax.swing.JLabel();
+        MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage((new ImageIcon("./risorse/immagini/icona/icona.png")).getImage());
@@ -80,6 +82,20 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ApriEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_testo.png"));
+        ApriEditor.setBorder(null);
+        ApriEditor.setBorderPainted(false);
+        ApriEditor.setContentAreaFilled(false);
+        ApriEditor.setMargin(null);
+        jPanel1.add(ApriEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 144));
+
+        ApriTelefono.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_telefono.png"));
+        ApriTelefono.setBorder(null);
+        ApriTelefono.setBorderPainted(false);
+        ApriTelefono.setContentAreaFilled(false);
+        ApriTelefono.setMargin(null);
+        jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 120, 144));
 
         PulsanteEsci.setIcon(new ImageIcon("./risorse/immagini/menu/esci.png"));
         PulsanteEsci.setBorder(null);
@@ -193,32 +209,34 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita4.setMargin(null);
         NuovaPartita4.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita_highlighted.png"));
         jPanel1.add(NuovaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 367, 81));
-        jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
-        ApriCasellaTesto.setText("Testo");
-        ApriCasellaTesto.setBorder(null);
-        ApriCasellaTesto.setContentAreaFilled(false);
-        jPanel1.add(ApriCasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 90, 90));
+        ScriviTesto.setBackground(new java.awt.Color(0, 0, 0));
+        ScriviTesto.setBorder(null);
+        ScriviTesto.setMargin(null);
+        jPanel1.add(ScriviTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 650, 820, 30));
 
-        ApriCellulare.setText("Cellulare");
-        ApriCellulare.setBorder(null);
-        ApriCellulare.setContentAreaFilled(false);
-        jPanel1.add(ApriCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 90, 90));
-
+        CasellaTesto.setBackground(new java.awt.Color(0, 0, 0));
+        CasellaTesto.setBorder(null);
         CasellaTesto.setAutoscrolls(true);
+        CasellaTesto.setOpaque(false);
 
         ScritturaTesto.setEditable(false);
+        ScritturaTesto.setBackground(new java.awt.Color(0, 0, 0));
         ScritturaTesto.setColumns(20);
         ScritturaTesto.setRows(5);
+        ScritturaTesto.setBorder(null);
+        ScritturaTesto.setMargin(null);
+        ScritturaTesto.setOpaque(false);
         CasellaTesto.setViewportView(ScritturaTesto);
 
-        jPanel1.add(CasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 790, 540));
+        jPanel1.add(CasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 920, 540));
 
-        ScriviTesto.setText("Scrivi Testo");
-        jPanel1.add(ScriviTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 790, 30));
+        GraficaCellulare.setIcon(new ImageIcon("./risorse/immagini/interfaccia/telefono.png"));
+        jPanel1.add(GraficaCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 270, 670));
 
-        Cellulare.setText("label1");
-        jPanel1.add(Cellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 340, 590));
+        GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo.png"));
+        jPanel1.add(GraficaEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 960, 670));
+        jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -226,13 +244,14 @@ public class Interfaccia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ApriCasellaTesto;
-    private javax.swing.JButton ApriCellulare;
+    private javax.swing.JButton ApriEditor;
+    private javax.swing.JButton ApriTelefono;
     private javax.swing.JScrollPane CasellaTesto;
-    private java.awt.Label Cellulare;
     private javax.swing.JButton CreaSalvataggioEsci;
     private javax.swing.JLabel CreaSalvataggioLabel;
     private javax.swing.JLabel ErroreMaxCaratteri;
+    private javax.swing.JLabel GraficaCellulare;
+    private javax.swing.JLabel GraficaEditor;
     private javax.swing.JButton IniziaPartita;
     private javax.swing.JLabel MediaLabel;
     private javax.swing.JTextField NomePartita;
@@ -453,7 +472,8 @@ public class Interfaccia extends javax.swing.JFrame {
         ErroreMaxCaratteri.setVisible(false);
     }
     
-    public void inizializzaInterfaccia(){
+    //disattiva l'interfaccia del menu
+    public void disattivaInterfacciaMenu(){
         PulsanteIndaga.setEnabled(false);
         PulsanteCrediti.setEnabled(false);
         PulsanteEsci.setEnabled(false);
@@ -480,6 +500,44 @@ public class Interfaccia extends javax.swing.JFrame {
         NomePartita.setVisible(false);
         ErroreMaxCaratteri.setEnabled(false);
         ErroreMaxCaratteri.setVisible(false);
+    }
+    
+    //Inizializza l'interfaccia grafica sul quale si gioca
+    public void inizializzaInterfacciaUtente(){
+        ScriviTesto.setVisible(true);
+        CasellaTesto.setVisible(true);
+        ScritturaTesto.setVisible(true);
+        GraficaCellulare.setVisible(true);
+        GraficaEditor.setVisible(true);
+        ApriEditor.setVisible(true);
+        ApriTelefono.setVisible(true);
+        
+        ScriviTesto.setEnabled(true);
+        CasellaTesto.setEnabled(true);
+        ScritturaTesto.setEnabled(true);
+        GraficaCellulare.setEnabled(true);
+        GraficaEditor.setEnabled(true);
+        ApriEditor.setEnabled(true);
+        ApriTelefono.setEnabled(true);
+    }
+    
+    //Disattiva l'interfaccia utente
+    public void disattivaInterfacciaUtente(){
+        ScriviTesto.setVisible(false);
+        CasellaTesto.setVisible(false);
+        ScritturaTesto.setVisible(false);
+        GraficaCellulare.setVisible(false);
+        GraficaEditor.setVisible(false);
+        ApriEditor.setVisible(false);
+        ApriTelefono.setVisible(false);
+        
+        ScriviTesto.setEnabled(false);
+        CasellaTesto.setEnabled(false);
+        ScritturaTesto.setEnabled(false);
+        GraficaCellulare.setEnabled(false);
+        GraficaEditor.setEnabled(false);
+        ApriEditor.setEnabled(false);
+        ApriTelefono.setEnabled(false);
     }
     
     public boolean controllaNomePartita(){
