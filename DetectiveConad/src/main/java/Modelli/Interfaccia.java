@@ -589,10 +589,14 @@ public class Interfaccia extends javax.swing.JFrame {
     
     public boolean controllaNomePartita(){
         if(NomePartita.getText().length() > 16){
+            ErroreNoCaratteri.setEnabled(false);
+            ErroreNoCaratteri.setVisible(false);
             ErroreMaxCaratteri.setEnabled(true);
             ErroreMaxCaratteri.setVisible(true);
             return false;
         } else if(NomePartita.getText().length() == 0){
+            ErroreMaxCaratteri.setEnabled(false);
+            ErroreMaxCaratteri.setVisible(false);
             ErroreNoCaratteri.setEnabled(true);
             ErroreNoCaratteri.setVisible(true);
             return false;
