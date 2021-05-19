@@ -313,6 +313,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public void stoppaAudio(){
+        audio.close();
         audio.stop();
     }
     
