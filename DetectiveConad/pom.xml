@@ -22,4 +22,5 @@
       <version>RELEASE123</version>
     </dependency>
   </dependencies>
+    <description>-Xms256m -Xmx512m</description>
 </project>
