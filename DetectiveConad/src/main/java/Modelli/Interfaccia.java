@@ -338,7 +338,7 @@ public class Interfaccia extends javax.swing.JFrame {
         riproduciAudio("intro");
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/intro.gif"));
         try {
-            TimeUnit.SECONDS.sleep(4);
+            TimeUnit.MILLISECONDS.sleep(4300);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
