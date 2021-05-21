@@ -12,7 +12,6 @@ public class Eseguibile {
     Dialoghi dialoghi = new Dialoghi();
     
     public Eseguibile(){
-        interfaccia.caricaImmaginiCaricamento();
         interfaccia.riproduciIntro();
         interfaccia.riproduciAudio("menu");
         interfaccia.inizializzaMenu();

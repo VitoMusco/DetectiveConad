@@ -14,45 +14,45 @@ import java.awt.Color;
 
 public class Interfaccia extends javax.swing.JFrame {
 
-    private final ImageIcon[] caricamento;
-    private final ImageIcon menu,selettorePartita;
+    private final ImageIcon menu, selettorePartita, intro, videoIntroduzione;
     private boolean creazioneNuovaPartita = false;
     Clip audio;
-    
+
     public Interfaccia(GestoreAzioni g) {
         initComponents();
         inizializzaFinestra();
-        caricamento = new ImageIcon[4];
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
-        
+        intro = new ImageIcon("./risorse/gif/intro.gif");
+        videoIntroduzione = new ImageIcon("./risorse/gif/videointroduzione.gif");
+
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
-        
+
         PulsanteEsci.addActionListener(g);
         PulsanteEsci.setActionCommand("ESCI");
-        
+
         PulsanteIndaga.addActionListener(g);
         PulsanteIndaga.setActionCommand("NUOVA_PARTITA");
-        
+
         IniziaPartita.addActionListener(g);
         IniziaPartita.setActionCommand("INIZIA_PARTITA");
-        
+
         SalvataggiEsci.addActionListener(g);
         SalvataggiEsci.setActionCommand("MENU_INIZIALE");
-        
+
         CreaSalvataggioEsci.addActionListener(g);
         CreaSalvataggioEsci.setActionCommand("CREA_SALVATAGGIO_ESCI");
-        
+
         NuovaPartita1.addActionListener(g);
         NuovaPartita1.setActionCommand("CREA_PARTITA");
-        
+
         ApriEditor.addActionListener(g);
         ApriEditor.setActionCommand("APRI_EDITOR");
-        
+
         ApriTelefono.addActionListener(g);
         ApriTelefono.setActionCommand("APRI_TELEFONO");
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -286,16 +286,9 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    
     public void inizializzaFinestra() {
         setLocationRelativeTo(null);
         setVisible(true);
-    }
-    
-    public void caricaImmaginiCaricamento() {
-        for (int i = 0; i <= 3; i++) {
-            caricamento[i] = new ImageIcon("./risorse/immagini/caricamento/caricamento" + i + ".png");
-        }
     }
 
     public void riproduciAudio(String nome) {
@@ -314,103 +307,58 @@ public class Interfaccia extends javax.swing.JFrame {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void stoppaAudio(){
+
+    public void stoppaAudio() {
         audio.close();
         audio.stop();
     }
-    
-    public void creaNuovaPartita(){
+
+    public void creaNuovaPartita() {
         chiudiSelettorePartita();
         creazioneNuovaPartita = true;
     }
-    
-    public boolean controllaStato(){
-        do{
-            if(creazioneNuovaPartita == false){
+
+    public boolean controllaStato() {
+        do {
+            if (creazioneNuovaPartita == false) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if(creazioneNuovaPartita == true){
+            if (creazioneNuovaPartita == true) {
                 creazioneNuovaPartita = false;
                 return true;
             }
-        }while(creazioneNuovaPartita == false);
+        } while (creazioneNuovaPartita == false);
         return true;
     }
-    
+
     public void riproduciIntro() {
         disattivaPulsantiMenu();
-        ImageIcon[] intro = new ImageIcon[100];
-        this.MediaLabel.setIcon(caricamento[0]);
-        String prefisso = "";
-        for (int i = 0; i <= 99; i++) {
-            if (i == 30) {
-                MediaLabel.setIcon(caricamento[1]);
-            }
-            if (i == 60) {
-                MediaLabel.setIcon(caricamento[2]);
-            }
-            if (i == 90) {
-                MediaLabel.setIcon(caricamento[3]);
-            }
-            if (i < 10) {
-                prefisso = "000";
-            }
-            if (i < 100) {
-                prefisso = "00";
-            }
-            intro[i] = new ImageIcon("./risorse/immagini/intro/image" + prefisso + i + ".jpg");
-        }
         riproduciAudio("intro");
-        for (int i = 0; i <= 99; i++) {
-            MediaLabel.setIcon(intro[i]);
-            try {
-                TimeUnit.MILLISECONDS.sleep(39);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        MediaLabel.setIcon(intro);
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void riproduciIntroduzione() {
-        disattivaPulsantiMenu();
-        ImageIcon[] introduzione = new ImageIcon[925];
-        MediaLabel.setIcon(caricamento[0]);
-        String prefisso = "";
-        for (int i = 0; i <= 924; i++) {
-            if (i == 300) {
-                MediaLabel.setIcon(caricamento[1]);
-            } else if (i == 600) {
-                MediaLabel.setIcon(caricamento[2]);
-            } else if (i == 900) {
-                MediaLabel.setIcon(caricamento[3]);
-            }
-            if (i < 10) {
-                prefisso = "000";
-            } else if (i < 100) {
-                prefisso = "00";
-            } else if (i < 1000) {
-                prefisso = "0";
-            }
-            introduzione[i] = new ImageIcon("./risorse/immagini/iniziogioco/image" + prefisso + i + ".jpg");
-        }
         stoppaAudio();
+        disattivaPulsantiMenu();
         riproduciAudio("introduzione");
-        for (int i = 0; i <= 924; i++) {
-            MediaLabel.setIcon(introduzione[i]);
-            try {
-                TimeUnit.MILLISECONDS.sleep(39);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        MediaLabel.setIcon(videoIntroduzione);
+        try {
+            TimeUnit.SECONDS.sleep(36);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void attivaPulsantiMenu(){
+    public void attivaPulsantiMenu() {
         PulsanteIndaga.setEnabled(true);
         PulsanteCrediti.setEnabled(true);
         PulsanteEsci.setEnabled(true);
@@ -418,7 +366,8 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteCrediti.setVisible(true);
         PulsanteEsci.setVisible(true);
     }
-    public void disattivaPulsantiMenu(){
+
+    public void disattivaPulsantiMenu() {
         PulsanteIndaga.setEnabled(false);
         PulsanteCrediti.setEnabled(false);
         PulsanteEsci.setEnabled(false);
@@ -426,13 +375,13 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteCrediti.setVisible(false);
         PulsanteEsci.setVisible(false);
     }
-    
+
     public void inizializzaMenu() {
         attivaPulsantiMenu();
         MediaLabel.setIcon(menu);
     }
 
-    public void inizializzaSelettorePartita(){
+    public void inizializzaSelettorePartita() {
         disattivaPulsantiMenu();
         SalvataggiEsci.setEnabled(true);
         NuovaPartita1.setEnabled(true);
@@ -446,13 +395,13 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita4.setVisible(true);
         MediaLabel.setIcon(selettorePartita);
     }
-    
-    public void esciDaSelettorePartita(){
+
+    public void esciDaSelettorePartita() {
         chiudiSelettorePartita();
         inizializzaMenu();
     }
-    
-    public void chiudiSelettorePartita(){
+
+    public void chiudiSelettorePartita() {
         SalvataggiEsci.setEnabled(false);
         NuovaPartita1.setEnabled(false);
         NuovaPartita2.setEnabled(false);
@@ -465,8 +414,8 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita4.setVisible(false);
         esciDaCreatorePartita();
     }
-    
-    public void inizializzaCreatorePartita(){
+
+    public void inizializzaCreatorePartita() {
         CreaSalvataggioLabel.setEnabled(true);
         CreaSalvataggioEsci.setEnabled(true);
         IniziaPartita.setEnabled(true);
@@ -476,8 +425,8 @@ public class Interfaccia extends javax.swing.JFrame {
         IniziaPartita.setVisible(true);
         NomePartita.setVisible(true);
     }
-    
-    public void esciDaCreatorePartita(){
+
+    public void esciDaCreatorePartita() {
         CreaSalvataggioLabel.setEnabled(false);
         CreaSalvataggioEsci.setEnabled(false);
         IniziaPartita.setEnabled(false);
@@ -492,9 +441,9 @@ public class Interfaccia extends javax.swing.JFrame {
         ErroreMaxCaratteri.setVisible(false);
         ErroreNoCaratteri.setVisible(false);
     }
-    
+
     //disattiva l'interfaccia del menu
-    public void disattivaInterfacciaMenu(){
+    public void disattivaInterfacciaMenu() {
         PulsanteIndaga.setEnabled(false);
         PulsanteCrediti.setEnabled(false);
         PulsanteEsci.setEnabled(false);
@@ -524,20 +473,20 @@ public class Interfaccia extends javax.swing.JFrame {
         ErroreMaxCaratteri.setVisible(false);
         ErroreNoCaratteri.setVisible(false);
     }
-    
+
     //Inizializza l'interfaccia grafica sul quale si gioca
-    public void inizializzaInterfacciaUtente(){
+    public void inizializzaInterfacciaUtente() {
         ApriEditor.setVisible(true);
         ApriTelefono.setVisible(true);
-        
+
         ApriEditor.setEnabled(true);
         ApriTelefono.setEnabled(true);
-        
+
         MediaLabel.setIcon(new ImageIcon("./risorse/immagini/interfaccia/sfondo.png"));
     }
-    
+
     //Disattiva l'interfaccia utente
-    public void disattivaInterfacciaUtente(){
+    public void disattivaInterfacciaUtente() {
         ScriviTesto.setVisible(false);
         CasellaTesto.setVisible(false);
         ScritturaTesto.setVisible(false);
@@ -545,7 +494,7 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaEditor.setVisible(false);
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
-        
+
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
@@ -554,78 +503,77 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
     }
-    
+
     //Mostra l'interfaccia del cellulare
-    public void mostraCellulare(){
+    public void mostraCellulare() {
         GraficaCellulare.setEnabled(true);
         GraficaCellulare.setVisible(true);
-        
+
         ApriTelefono.setEnabled(false);
         ApriTelefono.setVisible(false);
     }
-    
-    public void disattivaCellulare(){
+
+    public void disattivaCellulare() {
         GraficaCellulare.setEnabled(false);
         GraficaCellulare.setVisible(false);
-        
+
         ApriTelefono.setEnabled(true);
         ApriTelefono.setVisible(true);
     }
-    
+
     //Mostra l'interfaccia dell'editor di testo
-    public void mostraEditorTesto(){
+    public void mostraEditorTesto() {
         GraficaEditor.setVisible(true);
         ScriviTesto.setVisible(true);
         CasellaTesto.setVisible(true);
         ScritturaTesto.setVisible(true);
-        
+
         GraficaEditor.setEnabled(true);
         ScriviTesto.setEnabled(true);
         CasellaTesto.setEnabled(true);
         ScritturaTesto.setEnabled(true);
-        
+
         CasellaTesto.setOpaque(true);
         ScritturaTesto.setOpaque(true);
         CasellaTesto.setBackground(Color.black);
         ScritturaTesto.setBackground(Color.black);
-        
+
         ScritturaTesto.setForeground(Color.white);
         ScriviTesto.setForeground(Color.white);
-        
+
         ApriEditor.setVisible(false);
         ApriEditor.setEnabled(false);
     }
-    
-    public void disattivaEditorTesto(){
+
+    public void disattivaEditorTesto() {
         GraficaEditor.setVisible(false);
         ScriviTesto.setVisible(false);
         CasellaTesto.setVisible(false);
         ScritturaTesto.setVisible(false);
-        
+
         GraficaEditor.setEnabled(false);
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
-        
+
         ApriEditor.setVisible(true);
         ApriEditor.setEnabled(true);
     }
-    
-    public boolean controllaNomePartita(){
-        if(NomePartita.getText().length() > 16){
+
+    public boolean controllaNomePartita() {
+        if (NomePartita.getText().length() > 16) {
             ErroreNoCaratteri.setEnabled(false);
             ErroreNoCaratteri.setVisible(false);
             ErroreMaxCaratteri.setEnabled(true);
             ErroreMaxCaratteri.setVisible(true);
             return false;
-        } else if(NomePartita.getText().length() == 0){
+        } else if (NomePartita.getText().length() == 0) {
             ErroreMaxCaratteri.setEnabled(false);
             ErroreMaxCaratteri.setVisible(false);
             ErroreNoCaratteri.setEnabled(true);
             ErroreNoCaratteri.setVisible(true);
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
