@@ -79,6 +79,7 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaCellulare = new javax.swing.JLabel();
         ApriEditor = new javax.swing.JButton();
         ApriTelefono = new javax.swing.JButton();
+        PulsanteSalta = new javax.swing.JButton();
         MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -251,6 +252,15 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ApriTelefono.setMargin(null);
         jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 120, 144));
+
+        PulsanteSalta.setIcon(new ImageIcon("./risorse/immagini/menu/salta_filmato.png"));
+        PulsanteSalta.setBorder(null);
+        PulsanteSalta.setBorderPainted(false);
+        PulsanteSalta.setContentAreaFilled(false);
+        PulsanteSalta.setEnabled(false);
+        PulsanteSalta.setMargin(null);
+        PulsanteSalta.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/salta_filmato_highlighted.png"));
+        jPanel1.add(PulsanteSalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 190, 90));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -278,6 +288,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
+    private javax.swing.JButton PulsanteSalta;
     private javax.swing.JButton SalvataggiEsci;
     private javax.swing.JTextArea ScritturaTesto;
     private javax.swing.JTextField ScriviTesto;
@@ -347,6 +358,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public void riproduciIntroduzione() {
         stoppaAudio();
         disattivaPulsantiMenu();
+        mostraPulsanteSalta();
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/videointroduzione.gif"));
         riproduciAudio("videointroduzione");
         try {
@@ -354,6 +366,7 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+        disattivaPulsanteSalta();
     }
 
     public void attivaPulsantiMenu() {
@@ -452,6 +465,7 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita4.setEnabled(false);
         ErroreMaxCaratteri.setEnabled(false);
         ErroreNoCaratteri.setEnabled(false);
+        PulsanteSalta.setEnabled(false);
         SalvataggiEsci.setVisible(false);
         NuovaPartita1.setVisible(false);
         NuovaPartita2.setVisible(false);
@@ -470,6 +484,7 @@ public class Interfaccia extends javax.swing.JFrame {
         NomePartita.setVisible(false);
         ErroreMaxCaratteri.setVisible(false);
         ErroreNoCaratteri.setVisible(false);
+        PulsanteSalta.setVisible(false);
     }
 
     //Inizializza l'interfaccia grafica sul quale si gioca
@@ -492,7 +507,7 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaEditor.setVisible(false);
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
-
+    
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
@@ -558,6 +573,16 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setEnabled(true);
     }
 
+    public void disattivaPulsanteSalta(){
+        PulsanteSalta.setEnabled(false);
+        PulsanteSalta.setVisible(false);
+    }
+    
+    public void mostraPulsanteSalta(){
+        PulsanteSalta.setEnabled(true);
+        PulsanteSalta.setVisible(true);
+    }
+    
     public boolean controllaNomePartita() {
         if (NomePartita.getText().length() > 16) {
             ErroreNoCaratteri.setEnabled(false);
