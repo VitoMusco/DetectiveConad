@@ -575,4 +575,12 @@ public class Interfaccia extends javax.swing.JFrame {
             return true;
         }
     }
+    
+    public String getNomePartita(){
+        return NomePartita.getText();
+    }
+    
+    public void mostraTesto(String messaggio){
+        ScritturaTesto.setText(messaggio);
+    }
 }

@@ -1,30 +1,30 @@
-Introduzione #Bari, Venerdì 13 Dicembre 2024 Ore 08:00 Sembrava una classica mattinata di Dicembre, in TV c’è Michael Bublé, fuori c’è la pioggia e io mi accingevo a preparare la mia cioccolata calda rigenerante…la solita merda insomma…quando all’improvviso mi squilla il cellulare. Era la signora Rossi, moglie del titolare di una delle più grandi catene di supermercati a Bari. Era preoccupata perché suo marito non era tornato a casa la sera precedente, e l’ultimo luogo in cui è stato visto è proprio il suo supermercato a Bari. Ci l’ava fa sta vit, mi sono vestito immediatamente e mi sono recato al supermercato. Una volta sul posto, parcheggiato il camioncino, ho iniziato le indagini.
-Strada #Brrr skrrt skrrt ( versi dei monaci trappisti ) , che freddo che fa , e sta anche piovendo. Sarà meglio sbrigarsi, altrimenti morirò…di freddo.
-StradaOss #Alle mie spalle c’è il mio camioncino, mi sarò ricordato di portare la mia attrezzatura stavolta? Di fronte a me invece c’è l’ingresso per il supermercato(che detto tra noi è un po’ na merda).
-StradaEO #Tutti i negozi sono ancora chiusi , non c’è nessuno in giro, sarà meglio che mi dia da fare.
-StradaS #Sono all’interno del camioncino.
-StradaN #Sono all’ingresso del supermercato.
-IngressoOss #Sono all’ingresso, c’è un quadro e ci sono i dipendenti.
-OsservaQ #Sembra la piantina del supermercato, potrebbe tornarmi utile , ma non posso prenderla. Chissà se avrò spazio nella memoria del mio telefono.
-UsaT #'CLIC' Perfetto, spero non mi riempia la memoria.
-OsservaD #Sembrano tre nerd,  avranno di sicuro fatto informatica.
-ParlaD #Il primo si chiama Vito, è il cassiere, e chiude ogni sera le porte del supermercato. Il secondo si chiama Michele, ed è il salumiere. La sera pulisce i coltelli e i macchinari da lavoro. Il terzo infine è Vincenzo, un semplice dipendente, smista la merce sugli scaffali. Tutti e tre riferiscono di non avere contatti col direttore da ieri sera. Continuo le indagini.
-SalumeriaOss #Vedo il bancone , i salumi, i coltelli , i macchinari e una strana porta.
-SalumeriaOP #Guardando la piantina qui dovrebbe esserci la cella frigorifera.
-SalumeriaAP #La porta è chiusa, non posso entrarci, almeno da qui. Chissà se il salumiere saprà dirmi qualcosa.
-SalumeriaPS #La cella frigorifera sembra essere inutilizzata da tanto tempo. Solo il direttore possiede la chiave per aprirla.
-StudioO #Vedo una scrivania con un computer, uno scaffale e una grata, sembra essere un condotto di ventilazione.
-OsservaG #Strano manca una vite, e i condotti di ventilazione dovrebbero essere posti in alto, e tra l’altro sento un cattivo odore. Chissà dove porta questo condotto.
-ApriG #Se solo avessi un cacciavite, dovrò controllare tra la mia attrezzatura.
-EntraC #E’ tutto così buio, un po’ di luce farebbe comodo, speriamo che la batteria del mio cellulare sia abbastanza carica.
-Flash #E luce fu!(Let there be light) Vediamo dove mi porta…
-Cellafrigo #Brrr skrrt skrrt che freddo, questa deve essere la cella frigorifera.
-CellafrigoO #C’è della carne appesa.
-CellafrigoOC #Sembra fresca, allora perché il salumiere mi ha detto che era inutilizzata? Inoltre intravedo un telo sul pavimento. Che senso ha coprire la carne qui?
-CellafrigoOT #PORCA VACCA!! Ma quella è una scarpa, non mi dire che…
-CellafrigoRT #Come sospettavo! E’ anche più grosso di quanto immaginassi: questo è il cadavere del direttore! Non capisco però, non vedo sangue qui, eppure sembra troppo grosso per essere trasportato da una sola persona. A meno che non sia stato pulito, il direttore non è stato ucciso qui…La mia torcia UV mi permetterà di trovare le tracce.
-TestoIT #Devo confrontare necessariamente queste impronte con quelle dei dipendenti, sarà meglio che mi sbrighi.
-ParlaDI #Ho preso le impronte digitali dei dipendenti, ora basterà semplicemente confrontarle con quelle trovate prima.
-AnalizzaI #Sul coltello ci sono le impronte di Michele, ma perché ci sono anche quelle di Vincenzo? Le impronte sul telo sono quelle di Michele. Sulla tastiera ci sono le impronte di Vito.
-FinaleG #Ora tutto è più chiaro. Il caso è chiuso, posso finalmente tornare a casa a vedere il mio cartone preferito.
-FinaleA #Ora tutto è più chiaro. Il caso è chiuso, posso finalmente tornare a casa a vedere il mio cartone preferito. 3 HOURS LATER… NOTIZIARIO: Il detective Conad è stato trovato morto nel proprio appartamento. Di recente aveva “risolto” un caso in un supermercato. Siamo sicuri che abbia trovato davvero tutti i colpevoli?
+Introduzione#Bari, Venerdi' 13 Dicembre 2024 Ore 08:00 Sembrava una classica mattinata di Dicembre, in TV c'e' Michael Buble', fuori c'e' la pioggia e io mi accingevo a preparare la mia cioccolata calda rigenerante... la solita merda insomma... quando all'improvviso mi squilla il cellulare. Era la signora Rossi, moglie del titolare di una delle piu' grandi catene di supermercati a Bari. Era preoccupata perche' suo marito non era tornato a casa la sera precedente, e l'ultimo luogo in cui e' stato visto e' proprio il suo supermercato a Bari. Ci l'ava fa sta vit, mi sono vestito immediatamente e mi sono recato al supermercato. Una volta sul posto, parcheggiato il camioncino, ho iniziato le indagini.
+Strada#Brrr skrrt skrrt ( versi dei monaci trappisti ) , che freddo che fa , e sta anche piovendo. Sara' meglio sbrigarsi, altrimenti moriro'...di freddo.
+StradaOss#Alle mie spalle c'e' il mio camioncino, mi saro' ricordato di portare la mia attrezzatura stavolta? Di fronte a me invece c'e' l'ingresso per il supermercato(che detto tra noi e' un po' na merda).
+StradaEO#Tutti i negozi sono ancora chiusi , non c'e' nessuno in giro, sara' meglio che mi dia da fare.
+StradaS#Sono all'interno del camioncino.
+StradaN#Sono all'ingresso del supermercato.
+IngressoOss#Sono all'ingresso, c'e' un quadro e ci sono i dipendenti.
+OsservaQ#Sembra la piantina del supermercato, potrebbe tornarmi utile , ma non posso prenderla. Chissa' se avro' spazio nella memoria del mio telefono.
+UsaT#'CLIC' Perfetto, spero non mi riempia la memoria.
+OsservaD#Sembrano tre nerd,  avranno di sicuro fatto informatica.
+ParlaD#Il primo si chiama Vito, e' il cassiere, e chiude ogni sera le porte del supermercato. Il secondo si chiama Michele, ed e' il salumiere. La sera pulisce i coltelli e i macchinari da lavoro. Il terzo infine e' Vincenzo, un semplice dipendente, smista la merce sugli scaffali. Tutti e tre riferiscono di non avere contatti col direttore da ieri sera. Continuo le indagini.
+SalumeriaOss#Vedo il bancone , i salumi, i coltelli , i macchinari e una strana porta.
+SalumeriaOP#Guardando la piantina qui dovrebbe esserci la cella frigorifera.
+SalumeriaAP#La porta e' chiusa, non posso entrarci, almeno da qui. Chissa' se il salumiere sapra' dirmi qualcosa.
+SalumeriaPS#La cella frigorifera sembra essere inutilizzata da tanto tempo. Solo il direttore possiede la chiave per aprirla.
+StudioO#Vedo una scrivania con un computer, uno scaffale e una grata, sembra essere un condotto di ventilazione.
+OsservaG#Strano manca una vite, e i condotti di ventilazione dovrebbero essere posti in alto, e tra l'altro sento un cattivo odore. Chissa' dove porta questo condotto.
+ApriG#Se solo avessi un cacciavite, dovro' controllare tra la mia attrezzatura.
+EntraC#E' tutto cosi' buio, un po' di luce farebbe comodo, speriamo che la batteria del mio cellulare sia abbastanza carica.
+Flash#E luce fu!(Let there be light) Vediamo dove mi porta...
+Cellafrigo#Brrr skrrt skrrt che freddo, questa deve essere la cella frigorifera.
+CellafrigoO#C'e' della carne appesa.
+CellafrigoOC#Sembra fresca, allora perché il salumiere mi ha detto che era inutilizzata? Inoltre intravedo un telo sul pavimento. Che senso ha coprire la carne qui?
+CellafrigoOT#PORCA VACCA!! Ma quella e' una scarpa, non mi dire che...
+CellafrigoRT#Come sospettavo! E' anche piu' grosso di quanto immaginassi: questo e' il cadavere del direttore! Non capisco pero', non vedo sangue qui, eppure sembra troppo grosso per essere trasportato da una sola persona. A meno che non sia stato pulito, il direttore non e' stato ucciso qui... La mia torcia UV mi permettera' di trovare le tracce.
+TestoIT#Devo confrontare necessariamente queste impronte con quelle dei dipendenti, sara' meglio che mi sbrighi.
+ParlaDI#Ho preso le impronte digitali dei dipendenti, ora bastera' semplicemente confrontarle con quelle trovate prima.
+AnalizzaI#Sul coltello ci sono le impronte di Michele, ma perché ci sono anche quelle di Vincenzo? Le impronte sul telo sono quelle di Michele. Sulla tastiera ci sono le impronte di Vito.
+FinaleG#Ora tutto e' piu' chiaro. Il caso e' chiuso, posso finalmente tornare a casa a vedere il mio cartone preferito.
+FinaleA#Ora tutto e' piu' chiaro. Il caso e' chiuso, posso finalmente tornare a casa a vedere il mio cartone preferito. 3 HOURS LATER... NOTIZIARIO: Il detective Conad e' stato trovato morto nel proprio appartamento. Di recente aveva “risolto” un caso in un supermercato. Siamo sicuri che abbia trovato davvero tutti i colpevoli?

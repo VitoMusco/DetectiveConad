@@ -2,49 +2,54 @@ package Modelli;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 public class Eseguibile {
+
     Mappa mappa = new Mappa();
     Stanza stanzaCorrente;
     GestoreAzioni g = new GestoreAzioni();
     Interfaccia interfaccia = new Interfaccia(g);
     Database db = new Database();
     Dialoghi dialoghi = new Dialoghi();
-    
-    public Eseguibile(){
+
+    public Eseguibile() {
         interfaccia.riproduciIntro();
         interfaccia.riproduciAudio("menu");
         interfaccia.inizializzaMenu();
     }
-    
-    public static void main(String args[]){
+
+    public static void main(String args[]) {
         Eseguibile e = new Eseguibile();
         e.controllaStato();
     }
-    
-    public void controllaStato(){
-        if(interfaccia.controllaStato()==true){
+
+    public void controllaStato() {
+        if (interfaccia.controllaStato() == true) {
             interfaccia.riproduciIntroduzione();
             interfaccia.inizializzaInterfacciaUtente();
         }
     }
-    
-    class GestoreAzioni implements ActionListener{
+
+    class GestoreAzioni implements ActionListener {
+
         String comando;
-        public GestoreAzioni(){
+
+        public GestoreAzioni() {
         }
-        
+
         @Override
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent e) {
             comando = e.getActionCommand();
-            switch(comando){
+            switch (comando) {
                 case "ESCI":
                     System.exit(0);
                     break;
                 case "NUOVA_PARTITA":
                     interfaccia.inizializzaSelettorePartita();
                     //interfaccia.chiediNomePartita();
-                    break;                   
+                    break;
                 case "MENU_INIZIALE":
                     interfaccia.esciDaSelettorePartita();
                     break;
@@ -55,17 +60,17 @@ public class Eseguibile {
                     interfaccia.esciDaCreatorePartita();
                     break;
                 case "INIZIA_PARTITA":
-                    /*
-                    db.inizializzaDatabase();
-                    db.inserisciPartita(interfaccia.getNomePartita());
-                    interfaccia.disabilitaChiediNomePartita();
-                    dialoghi.prelevaTesti();*/
-                    if(interfaccia.controllaNomePartita() == true){
+                    if (interfaccia.controllaNomePartita() == true) {
+                        db.inizializzaDatabase();
+                        db.inserisciPartita(interfaccia.getNomePartita());
+                        dialoghi.prelevaTesti();
+                        mappa = new Mappa();
                         interfaccia.creaNuovaPartita();
                     }
                     break;
                 case "APRI_EDITOR":
                     interfaccia.mostraEditorTesto();
+                    interfaccia.mostraTesto(dialoghi.testi.get("Introduzione"));
                     break;
                 case "APRI_TELEFONO":
                     interfaccia.mostraCellulare();
@@ -74,6 +79,6 @@ public class Eseguibile {
                     break;
             }
         }
-       
+
     }
 }
