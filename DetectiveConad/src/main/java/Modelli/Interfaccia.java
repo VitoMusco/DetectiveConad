@@ -588,6 +588,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public void saltaIntroduzione(){
         disattivaPulsanteSalta();
         stoppaAudio();
+        inizializzaInterfacciaUtente();
     }
 
     

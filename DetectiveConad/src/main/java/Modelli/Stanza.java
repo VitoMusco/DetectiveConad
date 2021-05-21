@@ -3,6 +3,8 @@ package Modelli;
 import java.util.*;
 
 public class Stanza {
+    private final String MESSAGGIO_ERRORE_DIREZIONE="Non puoi andare in quella direzione!";
+    
     private Stanza nord;
     private Stanza sud;
     private Stanza est;
@@ -111,5 +113,7 @@ public class Stanza {
     public void rimuoviOggetto(Oggetto o){
         this.oggetti.remove(o);
     }
-    
+    public String stampaMessaggioErroreDirezione(){
+        return MESSAGGIO_ERRORE_DIREZIONE;
+    }
 }

@@ -1,9 +1,6 @@
 Introduzione#Bari, Venerdi' 13 Dicembre 2024 Ore 08:00 Sembrava una classica mattinata di Dicembre, in TV c'e' Michael Buble', fuori c'e' la pioggia e io mi accingevo a preparare la mia cioccolata calda rigenerante... la solita merda insomma... quando all'improvviso mi squilla il cellulare. Era la signora Rossi, moglie del titolare di una delle piu' grandi catene di supermercati a Bari. Era preoccupata perche' suo marito non era tornato a casa la sera precedente, e l'ultimo luogo in cui e' stato visto e' proprio il suo supermercato a Bari. Ci l'ava fa sta vit, mi sono vestito immediatamente e mi sono recato al supermercato. Una volta sul posto, parcheggiato il camioncino, ho iniziato le indagini.
 Strada#Brrr skrrt skrrt ( versi dei monaci trappisti ) , che freddo che fa , e sta anche piovendo. Sara' meglio sbrigarsi, altrimenti moriro'...di freddo.
 StradaOss#Alle mie spalle c'e' il mio camioncino, mi saro' ricordato di portare la mia attrezzatura stavolta? Di fronte a me invece c'e' l'ingresso per il supermercato(che detto tra noi e' un po' na merda).
-StradaEO#Tutti i negozi sono ancora chiusi , non c'e' nessuno in giro, sara' meglio che mi dia da fare.
-StradaS#Sono all'interno del camioncino.
-StradaN#Sono all'ingresso del supermercato.
 IngressoOss#Sono all'ingresso, c'e' un quadro e ci sono i dipendenti.
 OsservaQ#Sembra la piantina del supermercato, potrebbe tornarmi utile , ma non posso prenderla. Chissa' se avro' spazio nella memoria del mio telefono.
 UsaT#'CLIC' Perfetto, spero non mi riempia la memoria.
