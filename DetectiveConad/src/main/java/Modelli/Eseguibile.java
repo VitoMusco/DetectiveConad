@@ -75,6 +75,9 @@ public class Eseguibile {
                 case "APRI_TELEFONO":
                     interfaccia.mostraCellulare();
                     break;
+                case "SALTA_VIDEO":
+                    interfaccia.saltaIntroduzione();
+                    break;
                 default:
                     break;
             }

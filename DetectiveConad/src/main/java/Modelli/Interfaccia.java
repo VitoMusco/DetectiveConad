@@ -50,9 +50,12 @@ public class Interfaccia extends javax.swing.JFrame {
 
         ApriTelefono.addActionListener(g);
         ApriTelefono.setActionCommand("APRI_TELEFONO");
+        
+        PulsanteSalta.addActionListener(g);
+        PulsanteSalta.setActionCommand("SALTA_VIDEO");
 
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -582,6 +585,11 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteSalta.setEnabled(true);
         PulsanteSalta.setVisible(true);
     }
+    public void saltaIntroduzione(){
+        disattivaPulsanteSalta();
+        stoppaAudio();
+    }
+
     
     public boolean controllaNomePartita() {
         if (NomePartita.getText().length() > 16) {
