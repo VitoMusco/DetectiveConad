@@ -14,7 +14,7 @@ import java.awt.Color;
 
 public class Interfaccia extends javax.swing.JFrame {
 
-    private final ImageIcon menu, selettorePartita, intro, videoIntroduzione;
+    private final ImageIcon menu, selettorePartita;
     private boolean creazioneNuovaPartita = false;
     Clip audio;
 
@@ -23,8 +23,6 @@ public class Interfaccia extends javax.swing.JFrame {
         inizializzaFinestra();
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
-        intro = new ImageIcon("./risorse/gif/intro.gif");
-        videoIntroduzione = new ImageIcon("./risorse/gif/videointroduzione.gif");
 
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
@@ -338,7 +336,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public void riproduciIntro() {
         disattivaPulsantiMenu();
         riproduciAudio("intro");
-        MediaLabel.setIcon(intro);
+        MediaLabel.setIcon(new ImageIcon("./risorse/gif/intro.gif"));
         try {
             TimeUnit.SECONDS.sleep(4);
         } catch (InterruptedException ex) {
@@ -350,7 +348,7 @@ public class Interfaccia extends javax.swing.JFrame {
         stoppaAudio();
         disattivaPulsantiMenu();
         riproduciAudio("introduzione");
-        MediaLabel.setIcon(videoIntroduzione);
+        MediaLabel.setIcon(new ImageIcon("./risorse/gif/videointroduzione.gif"));
         try {
             TimeUnit.SECONDS.sleep(36);
         } catch (InterruptedException ex) {
