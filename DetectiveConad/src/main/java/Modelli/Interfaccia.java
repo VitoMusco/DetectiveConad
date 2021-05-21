@@ -335,8 +335,8 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void riproduciIntro() {
         disattivaPulsantiMenu();
-        riproduciAudio("intro");
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/intro.gif"));
+        riproduciAudio("intro");
         try {
             TimeUnit.MILLISECONDS.sleep(4300);
         } catch (InterruptedException ex) {
