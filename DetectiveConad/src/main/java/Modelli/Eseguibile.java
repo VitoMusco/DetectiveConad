@@ -2,21 +2,16 @@ package Modelli;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 
 public class Eseguibile {
 
     Mappa mappa = new Mappa();
-    Stanza stanzaCorrente;
     GestoreAzioni g = new GestoreAzioni();
     Interfaccia interfaccia = new Interfaccia(g);
     Database db = new Database();
 
     public Eseguibile() {
         interfaccia.riproduciIntro();
-        interfaccia.riproduciAudio("menu");
-        interfaccia.inizializzaMenu();
     }
 
     public static void main(String args[]) {
@@ -32,7 +27,6 @@ public class Eseguibile {
     }
 
     class GestoreAzioni implements ActionListener {
-
         String comando;
 
         public GestoreAzioni() {

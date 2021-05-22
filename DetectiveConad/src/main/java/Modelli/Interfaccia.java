@@ -21,6 +21,9 @@ public class Interfaccia extends javax.swing.JFrame {
     public Interfaccia(GestoreAzioni g) {
         initComponents();
         inizializzaFinestra();
+        
+        MediaLabel.setName("Background");
+        
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
 
@@ -356,6 +359,8 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+        riproduciAudio("menu");
+        inizializzaMenu();
     }
 
     public void riproduciIntroduzione() {
@@ -370,6 +375,7 @@ public class Interfaccia extends javax.swing.JFrame {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
         disattivaPulsanteSalta();
+        inizializzaInterfacciaUtente();
     }
 
     public void attivaPulsantiMenu() {
@@ -492,13 +498,17 @@ public class Interfaccia extends javax.swing.JFrame {
 
     //Inizializza l'interfaccia grafica sul quale si gioca
     public void inizializzaInterfacciaUtente() {
-        ApriEditor.setVisible(true);
-        ApriTelefono.setVisible(true);
-
-        ApriEditor.setEnabled(true);
-        ApriTelefono.setEnabled(true);
-
-        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/interfaccia/sfondo.png"));
+        if(!GraficaEditor.isVisible()){
+            ApriEditor.setVisible(true);
+            ApriEditor.setEnabled(true);
+        }
+        if(!GraficaCellulare.isVisible()){
+            ApriTelefono.setVisible(true);
+            ApriTelefono.setEnabled(true);
+        }
+        if(!MediaLabel.getName().equals("BackgroundInterfaccia")){
+            MediaLabel.setIcon(new ImageIcon("./risorse/immagini/interfaccia/sfondo.png"));
+        }
     }
 
     //Disattiva l'interfaccia utente
