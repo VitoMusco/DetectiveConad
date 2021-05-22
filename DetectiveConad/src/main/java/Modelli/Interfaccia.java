@@ -615,6 +615,10 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public void mostraTesto(String messaggio){
-        ScritturaTesto.setText(messaggio);
+        ScritturaTesto.setText(messaggio + "\n");
+    }
+    
+     public void aggiungiTesto(String messaggio){
+        ScritturaTesto.append(messaggio + "\n");
     }
 }

@@ -12,7 +12,6 @@ public class Eseguibile {
     GestoreAzioni g = new GestoreAzioni();
     Interfaccia interfaccia = new Interfaccia(g);
     Database db = new Database();
-    Dialoghi dialoghi = new Dialoghi();
 
     public Eseguibile() {
         interfaccia.riproduciIntro();
@@ -63,14 +62,13 @@ public class Eseguibile {
                     if (interfaccia.controllaNomePartita() == true) {
                         db.inizializzaDatabase();
                         db.inserisciPartita(interfaccia.getNomePartita());
-                        dialoghi.prelevaTesti();
                         mappa = new Mappa();
                         interfaccia.creaNuovaPartita();
                     }
                     break;
                 case "APRI_EDITOR":
                     interfaccia.mostraEditorTesto();
-                    interfaccia.mostraTesto(dialoghi.testi.get("Introduzione"));
+                    interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
                     break;
                 case "APRI_TELEFONO":
                     interfaccia.mostraCellulare();

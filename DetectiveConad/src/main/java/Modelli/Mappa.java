@@ -2,24 +2,25 @@ package Modelli;
 
 public class Mappa {
 
-    Stanza esterno;
-    Stanza ingresso;
-    Stanza camioncino;
-    Stanza cassa;
-    Stanza studio;
-    Stanza retro;
-    Stanza salumeria;
-    Stanza corridoio1;
-    Stanza corridoio2;
-    Stanza corridoio3;
-    Stanza corridoio4;
-    Stanza corridoio5;
-    Stanza corridoio6;
-    Stanza zona_detersivi;
-    Stanza zona_frutta;
-    Stanza zona_frigo;
-    Stanza condotto;
-    Stanza corrente;
+    private Dialoghi dialoghi;
+    private Stanza esterno;
+    private Stanza ingresso;
+    private Stanza camioncino;
+    private Stanza cassa;
+    private Stanza studio;
+    private Stanza retro;
+    private Stanza salumeria;
+    private Stanza corridoio1;
+    private Stanza corridoio2;
+    private Stanza corridoio3;
+    private Stanza corridoio4;
+    private Stanza corridoio5;
+    private Stanza corridoio6;
+    private Stanza zona_detersivi;
+    private Stanza zona_frutta;
+    private Stanza zona_frigo;
+    private Stanza condotto;
+    private Stanza corrente;
 
     public Mappa() {
         this.esterno = new Stanza("Esterno", "Sono all'esterno del supermercato");
@@ -96,6 +97,9 @@ public class Mappa {
         this.retro.inserisciOggetto(impronta);
 
         this.corrente = this.esterno;
+        
+        this.dialoghi = new Dialoghi();
+        this.dialoghi.prelevaTesti();
 
     }
 
@@ -141,4 +145,17 @@ public class Mappa {
                 break;
         }
     }
+    
+    public String prelevaTesto(){
+        return this.dialoghi.testi.get(this.corrente.getNome());        
+    }
+    
+    public String prelevaTestoDaIntroduzione(){
+        return this.dialoghi.testi.get("Introduzione");        
+    }
+    
+    public String getDescrizione(){
+        return this.corrente.getDescrizione();
+    }
+    
 }

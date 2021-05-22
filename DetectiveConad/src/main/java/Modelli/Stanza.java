@@ -113,7 +113,15 @@ public class Stanza {
     public void rimuoviOggetto(Oggetto o){
         this.oggetti.remove(o);
     }
-    public String stampaMessaggioErroreDirezione(){
+    public String getMessaggioErroreDirezione(){
         return MESSAGGIO_ERRORE_DIREZIONE;
+    }
+
+    public String getDescrizione() {
+        return this.descrizione;
+    }
+    
+    public String getNome(){
+        return this.nome;
     }
 }
