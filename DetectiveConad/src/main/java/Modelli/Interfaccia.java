@@ -54,6 +54,9 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriTelefono.addActionListener(g);
         ApriTelefono.setActionCommand("APRI_TELEFONO");
         
+        ApriMovimento.addActionListener(g);
+        ApriMovimento.setActionCommand("APRI_MOVIMENTO");
+        
         PulsanteSalta.addActionListener(g);
         PulsanteSalta.setActionCommand("SALTA_VIDEO");
 
@@ -64,16 +67,18 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Sinistra = new javax.swing.JButton();
+        Destra = new javax.swing.JButton();
+        Giu = new javax.swing.JButton();
+        Su = new javax.swing.JButton();
+        ApriMovimento = new javax.swing.JButton();
+        GraficaMovimento = new javax.swing.JLabel();
         Osserva = new javax.swing.JButton();
         Inventario = new javax.swing.JButton();
         Flash = new javax.swing.JButton();
         Usa = new javax.swing.JButton();
         Fotocamera = new javax.swing.JButton();
         Incastra = new javax.swing.JButton();
-        Sinistra = new javax.swing.JButton();
-        Destra = new javax.swing.JButton();
-        Giu = new javax.swing.JButton();
-        Su = new javax.swing.JButton();
         Menu = new javax.swing.JButton();
         Salva = new javax.swing.JButton();
         Opzioni = new javax.swing.JButton();
@@ -112,6 +117,60 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Sinistra.setIcon(new ImageIcon("./risorse/immagini/interfaccia/sinistra.png"));
+        Sinistra.setBorder(null);
+        Sinistra.setContentAreaFilled(false);
+        Sinistra.setMargin(null);
+        Sinistra.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/sinistra_highlighted.png"));
+        Sinistra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SinistraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Sinistra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 610, 60, 60));
+
+        Destra.setIcon(new ImageIcon("./risorse/immagini/interfaccia/destra.png"));
+        Destra.setBorder(null);
+        Destra.setContentAreaFilled(false);
+        Destra.setMargin(null);
+        Destra.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/destra_highlighted.png"));
+        Destra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DestraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Destra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 60, 60));
+
+        Giu.setIcon(new ImageIcon("./risorse/immagini/interfaccia/giu.png"));
+        Giu.setBorder(null);
+        Giu.setContentAreaFilled(false);
+        Giu.setMargin(null);
+        Giu.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/giu_highlighted.png"));
+        jPanel1.add(Giu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 610, 60, 60));
+
+        Su.setIcon(new ImageIcon("./risorse/immagini/interfaccia/su.png"));
+        Su.setBorder(null);
+        Su.setContentAreaFilled(false);
+        Su.setMargin(null);
+        Su.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/su_highlighted.png"));
+        Su.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Su, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 540, 60, 60));
+
+        ApriMovimento.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_movimento.png"));
+        ApriMovimento.setBorder(null);
+        ApriMovimento.setBorderPainted(false);
+        ApriMovimento.setContentAreaFilled(false);
+        ApriMovimento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ApriMovimento.setMargin(null);
+        jPanel1.add(ApriMovimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 540, 120, 144));
+
+        GraficaMovimento.setIcon(new ImageIcon("./risorse/immagini/interfaccia/contorno_movimento.png"));
+        jPanel1.add(GraficaMovimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 520, 280, 175));
+
         Osserva.setIcon(new ImageIcon("./risorse/immagini/telefono/osserva.png"));
         Osserva.setBorder(null);
         Osserva.setContentAreaFilled(false);
@@ -147,45 +206,6 @@ public class Interfaccia extends javax.swing.JFrame {
         Incastra.setContentAreaFilled(false);
         Incastra.setMargin(null);
         jPanel1.add(Incastra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, 60, 60));
-
-        Sinistra.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
-        Sinistra.setBorder(null);
-        Sinistra.setContentAreaFilled(false);
-        Sinistra.setMargin(null);
-        Sinistra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SinistraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Sinistra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 620, 60, 60));
-
-        Destra.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
-        Destra.setBorder(null);
-        Destra.setContentAreaFilled(false);
-        Destra.setMargin(null);
-        Destra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DestraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Destra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 620, 60, 60));
-
-        Giu.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
-        Giu.setBorder(null);
-        Giu.setContentAreaFilled(false);
-        Giu.setMargin(null);
-        jPanel1.add(Giu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 620, 60, 60));
-
-        Su.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
-        Su.setBorder(null);
-        Su.setContentAreaFilled(false);
-        Su.setMargin(null);
-        Su.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SuActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Su, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 550, 60, 60));
 
         Menu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
         Menu.setBorder(null);
@@ -284,7 +304,7 @@ public class Interfaccia extends javax.swing.JFrame {
         NomePartita.setEnabled(false);
         NomePartita.setMargin(null);
         NomePartita.setName(""); // NOI18N
-        jPanel1.add(NomePartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 210, 35));
+        jPanel1.add(NomePartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 210, 35));
 
         ErroreMaxCaratteri.setIcon(new ImageIcon("./risorse/immagini/menu/errore_max_caratteri.png"));
         ErroreMaxCaratteri.setEnabled(false);
@@ -362,7 +382,7 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.add(GraficaEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 960, 670));
 
         GraficaCellulare.setIcon(new ImageIcon("./risorse/immagini/interfaccia/telefono.png"));
-        jPanel1.add(GraficaCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 270, 670));
+        jPanel1.add(GraficaCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 280, 500));
 
         ApriEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_testo.png"));
         ApriEditor.setBorder(null);
@@ -388,8 +408,6 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteSalta.setMargin(null);
         PulsanteSalta.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/salta_filmato_highlighted.png"));
         jPanel1.add(PulsanteSalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 190, 90));
-
-        MediaLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\miki_\\Downloads\\MicrosoftTeams-image.png")); // NOI18N
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -411,6 +429,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ApriEditor;
+    private javax.swing.JButton ApriMovimento;
     private javax.swing.JButton ApriTelefono;
     private javax.swing.JScrollPane CasellaTesto;
     private javax.swing.JButton CreaSalvataggioEsci;
@@ -424,6 +443,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton Giu;
     private javax.swing.JLabel GraficaCellulare;
     private javax.swing.JLabel GraficaEditor;
+    private javax.swing.JLabel GraficaMovimento;
     private javax.swing.JButton Incastra;
     private javax.swing.JButton IniziaPartita;
     private javax.swing.JButton Inventario;
@@ -648,6 +668,10 @@ public class Interfaccia extends javax.swing.JFrame {
 
     //Inizializza l'interfaccia grafica sul quale si gioca
     public void inizializzaInterfacciaUtente() {
+        if(!GraficaMovimento.isVisible()){
+            ApriMovimento.setVisible(true);
+            ApriMovimento.setEnabled(true);
+        }
         if(!GraficaEditor.isVisible()){
             ApriEditor.setVisible(true);
             ApriEditor.setEnabled(true);
@@ -667,17 +691,21 @@ public class Interfaccia extends javax.swing.JFrame {
         CasellaTesto.setVisible(false);
         ScritturaTesto.setVisible(false);
         GraficaCellulare.setVisible(false);
+        GraficaMovimento.setVisible(false);
         GraficaEditor.setVisible(false);
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
+        ApriMovimento.setVisible(false);
     
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
         GraficaCellulare.setEnabled(false);
+        GraficaMovimento.setEnabled(false);
         GraficaEditor.setEnabled(false);
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
+        ApriMovimento.setEnabled(false);
         
         Esci.setVisible(false);
         Esci.setEnabled(false);
@@ -701,6 +729,14 @@ public class Interfaccia extends javax.swing.JFrame {
         Salva.setEnabled(false);
         Usa.setVisible(false);
         Usa.setEnabled(false);
+        Su.setVisible(false);
+        Giu.setVisible(false);
+        Destra.setVisible(false);
+        Sinistra.setVisible(false);
+        Su.setEnabled(false);
+        Giu.setEnabled(false);
+        Destra.setEnabled(false);
+        Sinistra.setEnabled(false);
     }
 
     //Mostra l'interfaccia del cellulare
@@ -733,7 +769,6 @@ public class Interfaccia extends javax.swing.JFrame {
         Salva.setEnabled(true);
         Usa.setVisible(true);
         Usa.setEnabled(true);
-        
     }
 
     public void disattivaCellulare() {
@@ -766,6 +801,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
         ApriEditor.setVisible(false);
         ApriEditor.setEnabled(false);
+        
     }
 
     public void disattivaEditorTesto() {
@@ -783,6 +819,23 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setEnabled(true);
     }
 
+    public void mostraInterfacciaMovimento(){
+        GraficaMovimento.setEnabled(true);
+        GraficaMovimento.setVisible(true);
+
+        ApriMovimento.setEnabled(false);
+        ApriMovimento.setVisible(false);
+        
+        Su.setVisible(true);
+        Giu.setVisible(true);
+        Destra.setVisible(true);
+        Sinistra.setVisible(true);
+        Su.setEnabled(true);
+        Giu.setEnabled(true);
+        Destra.setEnabled(true);
+        Sinistra.setEnabled(true);
+    }
+    
     public void disattivaPulsanteSalta(){
         PulsanteSalta.setEnabled(false);
         PulsanteSalta.setVisible(false);
