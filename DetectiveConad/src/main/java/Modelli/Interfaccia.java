@@ -64,6 +64,17 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Osserva = new javax.swing.JButton();
+        Inventario = new javax.swing.JButton();
+        Flash = new javax.swing.JButton();
+        Usa = new javax.swing.JButton();
+        Fotocamera = new javax.swing.JButton();
+        Incastra = new javax.swing.JButton();
+        Menu = new javax.swing.JButton();
+        Salva = new javax.swing.JButton();
+        Opzioni = new javax.swing.JButton();
+        Esci = new javax.swing.JButton();
+        Prendi = new javax.swing.JButton();
         PulsanteEsci = new javax.swing.JButton();
         PulsanteCrediti = new javax.swing.JButton();
         PulsanteIndaga = new javax.swing.JButton();
@@ -96,6 +107,72 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Osserva.setIcon(new ImageIcon("./risorse/immagini/telefono/osserva.png"));
+        Osserva.setBorder(null);
+        Osserva.setContentAreaFilled(false);
+        Osserva.setMargin(null);
+        jPanel1.add(Osserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 210, 60, 60));
+
+        Inventario.setIcon(new ImageIcon("./risorse/immagini/telefono/inventario.png"));
+        Inventario.setBorder(null);
+        Inventario.setContentAreaFilled(false);
+        Inventario.setMargin(null);
+        jPanel1.add(Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 320, 60, 60));
+
+        Flash.setIcon(new ImageIcon("./risorse/immagini/telefono/flash.png"));
+        Flash.setBorder(null);
+        Flash.setContentAreaFilled(false);
+        Flash.setMargin(null);
+        jPanel1.add(Flash, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 210, 60, 60));
+
+        Usa.setIcon(new ImageIcon("./risorse/immagini/telefono/usa.png"));
+        Usa.setBorder(null);
+        Usa.setContentAreaFilled(false);
+        Usa.setMargin(null);
+        jPanel1.add(Usa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 60, 60));
+
+        Fotocamera.setIcon(new ImageIcon("./risorse/immagini/telefono/fotocamera.png"));
+        Fotocamera.setBorder(null);
+        Fotocamera.setContentAreaFilled(false);
+        Fotocamera.setMargin(null);
+        jPanel1.add(Fotocamera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 100, 60, 60));
+
+        Incastra.setIcon(new ImageIcon("./risorse/immagini/telefono/incastra.png"));
+        Incastra.setBorder(null);
+        Incastra.setContentAreaFilled(false);
+        Incastra.setMargin(null);
+        jPanel1.add(Incastra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, 60, 60));
+
+        Menu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
+        Menu.setBorder(null);
+        Menu.setContentAreaFilled(false);
+        Menu.setMargin(null);
+        jPanel1.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 430, 60, 60));
+
+        Salva.setIcon(new ImageIcon("./risorse/immagini/telefono/salva.png"));
+        Salva.setBorder(null);
+        Salva.setContentAreaFilled(false);
+        Salva.setMargin(null);
+        jPanel1.add(Salva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 320, 60, 60));
+
+        Opzioni.setIcon(new ImageIcon("./risorse/immagini/telefono/opzioni.png"));
+        Opzioni.setBorder(null);
+        Opzioni.setContentAreaFilled(false);
+        Opzioni.setMargin(null);
+        jPanel1.add(Opzioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, 60, 60));
+
+        Esci.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
+        Esci.setBorder(null);
+        Esci.setContentAreaFilled(false);
+        Esci.setMargin(null);
+        jPanel1.add(Esci, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 430, 60, 60));
+
+        Prendi.setIcon(new ImageIcon("./risorse/immagini/telefono/prendi.png"));
+        Prendi.setBorder(null);
+        Prendi.setContentAreaFilled(false);
+        Prendi.setMargin(null);
+        jPanel1.add(Prendi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 60, 60));
 
         PulsanteEsci.setIcon(new ImageIcon("./risorse/immagini/menu/esci.png"));
         PulsanteEsci.setBorder(null);
@@ -176,7 +253,7 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioLabel.setIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio.png"));
         CreaSalvataggioLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
         CreaSalvataggioLabel.setEnabled(false);
-        jPanel1.add(CreaSalvataggioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        jPanel1.add(CreaSalvataggioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1280, 720));
 
         NuovaPartita1.setIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita.png"));
         NuovaPartita1.setBorder(null);
@@ -267,6 +344,8 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteSalta.setMargin(null);
         PulsanteSalta.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/salta_filmato_highlighted.png"));
         jPanel1.add(PulsanteSalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 190, 90));
+
+        MediaLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\miki_\\Downloads\\MicrosoftTeams-image.png")); // NOI18N
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -282,22 +361,33 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel CreaSalvataggioLabel;
     private javax.swing.JLabel ErroreMaxCaratteri;
     private javax.swing.JLabel ErroreNoCaratteri;
+    private javax.swing.JButton Esci;
+    private javax.swing.JButton Flash;
+    private javax.swing.JButton Fotocamera;
     private javax.swing.JLabel GraficaCellulare;
     private javax.swing.JLabel GraficaEditor;
+    private javax.swing.JButton Incastra;
     private javax.swing.JButton IniziaPartita;
+    private javax.swing.JButton Inventario;
     private javax.swing.JLabel MediaLabel;
+    private javax.swing.JButton Menu;
     private javax.swing.JTextField NomePartita;
     private javax.swing.JButton NuovaPartita1;
     private javax.swing.JButton NuovaPartita2;
     private javax.swing.JButton NuovaPartita3;
     private javax.swing.JButton NuovaPartita4;
+    private javax.swing.JButton Opzioni;
+    private javax.swing.JButton Osserva;
+    private javax.swing.JButton Prendi;
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
     private javax.swing.JButton PulsanteSalta;
+    private javax.swing.JButton Salva;
     private javax.swing.JButton SalvataggiEsci;
     private javax.swing.JTextArea ScritturaTesto;
     private javax.swing.JTextField ScriviTesto;
+    private javax.swing.JButton Usa;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
@@ -528,6 +618,29 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaEditor.setEnabled(false);
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
+        
+        Esci.setVisible(false);
+        Esci.setEnabled(false);
+        Flash.setVisible(false);
+        Flash.setEnabled(false);
+        Fotocamera.setVisible(false);
+        Fotocamera.setEnabled(false);
+        Incastra.setVisible(false);
+        Incastra.setEnabled(false);
+        Inventario.setVisible(false);
+        Inventario.setEnabled(false);
+        Menu.setVisible(false);
+        Menu.setEnabled(false);
+        Opzioni.setVisible(false);
+        Opzioni.setEnabled(false);
+        Osserva.setVisible(false);
+        Osserva.setEnabled(false);
+        Prendi.setVisible(false);
+        Prendi.setEnabled(false);
+        Salva.setVisible(false);
+        Salva.setEnabled(false);
+        Usa.setVisible(false);
+        Usa.setEnabled(false);
     }
 
     //Mostra l'interfaccia del cellulare
@@ -537,6 +650,30 @@ public class Interfaccia extends javax.swing.JFrame {
 
         ApriTelefono.setEnabled(false);
         ApriTelefono.setVisible(false);
+        
+        Esci.setVisible(true);
+        Esci.setEnabled(true);
+        Flash.setVisible(true);
+        Flash.setEnabled(true);
+        Fotocamera.setVisible(true);
+        Fotocamera.setEnabled(true);
+        Incastra.setVisible(true);
+        Incastra.setEnabled(true);
+        Inventario.setVisible(true);
+        Inventario.setEnabled(true);
+        Menu.setVisible(true);
+        Menu.setEnabled(true);
+        Opzioni.setVisible(true);
+        Opzioni.setEnabled(true);
+        Osserva.setVisible(true);
+        Osserva.setEnabled(true);
+        Prendi.setVisible(true);
+        Prendi.setEnabled(true);
+        Salva.setVisible(true);
+        Salva.setEnabled(true);
+        Usa.setVisible(true);
+        Usa.setEnabled(true);
+        
     }
 
     public void disattivaCellulare() {
