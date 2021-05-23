@@ -70,6 +70,10 @@ public class Interfaccia extends javax.swing.JFrame {
         Usa = new javax.swing.JButton();
         Fotocamera = new javax.swing.JButton();
         Incastra = new javax.swing.JButton();
+        Sinistra = new javax.swing.JButton();
+        Destra = new javax.swing.JButton();
+        Giu = new javax.swing.JButton();
+        Su = new javax.swing.JButton();
         Menu = new javax.swing.JButton();
         Salva = new javax.swing.JButton();
         Opzioni = new javax.swing.JButton();
@@ -144,6 +148,45 @@ public class Interfaccia extends javax.swing.JFrame {
         Incastra.setMargin(null);
         jPanel1.add(Incastra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, 60, 60));
 
+        Sinistra.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
+        Sinistra.setBorder(null);
+        Sinistra.setContentAreaFilled(false);
+        Sinistra.setMargin(null);
+        Sinistra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SinistraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Sinistra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 620, 60, 60));
+
+        Destra.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
+        Destra.setBorder(null);
+        Destra.setContentAreaFilled(false);
+        Destra.setMargin(null);
+        Destra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DestraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Destra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 620, 60, 60));
+
+        Giu.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
+        Giu.setBorder(null);
+        Giu.setContentAreaFilled(false);
+        Giu.setMargin(null);
+        jPanel1.add(Giu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 620, 60, 60));
+
+        Su.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
+        Su.setBorder(null);
+        Su.setContentAreaFilled(false);
+        Su.setMargin(null);
+        Su.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Su, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 550, 60, 60));
+
         Menu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
         Menu.setBorder(null);
         Menu.setContentAreaFilled(false);
@@ -153,6 +196,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Salva.setIcon(new ImageIcon("./risorse/immagini/telefono/salva.png"));
         Salva.setBorder(null);
         Salva.setContentAreaFilled(false);
+        Salva.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Salva.setMargin(null);
         jPanel1.add(Salva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 320, 60, 60));
 
@@ -353,17 +397,31 @@ public class Interfaccia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SuActionPerformed
+
+    private void DestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DestraActionPerformed
+
+    private void SinistraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SinistraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SinistraActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ApriEditor;
     private javax.swing.JButton ApriTelefono;
     private javax.swing.JScrollPane CasellaTesto;
     private javax.swing.JButton CreaSalvataggioEsci;
     private javax.swing.JLabel CreaSalvataggioLabel;
+    private javax.swing.JButton Destra;
     private javax.swing.JLabel ErroreMaxCaratteri;
     private javax.swing.JLabel ErroreNoCaratteri;
     private javax.swing.JButton Esci;
     private javax.swing.JButton Flash;
     private javax.swing.JButton Fotocamera;
+    private javax.swing.JButton Giu;
     private javax.swing.JLabel GraficaCellulare;
     private javax.swing.JLabel GraficaEditor;
     private javax.swing.JButton Incastra;
@@ -387,6 +445,8 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton SalvataggiEsci;
     private javax.swing.JTextArea ScritturaTesto;
     private javax.swing.JTextField ScriviTesto;
+    private javax.swing.JButton Sinistra;
+    private javax.swing.JButton Su;
     private javax.swing.JButton Usa;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
