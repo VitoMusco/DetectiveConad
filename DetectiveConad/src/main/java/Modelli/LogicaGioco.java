@@ -14,7 +14,7 @@ public class LogicaGioco {
 
     public LogicaGioco() {
         interfaccia.riproduciIntro();
-        db.controlloNomeSalvataggio();
+        interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
     }
 
     public void controllaStato() {
@@ -56,6 +56,35 @@ public class LogicaGioco {
                         mappa = new Mappa();
                         interfaccia.creaNuovaPartita();
                     }
+                    break;
+                case "CONTINUA_PARTITA_1":
+                    interfaccia.caricaPartita();
+                    //Carica partita 1
+                    break;
+                case "CONTINUA_PARTITA_2":
+                    interfaccia.caricaPartita();
+                    //Carica partita 2
+                    break;
+                case "CONTINUA_PARTITA_3":
+                    interfaccia.caricaPartita();
+                    //Carica partita 3
+                    break;
+                case "CONTINUA_PARTITA_4":
+                    interfaccia.caricaPartita();
+                    //Carica partita 4
+                    break;
+                case "SALVA_ED_ESCI":
+                    interfaccia.mostraInterfacciaSalvataggio();
+                    break;
+                case "SALVA_SI":
+                    //salva partita
+                    System.exit(0);
+                    break;
+                case "SALVA_NO":
+                    System.exit(0);
+                    break;
+                case "ANNULLA_SALVA_ED_ESCI":
+                    interfaccia.disattivaInterfacciaSalvataggio();
                     break;
                 case "APRI_EDITOR":
                     interfaccia.mostraEditorTesto();
