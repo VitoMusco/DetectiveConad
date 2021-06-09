@@ -149,4 +149,20 @@ public class Database {
         }
         return partita;
     }
+    
+    public void controlloNomeSalvataggio(){
+        boolean controllo=false;
+        String nome_partita;
+        int i=1;
+        for(i=1; i<5; i++){
+            nome_partita = nomePartita(i);
+            if(nome_partita.equals("")){
+                controllo = true;
+                break;
+            }
+        }
+        if(controllo == true){
+            System.out.println("C'e' uno slot di salvataggio disponibile"); //esempio
+        }
+    }
 }
