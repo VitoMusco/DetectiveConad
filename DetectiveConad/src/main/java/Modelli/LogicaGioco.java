@@ -10,14 +10,10 @@ public class LogicaGioco {
     Interfaccia interfaccia = new Interfaccia(g);
     Database db = new Database();
     Inventario inventario = new Inventario();
+    AzioniEseguite azioniEseguite = new AzioniEseguite();
 
     public LogicaGioco() {
         interfaccia.riproduciIntro();
-    }
-
-    public static void main(String args[]) {
-        LogicaGioco e = new LogicaGioco();
-        e.controllaStato();
     }
 
     public void controllaStato() {
@@ -90,8 +86,17 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.osservaStanza());
                     break;
                 case "SCATTA_FOTO":
-                    inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
-                    interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
+                    if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.isFotoScattata()) {
+                        inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
+                        interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
+                        azioniEseguite.fotoScattata();
+                    }
+                    else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.isFotoScattata()){
+                        interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
+                    }
+                    else{
+                        interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
+                    }
                     break;
                 default:
                     break;
