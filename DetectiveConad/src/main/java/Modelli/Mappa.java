@@ -177,7 +177,9 @@ public class Mappa {
         } else {
             testo = testo + this.dialoghi.testi.get(this.corrente.getNome() + "Oss");
         }
-
+        if(testo.equals("null")){
+            testo = "Non c'e' niente di particolare qui...";
+        }
         return testo;
     }
 

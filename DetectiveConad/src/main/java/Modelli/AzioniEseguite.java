@@ -1,7 +1,8 @@
 package Modelli;
 
 public class AzioniEseguite {
-    boolean fotoScattata;
+    private boolean fotoScattata;
+    private boolean grataAperta;
     
     public AzioniEseguite(){
         this.fotoScattata = false;
@@ -13,5 +14,13 @@ public class AzioniEseguite {
     
     public boolean isFotoScattata(){
         return this.fotoScattata;
+    }
+    
+    public void grataAperta(){
+        this.grataAperta = true;
+    }
+    
+    public boolean isGrataAperta(){
+        return this.grataAperta;
     }
 }

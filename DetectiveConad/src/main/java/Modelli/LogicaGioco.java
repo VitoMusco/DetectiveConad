@@ -71,13 +71,26 @@ public class LogicaGioco {
                     interfaccia.saltaIntroduzione();
                     break;
                 case "VAI_SU":
-                    interfaccia.aggiungiTesto(mappa.spostamento("n"));
+                    if(mappa.getCorrente().getNome().equals("Salumeria")){
+                        interfaccia.aggiungiTesto("Non posso entrarci, la porta e' chiusa a chiave, e nessuno sembra avercela.");
+                    }
+                    else{
+                        interfaccia.aggiungiTesto(mappa.spostamento("n"));
+                    }
                     break;
                 case "VAI_GIU":
                     interfaccia.aggiungiTesto(mappa.spostamento("s"));
                     break;
                 case "VAI_DESTRA":
-                    interfaccia.aggiungiTesto(mappa.spostamento("e"));
+                    if(azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
+                        interfaccia.aggiungiTesto(mappa.spostamento("e"));
+                    }
+                    else if(!azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
+                        interfaccia.aggiungiTesto("Non posso entrarci, la grata e' chiusa, dovrei usare qualcosa per aprirla...");
+                    }
+                    else{
+                        interfaccia.aggiungiTesto(mappa.spostamento("e"));
+                    }
                     break;
                 case "VAI_SINISTRA":
                     interfaccia.aggiungiTesto(mappa.spostamento("o"));
