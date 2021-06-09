@@ -14,6 +14,7 @@ public class LogicaGioco {
 
     public LogicaGioco() {
         interfaccia.riproduciIntro();
+        db.controlloNomeSalvataggio();
     }
 
     public void controllaStato() {

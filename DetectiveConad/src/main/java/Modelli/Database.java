@@ -153,8 +153,7 @@ public class Database {
     public void controlloNomeSalvataggio(){
         boolean controllo=false;
         String nome_partita;
-        int i=1;
-        for(i=1; i<5; i++){
+        for(int i=1; i<5; i++){
             nome_partita = nomePartita(i);
             if(nome_partita.equals("")){
                 controllo = true;

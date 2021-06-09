@@ -14,13 +14,19 @@ import java.awt.Color;
 
 public class Interfaccia extends javax.swing.JFrame {
 
+    private final int MAX_PARTITE_SALVATE = 4;
     private final ImageIcon menu, selettorePartita;
     private boolean creazioneNuovaPartita = false;
-    Clip audio;
+    private boolean[] partiteSalvate = new boolean[4];
+    private Clip audio;
 
     public Interfaccia(GestoreAzioni g) {
         initComponents();
         inizializzaFinestra();
+        
+        for(int i=0;i<MAX_PARTITE_SALVATE;i++){
+            this.partiteSalvate[i] = false;
+        }
         
         MediaLabel.setName("Background");
         
@@ -116,6 +122,10 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita2 = new javax.swing.JButton();
         NuovaPartita3 = new javax.swing.JButton();
         NuovaPartita4 = new javax.swing.JButton();
+        ContinuaPartita1 = new javax.swing.JButton();
+        ContinuaPartita2 = new javax.swing.JButton();
+        ContinuaPartita3 = new javax.swing.JButton();
+        ContinuaPartita4 = new javax.swing.JButton();
         ScriviTesto = new javax.swing.JTextField();
         CasellaTesto = new javax.swing.JScrollPane();
         ScritturaTesto = new javax.swing.JTextArea();
@@ -379,6 +389,47 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita4.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita_highlighted.png"));
         jPanel1.add(NuovaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 367, 81));
 
+        ContinuaPartita1.setIcon(new ImageIcon("./risorse/immagini/menu/continua_partita.png"));
+        ContinuaPartita1.setBorder(null);
+        ContinuaPartita1.setBorderPainted(false);
+        ContinuaPartita1.setContentAreaFilled(false);
+        ContinuaPartita1.setEnabled(false);
+        ContinuaPartita1.setMargin(null);
+        ContinuaPartita1.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
+        ContinuaPartita1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuaPartita1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ContinuaPartita1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 367, 81));
+
+        ContinuaPartita2.setIcon(new ImageIcon("./risorse/immagini/menu/continua_partita.png"));
+        ContinuaPartita2.setBorder(null);
+        ContinuaPartita2.setBorderPainted(false);
+        ContinuaPartita2.setContentAreaFilled(false);
+        ContinuaPartita2.setEnabled(false);
+        ContinuaPartita2.setMargin(null);
+        ContinuaPartita2.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
+        jPanel1.add(ContinuaPartita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 367, 81));
+
+        ContinuaPartita3.setIcon(new ImageIcon("./risorse/immagini/menu/continua_partita.png"));
+        ContinuaPartita3.setBorder(null);
+        ContinuaPartita3.setBorderPainted(false);
+        ContinuaPartita3.setContentAreaFilled(false);
+        ContinuaPartita3.setEnabled(false);
+        ContinuaPartita3.setMargin(null);
+        ContinuaPartita3.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
+        jPanel1.add(ContinuaPartita3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 367, 81));
+
+        ContinuaPartita4.setIcon(new ImageIcon("./risorse/immagini/menu/continua_partita.png"));
+        ContinuaPartita4.setBorder(null);
+        ContinuaPartita4.setBorderPainted(false);
+        ContinuaPartita4.setContentAreaFilled(false);
+        ContinuaPartita4.setEnabled(false);
+        ContinuaPartita4.setMargin(null);
+        ContinuaPartita4.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
+        jPanel1.add(ContinuaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 367, 81));
+
         ScriviTesto.setBackground(new java.awt.Color(0, 0, 0));
         ScriviTesto.setBorder(null);
         ScriviTesto.setMargin(null);
@@ -451,12 +502,20 @@ public class Interfaccia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SinistraActionPerformed
 
+    private void ContinuaPartita1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuaPartita1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContinuaPartita1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Apri;
     private javax.swing.JButton ApriEditor;
     private javax.swing.JButton ApriMovimento;
     private javax.swing.JButton ApriTelefono;
     private javax.swing.JScrollPane CasellaTesto;
+    private javax.swing.JButton ContinuaPartita1;
+    private javax.swing.JButton ContinuaPartita2;
+    private javax.swing.JButton ContinuaPartita3;
+    private javax.swing.JButton ContinuaPartita4;
     private javax.swing.JButton CreaSalvataggioEsci;
     private javax.swing.JLabel CreaSalvataggioLabel;
     private javax.swing.JButton Destra;
@@ -501,6 +560,12 @@ public class Interfaccia extends javax.swing.JFrame {
         setVisible(true);
     }
 
+    public void caricaPartiteSalvate(boolean[] partite){
+        for(int i=0;i<MAX_PARTITE_SALVATE;i++){
+            this.partiteSalvate[i] = partite[i];
+        }
+    }
+    
     public void riproduciAudio(String nome) {
         File fileAudio = new File("./risorse/audio/" + nome + ".wav");
         AudioInputStream audioStream;
@@ -599,15 +664,38 @@ public class Interfaccia extends javax.swing.JFrame {
     public void inizializzaSelettorePartita() {
         disattivaPulsantiMenu();
         SalvataggiEsci.setEnabled(true);
-        NuovaPartita1.setEnabled(true);
-        NuovaPartita2.setEnabled(true);
-        NuovaPartita3.setEnabled(true);
-        NuovaPartita4.setEnabled(true);
+        if(partiteSalvate[0]){
+            ContinuaPartita1.setEnabled(true);
+        }
+        else{
+            NuovaPartita1.setEnabled(true);
+            NuovaPartita1.setVisible(true);
+        }
+        if(partiteSalvate[1]){
+            ContinuaPartita2.setEnabled(true);
+            ContinuaPartita2.setVisible(true);
+        }
+        else{
+            NuovaPartita2.setEnabled(true);
+            NuovaPartita2.setVisible(true);
+        }
+        if(partiteSalvate[2]){
+            ContinuaPartita3.setEnabled(true);
+            ContinuaPartita3.setVisible(true);
+        }
+        else{
+            NuovaPartita3.setEnabled(true);
+            NuovaPartita3.setVisible(true);
+        }
+        if(partiteSalvate[3]){
+            ContinuaPartita4.setEnabled(true);
+            ContinuaPartita4.setVisible(true);
+        }
+        else{
+            NuovaPartita4.setEnabled(true);
+            NuovaPartita4.setVisible(true);
+        }
         SalvataggiEsci.setVisible(true);
-        NuovaPartita1.setVisible(true);
-        NuovaPartita2.setVisible(true);
-        NuovaPartita3.setVisible(true);
-        NuovaPartita4.setVisible(true);
         MediaLabel.setIcon(selettorePartita);
     }
 
@@ -622,11 +710,19 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita2.setEnabled(false);
         NuovaPartita3.setEnabled(false);
         NuovaPartita4.setEnabled(false);
+        ContinuaPartita1.setEnabled(false);
+        ContinuaPartita2.setEnabled(false);
+        ContinuaPartita3.setEnabled(false);
+        ContinuaPartita4.setEnabled(false);
         SalvataggiEsci.setVisible(false);
         NuovaPartita1.setVisible(false);
         NuovaPartita2.setVisible(false);
         NuovaPartita3.setVisible(false);
         NuovaPartita4.setVisible(false);
+        ContinuaPartita1.setVisible(false);
+        ContinuaPartita2.setVisible(false);
+        ContinuaPartita3.setVisible(false);
+        ContinuaPartita4.setVisible(false);
         esciDaCreatorePartita();
     }
 
@@ -667,6 +763,10 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita2.setEnabled(false);
         NuovaPartita3.setEnabled(false);
         NuovaPartita4.setEnabled(false);
+        ContinuaPartita1.setEnabled(false);
+        ContinuaPartita2.setEnabled(false);
+        ContinuaPartita3.setEnabled(false);
+        ContinuaPartita4.setEnabled(false);
         ErroreMaxCaratteri.setEnabled(false);
         ErroreNoCaratteri.setEnabled(false);
         PulsanteSalta.setEnabled(false);
@@ -675,6 +775,10 @@ public class Interfaccia extends javax.swing.JFrame {
         NuovaPartita2.setVisible(false);
         NuovaPartita3.setVisible(false);
         NuovaPartita4.setVisible(false);
+        ContinuaPartita1.setVisible(false);
+        ContinuaPartita2.setVisible(false);
+        ContinuaPartita3.setVisible(false);
+        ContinuaPartita4.setVisible(false);
         CreaSalvataggioLabel.setEnabled(false);
         CreaSalvataggioEsci.setEnabled(false);
         IniziaPartita.setEnabled(false);
