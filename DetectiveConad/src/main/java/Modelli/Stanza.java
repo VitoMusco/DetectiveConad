@@ -3,18 +3,21 @@ package Modelli;
 import java.util.*;
 
 public class Stanza {
-    private final String MESSAGGIO_ERRORE_DIREZIONE="Non puoi andare in quella direzione!";
-    
+
+    private final String MESSAGGIO_ERRORE_DIREZIONE = "Non posso andare in quella direzione!";
+
     private Stanza nord;
     private Stanza sud;
     private Stanza est;
     private Stanza ovest;
     private List<Oggetto> oggetti;
-    private Map<String,Impiegato> impiegati;
+    private Map<String, Impiegato> impiegati;
     private String nome;
     private String descrizione;
-    
-    public Stanza(String nome,String desc){
+    private int numOsservazioni;
+    private int maxOsservazioni;
+
+    public Stanza(String nome, String desc, int maxOss) {
         this.nord = null;
         this.sud = null;
         this.est = null;
@@ -23,9 +26,11 @@ public class Stanza {
         this.impiegati = new HashMap<>();
         this.nome = nome;
         this.descrizione = desc;
+        this.numOsservazioni = 0;
+        this.maxOsservazioni = maxOss;
     }
-    
-    public Stanza(Stanza n,Stanza s,Stanza e,Stanza o,String nome,String desc){
+
+    public Stanza(Stanza n, Stanza s, Stanza e, Stanza o, String nome, String desc, int maxOss) {
         this.nord = n;
         this.sud = s;
         this.est = e;
@@ -33,95 +38,117 @@ public class Stanza {
         this.oggetti = new ArrayList<>();
         this.nome = nome;
         this.descrizione = desc;
+        this.numOsservazioni = 0;
+        this.maxOsservazioni = maxOss;
     }
-    
-    public void inserisciOggetto(Oggetto o){
+
+    public void inserisciOggetto(Oggetto o) {
         oggetti.add(o);
     }
     
-    public void inserisciImpiegato(Impiegato impiegato){
-        this.impiegati.put(impiegato.getNome(),impiegato);
-    }
-    
-    public void osservaStanza(){
-        for(Oggetto o:this.oggetti){
-            System.out.println("Vedo "+o.osservaOggetto());
+    public Oggetto getOggetto(String nome){
+        for (Oggetto o : this.oggetti) {
+            if(o.getNome() == nome){
+                return o;
+            }
         }
-        for(String nome:this.impiegati.keySet()){
-            System.out.println("Vedo "+nome);
+        return null;
+    }
+
+    public void inserisciImpiegato(Impiegato impiegato) {
+        this.impiegati.put(impiegato.getNome(), impiegato);
+    }
+
+    public String osservaStanza() {
+        String testo = "";
+        for (Oggetto o : this.oggetti) {
+            testo = testo + "Vedo " + o.osservaOggetto() + "\n";
+        }
+        for (String nome : this.impiegati.keySet()) {
+            testo = testo + "Vedo " + nome + "\n";
+        }
+        return testo;
+    }
+
+    public void interrogaImpiegati() {
+        for (Map.Entry<String, Impiegato> e : impiegati.entrySet()) {
+            System.out.println(e.getValue().getNome() + ": " + e.getValue().interroga());
         }
     }
-    
-    public void interrogaImpiegati(){
-        for(Map.Entry<String,Impiegato> e:impiegati.entrySet()){
-            System.out.println(e.getValue().getNome()+": "+e.getValue().interroga());
-        }
-    }
-    
-    public void assegnaNord(Stanza s){
+
+    public void assegnaNord(Stanza s) {
         this.nord = s;
     }
-    
-    public void assegnaSud(Stanza s){
+
+    public void assegnaSud(Stanza s) {
         this.sud = s;
     }
-    
-    public void assegnaEst(Stanza s){
+
+    public void assegnaEst(Stanza s) {
         this.est = s;
     }
-    
-    public void assegnaOvest(Stanza s){
+
+    public void assegnaOvest(Stanza s) {
         this.ovest = s;
     }
-    
-    public Stanza vaiNord(){
-        if(this.nord != null){
+
+    public Stanza vaiNord() {
+        if (this.nord != null) {
             return this.nord;
-        }
-        else{
+        } else {
             return null;
         }
     }
-    
-    public Stanza vaiSud(){
-        if(this.sud != null){
+
+    public Stanza vaiSud() {
+        if (this.sud != null) {
             return this.sud;
-        }
-        else{
+        } else {
             return null;
         }
     }
-    
-    public Stanza vaiEst(){
-        if(this.est != null){
+
+    public Stanza vaiEst() {
+        if (this.est != null) {
             return this.est;
-        }
-        else{
+        } else {
             return null;
         }
     }
-    
-    public Stanza vaiOvest(){
-        if(this.ovest != null){
+
+    public Stanza vaiOvest() {
+        if (this.ovest != null) {
             return this.ovest;
-        }
-        else{
+        } else {
             return null;
         }
     }
-    
-    public void rimuoviOggetto(Oggetto o){
+
+    public void rimuoviOggetto(Oggetto o) {
         this.oggetti.remove(o);
     }
-    public String getMessaggioErroreDirezione(){
+
+    public String getMessaggioErroreDirezione() {
         return MESSAGGIO_ERRORE_DIREZIONE;
     }
 
     public String getDescrizione() {
         return this.descrizione;
     }
-    
-    public String getNome(){
+
+    public String getNome() {
         return this.nome;
+    }
+    
+    public int getNumOsservazioni(){
+        return this.numOsservazioni;
+    }
+    
+    public int getMaxOsservazioni(){
+        return this.maxOsservazioni;
+    }
+    
+    public void incrementaNumOsservazioni(){
+        this.numOsservazioni++;
     }
 }

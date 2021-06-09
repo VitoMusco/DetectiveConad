@@ -3,19 +3,20 @@ package Modelli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Eseguibile {
+public class LogicaGioco {
 
     Mappa mappa = new Mappa();
     GestoreAzioni g = new GestoreAzioni();
     Interfaccia interfaccia = new Interfaccia(g);
     Database db = new Database();
+    Inventario inventario = new Inventario();
 
-    public Eseguibile() {
+    public LogicaGioco() {
         interfaccia.riproduciIntro();
     }
 
     public static void main(String args[]) {
-        Eseguibile e = new Eseguibile();
+        LogicaGioco e = new LogicaGioco();
         e.controllaStato();
     }
 
@@ -41,7 +42,6 @@ public class Eseguibile {
                     break;
                 case "NUOVA_PARTITA":
                     interfaccia.inizializzaSelettorePartita();
-                    //interfaccia.chiediNomePartita();
                     break;
                 case "MENU_INIZIALE":
                     interfaccia.esciDaSelettorePartita();
@@ -63,6 +63,7 @@ public class Eseguibile {
                 case "APRI_EDITOR":
                     interfaccia.mostraEditorTesto();
                     interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
+                    interfaccia.aggiungiTesto(mappa.prelevaTesto());
                     break;
                 case "APRI_TELEFONO":
                     interfaccia.mostraCellulare();
@@ -73,10 +74,28 @@ public class Eseguibile {
                 case "SALTA_VIDEO":
                     interfaccia.saltaIntroduzione();
                     break;
+                case "VAI_SU":
+                    interfaccia.aggiungiTesto(mappa.spostamento("n"));
+                    break;
+                case "VAI_GIU":
+                    interfaccia.aggiungiTesto(mappa.spostamento("s"));
+                    break;
+                case "VAI_DESTRA":
+                    interfaccia.aggiungiTesto(mappa.spostamento("e"));
+                    break;
+                case "VAI_SINISTRA":
+                    interfaccia.aggiungiTesto(mappa.spostamento("o"));
+                    break;
+                case "OSSERVA":
+                    interfaccia.aggiungiTesto(mappa.osservaStanza());
+                    break;
+                case "SCATTA_FOTO":
+                    inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
+                    interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
+                    break;
                 default:
                     break;
             }
         }
-
     }
 }

@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-import Modelli.Eseguibile.GestoreAzioni;
+import Modelli.LogicaGioco.GestoreAzioni;
 import java.awt.Color;
 
 public class Interfaccia extends javax.swing.JFrame {
@@ -59,7 +59,24 @@ public class Interfaccia extends javax.swing.JFrame {
         
         PulsanteSalta.addActionListener(g);
         PulsanteSalta.setActionCommand("SALTA_VIDEO");
+        
+        Su.addActionListener(g);
+        Su.setActionCommand("VAI_SU");
+        
+        Giu.addActionListener(g);
+        Giu.setActionCommand("VAI_GIU");
+        
+        Destra.addActionListener(g);
+        Destra.setActionCommand("VAI_DESTRA");
+        
+        Sinistra.addActionListener(g);
+        Sinistra.setActionCommand("VAI_SINISTRA");
 
+        Osserva.addActionListener(g);
+        Osserva.setActionCommand("OSSERVA");
+        
+        Fotocamera.addActionListener(g);
+        Fotocamera.setActionCommand("SCATTA_FOTO");
     }
     
     @SuppressWarnings("unchecked")
@@ -79,9 +96,10 @@ public class Interfaccia extends javax.swing.JFrame {
         Usa = new javax.swing.JButton();
         Fotocamera = new javax.swing.JButton();
         Incastra = new javax.swing.JButton();
-        Menu = new javax.swing.JButton();
         Salva = new javax.swing.JButton();
         Opzioni = new javax.swing.JButton();
+        Menu = new javax.swing.JButton();
+        Apri = new javax.swing.JButton();
         Esci = new javax.swing.JButton();
         Prendi = new javax.swing.JButton();
         PulsanteEsci = new javax.swing.JButton();
@@ -207,12 +225,6 @@ public class Interfaccia extends javax.swing.JFrame {
         Incastra.setMargin(null);
         jPanel1.add(Incastra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, 60, 60));
 
-        Menu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
-        Menu.setBorder(null);
-        Menu.setContentAreaFilled(false);
-        Menu.setMargin(null);
-        jPanel1.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 430, 60, 60));
-
         Salva.setIcon(new ImageIcon("./risorse/immagini/telefono/salva.png"));
         Salva.setBorder(null);
         Salva.setContentAreaFilled(false);
@@ -225,6 +237,18 @@ public class Interfaccia extends javax.swing.JFrame {
         Opzioni.setContentAreaFilled(false);
         Opzioni.setMargin(null);
         jPanel1.add(Opzioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, 60, 60));
+
+        Menu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
+        Menu.setBorder(null);
+        Menu.setContentAreaFilled(false);
+        Menu.setMargin(null);
+        jPanel1.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 430, 60, 60));
+
+        Apri.setIcon(new ImageIcon("./risorse/immagini/telefono/apri.png"));
+        Apri.setBorder(null);
+        Apri.setContentAreaFilled(false);
+        Apri.setMargin(null);
+        jPanel1.add(Apri, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 430, 60, 60));
 
         Esci.setIcon(new ImageIcon("./risorse/immagini/telefono/esci.png"));
         Esci.setBorder(null);
@@ -428,6 +452,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }//GEN-LAST:event_SinistraActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Apri;
     private javax.swing.JButton ApriEditor;
     private javax.swing.JButton ApriMovimento;
     private javax.swing.JButton ApriTelefono;
@@ -729,6 +754,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Salva.setEnabled(false);
         Usa.setVisible(false);
         Usa.setEnabled(false);
+        Apri.setEnabled(false);
+        Apri.setVisible(false);
         Su.setVisible(false);
         Giu.setVisible(false);
         Destra.setVisible(false);
@@ -756,6 +783,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Incastra.setVisible(true);
         Incastra.setEnabled(true);
         Inventario.setVisible(true);
+        Apri.setVisible(true);
         Inventario.setEnabled(true);
         Menu.setVisible(true);
         Menu.setEnabled(true);
@@ -769,6 +797,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Salva.setEnabled(true);
         Usa.setVisible(true);
         Usa.setEnabled(true);
+        Apri.setEnabled(true);
     }
 
     public void disattivaCellulare() {
