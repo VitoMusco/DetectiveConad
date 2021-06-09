@@ -9,7 +9,7 @@ public class Database {
 
     public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto INT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita INT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
     public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita INT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
-    
+
     public Database() {
     }
 
@@ -30,22 +30,22 @@ public class Database {
         }
     }
 
-    public void inserisciPartita(String nome_partita) {    
+    public void inserisciPartita(String nome_partita) {
         int id_partita = 0;
         Connection connessione = connessioneDb();
         if (connessione != null) {
             try {
-                Statement stm = connessione.createStatement() ;
+                Statement stm = connessione.createStatement();
                 ResultSet risultato = stm.executeQuery("SELECT id_partita FROM partita WHERE nome_salvataggio = '" + nome_partita + "'");
                 while (risultato.next()) {
                     System.out.println("Nome partita utilizzato");
                     return;
                 }
                 stm.close();
-                stm = connessione.createStatement() ;
-                stm.executeUpdate("INSERT INTO partita (nome_salvataggio, stanza_corrente) VALUES('" + nome_partita+ "', 'esterno')");
+                stm = connessione.createStatement();
+                stm.executeUpdate("INSERT INTO partita (nome_salvataggio, stanza_corrente) VALUES('" + nome_partita + "', 'esterno')");
                 stm.close();
-                stm = connessione.createStatement() ;
+                stm = connessione.createStatement();
                 risultato = stm.executeQuery("SELECT id_partita FROM partita WHERE nome_salvataggio = '" + nome_partita + "'");
                 while (risultato.next()) {
                     id_partita = risultato.getInt(1);
@@ -67,7 +67,7 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT * FROM oggetti WHERE id_partita = '"+id_partita+"'");
+                risultato = stm.executeQuery("SELECT * FROM oggetti WHERE id_partita = '" + id_partita + "'");
                 while (risultato.next()) {
                     System.out.println("Oggetti gia inseriti");
                     return;
@@ -126,5 +126,27 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    
+    public String nomePartita(int id_partita) {
+        String partita="";
+        Statement stm;
+        Connection connessione = connessioneDb();
+        if (connessione != null) {
+            try {
+                stm = connessione.createStatement();
+                ResultSet risultato;
+                risultato = stm.executeQuery("SELECT nome_salvataggio FROM PARTITA WHERE id_partita = '" + id_partita + "'");
+                while (risultato.next()) {
+                    partita = risultato.getString(1);
+                }
+                risultato.close();
+                stm.close();
+                connessione.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return partita;
     }
 }
