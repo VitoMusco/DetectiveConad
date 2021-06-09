@@ -136,7 +136,7 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT nome_salvataggio FROM PARTITA WHERE id_partita = '" + id_partita + "'");
+                risultato = stm.executeQuery("SELECT nome_salvataggio FROM partita WHERE id_partita = '" + id_partita + "'");
                 while (risultato.next()) {
                     partita = risultato.getString(1);
                 }
