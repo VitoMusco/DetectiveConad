@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 public class Database {
 
-    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto INT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita INT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
-    public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita INT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
-    public static final String CREA_AZIONI = "CREATE TABLE IF NOT EXISTS azioni (id_partita INT, azione VARCHAR(25), PRIMARY KEY(id_partita, azione));";
+    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto SMALLINT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita SMALLINT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
+    public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita SMALLINT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
+    public static final String CREA_AZIONI = "CREATE TABLE IF NOT EXISTS azioni (id_partita SMALLINT, azione VARCHAR(25), PRIMARY KEY(id_partita, azione));";
 
     public Database() {
     }
@@ -223,7 +223,7 @@ public class Database {
                 ListIterator<Azione> azione = azioni.getAzioni().listIterator();
                 while (azione.hasNext()) {
                     stm = connessione.createStatement();
-                    stm.executeUpdate("INSERT INTO azioni VALUES ('"+id_partita+"', '"+azione.next().name()+"')");
+                    stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azione.next().name() + "')");
                     stm.close();
                 }
 

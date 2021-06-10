@@ -14,6 +14,7 @@ public class LogicaGioco {
 
     public LogicaGioco() {
         interfaccia.riproduciIntro();
+        db.inizializzaDatabase();
         interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
     }
 
@@ -25,6 +26,7 @@ public class LogicaGioco {
     }
 
     class GestoreAzioni implements ActionListener {
+
         String comando;
 
         public GestoreAzioni() {
@@ -51,7 +53,6 @@ public class LogicaGioco {
                     break;
                 case "INIZIA_PARTITA":
                     if (interfaccia.controllaNomePartita() == true) {
-                        db.inizializzaDatabase();
                         db.inserisciPartita(interfaccia.getNomePartita());
                         mappa = new Mappa();
                         interfaccia.creaNuovaPartita();
@@ -101,10 +102,9 @@ public class LogicaGioco {
                     interfaccia.saltaIntroduzione();
                     break;
                 case "VAI_SU":
-                    if(mappa.getCorrente().getNome().equals("Salumeria")){
+                    if (mappa.getCorrente().getNome().equals("Salumeria")) {
                         interfaccia.aggiungiTesto("Non posso entrarci, la porta e' chiusa a chiave, e nessuno sembra avercela.");
-                    }
-                    else{
+                    } else {
                         interfaccia.aggiungiTesto(mappa.spostamento("n"));
                     }
                     break;
@@ -112,13 +112,11 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.spostamento("s"));
                     break;
                 case "VAI_DESTRA":
-                    if(azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")){
+                    if (azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")) {
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
-                    }
-                    else if(!azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")){
+                    } else if (!azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")) {
                         interfaccia.aggiungiTesto("Non posso entrarci, la grata e' chiusa, dovrei usare qualcosa per aprirla...");
-                    }
-                    else{
+                    } else {
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
                     }
                     break;
@@ -129,15 +127,13 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.osservaStanza());
                     break;
                 case "SCATTA_FOTO":
-                    if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
+                    if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
                         inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
                         interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
                         azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
-                    }
-                    else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
+                    } else if (mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
                         interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
-                    }
-                    else{
+                    } else {
                         interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
                     }
                     break;
