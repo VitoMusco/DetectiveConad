@@ -24,6 +24,10 @@ public class LogicaGioco {
             interfaccia.inizializzaInterfacciaUtente();
         }
     }
+    
+    public void resettaStruttureDati(){
+        //Cancella le cose fatte
+    }
 
     class GestoreAzioni implements ActionListener {
 
@@ -93,12 +97,15 @@ public class LogicaGioco {
                     mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
                     //Carica oggetti sulla mappa
                     break;
-                case "SALVA_SI":
+                case "SALVA_SI_ED_ESCI":
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
                     System.exit(0);
                     break;
-                case "SALVA_NO":
+                case "SALVA_NO_ED_ESCI":
                     System.exit(0);
+                    break;
+                case "SALVA_SI":
+                    db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
                     break;
                 case "ANNULLA_SALVA_ED_ESCI":
                     interfaccia.disattivaInterfacciaSalvataggio();
@@ -153,12 +160,27 @@ public class LogicaGioco {
                         interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
                     }
                     break;
+                case "SALVA":
+                    interfaccia.impostaSalvataggioSenzaUscita();
+                    interfaccia.mostraInterfacciaSalvataggio();
+                    break;
                 case "SALVA_E_VAI_AL_MENU":
-                    //fai uscire l'interfaccia che chiede se vuoi salvare
-                    interfaccia.tornaAMenuIniziale();
+                    interfaccia.impostaSalvataggioConMenu();
+                    interfaccia.mostraInterfacciaSalvataggio();
                     break;
                 case "SALVA_ED_ESCI":
+                    interfaccia.impostaSalvataggioConUscita();
                     interfaccia.mostraInterfacciaSalvataggio();
+                    break;
+                case "SALVA_SI_E_VAI_AL_MENU":
+                    db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
+                    interfaccia.disattivaInterfacciaSalvataggio();
+                    interfaccia.tornaAMenuIniziale();
+                    break;
+                case "SALVA_NO_E_VAI_AL_MENU":
+                    interfaccia.disattivaInterfacciaSalvataggio();
+                    interfaccia.tornaAMenuIniziale();
+                    resettaStruttureDati();
                     break;
                 default:
                     break;

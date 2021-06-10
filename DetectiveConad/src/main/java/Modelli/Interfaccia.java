@@ -105,21 +105,21 @@ public class Interfaccia extends javax.swing.JFrame {
 
         Fotocamera.addActionListener(g);
         Fotocamera.setActionCommand("SCATTA_FOTO");
-        
+
         Esci.addActionListener(g);
         Esci.setActionCommand("SALVA_ED_ESCI");
-        
+
+        SalvaSi.addActionListener(g);
+        SalvaNo.addActionListener(g);
+
         AnnullaSalvataggio.addActionListener(g);
         AnnullaSalvataggio.setActionCommand("ANNULLA_SALVA_ED_ESCI");
-        
-        SalvaSi.addActionListener(g);
-        SalvaSi.setActionCommand("SALVA_SI");
-        
-        SalvaNo.addActionListener(g);
-        SalvaNo.setActionCommand("SALVA_NO");
-        
+
         SalvaEVaiAMenu.addActionListener(g);
         SalvaEVaiAMenu.setActionCommand("SALVA_E_VAI_AL_MENU");
+        
+        Salva.addActionListener(g);
+        Salva.setActionCommand("SALVA");
     }
 
     @SuppressWarnings("unchecked")
@@ -127,9 +127,9 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        AnnullaSalvataggio = new javax.swing.JButton();
         SalvaSi = new javax.swing.JButton();
         SalvaNo = new javax.swing.JButton();
-        AnnullaSalvataggio = new javax.swing.JButton();
         SalvaLabel = new javax.swing.JLabel();
         Sinistra = new javax.swing.JButton();
         Destra = new javax.swing.JButton();
@@ -186,30 +186,6 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SalvaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
-        SalvaSi.setBorder(null);
-        SalvaSi.setContentAreaFilled(false);
-        SalvaSi.setMargin(null);
-        SalvaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
-        SalvaSi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvaSiActionPerformed(evt);
-            }
-        });
-        jPanel1.add(SalvaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 130, 70));
-
-        SalvaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
-        SalvaNo.setBorder(null);
-        SalvaNo.setContentAreaFilled(false);
-        SalvaNo.setMargin(null);
-        SalvaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
-        SalvaNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvaNoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(SalvaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 320, 130, 70));
-
         AnnullaSalvataggio.setIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio.png"));
         AnnullaSalvataggio.setBorder(null);
         AnnullaSalvataggio.setContentAreaFilled(false);
@@ -220,7 +196,33 @@ public class Interfaccia extends javax.swing.JFrame {
                 AnnullaSalvataggioActionPerformed(evt);
             }
         });
-        jPanel1.add(AnnullaSalvataggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 230, 70));
+        jPanel1.add(AnnullaSalvataggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 257, 44, 44));
+
+        SalvaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
+        SalvaSi.setBorder(null);
+        SalvaSi.setContentAreaFilled(false);
+        SalvaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalvaSi.setMargin(null);
+        SalvaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
+        SalvaSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvaSiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SalvaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 130, 70));
+
+        SalvaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
+        SalvaNo.setBorder(null);
+        SalvaNo.setContentAreaFilled(false);
+        SalvaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalvaNo.setMargin(null);
+        SalvaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
+        SalvaNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvaNoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SalvaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 130, 70));
 
         SalvaLabel.setIcon(new ImageIcon("./risorse/immagini/menu/salva.png"));
         SalvaLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
@@ -1079,8 +1081,8 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteSalta.setEnabled(true);
         PulsanteSalta.setVisible(true);
     }
-    
-    public void disattivaInterfacciaSalvataggio(){
+
+    public void disattivaInterfacciaSalvataggio() {
         SalvaLabel.setVisible(false);
         AnnullaSalvataggio.setEnabled(false);
         SalvaSi.setEnabled(false);
@@ -1089,8 +1091,8 @@ public class Interfaccia extends javax.swing.JFrame {
         SalvaSi.setVisible(false);
         SalvaNo.setVisible(false);
     }
-    
-    public void mostraInterfacciaSalvataggio(){
+
+    public void mostraInterfacciaSalvataggio() {
         SalvaLabel.setVisible(true);
         AnnullaSalvataggio.setEnabled(true);
         SalvaSi.setEnabled(true);
@@ -1098,6 +1100,24 @@ public class Interfaccia extends javax.swing.JFrame {
         AnnullaSalvataggio.setVisible(true);
         SalvaSi.setVisible(true);
         SalvaNo.setVisible(true);
+    }
+
+    public void impostaSalvataggioSenzaUscita() {
+        SalvaSi.setActionCommand("SALVA_SI");
+
+        SalvaNo.setActionCommand("ANNULLA_SALVA_ED_ESCI");
+    }
+
+    public void impostaSalvataggioConUscita() {
+        SalvaSi.setActionCommand("SALVA_SI_ED_ESCI");
+
+        SalvaNo.setActionCommand("SALVA_NO_ED_ESCI");
+    }
+
+    public void impostaSalvataggioConMenu() {
+        SalvaSi.setActionCommand("SALVA_SI_E_VAI_AL_MENU");
+
+        SalvaNo.setActionCommand("SALVA_NO_E_VAI_AL_MENU");
     }
 
     public void saltaIntroduzione() {
@@ -1135,8 +1155,8 @@ public class Interfaccia extends javax.swing.JFrame {
     public void aggiungiTesto(String messaggio) {
         ScritturaTesto.append(messaggio + "\n");
     }
-    
-    public void tornaAMenuIniziale(){
+
+    public void tornaAMenuIniziale() {
         disattivaCellulare();
         disattivaInterfacciaUtente();
         inizializzaMenu();
