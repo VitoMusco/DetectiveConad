@@ -34,33 +34,30 @@ public class Database {
         }
     }
 
-    public void inserisciPartita(String nome_partita) {
+    public int inserisciPartita(String nome_partita) {
         int id_partita = 0;
         Connection connessione = connessioneDb();
         if (connessione != null) {
             try {
                 Statement stm = connessione.createStatement();
-                ResultSet risultato = stm.executeQuery("SELECT id_partita FROM partita WHERE nome_salvataggio = '" + nome_partita + "'");
-                while (risultato.next()) {
-                    System.out.println("Nome partita utilizzato");
-                    return;
-                }
                 stm.close();
                 stm = connessione.createStatement();
                 stm.executeUpdate("INSERT INTO partita (nome_salvataggio, stanza_corrente) VALUES('" + nome_partita + "', 'esterno')");
                 stm.close();
                 stm = connessione.createStatement();
-                risultato = stm.executeQuery("SELECT id_partita FROM partita WHERE nome_salvataggio = '" + nome_partita + "'");
+                ResultSet risultato = stm.executeQuery("SELECT id_partita FROM partita WHERE nome_salvataggio = '" + nome_partita + "'");
                 while (risultato.next()) {
                     id_partita = risultato.getInt(1);
                 }
                 risultato.close();
                 stm.close();
                 inserisciOggetti(id_partita);
+                return id_partita;
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return 0;
     }
 
     public void inserisciOggetti(int id_partita) {
@@ -212,21 +209,20 @@ public class Database {
         if (connessione != null) {
             try {
                 stm = connessione.createStatement();
-                stm.executeUpdate("UPADTES partita SET stanza_corrente = '" + corrente.getNome() + "' WHERE id_partita = '" + id_partita + "'");
+                stm.executeUpdate("UPDATE partita SET stanza_corrente = '" + corrente.getNome() + "' WHERE id_partita = '" + id_partita + "';");
                 stm.close();
                 ListIterator<Oggetto> lit = inventario.getInventario().listIterator();
                 while (lit.hasNext()) {
                     stm = connessione.createStatement();
-                    stm.executeUpdate("UPADTES oggetti SET stanza = 'inventario' WHERE id_partita = '" + id_partita + "' AND nome='" + lit.next().getNome() + "'");
+                    stm.executeUpdate("UPDATE oggetti SET stanza = 'inventario' WHERE id_partita = '" + id_partita + "' AND nome='" + lit.next().getNome() + "';");
                     stm.close();
                 }
                 ListIterator<Azione> azione = azioni.getAzioni().listIterator();
                 while (azione.hasNext()) {
                     stm = connessione.createStatement();
-                    stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azione.next().name() + "')");
+                    stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azione.next().name() + "');");
                     stm.close();
                 }
-
                 connessione.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);

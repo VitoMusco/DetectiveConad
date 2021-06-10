@@ -5,17 +5,17 @@ import java.awt.event.ActionListener;
 
 public class LogicaGioco {
 
-    Mappa mappa = new Mappa();
-    GestoreAzioni g = new GestoreAzioni();
-    Interfaccia interfaccia = new Interfaccia(g);
-    Database db = new Database();
-    Inventario inventario = new Inventario();
-    AzioniEseguite azioniEseguite = new AzioniEseguite();
+    private Mappa mappa = new Mappa();
+    private GestoreAzioni g = new GestoreAzioni();
+    private Interfaccia interfaccia = new Interfaccia(g);
+    private Database db = new Database();
+    private Inventario inventario = new Inventario();
+    private AzioniEseguite azioniEseguite = new AzioniEseguite();
+    private int idPartita;
 
     public LogicaGioco() {
         interfaccia.riproduciIntro();
         db.inizializzaDatabase();
-        interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
     }
 
     public void controllaStato() {
@@ -40,7 +40,8 @@ public class LogicaGioco {
                     System.exit(0);
                     break;
                 case "NUOVA_PARTITA":
-                    interfaccia.inizializzaSelettorePartita();
+                    interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
+                    interfaccia.inizializzaSelettorePartita();                   
                     break;
                 case "MENU_INIZIALE":
                     interfaccia.esciDaSelettorePartita();
@@ -53,32 +54,35 @@ public class LogicaGioco {
                     break;
                 case "INIZIA_PARTITA":
                     if (interfaccia.controllaNomePartita() == true) {
-                        db.inserisciPartita(interfaccia.getNomePartita());
-                        mappa = new Mappa();
-                        interfaccia.creaNuovaPartita();
+                        idPartita = db.inserisciPartita(interfaccia.getNomePartita());
+                        if(idPartita != 0){
+                            mappa = new Mappa();
+                            interfaccia.creaNuovaPartita();
+                        }
                     }
                     break;
                 case "CONTINUA_PARTITA_1":
                     interfaccia.caricaPartita();
+                    idPartita = 1;
                     //Carica partita 1
                     break;
                 case "CONTINUA_PARTITA_2":
                     interfaccia.caricaPartita();
+                    idPartita = 2;
                     //Carica partita 2
                     break;
                 case "CONTINUA_PARTITA_3":
                     interfaccia.caricaPartita();
+                    idPartita = 3;
                     //Carica partita 3
                     break;
                 case "CONTINUA_PARTITA_4":
                     interfaccia.caricaPartita();
+                    idPartita = 4;
                     //Carica partita 4
                     break;
-                case "SALVA_ED_ESCI":
-                    interfaccia.mostraInterfacciaSalvataggio();
-                    break;
                 case "SALVA_SI":
-                    //salva partita
+                    db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
                     System.exit(0);
                     break;
                 case "SALVA_NO":
@@ -136,6 +140,13 @@ public class LogicaGioco {
                     } else {
                         interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
                     }
+                    break;
+                case "SALVA_E_VAI_AL_MENU":
+                    //fai uscire l'interfaccia che chiede se vuoi salvare
+                    interfaccia.tornaAMenuIniziale();
+                    break;
+                case "SALVA_ED_ESCI":
+                    interfaccia.mostraInterfacciaSalvataggio();
                     break;
                 default:
                     break;

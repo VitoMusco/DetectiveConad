@@ -423,7 +423,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="Menu">
+        <Component class="javax.swing.JButton" name="SalvaEVaiAMenu">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new ImageIcon(&quot;./risorse/immagini/telefono/menu.png&quot;)" type="code"/>

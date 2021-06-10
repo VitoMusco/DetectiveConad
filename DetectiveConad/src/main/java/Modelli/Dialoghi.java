@@ -12,10 +12,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Dialoghi {
-    Map<String, String> testi; 
+    private Map<String, String> testi; 
+    
     public Dialoghi() {
         this.testi = new HashMap<>(); 
     }
+    
+    public Map<String, String> getTesti(){
+        return this.testi;
+    }
+    
     public void prelevaTesti() {
         Scanner scanner = null;
         File file = new File("./risorse/dialoghi/dialoghi.txt");

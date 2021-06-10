@@ -117,6 +117,9 @@ public class Interfaccia extends javax.swing.JFrame {
         
         SalvaNo.addActionListener(g);
         SalvaNo.setActionCommand("SALVA_NO");
+        
+        SalvaEVaiAMenu.addActionListener(g);
+        SalvaEVaiAMenu.setActionCommand("SALVA_E_VAI_AL_MENU");
     }
 
     @SuppressWarnings("unchecked")
@@ -142,7 +145,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Incastra = new javax.swing.JButton();
         Salva = new javax.swing.JButton();
         Opzioni = new javax.swing.JButton();
-        Menu = new javax.swing.JButton();
+        SalvaEVaiAMenu = new javax.swing.JButton();
         Apri = new javax.swing.JButton();
         Esci = new javax.swing.JButton();
         Prendi = new javax.swing.JButton();
@@ -326,11 +329,11 @@ public class Interfaccia extends javax.swing.JFrame {
         Opzioni.setMargin(null);
         jPanel1.add(Opzioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, 60, 60));
 
-        Menu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
-        Menu.setBorder(null);
-        Menu.setContentAreaFilled(false);
-        Menu.setMargin(null);
-        jPanel1.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 430, 60, 60));
+        SalvaEVaiAMenu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
+        SalvaEVaiAMenu.setBorder(null);
+        SalvaEVaiAMenu.setContentAreaFilled(false);
+        SalvaEVaiAMenu.setMargin(null);
+        jPanel1.add(SalvaEVaiAMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 430, 60, 60));
 
         Apri.setIcon(new ImageIcon("./risorse/immagini/telefono/apri.png"));
         Apri.setBorder(null);
@@ -623,7 +626,6 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton IniziaPartita;
     private javax.swing.JButton Inventario;
     private javax.swing.JLabel MediaLabel;
-    private javax.swing.JButton Menu;
     private javax.swing.JTextField NomePartita;
     private javax.swing.JButton NuovaPartita1;
     private javax.swing.JButton NuovaPartita2;
@@ -637,6 +639,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteIndaga;
     private javax.swing.JButton PulsanteSalta;
     private javax.swing.JButton Salva;
+    private javax.swing.JButton SalvaEVaiAMenu;
     private javax.swing.JLabel SalvaLabel;
     private javax.swing.JButton SalvaNo;
     private javax.swing.JButton SalvaSi;
@@ -944,8 +947,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Incastra.setEnabled(false);
         Inventario.setVisible(false);
         Inventario.setEnabled(false);
-        Menu.setVisible(false);
-        Menu.setEnabled(false);
+        SalvaEVaiAMenu.setVisible(false);
+        SalvaEVaiAMenu.setEnabled(false);
         Opzioni.setVisible(false);
         Opzioni.setEnabled(false);
         Osserva.setVisible(false);
@@ -987,8 +990,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Inventario.setVisible(true);
         Apri.setVisible(true);
         Inventario.setEnabled(true);
-        Menu.setVisible(true);
-        Menu.setEnabled(true);
+        SalvaEVaiAMenu.setVisible(true);
+        SalvaEVaiAMenu.setEnabled(true);
         Opzioni.setVisible(true);
         Opzioni.setEnabled(true);
         Osserva.setVisible(true);
@@ -1131,5 +1134,11 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void aggiungiTesto(String messaggio) {
         ScritturaTesto.append(messaggio + "\n");
+    }
+    
+    public void tornaAMenuIniziale(){
+        disattivaCellulare();
+        disattivaInterfacciaUtente();
+        inizializzaMenu();
     }
 }

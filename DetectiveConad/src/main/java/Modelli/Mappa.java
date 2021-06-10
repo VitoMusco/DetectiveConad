@@ -1,5 +1,7 @@
 package Modelli;
 
+import java.util.List;
+
 public class Mappa {
 
     private Dialoghi dialoghi;
@@ -78,7 +80,17 @@ public class Mappa {
         this.studio.assegnaEst(this.condotto);
         this.condotto.assegnaEst(this.retro);
         this.retro.assegnaOvest(this.studio);
+        
+        caricaOggetti();
 
+        this.corrente = this.esterno;
+
+        this.dialoghi = new Dialoghi();
+        this.dialoghi.prelevaTesti();
+
+    }
+
+    public void caricaOggetti(){
         Oggetto pila = new Oggetto("una", "pila");
         Oggetto torcia = new Oggetto("una", "torcia");
         Oggetto guanti = new Oggetto("dei", "guanti");
@@ -86,7 +98,7 @@ public class Mappa {
         Oggetto mappa = new Oggetto("una", "mappa");
         Oggetto monetina = new Oggetto("una", "monetina");
         Oggetto impronta = new OggettoNonRaccoglibile("una", "impronta");
-
+        
         this.ingresso.inserisciOggetto(mappa);
         this.studio.inserisciOggetto(monetina);
         this.camioncino.inserisciOggetto(pila);
@@ -96,14 +108,12 @@ public class Mappa {
         this.studio.inserisciOggetto(impronta);
         this.salumeria.inserisciOggetto(impronta);
         this.retro.inserisciOggetto(impronta);
-
-        this.corrente = this.esterno;
-
-        this.dialoghi = new Dialoghi();
-        this.dialoghi.prelevaTesti();
-
     }
-
+    
+    public void caricaOggetti(List<Oggetto> o){
+        
+    }
+    
     public Stanza getCorrente() {
         return this.corrente;
     }
@@ -153,11 +163,11 @@ public class Mappa {
     }
 
     public String prelevaTesto() {
-        return this.dialoghi.testi.get(this.corrente.getNome());
+        return this.dialoghi.getTesti().get(this.corrente.getNome());
     }
 
     public String prelevaTestoDaIntroduzione() {
-        return this.dialoghi.testi.get("Introduzione");
+        return this.dialoghi.getTesti().get("Introduzione");
     }
 
     public String osservaStanza() {
@@ -165,17 +175,17 @@ public class Mappa {
         if (this.corrente.getMaxOsservazioni() > 1) {
             if (this.corrente.getNumOsservazioni() >= this.corrente.getMaxOsservazioni()) {
                 for (int i = 1; i <= this.corrente.getMaxOsservazioni(); i++) {
-                    testo = testo + this.dialoghi.testi.get(this.corrente.getNome() + "Oss" + i);
+                    testo = testo + this.dialoghi.getTesti().get(this.corrente.getNome() + "Oss" + i);
                     if (i < this.corrente.getMaxOsservazioni()) {
                         testo = testo + "\n";
                     }
                 }
             } else {
                 this.corrente.incrementaNumOsservazioni();
-                testo = testo + this.dialoghi.testi.get(this.corrente.getNome() + "Oss" + this.corrente.getNumOsservazioni());
+                testo = testo + this.dialoghi.getTesti().get(this.corrente.getNome() + "Oss" + this.corrente.getNumOsservazioni());
             }
         } else {
-            testo = testo + this.dialoghi.testi.get(this.corrente.getNome() + "Oss");
+            testo = testo + this.dialoghi.getTesti().get(this.corrente.getNome() + "Oss");
         }
         if(testo.equals("null")){
             testo = "Non c'e' niente di particolare qui...";
@@ -188,7 +198,7 @@ public class Mappa {
     }
 
     public String getDialogoPresaOggetto(String nome) {
-        return this.dialoghi.testi.get("Prendi" + nome);
+        return this.dialoghi.getTesti().get("Prendi" + nome);
     }
 
 }

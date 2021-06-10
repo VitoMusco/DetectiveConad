@@ -15,6 +15,19 @@ public class AzioniEseguite {
     public void inserisciAzione(Azione a) {
         azioni.add(a);
     }
+    
+    public void inserisciAzione(String a){
+        switch (a){
+            case "FOTO_SCATTATA":
+                inserisciAzione(Azione.FOTO_SCATTATA);
+                break;
+            case "GRATA_APERTA":
+                inserisciAzione(Azione.GRATA_APERTA);
+                break;
+            default:
+                break;
+        }
+    }
 
     public List<Azione> getAzioni() {
         return azioni;
