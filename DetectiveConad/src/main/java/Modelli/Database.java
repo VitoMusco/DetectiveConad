@@ -127,9 +127,9 @@ public class Database {
             return null;
         }
     }
-    
+
     public String nomePartita(int id_partita) {
-        String partita="";
+        String partita = "";
         Statement stm;
         Connection connessione = connessioneDb();
         if (connessione != null) {
@@ -149,22 +149,22 @@ public class Database {
         }
         return partita;
     }
-    
-    public void controlloNomeSalvataggio(){
-        boolean controllo=false;
+
+    public void controlloNomeSalvataggio() {
+        boolean controllo = false;
         String nome_partita;
-        for(int i=1; i<5; i++){
+        for (int i = 1; i < 5; i++) {
             nome_partita = nomePartita(i);
-            if(nome_partita.equals("")){
+            if (nome_partita.equals("")) {
                 controllo = true;
                 break;
             }
         }
-        if(controllo == true){
+        if (controllo == true) {
             System.out.println("C'e' uno slot di salvataggio disponibile"); //esempio
         }
     }
-    
+
     public int[] idPartita() {
         int[] id_partite = new int[4];
         int i = 0;
@@ -176,7 +176,7 @@ public class Database {
                 ResultSet risultato;
                 risultato = stm.executeQuery("SELECT id_partita FROM partita");
                 while (risultato.next()) {
-                    id_partite[i]=risultato.getInt(1);
+                    id_partite[i] = risultato.getInt(1);
                     i++;
                 }
                 risultato.close();
@@ -188,16 +188,15 @@ public class Database {
         }
         return id_partite;
     }
-    
-    public boolean[] controlloIdPartite(){
+
+    public boolean[] controlloIdPartite() {
         boolean[] presenza_Id = new boolean[4];
         int[] id_partite = idPartita();
-        for(int i=0; i<4; i++){
-            if(id_partite[i] != 0){
-                presenza_Id[i]=true;
-            }
-            else{
-                presenza_Id[i]=false;
+        for (int i = 0; i < 4; i++) {
+            if (id_partite[i] != 0) {
+                presenza_Id[i] = true;
+            } else {
+                presenza_Id[i] = false;
             }
         }
         return presenza_Id;
@@ -211,12 +210,12 @@ public class Database {
                 stm = connessione.createStatement();
                 stm.executeUpdate("UPADTES partita SET stanza_corrente = '" + corrente.getNome() + "' WHERE id_partita = '" + id_partita + "'");
                 stm.close();
-                /*ListIterator<String> lit = inventario.listIterator;
-                while (lit.hasNext()) {                    
-                }*/
-                stm = connessione.createStatement();
-                stm.executeUpdate("UPADTES oggetti SET ");
-                stm.close();
+                ListIterator<Oggetto> lit = inventario.getInventario().listIterator();
+                while (lit.hasNext()) {
+                    stm = connessione.createStatement();
+                    stm.executeUpdate("UPADTES oggetti SET stanza = 'inventario' WHERE id_partita = '" + id_partita + "' AND nome='"+lit.next().getNome()+"'");
+                    stm.close();
+                }
                 connessione.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,10 +4,10 @@ import java.util.*;
 
 
 public class Inventario {
-    private List<Oggetto> inventario;
+    private List<Oggetto> inventario = new ArrayList<>();
     
     public Inventario(){
-        this.inventario = new ArrayList<>();
+       // this.inventario = new ArrayList<>();
     }
     
     public void inserisciOggetto(Oggetto o){
@@ -23,4 +23,9 @@ public class Inventario {
             o.osservaOggetto();
         }
     }
+
+    public List<Oggetto> getInventario() {
+        return inventario;
+    }
+    
 }
