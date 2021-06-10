@@ -70,7 +70,7 @@ public class Database {
                 ResultSet risultato;
                 risultato = stm.executeQuery("SELECT * FROM oggetti WHERE id_partita = '" + id_partita + "'");
                 while (risultato.next()) {
-                    System.out.println("Oggetti gia inseriti");
+                    //System.out.println("Oggetti gia inseriti");
                     return;
                 }
                 risultato.close();
@@ -111,7 +111,7 @@ public class Database {
                 stm.close();
                 connessione.close();
             } catch (SQLException ex) {
-                System.err.println("Errore");
+                System.err.println("Errore nell'inserimento degli oggetti nel database");
             }
         }
     }
@@ -151,7 +151,7 @@ public class Database {
         return partita;
     }
 
-    public void controlloNomeSalvataggio() {
+    /*public void controlloNomeSalvataggio() {
         boolean controllo = false;
         String nome_partita;
         for (int i = 1; i < 5; i++) {
@@ -164,7 +164,7 @@ public class Database {
         if (controllo == true) {
             System.out.println("C'e' uno slot di salvataggio disponibile"); //esempio
         }
-    }
+    }*/
 
     public int[] idPartita() {
         int[] id_partite = new int[4];
@@ -206,6 +206,7 @@ public class Database {
     public void salvaPartita(Stanza corrente, Inventario inventario, int id_partita, AzioniEseguite azioni) {
         Statement stm;
         Connection connessione = connessioneDb();
+        AzioniEseguite azioniGiaPresenti = caricaAzioniEseguite(id_partita);
         if (connessione != null) {
             try {
                 stm = connessione.createStatement();
@@ -218,9 +219,21 @@ public class Database {
                     stm.close();
                 }
                 ListIterator<Azione> azione = azioni.getAzioni().listIterator();
+                ListIterator<Azione> azioneGiaPresente = azioniGiaPresenti.getAzioni().listIterator();
                 while (azione.hasNext()) {
+                    Azione azioneDaCaricare = azione.next();
+                    while (azioneGiaPresente.hasNext()){
+                        if(azioneGiaPresente.next().name().equals(azioneDaCaricare.name())){
+                            if(azione.hasNext()){
+                                azioneDaCaricare = azione.next();
+                            }
+                            else{
+                                return;
+                            }
+                        }
+                    }
                     stm = connessione.createStatement();
-                    stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azione.next().name() + "');");
+                    stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azioneDaCaricare.name() + "');");
                     stm.close();
                 }
                 connessione.close();
