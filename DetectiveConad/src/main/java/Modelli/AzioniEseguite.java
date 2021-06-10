@@ -6,24 +6,24 @@ import java.util.ListIterator;
 
 public class AzioniEseguite {
 
-    private List<String> azioni;
+    private List<Azione> azioni;
 
     public AzioniEseguite() {
         this.azioni = new ArrayList<>();
     }
 
-    public void inserisciAzione(String nome_azione) {
-        azioni.add(nome_azione);
+    public void inserisciAzione(Azione a) {
+        azioni.add(a);
     }
 
-    public List<String> getAzioni() {
+    public List<Azione> getAzioni() {
         return azioni;
     }
 
-    public boolean verificaPresenzaAzione(String nome_azione) {
-        ListIterator<String> lit = this.azioni.listIterator();
+    public boolean verificaPresenzaAzione(Azione a) {
+        ListIterator<Azione> lit = this.azioni.listIterator();
         while (lit.hasNext()) {
-            if (lit.next().equals(nome_azione)) {
+            if (lit.next().equals(a)) {
                 return true;
             }
         }

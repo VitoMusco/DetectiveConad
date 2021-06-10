@@ -112,15 +112,15 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.spostamento("s"));
                     break;
                 case "VAI_DESTRA":
-                    /*if(azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")){
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
                     }
-                    else if(!azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
+                    else if(!azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")){
                         interfaccia.aggiungiTesto("Non posso entrarci, la grata e' chiusa, dovrei usare qualcosa per aprirla...");
                     }
                     else{
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
-                    }*/
+                    }
                     break;
                 case "VAI_SINISTRA":
                     interfaccia.aggiungiTesto(mappa.spostamento("o"));
@@ -129,17 +129,17 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.osservaStanza());
                     break;
                 case "SCATTA_FOTO":
-                   /* if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.isFotoScattata()) {
+                    if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
                         inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
                         interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
-                       // azioniEseguite.fotoScattata();
+                        azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
                     }
-                    else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.isFotoScattata()){
+                    else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
                         interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
                     }
                     else{
                         interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
-                    }*/
+                    }
                     break;
                 default:
                     break;
