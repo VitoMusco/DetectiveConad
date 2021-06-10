@@ -120,6 +120,9 @@ public class Interfaccia extends javax.swing.JFrame {
         
         Salva.addActionListener(g);
         Salva.setActionCommand("SALVA");
+        
+        Apri.addActionListener(g);
+        Apri.setActionCommand("COMANDO_APRI");
     }
 
     @SuppressWarnings("unchecked")

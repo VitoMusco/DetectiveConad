@@ -106,14 +106,17 @@ public class LogicaGioco {
                     break;
                 case "SALVA_SI":
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
+                    interfaccia.disattivaInterfacciaSalvataggio();
                     break;
                 case "ANNULLA_SALVA_ED_ESCI":
                     interfaccia.disattivaInterfacciaSalvataggio();
                     break;
                 case "APRI_EDITOR":
                     interfaccia.mostraEditorTesto();
-                    interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
-                    interfaccia.aggiungiTesto(mappa.prelevaTesto());
+                    if(mappa.getCorrente().getNome().equals("Strada")){
+                        interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
+                    }
+                    interfaccia.aggiungiTesto(mappa.getCorrente().getDescrizione());
                     break;
                 case "APRI_TELEFONO":
                     interfaccia.mostraCellulare();
@@ -181,6 +184,13 @@ public class LogicaGioco {
                     interfaccia.disattivaInterfacciaSalvataggio();
                     interfaccia.tornaAMenuIniziale();
                     resettaStruttureDati();
+                    break;
+                case "COMANDO_APRI":
+                    if(mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("Cacciavite")){
+                        azioniEseguite.inserisciAzione(Azione.GRATA_APERTA);
+                        interfaccia.aggiungiTesto(mappa.getDialogoAperto());
+                    }
+                    interfaccia.aggiungiTesto(mappa.getDialogoApri());
                     break;
                 default:
                     break;

@@ -30,9 +30,9 @@ public class Mappa {
         this.ingresso = new Stanza("Ingresso", "Sono all’ingresso", 2);
         this.camioncino = new Stanza("Camioncino", "Sono all’interno del mio camioncino.", 1);
         this.cassa = new Stanza("Cassa", "Sono alla cassa", 1);
-        this.studio = new Stanza("Studio", "Sono nell'ufficio del direttore", 1);
+        this.studio = new Stanza("Studio", "Sono nell'ufficio del direttore", 2);
         this.retro = new Stanza("Cellafrigo", "Sono nella cella frigorifera", 3);
-        this.salumeria = new Stanza("Salumeria", "Sono in salumeria", 1);
+        this.salumeria = new Stanza("Salumeria", "Sono in salumeria", 2);
         this.corridoio1 = new Stanza("Corridoio1", "Sono a sud della zona detersivi", 1);
         this.corridoio2 = new Stanza("Corridoio2", "Sono a sud della zona frutta", 1);
         this.corridoio3 = new Stanza("Corridoio3", "Sono a sud della zona frigo", 1);
@@ -92,8 +92,13 @@ public class Mappa {
     }
 
     public void caricaOggetti(){
+        Oggetto cacciavite = new Oggetto("un","cacciavite");
+        
+        this.camioncino.inserisciOggetto(cacciavite);
+        /*
         Oggetto pila = new Oggetto("una", "pila");
         Oggetto torcia = new Oggetto("una", "torcia");
+        Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto coltello = new Oggetto("un", "coltello");
         Oggetto mappa = new Oggetto("una", "mappa");
@@ -109,6 +114,7 @@ public class Mappa {
         this.studio.inserisciOggetto(impronta);
         this.salumeria.inserisciOggetto(impronta);
         this.retro.inserisciOggetto(impronta);
+        */
     }
     
     public void caricaOggetti(List<Oggetto> o){
@@ -263,6 +269,24 @@ public class Mappa {
 
     public String getDialogoPresaOggetto(String nome) {
         return this.dialoghi.getTesti().get("Prendi" + nome);
+    }
+    
+    public String getDialogoApri(){
+        String testo;
+        testo = this.dialoghi.getTesti().get(corrente.getNome() + "Apri");
+        if(testo==null){
+            testo = "Non vedo niente da aprire qui...";
+        }
+        return testo;
+    }
+    
+    public String getDialogoAperto(){
+        String testo;
+        testo = this.dialoghi.getTesti().get(corrente.getNome() + "Aperto");
+        if(testo==null){
+            testo = "Non vedo niente da aprire qui...";
+        }
+        return testo;
     }
 
 }

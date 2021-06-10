@@ -28,4 +28,13 @@ public class Inventario {
         return inventario;
     }
 
+    public boolean haOggetto(String nome){
+        ListIterator<Oggetto> lit = inventario.listIterator();
+        while(lit.hasNext()){
+            if(lit.next().getNome().equals(nome)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
