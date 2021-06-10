@@ -1,26 +1,32 @@
 package Modelli;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
 public class AzioniEseguite {
-    private boolean fotoScattata;
-    private boolean grataAperta;
-    
-    public AzioniEseguite(){
-        this.fotoScattata = false;
+
+    private List<String> azioni;
+
+    public AzioniEseguite() {
+        this.azioni = new ArrayList<>();
     }
-    
-    public void fotoScattata(){
-        this.fotoScattata = true;
+
+    public void inserisciAzione(String nome_azione) {
+        azioni.add(nome_azione);
     }
-    
-    public boolean isFotoScattata(){
-        return this.fotoScattata;
+
+    public List<String> getAzioni() {
+        return azioni;
     }
-    
-    public void grataAperta(){
-        this.grataAperta = true;
-    }
-    
-    public boolean isGrataAperta(){
-        return this.grataAperta;
+
+    public boolean verificaPresenzaAzione(String nome_azione) {
+        ListIterator<String> lit = this.azioni.listIterator();
+        while (lit.hasNext()) {
+            if (lit.next().equals(nome_azione)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -112,7 +112,7 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.spostamento("s"));
                     break;
                 case "VAI_DESTRA":
-                    if(azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
+                    /*if(azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
                     }
                     else if(!azioniEseguite.isGrataAperta() && mappa.getCorrente().getNome().equals("Studio")){
@@ -120,7 +120,7 @@ public class LogicaGioco {
                     }
                     else{
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
-                    }
+                    }*/
                     break;
                 case "VAI_SINISTRA":
                     interfaccia.aggiungiTesto(mappa.spostamento("o"));
@@ -129,17 +129,17 @@ public class LogicaGioco {
                     interfaccia.aggiungiTesto(mappa.osservaStanza());
                     break;
                 case "SCATTA_FOTO":
-                    if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.isFotoScattata()) {
+                   /* if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.isFotoScattata()) {
                         inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
                         interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
-                        azioniEseguite.fotoScattata();
+                       // azioniEseguite.fotoScattata();
                     }
                     else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.isFotoScattata()){
                         interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
                     }
                     else{
                         interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
-                    }
+                    }*/
                     break;
                 default:
                     break;

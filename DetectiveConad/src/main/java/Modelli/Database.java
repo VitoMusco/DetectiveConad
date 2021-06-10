@@ -7,8 +7,9 @@ import java.util.logging.Logger;
 
 public class Database {
 
-    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto INT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita INT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
-    public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita INT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
+    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto SHORT INT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita SHORT INT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
+    public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita SHORT INT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
+    public static final String CREA_AZIONI = "CREATE TABLE I FNOT EXISTS azioni (id_partita SHORT INT, azione VARCHAR(25), PRIMARY KEY(id_partita, azione));";
 
     public Database() {
     }
@@ -22,6 +23,9 @@ public class Database {
                 stm.close();
                 stm = connessione.createStatement();
                 stm.executeUpdate(CREA_OGGETTI);
+                stm.close();
+                stm = connessione.createStatement();
+                stm.executeUpdate(CREA_AZIONI);
                 stm.close();
                 connessione.close();
             }
@@ -202,7 +206,7 @@ public class Database {
         return presenza_Id;
     }
 
-    public void salvaPartita(Stanza corrente, Inventario inventario, int id_partita) {
+    public void salvaPartita(Stanza corrente, Inventario inventario, int id_partita, AzioniEseguite azioni) {
         Statement stm;
         Connection connessione = connessioneDb();
         if (connessione != null) {
@@ -213,9 +217,16 @@ public class Database {
                 ListIterator<Oggetto> lit = inventario.getInventario().listIterator();
                 while (lit.hasNext()) {
                     stm = connessione.createStatement();
-                    stm.executeUpdate("UPADTES oggetti SET stanza = 'inventario' WHERE id_partita = '" + id_partita + "' AND nome='"+lit.next().getNome()+"'");
+                    stm.executeUpdate("UPADTES oggetti SET stanza = 'inventario' WHERE id_partita = '" + id_partita + "' AND nome='" + lit.next().getNome() + "'");
                     stm.close();
                 }
+                ListIterator<String> azione = azioni.getAzioni().listIterator();
+                while (azione.hasNext()) {
+                    stm = connessione.createStatement();
+                    stm.executeUpdate("INSERT INTO azioni VALUES ('"+id_partita+"', '"+azione.next()+"')");
+                    stm.close();
+                }
+
                 connessione.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
