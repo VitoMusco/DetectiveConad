@@ -3,7 +3,7 @@ package Modelli;
 import java.util.*;
 
 public class Oggetto {
-    private final String nome,articolo;
+    private String nome,articolo;
     private Set<String> sinonimi;
     
     public Oggetto(String a,String n){

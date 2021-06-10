@@ -1,6 +1,7 @@
 package Modelli;
 
 import java.util.List;
+import java.util.ListIterator;
 
 public class Mappa {
 
@@ -32,15 +33,15 @@ public class Mappa {
         this.studio = new Stanza("Studio", "Sono nell'ufficio del direttore", 1);
         this.retro = new Stanza("Cellafrigo", "Sono nella cella frigorifera", 3);
         this.salumeria = new Stanza("Salumeria", "Sono in salumeria", 1);
-        this.corridoio1 = new Stanza("Corridoio 1", "Sono a sud della zona detersivi", 1);
-        this.corridoio2 = new Stanza("Corridoio 2", "Sono a sud della zona frutta", 1);
-        this.corridoio3 = new Stanza("Corridoio 3", "Sono a sud della zona frigo", 1);
-        this.corridoio4 = new Stanza("Corridoio 4", "Sono a nord della zona detersivi", 1);
-        this.corridoio5 = new Stanza("Corridoio 5", "Sono a nord della zona frutta", 1);
-        this.corridoio6 = new Stanza("Corridoio 6", "Sono a nord della zona frigo", 1);
-        this.zona_detersivi = new Stanza("Zona detersivi", "Sono nella zona detersivi", 1);
-        this.zona_frutta = new Stanza("Zona frutta", "Sono nella zona frutta", 1);
-        this.zona_frigo = new Stanza("Zona frigo", "Sono nella zona frigo", 1);
+        this.corridoio1 = new Stanza("Corridoio1", "Sono a sud della zona detersivi", 1);
+        this.corridoio2 = new Stanza("Corridoio2", "Sono a sud della zona frutta", 1);
+        this.corridoio3 = new Stanza("Corridoio3", "Sono a sud della zona frigo", 1);
+        this.corridoio4 = new Stanza("Corridoio4", "Sono a nord della zona detersivi", 1);
+        this.corridoio5 = new Stanza("Corridoio5", "Sono a nord della zona frutta", 1);
+        this.corridoio6 = new Stanza("Corridoio6", "Sono a nord della zona frigo", 1);
+        this.zona_detersivi = new Stanza("Zonadetersivi", "Sono nella zona detersivi", 1);
+        this.zona_frutta = new Stanza("Zonafrutta", "Sono nella zona frutta", 1);
+        this.zona_frigo = new Stanza("Zonafrigo", "Sono nella zona frigo", 1);
         this.condotto = new Stanza("Condotto", "Sono nel condotto dell'ufficio del direttore", 1);
 
         this.esterno.assegnaNord(this.ingresso);
@@ -111,7 +112,12 @@ public class Mappa {
     }
     
     public void caricaOggetti(List<Oggetto> o){
-        
+        /*
+        ListIterator<Oggetto> lit = o.listIterator();
+        while(lit.hasNext()){
+            
+        }
+        */
     }
     
     public Stanza getCorrente() {
@@ -120,6 +126,64 @@ public class Mappa {
 
     public void setCorrente(Stanza corrente) {
         this.corrente = corrente;
+    }
+    
+    public void caricaStanzaCorrente(String s){
+        switch(s){
+            case "Strada":
+                this.corrente = this.esterno;
+                break;
+            case "Ingresso":
+                this.corrente = this.ingresso;
+                break;
+            case "Camioncino":
+                this.corrente = this.camioncino;
+                break;
+            case "Cassa":
+                this.corrente = this.cassa;
+                break;
+            case "Studio":
+                this.corrente = this.studio;
+                break;
+            case "Cellafrigo":
+                this.corrente = this.retro;
+                break;
+            case "Salumeria":
+                this.corrente = this.salumeria;
+                break;
+            case "Corridoio1":
+                this.corrente = this.corridoio1;
+                break;
+            case "Corridoio2":
+                this.corrente = this.corridoio2;
+                break;
+            case "Corridoio3":
+                this.corrente = this.corridoio3;
+                break;
+            case "Corridoio4":
+                this.corrente = this.corridoio4;
+                break;
+            case "Corridoio5":
+                this.corrente = this.corridoio5;
+                break;
+            case "Corridoio6":
+                this.corrente = this.corridoio6;
+                break;
+            case "Zonadetersivi":
+                this.corrente = this.zona_detersivi;
+                break;
+            case "Zonafrutta":
+                this.corrente = this.zona_frutta;
+                break;
+            case "Zonafrigo":
+                this.corrente = this.zona_frigo;
+                break;
+            case "Condotto":
+                this.corrente = this.condotto;
+                break;
+            default:
+                break;
+        }
     }
 
     public String spostamento(String s) {

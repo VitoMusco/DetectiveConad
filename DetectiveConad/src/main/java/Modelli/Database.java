@@ -229,4 +229,69 @@ public class Database {
             }
         }
     }
+
+    public Inventario caricaInventario(int idPartita) {
+        Statement stm;
+        Inventario inventario = new Inventario();
+        Oggetto appoggio;
+        Connection connessione = connessioneDb();
+        if (connessione != null) {
+            try {
+                stm = connessione.createStatement();
+                ResultSet risultato;
+                risultato = stm.executeQuery("SELECT nome, articolo FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
+                while (risultato.next()) {
+                    appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    inventario.getInventario().add(appoggio);
+                }
+                risultato.close();
+                connessione.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return inventario;
+    }
+
+    public AzioniEseguite caricaAzioniEseguite(int id_partita) {
+        Statement stm;
+        AzioniEseguite azioni = new AzioniEseguite();
+        Connection connessione = connessioneDb();
+        if (connessione != null) {
+            try {
+                stm = connessione.createStatement();
+                ResultSet risultato;
+                risultato = stm.executeQuery("SELECT azione FROM azioni WHERE id_partita = '" + id_partita + "'");
+                while (risultato.next()) {
+                    azioni.inserisciAzione(risultato.getString(1));
+                }
+                risultato.close();
+                connessione.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return azioni;
+    }
+
+    public String caricaStanzaCorrente(int id_partita) {
+        Statement stm;
+        String stanza_corrente = "";
+        Connection connessione = connessioneDb();
+        if (connessione != null) {
+            try {
+                stm = connessione.createStatement();
+                ResultSet risultato;
+                risultato = stm.executeQuery("SELECT stanza_corrente FROM partita WHERE id_partita = '" + id_partita + "'");
+                while (risultato.next()) {
+                    stanza_corrente = risultato.getString(1);
+                }
+                risultato.close();
+                connessione.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return stanza_corrente;
+    }
 }

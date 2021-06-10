@@ -64,22 +64,34 @@ public class LogicaGioco {
                 case "CONTINUA_PARTITA_1":
                     interfaccia.caricaPartita();
                     idPartita = 1;
-                    //Carica partita 1
+                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
+                    inventario = db.caricaInventario(idPartita);
+                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
+                    //Carica oggetti sulla mappa
                     break;
                 case "CONTINUA_PARTITA_2":
                     interfaccia.caricaPartita();
                     idPartita = 2;
-                    //Carica partita 2
+                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
+                    inventario = db.caricaInventario(idPartita);
+                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
+                    //Carica oggetti sulla mappa
                     break;
                 case "CONTINUA_PARTITA_3":
                     interfaccia.caricaPartita();
                     idPartita = 3;
-                    //Carica partita 3
+                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
+                    inventario = db.caricaInventario(idPartita);
+                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
+                    //Carica oggetti sulla mappa
                     break;
                 case "CONTINUA_PARTITA_4":
                     interfaccia.caricaPartita();
                     idPartita = 4;
-                    //Carica partita 4
+                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
+                    inventario = db.caricaInventario(idPartita);
+                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
+                    //Carica oggetti sulla mappa
                     break;
                 case "SALVA_SI":
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
