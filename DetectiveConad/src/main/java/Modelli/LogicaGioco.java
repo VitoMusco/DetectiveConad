@@ -234,7 +234,7 @@ public class LogicaGioco {
                     break;
                 case "USA":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaAppIncastra();
+                    interfaccia.inizializzaAppUsa();
                     break;
                 default:
                     break;
