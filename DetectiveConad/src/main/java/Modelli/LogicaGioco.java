@@ -218,19 +218,21 @@ public class LogicaGioco {
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     break;
                 case "INTERROGA":
-                    if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)){
+                    if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)) {
                         interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
                         azioniEseguite.inserisciAzione(Azione.DIPENDENTI_INTERROGATI);
-                    }
-                    else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)){
+                    } else if (mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)) {
                         interfaccia.aggiungiTesto("Ho gia' interrogato i dipendenti, vediamo se mi ricordo cosa mi hanno detto...");
                         interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
-                    }
-                    else{
+                    } else {
                         interfaccia.aggiungiTesto("Non vedo nessuno da interrogare qui... i dipendenti sono all'ingresso.");
                     }
                     break;
                 case "INCASTRA":
+                    interfaccia.inizializzaInterfacciaGraficaAppCellulare();
+                    interfaccia.inizializzaAppIncastra();
+                    break;
+                case "USA":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
                     interfaccia.inizializzaAppIncastra();
                     break;

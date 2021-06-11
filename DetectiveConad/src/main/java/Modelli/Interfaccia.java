@@ -118,25 +118,28 @@ public class Interfaccia extends javax.swing.JFrame {
 
         SalvaEVaiAMenu.addActionListener(g);
         SalvaEVaiAMenu.setActionCommand("SALVA_E_VAI_AL_MENU");
-        
+
         Salva.addActionListener(g);
         Salva.setActionCommand("SALVA");
-        
+
         Apri.addActionListener(g);
         Apri.setActionCommand("COMANDO_APRI");
-        
+
         Flash.addActionListener(g);
         Flash.setActionCommand("FLASH");
-        
+
         Prendi.addActionListener(g);
         Prendi.setActionCommand("PRENDI");
-        
+
         Incastra.addActionListener(g);
         Incastra.setActionCommand("INCASTRA");
-        
+
         Interroga.addActionListener(g);
         Interroga.setActionCommand("INTERROGA");
         
+        Usa.addActionListener(g);
+        Usa.setActionCommand("USA");
+
         ChiudiGraficaAppCellulare.addActionListener(g);
         ChiudiGraficaAppCellulare.setActionCommand("DISATTIVA_INTERFACCIA_APP_CELLULARE");
     }
@@ -1053,7 +1056,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public void disattivaCellulare() {
         GraficaCellulare.setEnabled(false);
         GraficaCellulare.setVisible(false);
-        
+
         Esci.setVisible(false);
         Esci.setEnabled(false);
         Flash.setVisible(false);
@@ -1226,25 +1229,25 @@ public class Interfaccia extends javax.swing.JFrame {
         disattivaInterfacciaUtente();
         inizializzaMenu();
     }
-    
-    public void resettaTesto(){
+
+    public void resettaTesto() {
         ScritturaTesto.setText(null);
     }
-    
-    public void disattivaInterfacciaGraficaAppCellulare(){
+
+    public void disattivaInterfacciaGraficaAppCellulare() {
         GraficaAppCellulare.setVisible(false);
         GraficaAppCellulare.setEnabled(false);
 
         ChiudiGraficaAppCellulare.setVisible(false);
         ChiudiGraficaAppCellulare.setEnabled(false);
     }
-    
-    public void chiudiInterfacciaGraficaAppCellulare(){
+
+    public void chiudiInterfacciaGraficaAppCellulare() {
         mostraCellulare();
         disattivaInterfacciaGraficaAppCellulare();
     }
-    
-    public void inizializzaInterfacciaGraficaAppCellulare(){
+
+    public void inizializzaInterfacciaGraficaAppCellulare() {
         disattivaCellulare();
         GraficaAppCellulare.setVisible(true);
         GraficaAppCellulare.setEnabled(true);
@@ -1252,20 +1255,28 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.setVisible(true);
         ChiudiGraficaAppCellulare.setEnabled(true);
     }
-    
-    public void inizializzaAppPrendi(){
-        
+
+    public void inizializzaAppPrendi() {
+
     }
-    
-    public void chiudiAppPrendi(){
-        
+
+    public void chiudiAppPrendi() {
+
     }
-    
-    public void inizializzaAppIncastra(){
-        
+
+    public void inizializzaAppIncastra() {
+
     }
-    
-    public void chiudiAppIncastra(){
-        
+
+    public void chiudiAppIncastra() {
+
+    }
+
+    public void inizializzaAppUsa() {
+
+    }
+
+    public void chiudiAppUsa() {
+
     }
 }
