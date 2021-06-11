@@ -24,8 +24,8 @@ public class LogicaGioco {
             interfaccia.inizializzaInterfacciaUtente();
         }
     }
-    
-    public void resettaStruttureDati(){
+
+    public void resettaStruttureDati() {
         //Cancella le cose fatte
     }
 
@@ -45,7 +45,7 @@ public class LogicaGioco {
                     break;
                 case "NUOVA_PARTITA":
                     interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
-                    interfaccia.inizializzaSelettorePartita();                   
+                    interfaccia.inizializzaSelettorePartita();
                     break;
                 case "MENU_INIZIALE":
                     interfaccia.esciDaSelettorePartita();
@@ -59,9 +59,9 @@ public class LogicaGioco {
                 case "INIZIA_PARTITA":
                     if (interfaccia.controllaNomePartita() == true) {
                         idPartita = db.inserisciPartita(interfaccia.getNomePartita());
-                        if(idPartita != 0){
+                        if (idPartita != 0) {
                             mappa = new Mappa();
-                            db.inserisciOggetti(idPartita,mappa.getOggetti());
+                            db.inserisciOggetti(idPartita, mappa.getOggetti());
                             inventario = db.caricaInventario(idPartita);
                             interfaccia.creaNuovaPartita();
                         }
@@ -115,7 +115,7 @@ public class LogicaGioco {
                     break;
                 case "APRI_EDITOR":
                     interfaccia.mostraEditorTesto();
-                    if(mappa.getCorrente().getNome().equals("Strada")){
+                    if (mappa.getCorrente().getNome().equals("Strada")) {
                         interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
                     }
                     interfaccia.aggiungiTesto(mappa.getCorrente().getDescrizione());
@@ -156,7 +156,7 @@ public class LogicaGioco {
                     break;
                 case "SCATTA_FOTO":
                     if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
-                        if(mappa.prendiOggetto("mappa") != null){
+                        if (mappa.prendiOggetto("mappa") != null) {
                             inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
                             interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
                             azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
@@ -190,17 +190,21 @@ public class LogicaGioco {
                     resettaStruttureDati();
                     break;
                 case "COMANDO_APRI":
-                    if(mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("Cacciavite")){
+                    if (mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("Cacciavite")) {
                         azioniEseguite.inserisciAzione(Azione.GRATA_APERTA);
                         interfaccia.aggiungiTesto(mappa.getDialogoAperto());
                     }
                     interfaccia.aggiungiTesto(mappa.getDialogoApri());
                     break;
-                    
+
                 case "FLASH":
-                    if(mappa.getCorrente().getNome().equals("Condotto")){
+                    if (mappa.getCorrente().getNome().equals("Condotto") && !azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
                         azioniEseguite.inserisciAzione(Azione.FLASH_ATTIVATO);
                         interfaccia.aggiungiTesto(mappa.prelevaTesto());
+                    } else if (mappa.getCorrente().getNome().equals("Condotto") && azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
+                        interfaccia.aggiungiTesto("Ho gia' attivato il flash!");
+                    } else {
+                        interfaccia.aggiungiTesto("Non ho bisogno di attivare il flash adesso!");
                     }
                     break;
                 default:
