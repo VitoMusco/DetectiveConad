@@ -37,7 +37,7 @@ public class Mappa {
         this.cassa = new Stanza("Cassa", "Sono alla cassa", 1);
         this.studio = new Stanza("Studio", "Sono nell'ufficio del direttore", 2);
         this.retro = new Stanza("Cellafrigo", "Sono nella cella frigorifera", 3);
-        this.salumeria = new Stanza("Salumeria", "Sono in salumeria", 2);
+        this.salumeria = new Stanza("Salumeria", "Sono in salumeria", 3);
         this.corridoio1 = new Stanza("Corridoio1", "Sono a sud della zona detersivi", 1);
         this.corridoio2 = new Stanza("Corridoio2", "Sono a sud della zona frutta", 1);
         this.corridoio3 = new Stanza("Corridoio3", "Sono a sud della zona frigo", 1);
@@ -99,12 +99,14 @@ public class Mappa {
     public void caricaOggetti(){
         Oggetto cacciavite = new Oggetto("un","cacciavite");
         Oggetto mappa = new Oggetto("una", "mappa");
+        Oggetto torcia = new Oggetto("una", "torcia");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
+        aggiungiOggetto(torcia, this.camioncino.getNome());
         aggiungiOggetto(mappa, this.ingresso.getNome());
         /*
         Oggetto pila = new Oggetto("una", "pila");
-        Oggetto torcia = new Oggetto("una", "torcia");
+        
         Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto coltello = new Oggetto("un", "coltello");
@@ -309,8 +311,17 @@ public class Mappa {
         return testo;
     }
     
+    public String getDialogoInterrogazione(){
+        String testo;
+        testo = this.dialoghi.getTesti().get(corrente.getNome() + "Interroga");
+        if(testo==null){
+            testo = "Non vedo nessuno da interrogare...";
+        }
+        return testo;
+    }
+    
     public void resettaMappa(){
-        oggetti = null;
+        oggetti = new HashMap<>();
     }
 
 }

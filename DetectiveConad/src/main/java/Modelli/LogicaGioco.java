@@ -200,7 +200,6 @@ public class LogicaGioco {
                     }
                     interfaccia.aggiungiTesto(mappa.getDialogoApri());
                     break;
-
                 case "FLASH":
                     if (mappa.getCorrente().getNome().equals("Condotto") && !azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
                         azioniEseguite.inserisciAzione(Azione.FLASH_ATTIVATO);
@@ -210,6 +209,30 @@ public class LogicaGioco {
                     } else {
                         interfaccia.aggiungiTesto("Non ho bisogno di attivare il flash adesso!");
                     }
+                    break;
+                case "PRENDI":
+                    interfaccia.inizializzaInterfacciaGraficaAppCellulare();
+                    interfaccia.inizializzaAppPrendi();
+                    break;
+                case "DISATTIVA_INTERFACCIA_APP_CELLULARE":
+                    interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    break;
+                case "INTERROGA":
+                    if(mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)){
+                        interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
+                        azioniEseguite.inserisciAzione(Azione.DIPENDENTI_INTERROGATI);
+                    }
+                    else if(mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)){
+                        interfaccia.aggiungiTesto("Ho gia' interrogato i dipendenti, vediamo se mi ricordo cosa mi hanno detto...");
+                        interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
+                    }
+                    else{
+                        interfaccia.aggiungiTesto("Non vedo nessuno da interrogare qui... i dipendenti sono all'ingresso.");
+                    }
+                    break;
+                case "INCASTRA":
+                    interfaccia.inizializzaInterfacciaGraficaAppCellulare();
+                    interfaccia.inizializzaAppIncastra();
                     break;
                 default:
                     break;

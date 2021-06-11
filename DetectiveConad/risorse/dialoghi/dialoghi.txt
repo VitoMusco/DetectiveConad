@@ -4,11 +4,11 @@ IngressoOss1#Sono all'ingresso, c'e' un quadro e ci sono i dipendenti.
 IngressoOss2#Il quadro sembra la piantina del supermercato, potrebbe tornarmi utile , ma non posso prenderla. Chissa' se avro' spazio nella memoria del mio telefono.
 PrendiFotoQuadro#'CLIC' Perfetto, spero non mi riempia la memoria.
 OsservaD#Sembrano tre nerd,  avranno di sicuro fatto informatica.
-ParlaD#Il primo si chiama Vito, e' il cassiere, e chiude ogni sera le porte del supermercato. Il secondo si chiama Michele, ed e' il salumiere. La sera pulisce i coltelli e i macchinari da lavoro. Il terzo infine e' Vincenzo, un semplice dipendente, smista la merce sugli scaffali. Tutti e tre riferiscono di non avere contatti col direttore da ieri sera. Continuo le indagini.
+IngressoInterroga#Il primo si chiama Vito, e' il cassiere, e chiude ogni sera le porte del supermercato. Il secondo si chiama Michele, ed e' il salumiere. La sera pulisce i coltelli e i macchinari da lavoro. Il terzo infine e' Vincenzo, un semplice dipendente, smista la merce sugli scaffali. Tutti e tre riferiscono di non avere contatti col direttore da ieri sera. Continuo le indagini.
 SalumeriaOss1#Vedo il bancone , i salumi, i coltelli , i macchinari e una strana porta.
 SalumeriaOss2#Guardando la piantina qui dovrebbe esserci la cella frigorifera.
 SalumeriaApri#La porta e' chiusa, non posso entrarci, almeno da qui. Chissa' se il salumiere sapra' dirmi qualcosa.
-SalumeriaPS#La cella frigorifera sembra essere inutilizzata da tanto tempo. Solo il direttore possiede la chiave per aprirla.
+SalumeriaOss3#La cella frigorifera sembra essere inutilizzata da tanto tempo. So che solo il direttore possiede la chiave per aprirla.
 StudioOss1#Vedo una scrivania con un computer, uno scaffale e una grata sulla destra... sembra essere un condotto di ventilazione.
 StudioOss2#Strano manca una vite, e i condotti di ventilazione dovrebbero essere posti in alto, e tra l'altro sento un cattivo odore. Chissa' dove porta questo condotto.
 StudioApri#Se solo avessi un cacciavite, dovro' controllare tra la mia attrezzatura.

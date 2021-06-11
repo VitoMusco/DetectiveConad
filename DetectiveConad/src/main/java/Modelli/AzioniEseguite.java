@@ -27,6 +27,9 @@ public class AzioniEseguite {
             case "FLASH_ATTIVATO":
                 inserisciAzione(Azione.FLASH_ATTIVATO);
                 break;
+            case "DIPENDENTI_INTERROGATI":
+                inserisciAzione(Azione.DIPENDENTI_INTERROGATI);
+                break;
             default:
                 break;
         }
@@ -47,6 +50,6 @@ public class AzioniEseguite {
     }
     
     public void resettaAzioni(){
-        azioni = null;
+        azioni = new ArrayList<>();
     }
 }

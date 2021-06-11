@@ -39,6 +39,6 @@ public class Inventario {
     }
     
     public void resettaInventario(){
-        inventario = null;
+        inventario = new ArrayList<>();
     }
 }
