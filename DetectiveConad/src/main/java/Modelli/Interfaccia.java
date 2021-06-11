@@ -147,7 +147,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Fotocamera = new javax.swing.JButton();
         Incastra = new javax.swing.JButton();
         Salva = new javax.swing.JButton();
-        Opzioni = new javax.swing.JButton();
+        Interroga = new javax.swing.JButton();
         SalvaEVaiAMenu = new javax.swing.JButton();
         Apri = new javax.swing.JButton();
         Esci = new javax.swing.JButton();
@@ -328,11 +328,11 @@ public class Interfaccia extends javax.swing.JFrame {
         Salva.setMargin(null);
         jPanel1.add(Salva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 320, 60, 60));
 
-        Opzioni.setIcon(new ImageIcon("./risorse/immagini/telefono/opzioni.png"));
-        Opzioni.setBorder(null);
-        Opzioni.setContentAreaFilled(false);
-        Opzioni.setMargin(null);
-        jPanel1.add(Opzioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, 60, 60));
+        Interroga.setIcon(new ImageIcon("./risorse/immagini/telefono/interroga.png"));
+        Interroga.setBorder(null);
+        Interroga.setContentAreaFilled(false);
+        Interroga.setMargin(null);
+        jPanel1.add(Interroga, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, 60, 60));
 
         SalvaEVaiAMenu.setIcon(new ImageIcon("./risorse/immagini/telefono/menu.png"));
         SalvaEVaiAMenu.setBorder(null);
@@ -629,6 +629,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel GraficaMovimento;
     private javax.swing.JButton Incastra;
     private javax.swing.JButton IniziaPartita;
+    private javax.swing.JButton Interroga;
     private javax.swing.JButton Inventario;
     private javax.swing.JLabel MediaLabel;
     private javax.swing.JTextField NomePartita;
@@ -636,7 +637,6 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton NuovaPartita2;
     private javax.swing.JButton NuovaPartita3;
     private javax.swing.JButton NuovaPartita4;
-    private javax.swing.JButton Opzioni;
     private javax.swing.JButton Osserva;
     private javax.swing.JButton Prendi;
     private javax.swing.JButton PulsanteCrediti;
@@ -700,6 +700,7 @@ public class Interfaccia extends javax.swing.JFrame {
         disattivaPulsantiMenu();
         chiudiSelettorePartita();
         inizializzaInterfacciaUtente();
+        mostraTesto("Vediamo... dove ero rimasto? Ah ecco!");
     }
 
     public boolean controllaStato() {
@@ -954,8 +955,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Inventario.setEnabled(false);
         SalvaEVaiAMenu.setVisible(false);
         SalvaEVaiAMenu.setEnabled(false);
-        Opzioni.setVisible(false);
-        Opzioni.setEnabled(false);
+        Interroga.setVisible(false);
+        Interroga.setEnabled(false);
         Osserva.setVisible(false);
         Osserva.setEnabled(false);
         Prendi.setVisible(false);
@@ -997,8 +998,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Inventario.setEnabled(true);
         SalvaEVaiAMenu.setVisible(true);
         SalvaEVaiAMenu.setEnabled(true);
-        Opzioni.setVisible(true);
-        Opzioni.setEnabled(true);
+        Interroga.setVisible(true);
+        Interroga.setEnabled(true);
         Osserva.setVisible(true);
         Osserva.setEnabled(true);
         Prendi.setVisible(true);
