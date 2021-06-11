@@ -250,9 +250,9 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT nome, articolo, stanza FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
+                risultato = stm.executeQuery("SELECT articolo, nome, stanza FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
                 while (risultato.next()) {
-                    appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    appoggio = new Oggetto(risultato.getString(1),risultato.getString(2));
                     oggetti.put(appoggio, risultato.getString(3));
                 }
                 risultato.close();

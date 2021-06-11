@@ -64,6 +64,7 @@ public class LogicaGioco {
                         idPartita = db.inserisciPartita(interfaccia.getNomePartita());
                         if (idPartita != 0) {
                             mappa = new Mappa();
+                            mappa.caricaOggetti();
                             db.inserisciOggetti(idPartita, mappa.getOggetti());
                             inventario = db.caricaInventario(idPartita);
                             interfaccia.creaNuovaPartita();
@@ -244,16 +245,28 @@ public class LogicaGioco {
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
                     interfaccia.inizializzaAppIncastra();
                     break;
-                case "USA":
-                    interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaAppUsa();
-                    break;
-                case "PRENDI_CACCIAVITE":/*
+                case "PRENDI_CACCIAVITE":
                     interfaccia.aggiungiTesto("Ecco qui il mio bel cacciavite! Mi tornera' utile...");
                     azioniEseguite.inserisciAzione(Azione.CACCIAVITE_PRESO);
                     inventario.inserisciOggetto(mappa.prendiOggetto("cacciavite"));
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
-                    interfaccia.chiudiAppPrendi();*/
+                    break;
+                case "INCASTRA_VITO":
+                    azioniEseguite.inserisciAzione(Azione.INCASTRATO_VITO);
+                    break;
+                case "INCASTRA_MICHELE":
+                    azioniEseguite.inserisciAzione(Azione.INCASTRATO_MICHELE);
+                    break;
+                case "INCASTRA_VINCENZO":
+                    azioniEseguite.inserisciAzione(Azione.INCASTRATO_VINCENZO);
+                    break;
+                case "CHIUDI_CASO":
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
+                        //TRIGGERA FINALE
+                        System.out.println("Il codice funziona!");
+                    } else{
+                        System.out.println("Il codice funziona, ma sei morto");
+                    }
                     break;
                 default:
                     break;

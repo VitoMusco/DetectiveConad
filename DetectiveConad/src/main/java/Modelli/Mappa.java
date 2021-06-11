@@ -33,7 +33,7 @@ public class Mappa {
         this.oggetti = new HashMap<>();
         
         this.esterno = new Stanza("Strada", "Sono all'esterno del supermercato", 1);
-        this.ingresso = new Stanza("Ingresso", "Sono all’ingresso", 2);
+        this.ingresso = new Stanza("Ingresso", "Sono all’ingresso", 3);
         this.camioncino = new Stanza("Camioncino", "Sono all’interno del mio camioncino.", 1);
         this.cassa = new Stanza("Cassa", "Sono alla cassa", 1);
         this.studio = new Stanza("Studio", "Sono nell'ufficio del direttore", 2);
@@ -86,9 +86,8 @@ public class Mappa {
         this.studio.assegnaSud(this.cassa);
         this.studio.assegnaEst(this.condotto);
         this.condotto.assegnaEst(this.retro);
-        this.retro.assegnaOvest(this.studio);
-        
-        caricaOggetti();
+        this.condotto.assegnaOvest(this.studio);
+        this.retro.assegnaOvest(this.condotto);
 
         this.corrente = this.esterno;
 
@@ -129,7 +128,7 @@ public class Mappa {
     
     public void caricaOggetti(Map<Oggetto,String> oggetti){
         for(Map.Entry<Oggetto,String> o : oggetti.entrySet()){
-            oggetti.put(o.getKey(),o.getValue());
+            aggiungiOggetto(o.getKey(),o.getValue());
         }
     }
     

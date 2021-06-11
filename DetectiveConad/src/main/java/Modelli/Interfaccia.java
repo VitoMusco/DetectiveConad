@@ -142,11 +142,15 @@ public class Interfaccia extends javax.swing.JFrame {
         Interroga.addActionListener(g);
         Interroga.setActionCommand("INTERROGA");
 
-        Usa.addActionListener(g);
-        Usa.setActionCommand("USA");
+        ChiudiCaso.addActionListener(g);
+        ChiudiCaso.setActionCommand("CHIUDI_CASO");
 
         ChiudiGraficaAppCellulare.addActionListener(g);
         ChiudiGraficaAppCellulare.setActionCommand("DISATTIVA_INTERFACCIA_APP_CELLULARE");
+        
+        PulsanteAppDinamico1.addActionListener(g);
+        PulsanteAppDinamico2.addActionListener(g);
+        PulsanteAppDinamico3.addActionListener(g);
     }
 
     @SuppressWarnings("unchecked")
@@ -172,7 +176,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Osserva = new javax.swing.JButton();
         Inventario = new javax.swing.JButton();
         Flash = new javax.swing.JButton();
-        Usa = new javax.swing.JButton();
+        ChiudiCaso = new javax.swing.JButton();
         Fotocamera = new javax.swing.JButton();
         Incastra = new javax.swing.JButton();
         Salva = new javax.swing.JButton();
@@ -218,6 +222,7 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PulsanteAppDinamico1.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico1.setBorder(null);
         PulsanteAppDinamico1.setContentAreaFilled(false);
         PulsanteAppDinamico1.setMargin(null);
@@ -229,6 +234,7 @@ public class Interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(PulsanteAppDinamico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, 170, 44));
 
+        PulsanteAppDinamico2.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico2.setBorder(null);
         PulsanteAppDinamico2.setContentAreaFilled(false);
         PulsanteAppDinamico2.setMargin(null);
@@ -240,6 +246,7 @@ public class Interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 160, 170, 44));
 
+        PulsanteAppDinamico3.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico3.setBorder(null);
         PulsanteAppDinamico3.setContentAreaFilled(false);
         PulsanteAppDinamico3.setMargin(null);
@@ -281,7 +288,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SalvaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
         SalvaSi.setBorder(null);
         SalvaSi.setContentAreaFilled(false);
-        SalvaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalvaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalvaSi.setMargin(null);
         SalvaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
         SalvaSi.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +301,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SalvaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
         SalvaNo.setBorder(null);
         SalvaNo.setContentAreaFilled(false);
-        SalvaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalvaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalvaNo.setMargin(null);
         SalvaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
         SalvaNo.addActionListener(new java.awt.event.ActionListener() {
@@ -380,11 +387,11 @@ public class Interfaccia extends javax.swing.JFrame {
         Flash.setMargin(null);
         jPanel1.add(Flash, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 210, 60, 60));
 
-        Usa.setIcon(new ImageIcon("./risorse/immagini/telefono/usa.png"));
-        Usa.setBorder(null);
-        Usa.setContentAreaFilled(false);
-        Usa.setMargin(null);
-        jPanel1.add(Usa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 60, 60));
+        ChiudiCaso.setIcon(new ImageIcon("./risorse/immagini/telefono/chiudi_caso.png"));
+        ChiudiCaso.setBorder(null);
+        ChiudiCaso.setContentAreaFilled(false);
+        ChiudiCaso.setMargin(null);
+        jPanel1.add(ChiudiCaso, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 60, 60));
 
         Fotocamera.setIcon(new ImageIcon("./risorse/immagini/telefono/fotocamera.png"));
         Fotocamera.setBorder(null);
@@ -501,7 +508,7 @@ public class Interfaccia extends javax.swing.JFrame {
         NomePartita.setEnabled(false);
         NomePartita.setMargin(null);
         NomePartita.setName(""); // NOI18N
-        jPanel1.add(NomePartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 210, 35));
+        jPanel1.add(NomePartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 210, 35));
 
         ErroreMaxCaratteri.setIcon(new ImageIcon("./risorse/immagini/menu/errore_max_caratteri.png"));
         ErroreMaxCaratteri.setEnabled(false);
@@ -704,6 +711,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton ApriMovimento;
     private javax.swing.JButton ApriTelefono;
     private javax.swing.JScrollPane CasellaTesto;
+    private javax.swing.JButton ChiudiCaso;
     private javax.swing.JButton ChiudiGraficaAppCellulare;
     private javax.swing.JButton ContinuaPartita1;
     private javax.swing.JButton ContinuaPartita2;
@@ -751,7 +759,6 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JTextField ScriviTesto;
     private javax.swing.JButton Sinistra;
     private javax.swing.JButton Su;
-    private javax.swing.JButton Usa;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
@@ -1030,7 +1037,10 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
         ApriMovimento.setVisible(false);
-
+        PulsanteAppDinamico1.setVisible(false);
+        PulsanteAppDinamico2.setVisible(false);
+        PulsanteAppDinamico3.setVisible(false);
+        
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
@@ -1039,8 +1049,11 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaEditor.setEnabled(false);
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
-        ApriMovimento.setEnabled(false);
-
+        ApriMovimento.setEnabled(false);        
+        PulsanteAppDinamico1.setEnabled(false);        
+        PulsanteAppDinamico2.setEnabled(false);        
+        PulsanteAppDinamico3.setEnabled(false);
+        
         Esci.setVisible(false);
         Esci.setEnabled(false);
         Flash.setVisible(false);
@@ -1061,8 +1074,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Prendi.setEnabled(false);
         Salva.setVisible(false);
         Salva.setEnabled(false);
-        Usa.setVisible(false);
-        Usa.setEnabled(false);
+        ChiudiCaso.setVisible(false);
+        ChiudiCaso.setEnabled(false);
         Apri.setEnabled(false);
         Apri.setVisible(false);
         Su.setVisible(false);
@@ -1104,8 +1117,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Prendi.setEnabled(true);
         Salva.setVisible(true);
         Salva.setEnabled(true);
-        Usa.setVisible(true);
-        Usa.setEnabled(true);
+        ChiudiCaso.setVisible(true);
+        ChiudiCaso.setEnabled(true);
         Apri.setEnabled(true);
     }
 
@@ -1134,8 +1147,8 @@ public class Interfaccia extends javax.swing.JFrame {
         Prendi.setEnabled(false);
         Salva.setVisible(false);
         Salva.setEnabled(false);
-        Usa.setVisible(false);
-        Usa.setEnabled(false);
+        ChiudiCaso.setVisible(false);
+        ChiudiCaso.setEnabled(false);
         Apri.setEnabled(false);
     }
 
@@ -1296,6 +1309,15 @@ public class Interfaccia extends javax.swing.JFrame {
 
         ChiudiGraficaAppCellulare.setVisible(false);
         ChiudiGraficaAppCellulare.setEnabled(false);
+        
+        PulsanteAppDinamico1.setEnabled(false);
+        PulsanteAppDinamico1.setVisible(false);
+        
+        PulsanteAppDinamico2.setEnabled(false);
+        PulsanteAppDinamico2.setVisible(false);
+        
+        PulsanteAppDinamico3.setEnabled(false);
+        PulsanteAppDinamico3.setVisible(false);
     }
 
     public void chiudiInterfacciaGraficaAppCellulare() {
@@ -1314,17 +1336,27 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void inizializzaPulsantiApp(List<Oggetto> oggetti) {
         ListIterator<Oggetto> lit = oggetti.listIterator();
-
-        for(int i=0;lit.hasNext();i++) {
+        String nome;
+        for(int i=1;lit.hasNext();i++) {
+            nome = lit.next().getNome();
             switch(i){
                 case 1:
-                    PulsanteAppDinamico1.setText(lit.next().getNome());
+                    PulsanteAppDinamico1.setText(nome);
+                    PulsanteAppDinamico1.setEnabled(true);
+                    PulsanteAppDinamico1.setVisible(true);
+                    PulsanteAppDinamico1.setActionCommand("PRENDI_"+nome.toUpperCase());
                     break;
                 case 2:
-                    PulsanteAppDinamico2.setText(lit.next().getNome());
+                    PulsanteAppDinamico2.setText(nome);
+                    PulsanteAppDinamico2.setEnabled(true);
+                    PulsanteAppDinamico2.setVisible(true);
+                    PulsanteAppDinamico2.setActionCommand("PRENDI_"+nome.toUpperCase());
                     break;
                 case 3:
-                    PulsanteAppDinamico3.setText(lit.next().getNome());
+                    PulsanteAppDinamico3.setText(nome);
+                    PulsanteAppDinamico3.setEnabled(true);
+                    PulsanteAppDinamico3.setVisible(true);
+                    PulsanteAppDinamico3.setActionCommand("PRENDI_"+nome.toUpperCase());
                     break;
                 default:
                     break;
@@ -1333,7 +1365,20 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void inizializzaAppIncastra() {
-        ChiudiGraficaAppCellulare.setActionCommand("CHIUDI_APP_INCASTRA");
+        PulsanteAppDinamico1.setText("INCASTRA VITO");
+        PulsanteAppDinamico1.setEnabled(true);
+        PulsanteAppDinamico1.setVisible(true);
+        PulsanteAppDinamico1.setActionCommand("INCASTRA_VITO");
+        
+        PulsanteAppDinamico2.setText("INCASTRA MICHELE");
+        PulsanteAppDinamico2.setEnabled(true);
+        PulsanteAppDinamico2.setVisible(true);
+        PulsanteAppDinamico2.setActionCommand("INCASTRA_MICHELE");
+        
+        PulsanteAppDinamico3.setText("INCASTRA VINCENZO");
+        PulsanteAppDinamico3.setEnabled(true);
+        PulsanteAppDinamico3.setVisible(true);
+        PulsanteAppDinamico3.setActionCommand("INCASTRA_VINCENZO");
     }
 
     public void chiudiAppIncastra() {
@@ -1341,7 +1386,6 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void inizializzaAppUsa() {
-        ChiudiGraficaAppCellulare.setActionCommand("CHIUDI_APP_USA");
     }
 
     public void chiudiAppUsa() {

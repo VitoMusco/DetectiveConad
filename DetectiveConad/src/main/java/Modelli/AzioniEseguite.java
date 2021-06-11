@@ -33,6 +33,15 @@ public class AzioniEseguite {
             case "DIPENDENTI_INTERROGATI":
                 inserisciAzione(Azione.DIPENDENTI_INTERROGATI);
                 break;
+            case "INCASTRATO_VITO":
+                inserisciAzione(Azione.INCASTRATO_VITO);
+                break;
+            case "INCASTRATO_MICHELE":
+                inserisciAzione(Azione.INCASTRATO_MICHELE);
+                break;
+            case "INCASTRATO_VINCENZO":
+                inserisciAzione(Azione.INCASTRATO_VINCENZO);
+                break;
             default:
                 break;
         }
