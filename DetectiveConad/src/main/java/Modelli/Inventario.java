@@ -37,4 +37,8 @@ public class Inventario {
         }
         return false;
     }
+    
+    public void resettaInventario(){
+        inventario = null;
+    }
 }

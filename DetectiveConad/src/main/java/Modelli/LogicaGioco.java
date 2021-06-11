@@ -26,7 +26,10 @@ public class LogicaGioco {
     }
 
     public void resettaStruttureDati() {
-        //Cancella le cose fatte
+        azioniEseguite.resettaAzioni();
+        inventario.resettaInventario();
+        mappa.resettaMappa();
+        interfaccia.resettaTesto();
     }
 
     class GestoreAzioni implements ActionListener {
@@ -183,6 +186,7 @@ public class LogicaGioco {
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
                     interfaccia.disattivaInterfacciaSalvataggio();
                     interfaccia.tornaAMenuIniziale();
+                    resettaStruttureDati();
                     break;
                 case "SALVA_NO_E_VAI_AL_MENU":
                     interfaccia.disattivaInterfacciaSalvataggio();

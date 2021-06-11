@@ -1168,4 +1168,8 @@ public class Interfaccia extends javax.swing.JFrame {
         disattivaInterfacciaUtente();
         inizializzaMenu();
     }
+    
+    public void resettaTesto(){
+        ScritturaTesto.setText(null);
+    }
 }

@@ -308,5 +308,9 @@ public class Mappa {
         }
         return testo;
     }
+    
+    public void resettaMappa(){
+        oggetti = null;
+    }
 
 }

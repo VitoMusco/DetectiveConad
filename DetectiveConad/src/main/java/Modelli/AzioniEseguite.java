@@ -45,4 +45,8 @@ public class AzioniEseguite {
         }
         return false;
     }
+    
+    public void resettaAzioni(){
+        azioni = null;
+    }
 }
