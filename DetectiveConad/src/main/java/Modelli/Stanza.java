@@ -10,7 +10,6 @@ public class Stanza {
     private Stanza sud;
     private Stanza est;
     private Stanza ovest;
-    private List<Oggetto> oggetti;
     private Map<String, Impiegato> impiegati;
     private String nome;
     private String descrizione;
@@ -22,7 +21,6 @@ public class Stanza {
         this.sud = null;
         this.est = null;
         this.ovest = null;
-        this.oggetti = new ArrayList<>();
         this.impiegati = new HashMap<>();
         this.nome = nome;
         this.descrizione = desc;
@@ -35,39 +33,14 @@ public class Stanza {
         this.sud = s;
         this.est = e;
         this.ovest = o;
-        this.oggetti = new ArrayList<>();
         this.nome = nome;
         this.descrizione = desc;
         this.numOsservazioni = 0;
         this.maxOsservazioni = maxOss;
     }
 
-    public void inserisciOggetto(Oggetto o) {
-        oggetti.add(o);
-    }
-    
-    public Oggetto getOggetto(String nome){
-        for (Oggetto o : this.oggetti) {
-            if(o.getNome() == nome){
-                return o;
-            }
-        }
-        return null;
-    }
-
     public void inserisciImpiegato(Impiegato impiegato) {
         this.impiegati.put(impiegato.getNome(), impiegato);
-    }
-
-    public String osservaStanza() {
-        String testo = "";
-        for (Oggetto o : this.oggetti) {
-            testo = testo + "Vedo " + o.osservaOggetto() + "\n";
-        }
-        for (String nome : this.impiegati.keySet()) {
-            testo = testo + "Vedo " + nome + "\n";
-        }
-        return testo;
     }
 
     public void interrogaImpiegati() {
@@ -122,10 +95,6 @@ public class Stanza {
         } else {
             return null;
         }
-    }
-
-    public void rimuoviOggetto(Oggetto o) {
-        this.oggetti.remove(o);
     }
 
     public String getMessaggioErroreDirezione() {

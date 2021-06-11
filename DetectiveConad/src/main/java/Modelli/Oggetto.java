@@ -3,24 +3,37 @@ package Modelli;
 import java.util.*;
 
 public class Oggetto {
-    private String nome,articolo;
+
+    private String nome, articolo;
     private Set<String> sinonimi;
-    
-    public Oggetto(String a,String n){
+
+    public Oggetto(String a, String n) {
         this.nome = n;
         this.articolo = a;
     }
-    
-    public String osservaOggetto(){
-        return this.articolo+" "+this.nome;
+
+    public String osservaOggetto() {
+        return this.articolo + " " + this.nome;
     }
-    
-    public String getNome(){
+
+    public String getNome() {
         return this.nome;
     }
-    
-    public Set<String> getSinonimi(){
+
+    public String getArticolo() {
+        return this.articolo;
+    }
+
+    public Set<String> getSinonimi() {
         return this.sinonimi;
     }
-    
+
+    public int isRaccoglibile() {
+        if (this instanceof OggettoNonRaccoglibile) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
 }

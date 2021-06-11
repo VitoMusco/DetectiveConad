@@ -1,7 +1,9 @@
 package Modelli;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 public class Mappa {
 
@@ -24,8 +26,11 @@ public class Mappa {
     private Stanza zona_frigo;
     private Stanza condotto;
     private Stanza corrente;
+    private Map<Oggetto,String> oggetti;
 
     public Mappa() {
+        this.oggetti = new HashMap<>();
+        
         this.esterno = new Stanza("Strada", "Sono all'esterno del supermercato", 1);
         this.ingresso = new Stanza("Ingresso", "Sono all’ingresso", 2);
         this.camioncino = new Stanza("Camioncino", "Sono all’interno del mio camioncino.", 1);
@@ -93,8 +98,10 @@ public class Mappa {
 
     public void caricaOggetti(){
         Oggetto cacciavite = new Oggetto("un","cacciavite");
+        Oggetto mappa = new Oggetto("una", "mappa");
         
-        this.camioncino.inserisciOggetto(cacciavite);
+        aggiungiOggetto(cacciavite, this.camioncino.getNome());
+        aggiungiOggetto(mappa, this.ingresso.getNome());
         /*
         Oggetto pila = new Oggetto("una", "pila");
         Oggetto torcia = new Oggetto("una", "torcia");
@@ -124,6 +131,23 @@ public class Mappa {
             
         }
         */
+    }
+    
+    public Map<Oggetto,String> getOggetti(){
+        return this.oggetti;
+    }
+    
+    public void aggiungiOggetto(Oggetto o, String stanza) {
+        oggetti.put(o,stanza);
+    }
+    
+    public Oggetto prendiOggetto(String stanza){
+        for (Map.Entry<Oggetto, String> o : oggetti.entrySet()) {
+            if(o.getKey().getNome().equals(stanza)){
+                return o.getKey();
+            }
+        }
+        return null;
     }
     
     public Stanza getCorrente() {
@@ -261,10 +285,6 @@ public class Mappa {
             testo = "Non c'e' niente di particolare qui...";
         }
         return testo;
-    }
-
-    public Oggetto prendiOggetto(String nome) {
-        return this.corrente.getOggetto(nome);
     }
 
     public String getDialogoPresaOggetto(String nome) {

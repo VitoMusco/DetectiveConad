@@ -51,7 +51,6 @@ public class Database {
                 }
                 risultato.close();
                 stm.close();
-                inserisciOggetti(id_partita);
                 return id_partita;
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,7 +59,7 @@ public class Database {
         return 0;
     }
 
-    public void inserisciOggetti(int id_partita) {
+    public void inserisciOggetti(int id_partita, Map<Oggetto,String> o) {
         Statement stm;
         Connection connessione = connessioneDb();
         if (connessione != null) {
@@ -82,33 +81,11 @@ public class Database {
                 stm = connessione.createStatement();
                 stm.executeUpdate(CREA_OGGETTI);
                 stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('pila', 'una', 'camioncino','" + id_partita + "', '1')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('torcia', 'una', 'camioncino','" + id_partita + "', '1')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('guanti', 'dei', 'camioncino','" + id_partita + "', '1')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('coltello', 'un', 'salumeria','" + id_partita + "', '1')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('mappa', 'una', 'ingresso','" + id_partita + "', '1')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('monetina', 'una', 'studio','" + id_partita + "', '1')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('impronta', 'una', 'studio','" + id_partita + "', '0')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('impronta', 'una', 'salumeria','" + id_partita + "', '0')");
-                stm.close();
-                stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('impronta', 'una', 'cella frigorifera','" + id_partita + "', '0')");
-                stm.close();
+                for(Map.Entry<Oggetto, String> e : o.entrySet()){
+                    stm = connessione.createStatement();
+                    stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('" + e.getKey().getNome() + "', '" + e.getKey().getArticolo() + "', '" + e.getValue() + "','" + id_partita + "', '" + e.getKey().isRaccoglibile() + "')");
+                    stm.close();
+                }
                 connessione.close();
             } catch (SQLException ex) {
                 System.err.println("Errore nell'inserimento degli oggetti nel database");
