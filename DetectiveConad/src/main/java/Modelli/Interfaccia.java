@@ -123,6 +123,9 @@ public class Interfaccia extends javax.swing.JFrame {
         
         Apri.addActionListener(g);
         Apri.setActionCommand("COMANDO_APRI");
+        
+        Flash.addActionListener(g);
+        Flash.setActionCommand("FLASH");
     }
 
     @SuppressWarnings("unchecked")

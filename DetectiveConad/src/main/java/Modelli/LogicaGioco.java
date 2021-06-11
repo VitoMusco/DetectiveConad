@@ -196,6 +196,13 @@ public class LogicaGioco {
                     }
                     interfaccia.aggiungiTesto(mappa.getDialogoApri());
                     break;
+                    
+                case "FLASH":
+                    if(mappa.getCorrente().getNome().equals("Condotto")){
+                        azioniEseguite.inserisciAzione(Azione.FLASH_ATTIVATO);
+                        interfaccia.aggiungiTesto(mappa.prelevaTesto());
+                    }
+                    break;
                 default:
                     break;
             }

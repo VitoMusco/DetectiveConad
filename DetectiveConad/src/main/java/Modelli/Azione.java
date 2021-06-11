@@ -10,5 +10,5 @@ package Modelli;
  * @author Vito
  */
 public enum Azione {
-    FOTO_SCATTATA,GRATA_APERTA;
+    FOTO_SCATTATA,GRATA_APERTA,FLASH_ATTIVATO;
 }
