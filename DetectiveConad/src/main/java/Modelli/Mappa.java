@@ -1,5 +1,6 @@
 package Modelli;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
@@ -126,27 +127,37 @@ public class Mappa {
         */
     }
     
-    public void caricaOggetti(List<Oggetto> o){
-        /*
-        ListIterator<Oggetto> lit = o.listIterator();
-        while(lit.hasNext()){
-            
+    public void caricaOggetti(Map<Oggetto,String> oggetti){
+        for(Map.Entry<Oggetto,String> o : oggetti.entrySet()){
+            oggetti.put(o.getKey(),o.getValue());
         }
-        */
     }
     
     public Map<Oggetto,String> getOggetti(){
         return this.oggetti;
     }
     
+    public List<Oggetto> getOggettiStanzaCorrente(){
+        List<Oggetto> listaOggetti = new ArrayList<>();
+        for(Map.Entry<Oggetto,String> o : oggetti.entrySet()){
+            if(o.getValue().equals(this.corrente.getNome())){
+                listaOggetti.add(o.getKey());
+            }
+        }
+        return listaOggetti;
+    }
+    
     public void aggiungiOggetto(Oggetto o, String stanza) {
         oggetti.put(o,stanza);
     }
     
-    public Oggetto prendiOggetto(String stanza){
+    public Oggetto prendiOggetto(String nome){
+        Oggetto oggetto;
         for (Map.Entry<Oggetto, String> o : oggetti.entrySet()) {
-            if(o.getKey().getNome().equals(stanza)){
-                return o.getKey();
+            if(o.getKey().getNome().equals(nome)){
+                oggetto = o.getKey();
+                oggetti.remove(oggetto);
+                return oggetto;
             }
         }
         return null;

@@ -11,6 +11,9 @@ import javax.swing.*;
 
 import Modelli.LogicaGioco.GestoreAzioni;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 public class Interfaccia extends javax.swing.JFrame {
 
@@ -19,8 +22,10 @@ public class Interfaccia extends javax.swing.JFrame {
     private boolean creazioneNuovaPartita = false;
     private boolean[] partiteSalvate = new boolean[4];
     private Clip audio;
+    GestoreAzioni g;
 
-    public Interfaccia(GestoreAzioni g) {
+    public Interfaccia(GestoreAzioni gestoreAzioni) {
+        g = gestoreAzioni;
         initComponents();
         inizializzaFinestra();
 
@@ -136,7 +141,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
         Interroga.addActionListener(g);
         Interroga.setActionCommand("INTERROGA");
-        
+
         Usa.addActionListener(g);
         Usa.setActionCommand("USA");
 
@@ -149,6 +154,9 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        PulsanteAppDinamico1 = new javax.swing.JButton();
+        PulsanteAppDinamico2 = new javax.swing.JButton();
+        PulsanteAppDinamico3 = new javax.swing.JButton();
         ChiudiGraficaAppCellulare = new javax.swing.JButton();
         GraficaAppCellulare = new javax.swing.JLabel();
         AnnullaSalvataggio = new javax.swing.JButton();
@@ -210,6 +218,39 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PulsanteAppDinamico1.setBorder(null);
+        PulsanteAppDinamico1.setContentAreaFilled(false);
+        PulsanteAppDinamico1.setMargin(null);
+        PulsanteAppDinamico1.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
+        PulsanteAppDinamico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, 170, 44));
+
+        PulsanteAppDinamico2.setBorder(null);
+        PulsanteAppDinamico2.setContentAreaFilled(false);
+        PulsanteAppDinamico2.setMargin(null);
+        PulsanteAppDinamico2.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
+        PulsanteAppDinamico2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 160, 170, 44));
+
+        PulsanteAppDinamico3.setBorder(null);
+        PulsanteAppDinamico3.setContentAreaFilled(false);
+        PulsanteAppDinamico3.setMargin(null);
+        PulsanteAppDinamico3.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
+        PulsanteAppDinamico3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 220, 170, 44));
+
         ChiudiGraficaAppCellulare.setIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio.png"));
         ChiudiGraficaAppCellulare.setBorder(null);
         ChiudiGraficaAppCellulare.setContentAreaFilled(false);
@@ -240,7 +281,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SalvaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
         SalvaSi.setBorder(null);
         SalvaSi.setContentAreaFilled(false);
-        SalvaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalvaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalvaSi.setMargin(null);
         SalvaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
         SalvaSi.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +294,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SalvaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
         SalvaNo.setBorder(null);
         SalvaNo.setContentAreaFilled(false);
-        SalvaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalvaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalvaNo.setMargin(null);
         SalvaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
         SalvaNo.addActionListener(new java.awt.event.ActionListener() {
@@ -473,7 +514,7 @@ public class Interfaccia extends javax.swing.JFrame {
         CreaSalvataggioLabel.setIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio.png"));
         CreaSalvataggioLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
         CreaSalvataggioLabel.setEnabled(false);
-        jPanel1.add(CreaSalvataggioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1280, 720));
+        jPanel1.add(CreaSalvataggioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         NuovaPartita1.setIcon(new ImageIcon("./risorse/immagini/menu/nuova_partita.png"));
         NuovaPartita1.setBorder(null);
@@ -644,6 +685,18 @@ public class Interfaccia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChiudiGraficaAppCellulareActionPerformed
 
+    private void PulsanteAppDinamico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico1ActionPerformed
+
+    private void PulsanteAppDinamico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico2ActionPerformed
+
+    private void PulsanteAppDinamico3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnnullaSalvataggio;
     private javax.swing.JButton Apri;
@@ -681,6 +734,9 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton NuovaPartita4;
     private javax.swing.JButton Osserva;
     private javax.swing.JButton Prendi;
+    private javax.swing.JButton PulsanteAppDinamico1;
+    private javax.swing.JButton PulsanteAppDinamico2;
+    private javax.swing.JButton PulsanteAppDinamico3;
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
@@ -1256,16 +1312,28 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.setEnabled(true);
     }
 
-    public void inizializzaAppPrendi() {
+    public void inizializzaPulsantiApp(List<Oggetto> oggetti) {
+        ListIterator<Oggetto> lit = oggetti.listIterator();
 
-    }
-
-    public void chiudiAppPrendi() {
-
+        for(int i=0;lit.hasNext();i++) {
+            switch(i){
+                case 1:
+                    PulsanteAppDinamico1.setText(lit.next().getNome());
+                    break;
+                case 2:
+                    PulsanteAppDinamico2.setText(lit.next().getNome());
+                    break;
+                case 3:
+                    PulsanteAppDinamico3.setText(lit.next().getNome());
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void inizializzaAppIncastra() {
-
+        ChiudiGraficaAppCellulare.setActionCommand("CHIUDI_APP_INCASTRA");
     }
 
     public void chiudiAppIncastra() {
@@ -1273,10 +1341,11 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void inizializzaAppUsa() {
-
+        ChiudiGraficaAppCellulare.setActionCommand("CHIUDI_APP_USA");
     }
 
     public void chiudiAppUsa() {
 
     }
+
 }

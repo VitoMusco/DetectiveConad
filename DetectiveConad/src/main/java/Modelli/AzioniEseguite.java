@@ -24,6 +24,9 @@ public class AzioniEseguite {
             case "GRATA_APERTA":
                 inserisciAzione(Azione.GRATA_APERTA);
                 break;
+            case "CACCIAVITE_PRESO":
+                inserisciAzione(Azione.CACCIAVITE_PRESO);
+                break;
             case "FLASH_ATTIVATO":
                 inserisciAzione(Azione.FLASH_ATTIVATO);
                 break;

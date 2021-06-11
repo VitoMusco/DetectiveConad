@@ -76,7 +76,7 @@ public class LogicaGioco {
                     azioniEseguite = db.caricaAzioniEseguite(idPartita);
                     inventario = db.caricaInventario(idPartita);
                     mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    //Carica oggetti sulla mappa
+                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
                     break;
                 case "CONTINUA_PARTITA_2":
                     interfaccia.caricaPartita();
@@ -84,7 +84,7 @@ public class LogicaGioco {
                     azioniEseguite = db.caricaAzioniEseguite(idPartita);
                     inventario = db.caricaInventario(idPartita);
                     mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    //Carica oggetti sulla mappa
+                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
                     break;
                 case "CONTINUA_PARTITA_3":
                     interfaccia.caricaPartita();
@@ -92,7 +92,7 @@ public class LogicaGioco {
                     azioniEseguite = db.caricaAzioniEseguite(idPartita);
                     inventario = db.caricaInventario(idPartita);
                     mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    //Carica oggetti sulla mappa
+                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
                     break;
                 case "CONTINUA_PARTITA_4":
                     interfaccia.caricaPartita();
@@ -100,7 +100,7 @@ public class LogicaGioco {
                     azioniEseguite = db.caricaAzioniEseguite(idPartita);
                     inventario = db.caricaInventario(idPartita);
                     mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    //Carica oggetti sulla mappa
+                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
                     break;
                 case "SALVA_SI_ED_ESCI":
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
@@ -147,12 +147,19 @@ public class LogicaGioco {
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
                     } else if (!azioniEseguite.verificaPresenzaAzione(Azione.GRATA_APERTA) && mappa.getCorrente().getNome().equals("Studio")) {
                         interfaccia.aggiungiTesto("Non posso entrarci, la grata e' chiusa, dovrei usare qualcosa per aprirla...");
-                    } else {
+                    } else if (!azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO) && mappa.getCorrente().getNome().equals("Condotto")){
+                        interfaccia.aggiungiTesto("Non vedo niente! Non riesco a spostarmi! Dove diavolo e' il mio telefono?");
+                    }
+                    else {
                         interfaccia.aggiungiTesto(mappa.spostamento("e"));
                     }
                     break;
                 case "VAI_SINISTRA":
-                    interfaccia.aggiungiTesto(mappa.spostamento("o"));
+                    if (!azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO) && mappa.getCorrente().getNome().equals("Condotto")){
+                        interfaccia.aggiungiTesto("Non vedo niente! Non riesco a spostarmi! Dove diavolo e' il mio telefono?");
+                    }  else{
+                        interfaccia.aggiungiTesto(mappa.spostamento("o"));
+                    }
                     break;
                 case "OSSERVA":
                     interfaccia.aggiungiTesto(mappa.osservaStanza());
@@ -194,11 +201,16 @@ public class LogicaGioco {
                     resettaStruttureDati();
                     break;
                 case "COMANDO_APRI":
-                    if (mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("Cacciavite")) {
+                    if (mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("cacciavite")) {
                         azioniEseguite.inserisciAzione(Azione.GRATA_APERTA);
                         interfaccia.aggiungiTesto(mappa.getDialogoAperto());
                     }
-                    interfaccia.aggiungiTesto(mappa.getDialogoApri());
+                    else if(mappa.getCorrente().getNome().equals("Studio") && !inventario.haOggetto("cacciavite")){
+                        interfaccia.aggiungiTesto(mappa.getDialogoApri());
+                    }
+                    else{
+                        interfaccia.aggiungiTesto("Non vedo niente da aprire qui...");
+                    }
                     break;
                 case "FLASH":
                     if (mappa.getCorrente().getNome().equals("Condotto") && !azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
@@ -212,7 +224,7 @@ public class LogicaGioco {
                     break;
                 case "PRENDI":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaAppPrendi();
+                    interfaccia.inizializzaPulsantiApp(mappa.getOggettiStanzaCorrente());
                     break;
                 case "DISATTIVA_INTERFACCIA_APP_CELLULARE":
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
@@ -235,6 +247,13 @@ public class LogicaGioco {
                 case "USA":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
                     interfaccia.inizializzaAppUsa();
+                    break;
+                case "PRENDI_CACCIAVITE":/*
+                    interfaccia.aggiungiTesto("Ecco qui il mio bel cacciavite! Mi tornera' utile...");
+                    azioniEseguite.inserisciAzione(Azione.CACCIAVITE_PRESO);
+                    inventario.inserisciOggetto(mappa.prendiOggetto("cacciavite"));
+                    interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    interfaccia.chiudiAppPrendi();*/
                     break;
                 default:
                     break;

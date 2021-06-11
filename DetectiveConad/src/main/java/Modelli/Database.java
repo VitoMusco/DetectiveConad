@@ -59,7 +59,7 @@ public class Database {
         return 0;
     }
 
-    public void inserisciOggetti(int id_partita, Map<Oggetto,String> o) {
+    public void inserisciOggetti(int id_partita, Map<Oggetto, String> o) {
         Statement stm;
         Connection connessione = connessioneDb();
         if (connessione != null) {
@@ -81,7 +81,7 @@ public class Database {
                 stm = connessione.createStatement();
                 stm.executeUpdate(CREA_OGGETTI);
                 stm.close();
-                for(Map.Entry<Oggetto, String> e : o.entrySet()){
+                for (Map.Entry<Oggetto, String> e : o.entrySet()) {
                     stm = connessione.createStatement();
                     stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('" + e.getKey().getNome() + "', '" + e.getKey().getArticolo() + "', '" + e.getValue() + "','" + id_partita + "', '" + e.getKey().isRaccoglibile() + "')");
                     stm.close();
@@ -142,7 +142,6 @@ public class Database {
             System.out.println("C'e' uno slot di salvataggio disponibile"); //esempio
         }
     }*/
-
     public int[] idPartita() {
         int[] id_partite = new int[4];
         int i = 0;
@@ -199,12 +198,11 @@ public class Database {
                 ListIterator<Azione> azioneGiaPresente = azioniGiaPresenti.getAzioni().listIterator();
                 while (azione.hasNext()) {
                     Azione azioneDaCaricare = azione.next();
-                    while (azioneGiaPresente.hasNext()){
-                        if(azioneGiaPresente.next().name().equals(azioneDaCaricare.name())){
-                            if(azione.hasNext()){
+                    while (azioneGiaPresente.hasNext()) {
+                        if (azioneGiaPresente.next().name().equals(azioneDaCaricare.name())) {
+                            if (azione.hasNext()) {
                                 azioneDaCaricare = azione.next();
-                            }
-                            else{
+                            } else {
                                 return;
                             }
                         }
@@ -241,6 +239,29 @@ public class Database {
             }
         }
         return inventario;
+    }
+
+    public Map<Oggetto, String> caricaOggetti(int idPartita) {
+        Statement stm;
+        Map<Oggetto, String> oggetti = new HashMap<>();
+        Oggetto appoggio;
+        Connection connessione = connessioneDb();
+        if (connessione != null) {
+            try {
+                stm = connessione.createStatement();
+                ResultSet risultato;
+                risultato = stm.executeQuery("SELECT nome, articolo, stanza FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
+                while (risultato.next()) {
+                    appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    oggetti.put(appoggio, risultato.getString(3));
+                }
+                risultato.close();
+                connessione.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return oggetti;
     }
 
     public AzioniEseguite caricaAzioniEseguite(int id_partita) {
