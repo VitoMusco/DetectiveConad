@@ -229,37 +229,34 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico1.setBorder(null);
         PulsanteAppDinamico1.setContentAreaFilled(false);
         PulsanteAppDinamico1.setMargin(null);
-        PulsanteAppDinamico1.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
         PulsanteAppDinamico1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PulsanteAppDinamico1ActionPerformed(evt);
             }
         });
-        jPanel1.add(PulsanteAppDinamico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, 170, 44));
+        jPanel1.add(PulsanteAppDinamico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 250, 44));
 
         PulsanteAppDinamico2.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico2.setBorder(null);
         PulsanteAppDinamico2.setContentAreaFilled(false);
         PulsanteAppDinamico2.setMargin(null);
-        PulsanteAppDinamico2.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
         PulsanteAppDinamico2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PulsanteAppDinamico2ActionPerformed(evt);
             }
         });
-        jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 160, 170, 44));
+        jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 160, 250, 44));
 
         PulsanteAppDinamico3.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico3.setBorder(null);
         PulsanteAppDinamico3.setContentAreaFilled(false);
         PulsanteAppDinamico3.setMargin(null);
-        PulsanteAppDinamico3.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
         PulsanteAppDinamico3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PulsanteAppDinamico3ActionPerformed(evt);
             }
         });
-        jPanel1.add(PulsanteAppDinamico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 220, 170, 44));
+        jPanel1.add(PulsanteAppDinamico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 220, 250, 44));
 
         ChiudiGraficaAppCellulare.setIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio.png"));
         ChiudiGraficaAppCellulare.setBorder(null);
@@ -1349,19 +1346,19 @@ public class Interfaccia extends javax.swing.JFrame {
             nome = app.getNome();
             switch(i){
                 case 1:
-                    PulsanteAppDinamico1.setText(nome);
+                    PulsanteAppDinamico1.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+app.getNome()+".png"));
                     PulsanteAppDinamico1.setEnabled(true);
                     PulsanteAppDinamico1.setVisible(true);
                     PulsanteAppDinamico1.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
                     break;
                 case 2:
-                    PulsanteAppDinamico2.setText(nome);
+                    PulsanteAppDinamico2.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+app.getNome()+".png"));
                     PulsanteAppDinamico2.setEnabled(true);
                     PulsanteAppDinamico2.setVisible(true);
                     PulsanteAppDinamico2.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
                     break;
                 case 3:
-                    PulsanteAppDinamico3.setText(nome);
+                    PulsanteAppDinamico3.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+app.getNome()+".png"));
                     PulsanteAppDinamico3.setEnabled(true);
                     PulsanteAppDinamico3.setVisible(true);
                     PulsanteAppDinamico3.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());

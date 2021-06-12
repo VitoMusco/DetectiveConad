@@ -276,9 +276,13 @@ public class LogicaGioco {
                     interfaccia.inizializzaPulsantiApp("EQUIPAGGIA",inventario.getInventario());
                     break;
                 case "EQUIPAGGIA_CACCIAVITE":
-                    interfaccia.aggiungiTesto("Ah ecco dove l'avevo messo, posso usarlo finalmente.");
-                    inventario.equipaggiaOggetto("cacciavite");
-                    interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    if(!inventario.isEquipaggiato("cacciavite")){
+                        interfaccia.aggiungiTesto("Ah ecco dove l'avevo messo, posso usarlo finalmente.");
+                        inventario.equipaggiaOggetto("cacciavite");
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Perche' dovrei riprendere il cacciavite? Ce l'ho gia' in mano!");
+                    }
                     break;
                 default:
                     break;
