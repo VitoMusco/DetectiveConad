@@ -20,6 +20,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private final int MAX_PARTITE_SALVATE = 4;
     private final ImageIcon menu, selettorePartita;
     private boolean creazioneNuovaPartita = false;
+    private boolean partitaCaricata = false;
     private boolean riproduzioneFinaleCorretto = false;
     private boolean[] partiteSalvate = new boolean[4];
     private Clip audio;
@@ -806,6 +807,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public void caricaPartita() {
+        partitaCaricata = true;
         stoppaAudio();
         disattivaPulsantiMenu();
         chiudiSelettorePartita();
@@ -814,7 +816,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public boolean controllaStatoIntroduzione() {
-        while (!creazioneNuovaPartita) {
+        while (!creazioneNuovaPartita && !partitaCaricata) {
             if (!creazioneNuovaPartita) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
@@ -825,8 +827,8 @@ public class Interfaccia extends javax.swing.JFrame {
             if (creazioneNuovaPartita) {
                 return true;
             }
-        };
-        return true;
+        }
+        return false;
     }
     
     public boolean controllaStatoFinaleCorretto() {
