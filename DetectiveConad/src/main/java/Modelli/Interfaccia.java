@@ -20,6 +20,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private final int MAX_PARTITE_SALVATE = 4;
     private final ImageIcon menu, selettorePartita;
     private boolean creazioneNuovaPartita = false;
+    private boolean riproduzioneFinaleCorretto = false;
     private boolean[] partiteSalvate = new boolean[4];
     private Clip audio;
     GestoreAzioni g;
@@ -800,6 +801,10 @@ public class Interfaccia extends javax.swing.JFrame {
         creazioneNuovaPartita = true;
     }
 
+    public void inizializzaFinaleCorretto(){
+        riproduzioneFinaleCorretto = true;
+    }
+    
     public void caricaPartita() {
         stoppaAudio();
         disattivaPulsantiMenu();
@@ -808,20 +813,35 @@ public class Interfaccia extends javax.swing.JFrame {
         mostraTesto("Vediamo... dove ero rimasto? Ah ecco!");
     }
 
-    public boolean controllaStato() {
-        do {
-            if (creazioneNuovaPartita == false) {
+    public boolean controllaStatoIntroduzione() {
+        while (!creazioneNuovaPartita) {
+            if (!creazioneNuovaPartita) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (creazioneNuovaPartita == true) {
-                creazioneNuovaPartita = false;
+            if (creazioneNuovaPartita) {
                 return true;
             }
-        } while (creazioneNuovaPartita == false);
+        };
+        return true;
+    }
+    
+    public boolean controllaStatoFinaleCorretto() {
+        while (!riproduzioneFinaleCorretto) {
+            if (!riproduzioneFinaleCorretto) {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (riproduzioneFinaleCorretto) {
+                return true;
+            }
+        }
         return true;
     }
 
@@ -851,6 +871,18 @@ public class Interfaccia extends javax.swing.JFrame {
         }
         disattivaPulsanteSalta();
         inizializzaInterfacciaUtente();
+    }
+    
+    public void riproduciFinaleCorretto() {
+        stoppaAudio();
+        disattivaInterfacciaUtente();
+        MediaLabel.setIcon(new ImageIcon("./risorse/gif/videofinale.gif"));
+        riproduciAudio("videofinale");
+        try {
+            TimeUnit.SECONDS.sleep(44);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void attivaPulsantiMenu() {

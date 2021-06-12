@@ -19,9 +19,13 @@ public class LogicaGioco {
     }
 
     public void controllaStato() {
-        if (interfaccia.controllaStato() == true) {
+        if (interfaccia.controllaStatoIntroduzione()) {
             interfaccia.riproduciIntroduzione();
             interfaccia.inizializzaInterfacciaUtente();
+        }
+
+        if(interfaccia.controllaStatoFinaleCorretto()){
+            interfaccia.riproduciFinaleCorretto();
         }
     }
 
@@ -266,7 +270,8 @@ public class LogicaGioco {
                 case "CHIUDI_CASO":
                     if(azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
                         //TRIGGERA FINALE
-                        System.out.println("Il codice funziona!");
+                        System.out.println("Il codice funziona");
+                        interfaccia.inizializzaFinaleCorretto();
                     } else{
                         System.out.println("Il codice funziona, ma sei morto");
                     }
