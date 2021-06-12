@@ -202,9 +202,12 @@ public class LogicaGioco {
                     resettaStruttureDati();
                     break;
                 case "COMANDO_APRI":
-                    if (mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("cacciavite")) {
+                    if (mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("cacciavite") && inventario.isEquipaggiato("cacciavite")) {
                         azioniEseguite.inserisciAzione(Azione.GRATA_APERTA);
                         interfaccia.aggiungiTesto(mappa.getDialogoAperto());
+                    }
+                    else if(mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("cacciavite") && !inventario.isEquipaggiato("cacciavite")){
+                        interfaccia.aggiungiTesto("Bene, ora che ho preso il cacciavite dovrei essere in grado di aprire questa grata, ma dove diavolo l'ho messo? Non dirmi che l'ho perso! Dovrei controllare la mia valigetta...");
                     }
                     else if(mappa.getCorrente().getNome().equals("Studio") && !inventario.haOggetto("cacciavite")){
                         interfaccia.aggiungiTesto(mappa.getDialogoApri());
@@ -225,7 +228,7 @@ public class LogicaGioco {
                     break;
                 case "PRENDI":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaPulsantiApp(mappa.getOggettiStanzaCorrente());
+                    interfaccia.inizializzaPulsantiApp("PRENDI",mappa.getOggettiStanzaCorrente());
                     break;
                 case "DISATTIVA_INTERFACCIA_APP_CELLULARE":
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
@@ -267,6 +270,15 @@ public class LogicaGioco {
                     } else{
                         System.out.println("Il codice funziona, ma sei morto");
                     }
+                    break;
+                case "INVENTARIO":
+                    interfaccia.inizializzaInterfacciaGraficaAppCellulare();
+                    interfaccia.inizializzaPulsantiApp("EQUIPAGGIA",inventario.getInventario());
+                    break;
+                case "EQUIPAGGIA_CACCIAVITE":
+                    interfaccia.aggiungiTesto("Ah ecco dove l'avevo messo, posso usarlo finalmente.");
+                    inventario.equipaggiaOggetto("cacciavite");
+                    interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     break;
                 default:
                     break;

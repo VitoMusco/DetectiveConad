@@ -98,7 +98,7 @@ public class Mappa {
 
     public void caricaOggetti(){
         Oggetto cacciavite = new Oggetto("un","cacciavite");
-        Oggetto mappa = new Oggetto("una", "mappa");
+        Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
         Oggetto torcia = new Oggetto("una", "torcia");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
@@ -153,8 +153,9 @@ public class Mappa {
     public Oggetto prendiOggetto(String nome){
         Oggetto oggetto;
         for (Map.Entry<Oggetto, String> o : oggetti.entrySet()) {
-            if(o.getKey().getNome().equals(nome)){
-                oggetto = o.getKey();
+            oggetto = o.getKey();
+            if(oggetto.getNome().equals(nome)){
+                System.out.println(oggetto.getNome());
                 oggetti.remove(oggetto);
                 return oggetto;
             }

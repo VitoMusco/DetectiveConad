@@ -28,11 +28,11 @@ public class Oggetto {
         return this.sinonimi;
     }
 
-    public int isRaccoglibile() {
+    public boolean isRaccoglibile() {
         if (this instanceof OggettoNonRaccoglibile) {
-            return 0;
+            return false;
         } else {
-            return 1;
+            return true;
         }
     }
 

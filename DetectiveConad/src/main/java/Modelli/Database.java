@@ -227,7 +227,7 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT nome, articolo FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
+                risultato = stm.executeQuery("SELECT articolo, nome FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
                 while (risultato.next()) {
                     appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
                     inventario.getInventario().add(appoggio);

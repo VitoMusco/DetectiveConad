@@ -148,6 +148,9 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.addActionListener(g);
         ChiudiGraficaAppCellulare.setActionCommand("DISATTIVA_INTERFACCIA_APP_CELLULARE");
         
+        Inventario.addActionListener(g);
+        Inventario.setActionCommand("INVENTARIO");
+        
         PulsanteAppDinamico1.addActionListener(g);
         PulsanteAppDinamico2.addActionListener(g);
         PulsanteAppDinamico3.addActionListener(g);
@@ -1334,29 +1337,34 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.setEnabled(true);
     }
 
-    public void inizializzaPulsantiApp(List<Oggetto> oggetti) {
+    public void inizializzaPulsantiApp(String azione,List<Oggetto> oggetti) {
         ListIterator<Oggetto> lit = oggetti.listIterator();
+        Oggetto app;
         String nome;
         for(int i=1;lit.hasNext();i++) {
-            nome = lit.next().getNome();
+            app = lit.next();
+            if(!app.isRaccoglibile()){
+                continue;
+            }
+            nome = app.getNome();
             switch(i){
                 case 1:
                     PulsanteAppDinamico1.setText(nome);
                     PulsanteAppDinamico1.setEnabled(true);
                     PulsanteAppDinamico1.setVisible(true);
-                    PulsanteAppDinamico1.setActionCommand("PRENDI_"+nome.toUpperCase());
+                    PulsanteAppDinamico1.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
                     break;
                 case 2:
                     PulsanteAppDinamico2.setText(nome);
                     PulsanteAppDinamico2.setEnabled(true);
                     PulsanteAppDinamico2.setVisible(true);
-                    PulsanteAppDinamico2.setActionCommand("PRENDI_"+nome.toUpperCase());
+                    PulsanteAppDinamico2.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
                     break;
                 case 3:
                     PulsanteAppDinamico3.setText(nome);
                     PulsanteAppDinamico3.setEnabled(true);
                     PulsanteAppDinamico3.setVisible(true);
-                    PulsanteAppDinamico3.setActionCommand("PRENDI_"+nome.toUpperCase());
+                    PulsanteAppDinamico3.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
                     break;
                 default:
                     break;
@@ -1379,17 +1387,6 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico3.setEnabled(true);
         PulsanteAppDinamico3.setVisible(true);
         PulsanteAppDinamico3.setActionCommand("INCASTRA_VINCENZO");
-    }
-
-    public void chiudiAppIncastra() {
-
-    }
-
-    public void inizializzaAppUsa() {
-    }
-
-    public void chiudiAppUsa() {
-
     }
 
 }
