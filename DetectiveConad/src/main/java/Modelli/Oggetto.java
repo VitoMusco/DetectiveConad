@@ -5,7 +5,6 @@ import java.util.*;
 public class Oggetto {
 
     private String nome, articolo;
-    private Set<String> sinonimi;
 
     public Oggetto(String a, String n) {
         this.nome = n;
@@ -22,10 +21,6 @@ public class Oggetto {
 
     public String getArticolo() {
         return this.articolo;
-    }
-
-    public Set<String> getSinonimi() {
-        return this.sinonimi;
     }
 
     public boolean isRaccoglibile() {

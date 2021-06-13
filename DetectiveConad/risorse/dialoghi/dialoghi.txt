@@ -2,7 +2,7 @@ Introduzione#Bari, Venerdi' 13 Dicembre 2024 Ore 08:00 Sembrava una classica mat
 StradaOss#Alle mie spalle c'e' il mio camioncino, mi saro' ricordato di portare la mia attrezzatura stavolta? Di fronte a me invece c'e' l'ingresso per il supermercato(che detto tra noi e' un po' na merda).
 IngressoOss1#Sono all'ingresso, c'e' un quadro e ci sono i dipendenti.
 IngressoOss3#Il quadro sembra la piantina del supermercato, potrebbe tornarmi utile , ma non posso prenderla. Chissa' se avro' spazio nella memoria del mio telefono.
-PrendiFotoQuadro#'CLIC' Perfetto, spero non mi riempia la memoria.
+PrendiMappa#'CLIC' Perfetto, spero non mi riempia la memoria.
 IngressoOss2#Sembrano tre nerd,  avranno di sicuro fatto informatica.
 IngressoInterroga#Il primo si chiama Vito, e' il cassiere, e chiude ogni sera le porte del supermercato. Il secondo si chiama Michele, ed e' il salumiere. La sera pulisce i coltelli e i macchinari da lavoro. Il terzo infine e' Vincenzo, un semplice dipendente, smista la merce sugli scaffali. Tutti e tre riferiscono di non avere contatti col direttore da ieri sera. Continuo le indagini.
 SalumeriaOss1#Vedo il bancone , i salumi, i coltelli , i macchinari e una strana porta.

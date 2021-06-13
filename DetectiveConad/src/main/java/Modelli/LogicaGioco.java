@@ -171,11 +171,9 @@ public class LogicaGioco {
                     break;
                 case "SCATTA_FOTO":
                     if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
-                        if (mappa.prendiOggetto("mappa") != null) {
-                            inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
-                            interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("FotoQuadro"));
-                            azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
-                        }
+                        inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
+                        interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("Mappa"));
+                        azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
                     } else if (mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
                         interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
                     } else {

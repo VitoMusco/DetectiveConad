@@ -98,8 +98,8 @@ public class Mappa {
 
     public void caricaOggetti(){
         Oggetto cacciavite = new Oggetto("un","cacciavite");
-        Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
         Oggetto torcia = new Oggetto("una", "torcia");
+        Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
         aggiungiOggetto(torcia, this.camioncino.getNome());
