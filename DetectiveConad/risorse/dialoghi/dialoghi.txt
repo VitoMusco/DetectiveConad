@@ -18,9 +18,7 @@ Condotto#E luce fu!(Let there be light) Vediamo dove mi porta...
 CellafrigoOss1#Brrr skrrt skrrt che freddo, questa deve essere la cella frigorifera. C'e' della carne appesa.
 CellafrigoOss2#Sembra fresca, allora perche' il salumiere mi ha detto che era inutilizzata? Inoltre intravedo un telo sul pavimento. Che senso ha coprire la carne qui?
 CellafrigoOss3#PORCA VACCA!! Ma quella e' una scarpa, non mi dire che...
-CellafrigoPrendiTelo#Come sospettavo! E' anche piu' grosso di quanto immaginassi: questo e' il cadavere del direttore! Non capisco pero', non vedo sangue qui, eppure sembra troppo grosso per essere trasportato da una sola persona. A meno che non sia stato pulito, il direttore non e' stato ucciso qui... La mia torcia UV mi permettera' di trovare le tracce.
-TestoIT#Devo confrontare necessariamente queste impronte con quelle dei dipendenti, sara' meglio che mi sbrighi.
-ParlaDI#Ho preso le impronte digitali dei dipendenti, ora bastera' semplicemente confrontarle con quelle trovate prima.
-AnalizzaI#Sul coltello ci sono le impronte di Michele, ma perché ci sono anche quelle di Vincenzo? Le impronte sul telo sono quelle di Michele. Sulla tastiera ci sono le impronte di Vito.
+CellafrigoOss4#Come sospettavo! E' anche piu' grosso di quanto immaginassi: questo e' il cadavere del direttore! Non capisco pero', non vedo sangue qui, eppure sembra troppo grosso per essere trasportato da una sola persona. A meno che non sia stato pulito, il direttore non e' stato ucciso qui... La mia torcia UV mi permettera' di trovare le tracce.
+ConfrontaImpronte#Sul coltello ci sono le impronte di Michele, ma perché ci sono anche quelle di Vincenzo? Le impronte sul telo sono quelle di Michele. Sulla tastiera ci sono le impronte di Vito.
 FinaleG#Ora tutto e' piu' chiaro. Il caso e' chiuso, posso finalmente tornare a casa a vedere il mio cartone preferito.
 FinaleA#Ora tutto e' piu' chiaro. Il caso e' chiuso, posso finalmente tornare a casa a vedere il mio cartone preferito. 3 HOURS LATER... NOTIZIARIO: Il detective Conad e' stato trovato morto nel proprio appartamento. Di recente aveva “risolto” un caso in un supermercato. Siamo sicuri che abbia trovato davvero tutti i colpevoli?

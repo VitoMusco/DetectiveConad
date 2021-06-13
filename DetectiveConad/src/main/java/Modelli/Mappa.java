@@ -37,7 +37,7 @@ public class Mappa {
         this.camioncino = new Stanza("Camioncino", "Sono all’interno del mio camioncino.", 1);
         this.cassa = new Stanza("Cassa", "Sono alla cassa", 1);
         this.studio = new Stanza("Studio", "Sono nell'ufficio del direttore", 2);
-        this.retro = new Stanza("Cellafrigo", "Sono nella cella frigorifera", 3);
+        this.retro = new Stanza("Cellafrigo", "Sono nella cella frigorifera", 4);
         this.salumeria = new Stanza("Salumeria", "Sono in salumeria", 3);
         this.corridoio1 = new Stanza("Corridoio1", "Sono a sud della zona detersivi", 1);
         this.corridoio2 = new Stanza("Corridoio2", "Sono a sud della zona frutta", 1);
@@ -100,10 +100,12 @@ public class Mappa {
         Oggetto cacciavite = new Oggetto("un","cacciavite");
         Oggetto torcia = new Oggetto("una", "torcia");
         Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
+        Oggetto improntemichele = new OggettoVisibileSoloUV("le","impronte_michele");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
         aggiungiOggetto(torcia, this.camioncino.getNome());
         aggiungiOggetto(mappa, this.ingresso.getNome());
+        aggiungiOggetto(improntemichele, this.retro.getNome());
         /*
         Oggetto pila = new Oggetto("una", "pila");
         
@@ -155,7 +157,6 @@ public class Mappa {
         for (Map.Entry<Oggetto, String> o : oggetti.entrySet()) {
             oggetto = o.getKey();
             if(oggetto.getNome().equals(nome)){
-                System.out.println(oggetto.getNome());
                 oggetti.remove(oggetto);
                 return oggetto;
             }

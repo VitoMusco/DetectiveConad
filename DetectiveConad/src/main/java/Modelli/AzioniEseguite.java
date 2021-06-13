@@ -27,6 +27,18 @@ public class AzioniEseguite {
             case "CACCIAVITE_PRESO":
                 inserisciAzione(Azione.CACCIAVITE_PRESO);
                 break;
+            case "TORCIA_PRESA":
+                inserisciAzione(Azione.TORCIA_PRESA);
+                break;
+            case "TROVATA_IMPRONTA_MICHELE":
+                inserisciAzione(Azione.TROVATA_IMPRONTA_MICHELE);
+                break;
+            case "TROVATA_IMPRONTA_VINCENZO":
+                inserisciAzione(Azione.TROVATA_IMPRONTA_VINCENZO);
+                break;
+            case "TROVATA_IMPRONTA_VITO":
+                inserisciAzione(Azione.TROVATA_IMPRONTA_VITO);
+                break;
             case "FLASH_ATTIVATO":
                 inserisciAzione(Azione.FLASH_ATTIVATO);
                 break;
