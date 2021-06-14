@@ -454,9 +454,14 @@ public class LogicaGioco {
                     break;
                 case "EQUIPAGGIA_CHIAVE":
                     if(!inventario.isEquipaggiato("chiave")){
-                        interfaccia.aggiungiTesto("Ok, ora posso aprire la porta della salumeria.");
-                        inventario.equipaggiaOggetto("chiave");
-                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                        if(!azioniEseguite.verificaPresenzaAzione(Azione.PORTA_APERTA)){
+                            interfaccia.aggiungiTesto("Ok, ora posso aprire la porta della salumeria.");
+                            inventario.equipaggiaOggetto("chiave");
+                            interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                        } else {
+                            interfaccia.aggiungiTesto("Hmm... oramai la porta della cella frigorifera l'ho aperta, e' inutile che io prenda questa chiave");
+                            interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                        }
                     } else{
                         interfaccia.aggiungiTesto("Perche' dovrei riprendere la chiave? Ce l'ho gia' in mano!");
                     }
