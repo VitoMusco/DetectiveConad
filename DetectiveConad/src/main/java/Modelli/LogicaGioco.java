@@ -166,18 +166,30 @@ public class LogicaGioco {
                 azioniEseguite.inserisciAzione(Azione.TROVATO_CADAVERE);
                 interfaccia.aggiungiTesto(mappa.osservaStanza());
             } else if (mappa.getCorrente().getNome().equals("Cellafrigo") && inventario.isEquipaggiato("torcia")) {
-                interfaccia.aggiungiTesto("Oh ma cosa abbiamo qui? Un'impronta digitale...");
-                interfaccia.aggiungiTesto("Ecco fatto, l'ho presa. Quelli della scientifica si pentiranno di non avermi assunto!");
-                interfaccia.aggiungiTesto("Ora devo soltanto vedere a chi appartiene... meglio andare ad interrogare i dipendenti, cosi' potro' confrontarla con le loro impronte!");
-                inventario.inserisciOggetto(mappa.prendiOggetto("impronte_michele"));
+                if(!inventario.haOggetto("impronte_michele")){
+                    interfaccia.aggiungiTesto("Oh ma cosa abbiamo qui? Un'impronta digitale...");
+                    interfaccia.aggiungiTesto("Ecco fatto, l'ho presa. Quelli della scientifica si pentiranno di non avermi assunto!");
+                    interfaccia.aggiungiTesto("Ora devo soltanto vedere a chi appartiene... meglio andare ad interrogare i dipendenti, cosi' potro' confrontarla con le loro impronte!");
+                    inventario.inserisciOggetto(mappa.prendiOggetto("impronte_michele"));
+                } else {
+                    interfaccia.aggiungiTesto("Riecco le impronte digitali che ho trovato prima, qui non c'e' piu' niente da vedere.");
+                }
             } else if (mappa.getCorrente().getNome().equals("Salumeria") && inventario.isEquipaggiato("torcia")) {
-                interfaccia.aggiungiTesto("Hmm... vedo delle impronte fresche su uno dei coltelli.");
-                interfaccia.aggiungiTesto("Bene, ho preso le impronte.");
-                inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vincenzo"));
+                if(!inventario.haOggetto("impronte_vincenzo")){
+                    interfaccia.aggiungiTesto("Hmm... vedo delle impronte fresche su uno dei coltelli.");
+                    interfaccia.aggiungiTesto("Bene, ho preso le impronte.");
+                    inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vincenzo"));
+                } else {
+                    interfaccia.aggiungiTesto("Riecco le impronte digitali che ho trovato prima, qui non c'e' piu' niente da vedere.");
+                }
             } else if (mappa.getCorrente().getNome().equals("Studio") && inventario.isEquipaggiato("torcia")) {
-                interfaccia.aggiungiTesto("Allora vediamo un po'... Ecco! ci sono impronte sui dispositivi del pc e sulla maniglia della porta.");
-                interfaccia.aggiungiTesto("Prese! Vediamo se riesco ad incastrare qualcuno.");
-                inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vito"));
+                if(!inventario.haOggetto("impronte_vito")){
+                    interfaccia.aggiungiTesto("Allora vediamo un po'... Ecco! ci sono impronte sui dispositivi del pc e sulla maniglia della porta.");
+                    interfaccia.aggiungiTesto("Prese! Vediamo se riesco ad incastrare qualcuno.");
+                    inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vito"));
+                } else {
+                    interfaccia.aggiungiTesto("Riecco le impronte digitali che ho trovato prima, qui non c'e' piu' niente da vedere.");
+                }
             } else if (mappa.getCorrente().getNome().equals("Zonafrigo") && inventario.isEquipaggiato("torcia")) {
                 interfaccia.aggiungiTesto("Mamma mia che macchia gigante! Avranno buttato a terra qualche succo di frutta?");
                 interfaccia.aggiungiTesto("Ma cosa sto dicendo! Quel tipo di macchia non si vede con i raggi UV! Forse hanno fatto bene a non prendermi nella scientifica alla fine...");
