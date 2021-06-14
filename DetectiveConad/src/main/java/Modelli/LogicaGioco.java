@@ -301,7 +301,7 @@ public class LogicaGioco {
         interfaccia.getChiudiCaso().addActionListener(g -> {
             if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
                 interfaccia.inizializzaFinaleCorretto();
-            } else {
+            } else if(azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
                 interfaccia.inizializzaFinaleAlternativo();
             }
         });

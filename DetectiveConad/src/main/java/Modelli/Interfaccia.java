@@ -844,7 +844,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public boolean controllaStatoIntroduzione() {
-        while (!creazioneNuovaPartita && !riproduzioneFinaleCorretto) {
+        while (!creazioneNuovaPartita && !riproduzioneFinaleCorretto && !riproduzioneFinaleAlternativo) {
             if (!creazioneNuovaPartita) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
@@ -861,7 +861,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public boolean controllaStatoFinaleCorretto() {
-        while (!riproduzioneFinaleCorretto) {
+        while (!riproduzioneFinaleCorretto && !riproduzioneFinaleAlternativo) {
             if (!riproduzioneFinaleCorretto) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
@@ -878,7 +878,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public boolean controllaStatoFinaleAlternativo() {
-        while (!riproduzioneFinaleAlternativo) {
+        while (!riproduzioneFinaleAlternativo && !riproduzioneFinaleCorretto) {
             if (!riproduzioneFinaleAlternativo) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
