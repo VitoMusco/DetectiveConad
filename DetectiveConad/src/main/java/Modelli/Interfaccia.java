@@ -56,6 +56,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico5.addActionListener(g);
         PulsanteAppDinamico6.addActionListener(g);
         PulsanteAppDinamico7.addActionListener(g);
+        PulsanteAppDinamico8.addActionListener(g);
     }
 
     @SuppressWarnings("unchecked")
@@ -71,6 +72,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico5 = new javax.swing.JButton();
         PulsanteAppDinamico6 = new javax.swing.JButton();
         PulsanteAppDinamico7 = new javax.swing.JButton();
+        PulsanteAppDinamico8 = new javax.swing.JButton();
         ChiudiGraficaAppCellulare = new javax.swing.JButton();
         GraficaAppCellulare = new javax.swing.JLabel();
         AnnullaSalvataggio = new javax.swing.JButton();
@@ -211,6 +213,17 @@ public class Interfaccia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(PulsanteAppDinamico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 400, 250, 44));
+
+        PulsanteAppDinamico8.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteAppDinamico8.setBorder(null);
+        PulsanteAppDinamico8.setContentAreaFilled(false);
+        PulsanteAppDinamico8.setMargin(null);
+        PulsanteAppDinamico8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico8, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 450, 250, 44));
 
         ChiudiGraficaAppCellulare.setIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio.png"));
         ChiudiGraficaAppCellulare.setBorder(null);
@@ -668,6 +681,10 @@ public class Interfaccia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PulsanteAppDinamico7ActionPerformed
 
+    private void PulsanteAppDinamico8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico8ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnnullaSalvataggio;
     private javax.swing.JButton Apri;
@@ -714,6 +731,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteAppDinamico5;
     private javax.swing.JButton PulsanteAppDinamico6;
     private javax.swing.JButton PulsanteAppDinamico7;
+    private javax.swing.JButton PulsanteAppDinamico8;
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
@@ -1129,6 +1147,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico5.setVisible(false);
         PulsanteAppDinamico6.setVisible(false);
         PulsanteAppDinamico7.setVisible(false);
+        PulsanteAppDinamico8.setVisible(false);
         
         PulsanteAppDinamico1.setEnabled(false);        
         PulsanteAppDinamico2.setEnabled(false);        
@@ -1137,6 +1156,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico5.setEnabled(false);
         PulsanteAppDinamico6.setEnabled(false);
         PulsanteAppDinamico7.setEnabled(false);
+        PulsanteAppDinamico8.setEnabled(false);
     }
     
     //Mostra l'interfaccia del cellulare
@@ -1366,6 +1386,9 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico7.setEnabled(false);
         PulsanteAppDinamico7.setVisible(false);
         
+        PulsanteAppDinamico8.setEnabled(false);
+        PulsanteAppDinamico8.setVisible(false);
+        
         MappaLabel.setEnabled(false);
         MappaLabel.setVisible(false);
     }
@@ -1447,6 +1470,12 @@ public class Interfaccia extends javax.swing.JFrame {
                     PulsanteAppDinamico7.setEnabled(true);
                     PulsanteAppDinamico7.setVisible(true);
                     PulsanteAppDinamico7.setActionCommand(azione+"_"+nome);
+                    break;
+                case 8:
+                    PulsanteAppDinamico8.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
+                    PulsanteAppDinamico8.setEnabled(true);
+                    PulsanteAppDinamico8.setVisible(true);
+                    PulsanteAppDinamico8.setActionCommand(azione+"_"+nome);
                     break;
                 default:
                     break;
@@ -1612,6 +1641,10 @@ public class Interfaccia extends javax.swing.JFrame {
         return PulsanteAppDinamico7;
     }
 
+    public JButton getPulsanteAppDinamico8() {
+        return PulsanteAppDinamico8;
+    }
+    
     public JButton getPulsanteEsci() {
         return PulsanteEsci;
     }
