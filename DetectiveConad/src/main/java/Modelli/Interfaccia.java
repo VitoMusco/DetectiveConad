@@ -22,6 +22,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private boolean creazioneNuovaPartita = false;
     private boolean saltaFilmatoIntroduzione = false;
     private boolean riproduzioneFinaleCorretto = false;
+    private boolean riproduzioneFinaleAlternativo = false;
     private boolean[] partiteSalvate = new boolean[4];
     private Clip audio;
     GestoreAzioni g;
@@ -829,6 +830,10 @@ public class Interfaccia extends javax.swing.JFrame {
         riproduzioneFinaleCorretto = true;
     }
     
+    public void inizializzaFinaleAlternativo(){
+        riproduzioneFinaleAlternativo = true;
+    }
+    
     public void caricaPartita() {
         saltaFilmatoIntroduzione = true;
         stoppaAudio();
@@ -872,6 +877,23 @@ public class Interfaccia extends javax.swing.JFrame {
         return true;
     }
 
+    public boolean controllaStatoFinaleAlternativo() {
+        while (!riproduzioneFinaleAlternativo) {
+            if (!riproduzioneFinaleAlternativo) {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (riproduzioneFinaleAlternativo) {
+                riproduzioneFinaleAlternativo = false;
+                return true;
+            }
+        }
+        return true;
+    }
+    
     public void riproduciIntro() {
         disattivaPulsantiMenu();
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/intro.gif"));
@@ -908,6 +930,22 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+        stoppaAudio();
+        inizializzaMenu();
+    }
+    
+    public void riproduciFinaleAlternativo() {
+        stoppaAudio();
+        disattivaInterfacciaUtente();
+        MediaLabel.setIcon(new ImageIcon("./risorse/gif/videofinalealternativo.gif"));
+        riproduciAudio("videofinalealternativo");
+        try {
+            TimeUnit.SECONDS.sleep(24);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        stoppaAudio();
+        inizializzaMenu();
     }
 
     public void attivaPulsantiMenu() {

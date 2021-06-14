@@ -23,24 +23,20 @@ public class LogicaGioco {
     }
 
     public void controllaStato() {
-        controllaStatoIntroduzione();
-        controllaStatoFinaleCorretto();
-    }
-    
-    public void controllaStatoIntroduzione(){
         if (interfaccia.controllaStatoIntroduzione()) {
             interfaccia.riproduciIntroduzione();
             controllaStato();
         }
-    }
-    
-    public void controllaStatoFinaleCorretto(){
         if(interfaccia.controllaStatoFinaleCorretto()){
             interfaccia.riproduciFinaleCorretto();
             controllaStato();
         }
+        if(interfaccia.controllaStatoFinaleAlternativo()){
+            interfaccia.riproduciFinaleAlternativo();
+            controllaStato();
+        }
     }
-
+    
     public void resettaStruttureDati() {
         azioniEseguite.resettaAzioni();
         inventario.resettaInventario();
@@ -306,7 +302,7 @@ public class LogicaGioco {
             if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
                 interfaccia.inizializzaFinaleCorretto();
             } else {
-                System.out.println("Il codice funziona, ma sei morto");
+                interfaccia.inizializzaFinaleAlternativo();
             }
         });
         interfaccia.getChiudiGraficaAppCellulare().addActionListener(g -> {
