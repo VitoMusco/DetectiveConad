@@ -16,6 +16,7 @@ public class LogicaGioco {
     public LogicaGioco() {
         interfaccia.riproduciIntro();
         db.inizializzaDatabase();
+        inizializzaFunzionalitaPulsanti();
     }
 
     public void controllaStato() {
@@ -35,7 +36,122 @@ public class LogicaGioco {
         mappa.resettaMappa();
         interfaccia.resettaTesto();
     }
-
+    
+    public void inizializzaFunzionalitaPulsanti(){
+        interfaccia.getEsci().addActionListener(g -> {
+            System.exit(0);
+        });
+        interfaccia.getPulsanteIndaga().addActionListener(g -> {
+            interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
+            interfaccia.inizializzaSelettorePartita();
+        });
+        interfaccia.getIniziaPartita().addActionListener(g -> {
+            if (interfaccia.controllaNomePartita() == true) {
+                idPartita = db.inserisciPartita(interfaccia.getNomePartita());
+                if (idPartita != 0) {
+                    mappa = new Mappa();
+                    mappa.caricaOggetti();
+                    db.inserisciOggetti(idPartita, mappa.getOggetti());
+                    inventario = db.caricaInventario(idPartita);
+                    interfaccia.creaNuovaPartita();
+                }
+           }
+        });
+        interfaccia.getSalvataggiEsci().addActionListener(g -> {
+            interfaccia.esciDaSelettorePartita();
+        });
+        interfaccia.getCreaSalvataggioEsci().addActionListener(g -> {
+            interfaccia.esciDaCreatorePartita();
+        });
+        interfaccia.getNuovaPartita1().addActionListener(g -> {
+            interfaccia.inizializzaCreatorePartita();
+        });
+        interfaccia.getNuovaPartita2().addActionListener(g -> {
+            interfaccia.inizializzaCreatorePartita();
+        });
+        interfaccia.getNuovaPartita3().addActionListener(g -> {
+            interfaccia.inizializzaCreatorePartita();
+        });
+        interfaccia.getNuovaPartita4().addActionListener(g -> {
+            interfaccia.inizializzaCreatorePartita();
+        });
+        interfaccia.getContinuaPartita1().addActionListener(g -> {
+            idPartita = 1;
+            continuaPartita();
+        });
+        interfaccia.getContinuaPartita2().addActionListener(g -> {
+            idPartita = 2;
+            continuaPartita();
+        });
+        interfaccia.getContinuaPartita3().addActionListener(g -> {
+            idPartita = 3;
+            continuaPartita();
+        });
+        interfaccia.getContinuaPartita4().addActionListener(g -> {
+            idPartita = 4;
+            continuaPartita();
+        });
+        interfaccia.getApriEditor().addActionListener(g -> {
+            interfaccia.mostraEditorTesto();
+            if (mappa.getCorrente().getNome().equals("Strada")) {
+                interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
+            }
+            interfaccia.aggiungiTesto(mappa.getCorrente().getDescrizione());
+        });
+        interfaccia.getApriTelefono().addActionListener(g -> {
+            interfaccia.mostraCellulare();
+        });
+        interfaccia.getApriMovimento().addActionListener(g -> {
+            interfaccia.mostraInterfacciaMovimento();
+        });
+        interfaccia.getPulsanteSalta().addActionListener(g -> {
+        });
+        interfaccia.getSu().addActionListener(g -> {
+        });
+        interfaccia.getGiu().addActionListener(g -> {
+        });
+        interfaccia.getDestra().addActionListener(g -> {
+        });
+        interfaccia.getSinistra().addActionListener(g -> {
+        });
+        interfaccia.getOsserva().addActionListener(g -> {
+        });
+        interfaccia.getFotocamera().addActionListener(g -> {
+        });
+        interfaccia.getEsci().addActionListener(g -> {
+        });
+        interfaccia.getAnnullaSalvataggio().addActionListener(g -> {
+        });
+        interfaccia.getSalvaEVaiAMenu().addActionListener(g -> {
+        });
+        interfaccia.getSalva().addActionListener(g -> {
+        });
+        interfaccia.getApri().addActionListener(g -> {
+        });
+        interfaccia.getFlash().addActionListener(g -> {
+        });
+        interfaccia.getPrendi().addActionListener(g -> {
+        });
+        interfaccia.getIncastra().addActionListener(g -> {
+        });
+        interfaccia.getInterroga().addActionListener(g -> {
+        });
+        interfaccia.getChiudiCaso().addActionListener(g -> {
+        });
+        interfaccia.getChiudiGraficaAppCellulare().addActionListener(g -> {
+        });
+        interfaccia.getInventario().addActionListener(g -> {
+        });
+    }
+    
+    public void continuaPartita(){
+        interfaccia.caricaPartita();
+        azioniEseguite = db.caricaAzioniEseguite(idPartita);
+        inventario = db.caricaInventario(idPartita);
+        mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
+        mappa.caricaOggetti(db.caricaOggetti(idPartita));
+    }
+    
     class GestoreAzioni implements ActionListener {
 
         String comando;
@@ -48,64 +164,34 @@ public class LogicaGioco {
             comando = e.getActionCommand();
             switch (comando) {
                 case "ESCI":
-                    System.exit(0);
+                    
                     break;
                 case "NUOVA_PARTITA":
-                    interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
-                    interfaccia.inizializzaSelettorePartita();
+                    
                     break;
                 case "MENU_INIZIALE":
-                    interfaccia.esciDaSelettorePartita();
+                    
                     break;
                 case "CREA_PARTITA":
-                    interfaccia.inizializzaCreatorePartita();
+                    
                     break;
                 case "CREA_SALVATAGGIO_ESCI":
-                    interfaccia.esciDaCreatorePartita();
+                    
                     break;
                 case "INIZIA_PARTITA":
-                    if (interfaccia.controllaNomePartita() == true) {
-                        idPartita = db.inserisciPartita(interfaccia.getNomePartita());
-                        if (idPartita != 0) {
-                            mappa = new Mappa();
-                            mappa.caricaOggetti();
-                            db.inserisciOggetti(idPartita, mappa.getOggetti());
-                            inventario = db.caricaInventario(idPartita);
-                            interfaccia.creaNuovaPartita();
-                        }
-                    }
+                    
                     break;
                 case "CONTINUA_PARTITA_1":
-                    interfaccia.caricaPartita();
-                    idPartita = 1;
-                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
-                    inventario = db.caricaInventario(idPartita);
-                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
+                    
                     break;
                 case "CONTINUA_PARTITA_2":
-                    interfaccia.caricaPartita();
-                    idPartita = 2;
-                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
-                    inventario = db.caricaInventario(idPartita);
-                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
+
                     break;
                 case "CONTINUA_PARTITA_3":
-                    interfaccia.caricaPartita();
-                    idPartita = 3;
-                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
-                    inventario = db.caricaInventario(idPartita);
-                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
+
                     break;
                 case "CONTINUA_PARTITA_4":
-                    interfaccia.caricaPartita();
-                    idPartita = 4;
-                    azioniEseguite = db.caricaAzioniEseguite(idPartita);
-                    inventario = db.caricaInventario(idPartita);
-                    mappa.caricaStanzaCorrente(db.caricaStanzaCorrente(idPartita));
-                    mappa.caricaOggetti(db.caricaOggetti(idPartita));
+
                     break;
                 case "SALVA_SI_ED_ESCI":
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
@@ -122,17 +208,13 @@ public class LogicaGioco {
                     interfaccia.disattivaInterfacciaSalvataggio();
                     break;
                 case "APRI_EDITOR":
-                    interfaccia.mostraEditorTesto();
-                    if (mappa.getCorrente().getNome().equals("Strada")) {
-                        interfaccia.mostraTesto(mappa.prelevaTestoDaIntroduzione());
-                    }
-                    interfaccia.aggiungiTesto(mappa.getCorrente().getDescrizione());
+                    
                     break;
                 case "APRI_TELEFONO":
-                    interfaccia.mostraCellulare();
+                    
                     break;
                 case "APRI_MOVIMENTO":
-                    interfaccia.mostraInterfacciaMovimento();
+                    
                     break;
                 case "SALTA_VIDEO":
                     interfaccia.saltaIntroduzione();

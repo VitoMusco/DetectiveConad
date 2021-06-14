@@ -1562,4 +1562,185 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico3.setActionCommand("INCASTRA_VINCENZO");
     }
 
+    public JButton getPulsanteCrediti(){
+        return PulsanteCrediti;
+    }
+
+    public JButton getAnnullaSalvataggio() {
+        return AnnullaSalvataggio;
+    }
+
+    public JButton getApri() {
+        return Apri;
+    }
+
+    public JButton getApriEditor() {
+        return ApriEditor;
+    }
+
+    public JButton getApriMovimento() {
+        return ApriMovimento;
+    }
+
+    public JButton getApriTelefono() {
+        return ApriTelefono;
+    }
+
+    public JButton getChiudiCaso() {
+        return ChiudiCaso;
+    }
+
+    public JButton getChiudiGraficaAppCellulare() {
+        return ChiudiGraficaAppCellulare;
+    }
+
+    public JButton getContinuaPartita1() {
+        return ContinuaPartita1;
+    }
+
+    public JButton getContinuaPartita2() {
+        return ContinuaPartita2;
+    }
+
+    public JButton getContinuaPartita3() {
+        return ContinuaPartita3;
+    }
+
+    public JButton getContinuaPartita4() {
+        return ContinuaPartita4;
+    }
+
+    public JButton getCreaSalvataggioEsci() {
+        return CreaSalvataggioEsci;
+    }
+
+    public JButton getDestra() {
+        return Destra;
+    }
+
+    public JButton getEsci() {
+        return Esci;
+    }
+
+    public JButton getFlash() {
+        return Flash;
+    }
+
+    public JButton getFotocamera() {
+        return Fotocamera;
+    }
+
+    public JButton getGiu() {
+        return Giu;
+    }
+
+    public JButton getIncastra() {
+        return Incastra;
+    }
+
+    public JButton getIniziaPartita() {
+        return IniziaPartita;
+    }
+
+    public JButton getInterroga() {
+        return Interroga;
+    }
+
+    public JButton getInventario() {
+        return Inventario;
+    }
+
+    public JButton getNuovaPartita1() {
+        return NuovaPartita1;
+    }
+
+    public JButton getNuovaPartita2() {
+        return NuovaPartita2;
+    }
+
+    public JButton getNuovaPartita3() {
+        return NuovaPartita3;
+    }
+
+    public JButton getNuovaPartita4() {
+        return NuovaPartita4;
+    }
+
+    public JButton getOsserva() {
+        return Osserva;
+    }
+
+    public JButton getPrendi() {
+        return Prendi;
+    }
+
+    public JButton getPulsanteAppDinamico1() {
+        return PulsanteAppDinamico1;
+    }
+
+    public JButton getPulsanteAppDinamico2() {
+        return PulsanteAppDinamico2;
+    }
+
+    public JButton getPulsanteAppDinamico3() {
+        return PulsanteAppDinamico3;
+    }
+
+    public JButton getPulsanteAppDinamico4() {
+        return PulsanteAppDinamico4;
+    }
+
+    public JButton getPulsanteAppDinamico5() {
+        return PulsanteAppDinamico5;
+    }
+
+    public JButton getPulsanteAppDinamico6() {
+        return PulsanteAppDinamico6;
+    }
+
+    public JButton getPulsanteAppDinamico7() {
+        return PulsanteAppDinamico7;
+    }
+
+    public JButton getPulsanteEsci() {
+        return PulsanteEsci;
+    }
+
+    public JButton getPulsanteIndaga() {
+        return PulsanteIndaga;
+    }
+
+    public JButton getPulsanteSalta() {
+        return PulsanteSalta;
+    }
+
+    public JButton getSalva() {
+        return Salva;
+    }
+
+    public JButton getSalvaEVaiAMenu() {
+        return SalvaEVaiAMenu;
+    }
+
+    public JButton getSalvaNo() {
+        return SalvaNo;
+    }
+
+    public JButton getSalvaSi() {
+        return SalvaSi;
+    }
+
+    public JButton getSalvataggiEsci() {
+        return SalvataggiEsci;
+    }
+
+    public JButton getSinistra() {
+        return Sinistra;
+    }
+
+    public JButton getSu() {
+        return Su;
+    }
+    
+    
 }
