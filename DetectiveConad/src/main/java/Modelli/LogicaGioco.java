@@ -141,11 +141,10 @@ public class LogicaGioco {
                     if(mappa.getCorrente().getNome().equals("Strada") && !azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI)){
                         interfaccia.aggiungiTesto("Nono, senza guanti non ci entro li. Le regole sono regole.");
                     }
-                    else if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
+                    else if(mappa.getCorrente().getNome().equals("Salumeria") && !azioniEseguite.verificaPresenzaAzione(Azione.PORTA_APERTA)){
+                        interfaccia.aggiungiTesto("La porta e' chiusa a chiave, a meno che io non possa attraversare i muri da questa parte non si passa");
+                    } else if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
                         interfaccia.aggiungiTesto("Serve qualcosa per orientarmi... se mi spostassi mi perderei, il mio senso dell'orientamento e' andato ormai");
-                    }
-                    else if (mappa.getCorrente().getNome().equals("Salumeria")) {
-                        interfaccia.aggiungiTesto("Non posso entrarci, la porta e' chiusa a chiave, e nessuno sembra avercela.");
                     } else {
                         interfaccia.aggiungiTesto(mappa.spostamento("n"));
                     }
@@ -153,6 +152,8 @@ public class LogicaGioco {
                 case "VAI_GIU":
                     if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
                         interfaccia.aggiungiTesto("Serve qualcosa per orientarmi... se mi spostassi mi perderei, il mio senso dell'orientamento e' andato ormai");
+                    } else if(mappa.getCorrente().getNome().equals("Cellafrigo") && !azioniEseguite.verificaPresenzaAzione(Azione.PORTA_APERTA)){
+                        interfaccia.aggiungiTesto("La porta e' chiusa, a meno che io non la apra dovro' usare il condotto.");
                     }
                     else{
                         interfaccia.aggiungiTesto(mappa.spostamento("s"));
@@ -266,6 +267,15 @@ public class LogicaGioco {
                         } else if(!inventario.haOggetto("cacciavite") && !azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
                             interfaccia.aggiungiTesto("Non vedo niente da aprire qui...");
                         }
+                    } else if(mappa.getCorrente().getNome().equals("Salumeria")){
+                        if(inventario.haOggetto("chiave") && inventario.isEquipaggiato("chiave")){
+                            azioniEseguite.inserisciAzione(Azione.PORTA_APERTA);
+                            interfaccia.aggiungiTesto("Ecco qua, ho aperto la porta della salumeria, cosi' non dovro' piu' attraversare quel condotto sporco... Bleah!");
+                        } else if(inventario.haOggetto("chiave") && !inventario.isEquipaggiato("chiave")){
+                            interfaccia.aggiungiTesto("Ok, la chiave l'ho presa, ma non ce l'ho in mano...");
+                        } else {
+                            interfaccia.aggiungiTesto("Come faccio ad aprire la porta senza la chiave? A meno che non la trovi dovro' sempre usare il condotto... Che schifo.");
+                        }
                     }
                     else{
                         interfaccia.aggiungiTesto("Non vedo niente da aprire qui...");
@@ -314,7 +324,7 @@ public class LogicaGioco {
                     break;
                 case "INCASTRA":
                     if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
-                        if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_LUOGO_UCCISIONE)){
+                        if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_LUOGO_UCCISIONE) || azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VINCENZO)){
                             interfaccia.inizializzaInterfacciaGraficaAppCellulare();
                             interfaccia.inizializzaAppIncastra();
                         } else {
@@ -324,8 +334,8 @@ public class LogicaGioco {
                         interfaccia.aggiungiTesto("Perche' dovrei incastrare qualcuno? Non e' detto che il direttore sia morto... Dovrei smetterla di essere cosi' pessimista.");
                     }
                     break;
-                case "MAPPA":
-                    //Mostra la mappa a video
+                case "EQUIPAGGIA_MAPPA":
+                    interfaccia.mostraMappa();
                     break;
                 case "PRENDI_CACCIAVITE":
                     if(azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
@@ -335,6 +345,13 @@ public class LogicaGioco {
                         interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     } else{
                         interfaccia.aggiungiTesto("Perche' dovrei prendere il cacciavite? Non ho niente da svitare!");
+                    }
+                    break;
+                 case "PRENDI_CHIAVE":
+                    if(!inventario.haOggetto("chiave")){
+                        interfaccia.aggiungiTesto("Ma guarda un po' tu! Quali erano le possibilita' che trovassi la chiave proprio dove c'e' il corpo del direttore?");
+                        inventario.inserisciOggetto(mappa.prendiOggetto("chiave"));
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     }
                     break;
                 case "PRENDI_TORCIA":
@@ -406,6 +423,15 @@ public class LogicaGioco {
                         interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     } else{
                         interfaccia.aggiungiTesto("Perche' dovrei riprendere la torcia? Ce l'ho gia' in mano!");
+                    }
+                    break;
+                case "EQUIPAGGIA_CHIAVE":
+                    if(!inventario.isEquipaggiato("chiave")){
+                        interfaccia.aggiungiTesto("Ok, ora posso aprire la porta della salumeria.");
+                        inventario.equipaggiaOggetto("chiave");
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Perche' dovrei riprendere la chiave? Ce l'ho gia' in mano!");
                     }
                     break;
                 case "EQUIPAGGIA_GUANTI":

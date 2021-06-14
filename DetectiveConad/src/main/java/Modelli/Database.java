@@ -226,9 +226,13 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT articolo, nome FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
+                risultato = stm.executeQuery("SELECT articolo, nome, raccoglibile FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
                 while (risultato.next()) {
-                    appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    if(risultato.getBoolean(3)){
+                        appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    } else{
+                        appoggio = new OggettoNonRaccoglibile(risultato.getString(1), risultato.getString(2));
+                    }
                     inventario.getInventario().add(appoggio);
                 }
                 risultato.close();
@@ -249,9 +253,13 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT articolo, nome, stanza FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
+                risultato = stm.executeQuery("SELECT articolo, nome, stanza, raccoglibile FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
                 while (risultato.next()) {
-                    appoggio = new Oggetto(risultato.getString(1),risultato.getString(2));
+                    if(risultato.getBoolean(4)){
+                        appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    } else{
+                        appoggio = new OggettoNonRaccoglibile(risultato.getString(1), risultato.getString(2));
+                    }
                     oggetti.put(appoggio, risultato.getString(3));
                 }
                 risultato.close();

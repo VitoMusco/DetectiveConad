@@ -167,6 +167,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        MappaLabel = new javax.swing.JLabel();
         PulsanteAppDinamico1 = new javax.swing.JButton();
         PulsanteAppDinamico2 = new javax.swing.JButton();
         PulsanteAppDinamico3 = new javax.swing.JButton();
@@ -234,6 +235,9 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        MappaLabel.setIcon(new ImageIcon("./risorse/immagini/telefono/mappa.png"));
+        jPanel1.add(MappaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(995, 100, 250, 320));
 
         PulsanteAppDinamico1.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico1.setBorder(null);
@@ -804,6 +808,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton IniziaPartita;
     private javax.swing.JButton Interroga;
     private javax.swing.JButton Inventario;
+    private javax.swing.JLabel MappaLabel;
     private javax.swing.JLabel MediaLabel;
     private javax.swing.JTextField NomePartita;
     private javax.swing.JButton NuovaPartita1;
@@ -1450,13 +1455,16 @@ public class Interfaccia extends javax.swing.JFrame {
         
         PulsanteAppDinamico7.setEnabled(false);
         PulsanteAppDinamico7.setVisible(false);
+        
+        MappaLabel.setEnabled(false);
+        MappaLabel.setVisible(false);
     }
 
     public void chiudiInterfacciaGraficaAppCellulare() {
         mostraCellulare();
         disattivaInterfacciaGraficaAppCellulare();
     }
-
+    
     public void inizializzaInterfacciaGraficaAppCellulare() {
         disattivaCellulare();
         GraficaAppCellulare.setVisible(true);
@@ -1466,6 +1474,13 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.setEnabled(true);
     }
 
+    public void mostraMappa(){
+        disattivaPulsantiDinamici();
+        inizializzaInterfacciaGraficaAppCellulare();
+        MappaLabel.setEnabled(true);
+        MappaLabel.setVisible(true);
+    }
+    
     public void inizializzaPulsantiApp(String azione,List<Oggetto> oggetti,AzioniEseguite azioniEseguite) {
         disattivaPulsantiDinamici();
         ListIterator<Oggetto> lit = oggetti.listIterator();

@@ -39,6 +39,9 @@ public class AzioniEseguite {
             case "TROVATO_CADAVERE":
                 inserisciAzione(Azione.TROVATO_CADAVERE);
                 break;
+            case "PORTA_APERTA":
+                inserisciAzione(Azione.PORTA_APERTA);
+                break;
             case "TORCIA_PRESA":
                 inserisciAzione(Azione.TORCIA_PRESA);
                 break;

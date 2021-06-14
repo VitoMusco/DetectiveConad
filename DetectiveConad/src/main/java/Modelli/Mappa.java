@@ -80,9 +80,9 @@ public class Mappa {
         this.corridoio6.assegnaNord(this.salumeria);
         this.corridoio6.assegnaSud(this.zona_frigo);
         this.corridoio6.assegnaOvest(this.corridoio5);
-        //   this.salumeria.assegnaNord(this.retro);
+        this.salumeria.assegnaNord(this.retro);
         this.salumeria.assegnaSud(this.corridoio6);
-        //   this.retro.assegnaSud(this.salumeria);
+        this.retro.assegnaSud(this.salumeria);
         this.studio.assegnaSud(this.cassa);
         this.studio.assegnaEst(this.condotto);
         this.condotto.assegnaEst(this.retro);
@@ -100,6 +100,7 @@ public class Mappa {
         Oggetto cacciavite = new Oggetto("un","cacciavite");
         Oggetto torcia = new Oggetto("una", "torcia");
         Oggetto guanti = new Oggetto("dei", "guanti");
+        Oggetto chiave = new Oggetto("una", "chiave");
         Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
         Oggetto improntemichele = new OggettoNonRaccoglibile("le","impronte_michele");
         Oggetto improntevito = new OggettoNonRaccoglibile("le","impronte_vito");
@@ -110,6 +111,7 @@ public class Mappa {
         aggiungiOggetto(guanti, this.camioncino.getNome());
         aggiungiOggetto(mappa, this.ingresso.getNome());
         aggiungiOggetto(improntemichele, this.retro.getNome());
+        aggiungiOggetto(chiave, this.retro.getNome());
         aggiungiOggetto(improntevito, this.studio.getNome());
         aggiungiOggetto(improntevincenzo, this.salumeria.getNome());
         /*
