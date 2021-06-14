@@ -138,7 +138,10 @@ public class LogicaGioco {
                     interfaccia.saltaIntroduzione();
                     break;
                 case "VAI_SU":
-                    if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
+                    if(mappa.getCorrente().getNome().equals("Strada") && !azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI)){
+                        interfaccia.aggiungiTesto("Nono, senza guanti non ci entro li. Le regole sono regole.");
+                    }
+                    else if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)){
                         interfaccia.aggiungiTesto("Serve qualcosa per orientarmi... se mi spostassi mi perderei, il mio senso dell'orientamento e' andato ormai");
                     }
                     else if (mappa.getCorrente().getNome().equals("Salumeria")) {
@@ -181,23 +184,23 @@ public class LogicaGioco {
                     }
                     break;
                 case "OSSERVA":
-                    if(mappa.getCorrente().getNome().equals("Cellafrigo") && inventario.isEquipaggiato("torcia")){
+                    if(mappa.getCorrente().getNome().equals("Studio") && !azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
+                        azioniEseguite.inserisciAzione(Azione.GRATA_TROVATA);
+                        interfaccia.aggiungiTesto(mappa.osservaStanza());
+                    } else if(mappa.getCorrente().getNome().equals("Cellafrigo") && inventario.isEquipaggiato("torcia")){
                         interfaccia.aggiungiTesto("Oh ma cosa abbiamo qui? Un'impronta digitale...");
                         interfaccia.aggiungiTesto("Ecco fatto, l'ho presa. Quelli della scientifica si pentiranno di non avermi assunto!");
                         interfaccia.aggiungiTesto("Ora devo soltanto vedere a chi appartiene... meglio andare ad interrogare i dipendenti, cosi' potro' confrontarla con le loro impronte!");
-                        azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_MICHELE);
                         inventario.inserisciOggetto(mappa.prendiOggetto("impronte_michele"));
                     }
                     else if(mappa.getCorrente().getNome().equals("Salumeria") && inventario.isEquipaggiato("torcia")){
                         interfaccia.aggiungiTesto("Hmm... vedo delle impronte fresche su uno dei coltelli.");
                         interfaccia.aggiungiTesto("Bene, ho preso le impronte.");
-                        azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_VINCENZO);
                         inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vincenzo"));
                     }
                     else if(mappa.getCorrente().getNome().equals("Studio") && inventario.isEquipaggiato("torcia")){
                         interfaccia.aggiungiTesto("Allora vediamo un po'... Ecco! ci sono impronte sui dispositivi del pc e sulla maniglia della porta.");
                         interfaccia.aggiungiTesto("Prese! Vediamo se riesco ad incastrare qualcuno.");
-                        azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_VITO);
                         inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vito"));
                     }
                     else if(mappa.getCorrente().getNome().equals("ZonaFrigo") && inventario.isEquipaggiato("torcia")){
@@ -206,15 +209,19 @@ public class LogicaGioco {
                         azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_VITO);
                         inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vito"));
                     }
-                    interfaccia.aggiungiTesto(mappa.osservaStanza());
+                    else{
+                        interfaccia.aggiungiTesto(mappa.osservaStanza());
+                    }
                     break;
                 case "SCATTA_FOTO":
-                    if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
-                        inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
-                        interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("Mappa"));
-                        azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
-                    } else if (mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
-                        interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
+                    if(mappa.getCorrente().getNome().equals("Ingresso")){
+                        if (!azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
+                            inventario.inserisciOggetto(mappa.prendiOggetto("mappa"));
+                            interfaccia.aggiungiTesto(mappa.getDialogoPresaOggetto("Mappa"));
+                            azioniEseguite.inserisciAzione(Azione.FOTO_SCATTATA);
+                        } else if (azioniEseguite.verificaPresenzaAzione(Azione.FOTO_SCATTATA)) {
+                            interfaccia.aggiungiTesto("Ho gia' scattato la foto!"); //Aggiungere nel file dialoghi
+                        } 
                     } else {
                         interfaccia.aggiungiTesto("Non c'e' niente da fotografare qui"); //Aggiungere nel file dialoghi
                     }
@@ -243,58 +250,62 @@ public class LogicaGioco {
                     resettaStruttureDati();
                     break;
                 case "COMANDO_APRI":
-                    if (mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("cacciavite") && inventario.isEquipaggiato("cacciavite")) {
-                        azioniEseguite.inserisciAzione(Azione.GRATA_APERTA);
-                        interfaccia.aggiungiTesto(mappa.getDialogoAperto());
-                    }
-                    else if(mappa.getCorrente().getNome().equals("Studio") && inventario.haOggetto("cacciavite") && !inventario.isEquipaggiato("cacciavite")){
-                        interfaccia.aggiungiTesto("Bene, ora che ho preso il cacciavite dovrei essere in grado di aprire questa grata, ma dove diavolo l'ho messo? Non dirmi che l'ho perso! Dovrei controllare la mia valigetta...");
-                    }
-                    else if(mappa.getCorrente().getNome().equals("Studio") && !inventario.haOggetto("cacciavite")){
-                        interfaccia.aggiungiTesto(mappa.getDialogoApri());
+                    if(mappa.getCorrente().getNome().equals("Studio")){
+                        if (inventario.haOggetto("cacciavite") && inventario.isEquipaggiato("cacciavite")) {
+                            azioniEseguite.inserisciAzione(Azione.GRATA_APERTA);
+                            interfaccia.aggiungiTesto(mappa.getDialogoAperto());
+                        }
+                        else if(inventario.haOggetto("cacciavite") && !inventario.isEquipaggiato("cacciavite")){
+                            interfaccia.aggiungiTesto("Bene, ora che ho preso il cacciavite dovrei essere in grado di aprire questa grata, ma dove diavolo l'ho messo? Non dirmi che l'ho perso! Dovrei controllare la mia valigetta...");
+                        }
+                        else if(!inventario.haOggetto("cacciavite") && azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
+                            interfaccia.aggiungiTesto(mappa.getDialogoApri());
+                        } else if(!inventario.haOggetto("cacciavite") && !azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
+                            interfaccia.aggiungiTesto("Non vedo niente da aprire qui...");
+                        }
                     }
                     else{
                         interfaccia.aggiungiTesto("Non vedo niente da aprire qui...");
                     }
                     break;
                 case "FLASH":
-                    if (mappa.getCorrente().getNome().equals("Condotto") && !azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
-                        azioniEseguite.inserisciAzione(Azione.FLASH_ATTIVATO);
-                        interfaccia.aggiungiTesto(mappa.prelevaTesto());
-                    } else if (mappa.getCorrente().getNome().equals("Condotto") && azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
-                        interfaccia.aggiungiTesto("Ho gia' attivato il flash!");
+                    if(mappa.getCorrente().getNome().equals("Condotto")){
+                        if (!azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
+                            azioniEseguite.inserisciAzione(Azione.FLASH_ATTIVATO);
+                            interfaccia.aggiungiTesto(mappa.prelevaTesto());
+                        } else if (azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
+                            interfaccia.aggiungiTesto("Ho gia' attivato il flash!");
+                        } 
                     } else {
                         interfaccia.aggiungiTesto("Non ho bisogno di attivare il flash adesso!");
                     }
                     break;
                 case "PRENDI":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaPulsantiApp("PRENDI",mappa.getOggettiStanzaCorrente());
+                    interfaccia.inizializzaPulsantiApp("PRENDI",mappa.getOggettiStanzaCorrente(),azioniEseguite);
                     break;
                 case "DISATTIVA_INTERFACCIA_APP_CELLULARE":
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     break;
                 case "INTERROGA":
-                    if (mappa.getCorrente().getNome().equals("Ingresso") && !azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)) {
-                        interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
-                        azioniEseguite.inserisciAzione(Azione.DIPENDENTI_INTERROGATI);
-                    } else if (mappa.getCorrente().getNome().equals("Ingresso") && azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)) {
-                        interfaccia.aggiungiTesto("Ho gia' interrogato i dipendenti, vediamo se mi ricordo cosa mi hanno detto...");
-                        interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
-                    } 
-                    if(mappa.getCorrente().getNome().equals("Studio") && inventario.isEquipaggiato("impronte_michele")){
-                        //Dialogo impronte michele
-                        //Inserisci azione impronte confrontate
-                    }
-                    if(mappa.getCorrente().getNome().equals("Studio") && inventario.isEquipaggiato("impronte_vincenzo")){
-                        //Dialogo impronte vincenzo
-                        //Inserisci azione impronte confrontate
-                    }
-                    if(mappa.getCorrente().getNome().equals("Studio") && inventario.isEquipaggiato("impronte_vito")){
-                        //Dialogo impronte vito
-                        //Inserisci azione impronte confrontate
-                    }
-                    else {
+                    if(mappa.getCorrente().getNome().equals("Ingresso")){
+                        if(inventario.isEquipaggiato("impronte_michele")){
+                            azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_MICHELE);
+                            interfaccia.aggiungiTesto(mappa.getDialogoImpronte("Michele"));
+                        } else if(inventario.isEquipaggiato("impronte_vincenzo")){
+                            azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_VINCENZO);
+                            interfaccia.aggiungiTesto(mappa.getDialogoImpronte("Vincenzo"));
+                        } else if(inventario.isEquipaggiato("impronte_vito")){
+                            azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_VITO);
+                            interfaccia.aggiungiTesto(mappa.getDialogoImpronte("Vito"));
+                        } else if (!azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)) {
+                            interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
+                            azioniEseguite.inserisciAzione(Azione.DIPENDENTI_INTERROGATI);
+                        } else if (azioniEseguite.verificaPresenzaAzione(Azione.DIPENDENTI_INTERROGATI)) {
+                            interfaccia.aggiungiTesto("Ho gia' interrogato i dipendenti, vediamo se mi ricordo cosa mi hanno detto...");
+                            interfaccia.aggiungiTesto(mappa.getDialogoInterrogazione());
+                        }
+                    } else {
                         interfaccia.aggiungiTesto("Non vedo nessuno da interrogare qui... i dipendenti sono all'ingresso.");
                     }
                     break;
@@ -306,31 +317,58 @@ public class LogicaGioco {
                     //Mostra la mappa a video
                     break;
                 case "PRENDI_CACCIAVITE":
-                    interfaccia.aggiungiTesto("Ecco qui il mio bel cacciavite! Mi tornera' utile...");
-                    azioniEseguite.inserisciAzione(Azione.CACCIAVITE_PRESO);
-                    inventario.inserisciOggetto(mappa.prendiOggetto("cacciavite"));
-                    interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
+                        interfaccia.aggiungiTesto("Ecco qui il mio bel cacciavite! Mi tornera' utile...");
+                        azioniEseguite.inserisciAzione(Azione.CACCIAVITE_PRESO);
+                        inventario.inserisciOggetto(mappa.prendiOggetto("cacciavite"));
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Perche' dovrei prendere il cacciavite? Non ho niente da svitare!");
+                    }
                     break;
                 case "PRENDI_TORCIA":
-                    interfaccia.aggiungiTesto("Bene, con questa torcia posso vedere tracce di sangue e impronte digitali.");
-                    azioniEseguite.inserisciAzione(Azione.TORCIA_PRESA);
-                    inventario.inserisciOggetto(mappa.prendiOggetto("torcia"));
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
+                        interfaccia.aggiungiTesto("Bene, con questa torcia posso vedere tracce di sangue e impronte digitali.");
+                        azioniEseguite.inserisciAzione(Azione.TORCIA_PRESA);
+                        inventario.inserisciOggetto(mappa.prendiOggetto("torcia"));
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Perche' dovrei prendere la torcia UV? Non ho niente da cercare per ora!");
+                    }
+                    break;
+                case "PRENDI_GUANTI":
+                    interfaccia.aggiungiTesto("Ok, adesso posso prendere prove senza lasciare impronte digitali. A patto che ci siano prove. A dir la verita' ho paura del covid...");
+                    inventario.inserisciOggetto(mappa.prendiOggetto("guanti"));
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     break;
                 case "INCASTRA_VITO":
-                    //Si puo fare se e solo se si sono trovate le prove
-                    azioniEseguite.inserisciAzione(Azione.INCASTRATO_VITO);
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VITO)){
+                        interfaccia.aggiungiTesto("Ok, in base alle prove che ho trovato sono in grado di incastrare Vito, sara' lui il killer?");
+                        azioniEseguite.inserisciAzione(Azione.INCASTRATO_VITO);
+                    }
+                    else{
+                        interfaccia.aggiungiTesto("Perche' dovrei incastrare Vito? Non ho trovato nessuna prova che lo coinvolga nei fatti accaduti.");
+                    }
                     break;
                 case "INCASTRA_MICHELE":
-                    //Si puo fare se e solo se si sono trovate le prove
-                    azioniEseguite.inserisciAzione(Azione.INCASTRATO_MICHELE);
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_MICHELE)){
+                        interfaccia.aggiungiTesto("Ho trovato delle prove per incastrare Michele, saranno sufficienti?");
+                        azioniEseguite.inserisciAzione(Azione.INCASTRATO_MICHELE);
+                    }
+                    else{
+                        interfaccia.aggiungiTesto("Perche' dovrei incastrare Michele? Non ho trovato nessuna prova che lo coinvolga nei fatti accaduti.");
+                    }
                     break;
                 case "INCASTRA_VINCENZO":
-                    //Si puo fare se e solo se si sono trovate le prove
-                    azioniEseguite.inserisciAzione(Azione.INCASTRATO_VINCENZO);
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VINCENZO)){
+                        interfaccia.aggiungiTesto("Le impronte di Vincenzo erano su quel coltello, scacco matto?");
+                        azioniEseguite.inserisciAzione(Azione.INCASTRATO_VINCENZO);
+                    }
+                    else{
+                        interfaccia.aggiungiTesto("Perche' dovrei incastrare Vincenzo? Non ho trovato nessuna prova che lo coinvolga nei fatti accaduti.");
+                    }
                     break;
                 case "CHIUDI_CASO":
-                    //Si deve poter fare se e solo se si ha incastrato almeno una persona
                     if(azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
                         interfaccia.inizializzaFinaleCorretto();
                     } else{
@@ -339,7 +377,7 @@ public class LogicaGioco {
                     break;
                 case "INVENTARIO":
                     interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaPulsantiApp("EQUIPAGGIA",inventario.getInventario());
+                    interfaccia.inizializzaPulsantiApp("EQUIPAGGIA",inventario.getInventario(),azioniEseguite);
                     break;
                 case "EQUIPAGGIA_CACCIAVITE":
                     if(!inventario.isEquipaggiato("cacciavite")){
@@ -357,6 +395,41 @@ public class LogicaGioco {
                         interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     } else{
                         interfaccia.aggiungiTesto("Perche' dovrei riprendere la torcia? Ce l'ho gia' in mano!");
+                    }
+                    break;
+                case "EQUIPAGGIA_GUANTI":
+                    if(!azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI)){
+                        interfaccia.aggiungiTesto("Ok, ora posso entrare e fare le mie indagini.");
+                        inventario.equipaggiaOggetto("guanti");
+                        azioniEseguite.inserisciAzione(Azione.GUANTI_EQUIPAGGIATI);
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    }
+                    break;
+                case "EQUIPAGGIA_IMPRONTE_VITO":
+                    if(!inventario.isEquipaggiato("impronte_vito")){
+                        interfaccia.aggiungiTesto("Hmmm... dove avevo trovato queste impronte? Ah si! Nell'ufficio del direttore.");
+                        inventario.equipaggiaOggetto("impronte_vito");
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Devo smetterla di cercare oggetti che ho gia' in mano!");
+                    }
+                    break;
+                case "EQUIPAGGIA_IMPRONTE_MICHELE":
+                    if(!inventario.isEquipaggiato("impronte_michele")){
+                        interfaccia.aggiungiTesto("Hmmm... dove avevo trovato queste impronte? Ah si! Sul telo che copriva il corpo nella cella frigorifera.");
+                        inventario.equipaggiaOggetto("impronte_michele");
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Devo smetterla di cercare oggetti che ho gia' in mano!");
+                    }
+                    break;
+                case "EQUIPAGGIA_IMPRONTE_VINCENZO":
+                    if(!inventario.isEquipaggiato("impronte_vincenzo")){
+                        interfaccia.aggiungiTesto("Hmmm... dove avevo trovato queste impronte? Ah si! In salumeria su un coltello di Michele.");
+                        inventario.equipaggiaOggetto("impronte_vincenzo");
+                        interfaccia.chiudiInterfacciaGraficaAppCellulare();
+                    } else{
+                        interfaccia.aggiungiTesto("Devo smetterla di cercare oggetti che ho gia' in mano!");
                     }
                     break;
                 default:

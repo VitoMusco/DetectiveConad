@@ -19,7 +19,7 @@ public class Inventario {
     public void rimuoviOggetto(Oggetto o) {
         this.inventario.remove(o);
     }
-
+    
     public void visualizzaInventario() {
         for (Oggetto o : this.inventario) {
             o.osservaOggetto();

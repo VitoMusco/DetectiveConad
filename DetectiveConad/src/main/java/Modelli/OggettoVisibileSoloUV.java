@@ -9,7 +9,7 @@ package Modelli;
  *
  * @author Vito
  */
-public class OggettoVisibileSoloUV extends OggettoNonRaccoglibile{
+public class OggettoVisibileSoloUV extends Oggetto{
     public OggettoVisibileSoloUV(String a,String n){
         super(a,n);
     }

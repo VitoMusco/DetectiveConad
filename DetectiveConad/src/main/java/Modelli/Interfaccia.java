@@ -156,6 +156,10 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico1.addActionListener(g);
         PulsanteAppDinamico2.addActionListener(g);
         PulsanteAppDinamico3.addActionListener(g);
+        PulsanteAppDinamico4.addActionListener(g);
+        PulsanteAppDinamico5.addActionListener(g);
+        PulsanteAppDinamico6.addActionListener(g);
+        PulsanteAppDinamico7.addActionListener(g);
     }
 
     @SuppressWarnings("unchecked")
@@ -166,6 +170,10 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico1 = new javax.swing.JButton();
         PulsanteAppDinamico2 = new javax.swing.JButton();
         PulsanteAppDinamico3 = new javax.swing.JButton();
+        PulsanteAppDinamico4 = new javax.swing.JButton();
+        PulsanteAppDinamico5 = new javax.swing.JButton();
+        PulsanteAppDinamico6 = new javax.swing.JButton();
+        PulsanteAppDinamico7 = new javax.swing.JButton();
         ChiudiGraficaAppCellulare = new javax.swing.JButton();
         GraficaAppCellulare = new javax.swing.JLabel();
         AnnullaSalvataggio = new javax.swing.JButton();
@@ -247,7 +255,7 @@ public class Interfaccia extends javax.swing.JFrame {
                 PulsanteAppDinamico2ActionPerformed(evt);
             }
         });
-        jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 160, 250, 44));
+        jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 150, 250, 44));
 
         PulsanteAppDinamico3.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico3.setBorder(null);
@@ -258,7 +266,51 @@ public class Interfaccia extends javax.swing.JFrame {
                 PulsanteAppDinamico3ActionPerformed(evt);
             }
         });
-        jPanel1.add(PulsanteAppDinamico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 220, 250, 44));
+        jPanel1.add(PulsanteAppDinamico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 250, 44));
+
+        PulsanteAppDinamico4.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteAppDinamico4.setBorder(null);
+        PulsanteAppDinamico4.setContentAreaFilled(false);
+        PulsanteAppDinamico4.setMargin(null);
+        PulsanteAppDinamico4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 250, 250, 44));
+
+        PulsanteAppDinamico5.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteAppDinamico5.setBorder(null);
+        PulsanteAppDinamico5.setContentAreaFilled(false);
+        PulsanteAppDinamico5.setMargin(null);
+        PulsanteAppDinamico5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 300, 250, 44));
+
+        PulsanteAppDinamico6.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteAppDinamico6.setBorder(null);
+        PulsanteAppDinamico6.setContentAreaFilled(false);
+        PulsanteAppDinamico6.setMargin(null);
+        PulsanteAppDinamico6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 350, 250, 44));
+
+        PulsanteAppDinamico7.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteAppDinamico7.setBorder(null);
+        PulsanteAppDinamico7.setContentAreaFilled(false);
+        PulsanteAppDinamico7.setMargin(null);
+        PulsanteAppDinamico7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteAppDinamico7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteAppDinamico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 400, 250, 44));
 
         ChiudiGraficaAppCellulare.setIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio.png"));
         ChiudiGraficaAppCellulare.setBorder(null);
@@ -706,6 +758,22 @@ public class Interfaccia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PulsanteAppDinamico3ActionPerformed
 
+    private void PulsanteAppDinamico4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico4ActionPerformed
+
+    private void PulsanteAppDinamico5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico5ActionPerformed
+
+    private void PulsanteAppDinamico6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico6ActionPerformed
+
+    private void PulsanteAppDinamico7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteAppDinamico7ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnnullaSalvataggio;
     private javax.swing.JButton Apri;
@@ -747,6 +815,10 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteAppDinamico1;
     private javax.swing.JButton PulsanteAppDinamico2;
     private javax.swing.JButton PulsanteAppDinamico3;
+    private javax.swing.JButton PulsanteAppDinamico4;
+    private javax.swing.JButton PulsanteAppDinamico5;
+    private javax.swing.JButton PulsanteAppDinamico6;
+    private javax.swing.JButton PulsanteAppDinamico7;
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
@@ -1062,6 +1134,8 @@ public class Interfaccia extends javax.swing.JFrame {
 
     //Disattiva l'interfaccia utente
     public void disattivaInterfacciaUtente() {
+        disattivaPulsantiDinamici();
+        
         ScriviTesto.setVisible(false);
         CasellaTesto.setVisible(false);
         ScritturaTesto.setVisible(false);
@@ -1071,9 +1145,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
         ApriMovimento.setVisible(false);
-        PulsanteAppDinamico1.setVisible(false);
-        PulsanteAppDinamico2.setVisible(false);
-        PulsanteAppDinamico3.setVisible(false);
         
         ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
@@ -1084,9 +1155,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
         ApriMovimento.setEnabled(false);        
-        PulsanteAppDinamico1.setEnabled(false);        
-        PulsanteAppDinamico2.setEnabled(false);        
-        PulsanteAppDinamico3.setEnabled(false);
         
         Esci.setVisible(false);
         Esci.setEnabled(false);
@@ -1122,6 +1190,24 @@ public class Interfaccia extends javax.swing.JFrame {
         Sinistra.setEnabled(false);
     }
 
+    public void disattivaPulsantiDinamici(){
+        PulsanteAppDinamico1.setVisible(false);
+        PulsanteAppDinamico2.setVisible(false);
+        PulsanteAppDinamico3.setVisible(false);
+        PulsanteAppDinamico4.setVisible(false);
+        PulsanteAppDinamico5.setVisible(false);
+        PulsanteAppDinamico6.setVisible(false);
+        PulsanteAppDinamico7.setVisible(false);
+        
+        PulsanteAppDinamico1.setEnabled(false);        
+        PulsanteAppDinamico2.setEnabled(false);        
+        PulsanteAppDinamico3.setEnabled(false);
+        PulsanteAppDinamico4.setEnabled(false);
+        PulsanteAppDinamico5.setEnabled(false);
+        PulsanteAppDinamico6.setEnabled(false);
+        PulsanteAppDinamico7.setEnabled(false);
+    }
+    
     //Mostra l'interfaccia del cellulare
     public void mostraCellulare() {
         GraficaCellulare.setEnabled(true);
@@ -1352,6 +1438,18 @@ public class Interfaccia extends javax.swing.JFrame {
         
         PulsanteAppDinamico3.setEnabled(false);
         PulsanteAppDinamico3.setVisible(false);
+        
+        PulsanteAppDinamico4.setEnabled(false);
+        PulsanteAppDinamico4.setVisible(false);
+        
+        PulsanteAppDinamico5.setEnabled(false);
+        PulsanteAppDinamico5.setVisible(false);
+        
+        PulsanteAppDinamico6.setEnabled(false);
+        PulsanteAppDinamico6.setVisible(false);
+        
+        PulsanteAppDinamico7.setEnabled(false);
+        PulsanteAppDinamico7.setVisible(false);
     }
 
     public void chiudiInterfacciaGraficaAppCellulare() {
@@ -1368,34 +1466,61 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.setEnabled(true);
     }
 
-    public void inizializzaPulsantiApp(String azione,List<Oggetto> oggetti) {
+    public void inizializzaPulsantiApp(String azione,List<Oggetto> oggetti,AzioniEseguite azioniEseguite) {
+        disattivaPulsantiDinamici();
         ListIterator<Oggetto> lit = oggetti.listIterator();
         Oggetto app;
-        String nome;
+        String nome,nomeFile;
+        azione = azione.toUpperCase();
         for(int i=1;lit.hasNext();i++) {
             app = lit.next();
-            if(!app.isRaccoglibile()){
+            if(!app.isRaccoglibile() || app.isVisibleSoloUV() || (azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI) && app.getNome().equals("guanti"))){
                 continue;
             }
-            nome = app.getNome();
+            nome = app.getNome().toUpperCase();
+            nomeFile = app.getNome();
             switch(i){
                 case 1:
-                    PulsanteAppDinamico1.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+app.getNome()+".png"));
+                    PulsanteAppDinamico1.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
                     PulsanteAppDinamico1.setEnabled(true);
                     PulsanteAppDinamico1.setVisible(true);
-                    PulsanteAppDinamico1.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
+                    PulsanteAppDinamico1.setActionCommand(azione+"_"+nome);
                     break;
                 case 2:
-                    PulsanteAppDinamico2.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+app.getNome()+".png"));
+                    PulsanteAppDinamico2.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
                     PulsanteAppDinamico2.setEnabled(true);
                     PulsanteAppDinamico2.setVisible(true);
-                    PulsanteAppDinamico2.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
+                    PulsanteAppDinamico2.setActionCommand(azione+"_"+nome);
                     break;
                 case 3:
-                    PulsanteAppDinamico3.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+app.getNome()+".png"));
+                    PulsanteAppDinamico3.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
                     PulsanteAppDinamico3.setEnabled(true);
                     PulsanteAppDinamico3.setVisible(true);
-                    PulsanteAppDinamico3.setActionCommand(azione.toUpperCase()+"_"+nome.toUpperCase());
+                    PulsanteAppDinamico3.setActionCommand(azione+"_"+nome);
+                    break;
+                case 4:
+                    PulsanteAppDinamico4.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
+                    PulsanteAppDinamico4.setEnabled(true);
+                    PulsanteAppDinamico4.setVisible(true);
+                    PulsanteAppDinamico4.setActionCommand(azione+"_"+nome);
+                    break;
+                case 5:
+                    PulsanteAppDinamico5.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
+                    PulsanteAppDinamico5.setEnabled(true);
+                    PulsanteAppDinamico5.setVisible(true);
+                    PulsanteAppDinamico5.setActionCommand(azione+"_"+nome);
+                    break;
+                case 6:
+                    PulsanteAppDinamico6.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
+                    PulsanteAppDinamico6.setEnabled(true);
+                    PulsanteAppDinamico6.setVisible(true);
+                    PulsanteAppDinamico6.setActionCommand(azione+"_"+nome);
+                    break;
+                case 7:
+                    PulsanteAppDinamico7.setIcon(new ImageIcon("./risorse/immagini/oggetti/"+nomeFile+".png"));
+                    PulsanteAppDinamico7.setEnabled(true);
+                    PulsanteAppDinamico7.setVisible(true);
+                    PulsanteAppDinamico7.setActionCommand(azione+"_"+nome);
                     break;
                 default:
                     break;
@@ -1404,17 +1529,18 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public void inizializzaAppIncastra() {
-        PulsanteAppDinamico1.setText("INCASTRA VITO");
+        disattivaPulsantiDinamici();
+        PulsanteAppDinamico1.setIcon(new ImageIcon("./risorse/immagini/incastra/incastra_vito.png"));
         PulsanteAppDinamico1.setEnabled(true);
         PulsanteAppDinamico1.setVisible(true);
         PulsanteAppDinamico1.setActionCommand("INCASTRA_VITO");
         
-        PulsanteAppDinamico2.setText("INCASTRA MICHELE");
+        PulsanteAppDinamico2.setIcon(new ImageIcon("./risorse/immagini/incastra/incastra_michele.png"));
         PulsanteAppDinamico2.setEnabled(true);
         PulsanteAppDinamico2.setVisible(true);
         PulsanteAppDinamico2.setActionCommand("INCASTRA_MICHELE");
         
-        PulsanteAppDinamico3.setText("INCASTRA VINCENZO");
+        PulsanteAppDinamico3.setIcon(new ImageIcon("./risorse/immagini/incastra/incastra_vincenzo.png"));
         PulsanteAppDinamico3.setEnabled(true);
         PulsanteAppDinamico3.setVisible(true);
         PulsanteAppDinamico3.setActionCommand("INCASTRA_VINCENZO");

@@ -195,21 +195,20 @@ public class Database {
                     stm.close();
                 }
                 ListIterator<Azione> azione = azioni.getAzioni().listIterator();
-                ListIterator<Azione> azioneGiaPresente = azioniGiaPresenti.getAzioni().listIterator();
                 while (azione.hasNext()) {
+                    ListIterator<Azione> azioneGiaPresente = azioniGiaPresenti.getAzioni().listIterator();
+                    boolean possoCaricare = true;
                     Azione azioneDaCaricare = azione.next();
                     while (azioneGiaPresente.hasNext()) {
                         if (azioneGiaPresente.next().name().equals(azioneDaCaricare.name())) {
-                            if (azione.hasNext()) {
-                                azioneDaCaricare = azione.next();
-                            } else {
-                                return;
-                            }
+                            possoCaricare = false;
                         }
                     }
-                    stm = connessione.createStatement();
-                    stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azioneDaCaricare.name() + "');");
-                    stm.close();
+                    if(possoCaricare){
+                        stm = connessione.createStatement();
+                        stm.executeUpdate("INSERT INTO azioni VALUES ('" + id_partita + "', '" + azioneDaCaricare.name() + "');");
+                        stm.close();
+                    }
                 }
                 connessione.close();
             } catch (SQLException ex) {

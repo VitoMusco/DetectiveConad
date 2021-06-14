@@ -30,5 +30,13 @@ public class Oggetto {
             return true;
         }
     }
+    
+    public boolean isVisibleSoloUV(){
+        if (this instanceof OggettoVisibileSoloUV) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

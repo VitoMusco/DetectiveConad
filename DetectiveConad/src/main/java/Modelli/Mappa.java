@@ -99,13 +99,19 @@ public class Mappa {
     public void caricaOggetti(){
         Oggetto cacciavite = new Oggetto("un","cacciavite");
         Oggetto torcia = new Oggetto("una", "torcia");
+        Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
         Oggetto improntemichele = new OggettoVisibileSoloUV("le","impronte_michele");
+        Oggetto improntevito = new OggettoVisibileSoloUV("le","impronte_vito");
+        Oggetto improntevincenzo = new OggettoVisibileSoloUV("le","impronte_vincenzo");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
         aggiungiOggetto(torcia, this.camioncino.getNome());
+        aggiungiOggetto(guanti, this.camioncino.getNome());
         aggiungiOggetto(mappa, this.ingresso.getNome());
         aggiungiOggetto(improntemichele, this.retro.getNome());
+        aggiungiOggetto(improntevito, this.studio.getNome());
+        aggiungiOggetto(improntevincenzo, this.salumeria.getNome());
         /*
         Oggetto pila = new Oggetto("una", "pila");
         
@@ -326,6 +332,15 @@ public class Mappa {
     public String getDialogoInterrogazione(){
         String testo;
         testo = this.dialoghi.getTesti().get(corrente.getNome() + "Interroga");
+        if(testo==null){
+            testo = "Non vedo nessuno da interrogare...";
+        }
+        return testo;
+    }
+    
+    public String getDialogoImpronte(String nome){
+        String testo;
+        testo = this.dialoghi.getTesti().get("ConfrontaImpronte" + nome);
         if(testo==null){
             testo = "Non vedo nessuno da interrogare...";
         }

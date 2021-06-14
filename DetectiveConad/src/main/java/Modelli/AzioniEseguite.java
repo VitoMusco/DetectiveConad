@@ -18,14 +18,23 @@ public class AzioniEseguite {
     
     public void inserisciAzione(String a){
         switch (a){
+            case "GUANTI_EQUIPAGGIATI":
+                inserisciAzione(Azione.GUANTI_EQUIPAGGIATI);
+                break;
             case "FOTO_SCATTATA":
                 inserisciAzione(Azione.FOTO_SCATTATA);
                 break;
             case "GRATA_APERTA":
                 inserisciAzione(Azione.GRATA_APERTA);
                 break;
+            case "GRATA_TROVATA":
+                inserisciAzione(Azione.GRATA_TROVATA);
+                break;
             case "CACCIAVITE_PRESO":
                 inserisciAzione(Azione.CACCIAVITE_PRESO);
+                break;
+            case "TROVATO_CADAVERE":
+                inserisciAzione(Azione.TROVATO_CADAVERE);
                 break;
             case "TORCIA_PRESA":
                 inserisciAzione(Azione.TORCIA_PRESA);
