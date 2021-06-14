@@ -101,9 +101,9 @@ public class Mappa {
         Oggetto torcia = new Oggetto("una", "torcia");
         Oggetto guanti = new Oggetto("dei", "guanti");
         Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
-        Oggetto improntemichele = new OggettoVisibileSoloUV("le","impronte_michele");
-        Oggetto improntevito = new OggettoVisibileSoloUV("le","impronte_vito");
-        Oggetto improntevincenzo = new OggettoVisibileSoloUV("le","impronte_vincenzo");
+        Oggetto improntemichele = new OggettoNonRaccoglibile("le","impronte_michele");
+        Oggetto improntevito = new OggettoNonRaccoglibile("le","impronte_vito");
+        Oggetto improntevincenzo = new OggettoNonRaccoglibile("le","impronte_vincenzo");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
         aggiungiOggetto(torcia, this.camioncino.getNome());

@@ -33,6 +33,9 @@ public class AzioniEseguite {
             case "CACCIAVITE_PRESO":
                 inserisciAzione(Azione.CACCIAVITE_PRESO);
                 break;
+            case "TROVATO_LUOGO_UCCISIONE":
+                inserisciAzione(Azione.TROVATO_LUOGO_UCCISIONE);
+                break;
             case "TROVATO_CADAVERE":
                 inserisciAzione(Azione.TROVATO_CADAVERE);
                 break;

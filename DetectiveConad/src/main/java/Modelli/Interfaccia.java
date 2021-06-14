@@ -1474,7 +1474,8 @@ public class Interfaccia extends javax.swing.JFrame {
         azione = azione.toUpperCase();
         for(int i=1;lit.hasNext();i++) {
             app = lit.next();
-            if(!app.isRaccoglibile() || app.isVisibleSoloUV() || (azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI) && app.getNome().equals("guanti"))){
+            if((!app.isRaccoglibile() && !azione.equals("EQUIPAGGIA")) || (azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI) && app.getNome().equals("guanti"))){
+                i--;
                 continue;
             }
             nome = app.getNome().toUpperCase();

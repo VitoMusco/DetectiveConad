@@ -187,6 +187,9 @@ public class LogicaGioco {
                     if(mappa.getCorrente().getNome().equals("Studio") && !azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)){
                         azioniEseguite.inserisciAzione(Azione.GRATA_TROVATA);
                         interfaccia.aggiungiTesto(mappa.osservaStanza());
+                    } else if(mappa.getCorrente().getNome().equals("Cellafrigo") && !azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
+                        azioniEseguite.inserisciAzione(Azione.TROVATO_CADAVERE);
+                        interfaccia.aggiungiTesto(mappa.osservaStanza());
                     } else if(mappa.getCorrente().getNome().equals("Cellafrigo") && inventario.isEquipaggiato("torcia")){
                         interfaccia.aggiungiTesto("Oh ma cosa abbiamo qui? Un'impronta digitale...");
                         interfaccia.aggiungiTesto("Ecco fatto, l'ho presa. Quelli della scientifica si pentiranno di non avermi assunto!");
@@ -203,11 +206,11 @@ public class LogicaGioco {
                         interfaccia.aggiungiTesto("Prese! Vediamo se riesco ad incastrare qualcuno.");
                         inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vito"));
                     }
-                    else if(mappa.getCorrente().getNome().equals("ZonaFrigo") && inventario.isEquipaggiato("torcia")){
+                    else if(mappa.getCorrente().getNome().equals("Zonafrigo") && inventario.isEquipaggiato("torcia")){
                         interfaccia.aggiungiTesto("Mamma mia che macchia gigante! Avranno buttato a terra qualche succo di frutta?");
                         interfaccia.aggiungiTesto("Ma cosa sto dicendo! Quel tipo di macchia non si vede con i raggi UV! Forse hanno fatto bene a non prendermi nella scientifica alla fine...");
-                        azioniEseguite.inserisciAzione(Azione.TROVATA_IMPRONTA_VITO);
-                        inventario.inserisciOggetto(mappa.prendiOggetto("impronte_vito"));
+                        interfaccia.aggiungiTesto("Qui deve essere stata pulita una grossa macchia di sangue, avranno ucciso qui il direttore? Mi avvicino alla soluzione del caso...");
+                        azioniEseguite.inserisciAzione(Azione.TROVATO_LUOGO_UCCISIONE);
                     }
                     else{
                         interfaccia.aggiungiTesto(mappa.osservaStanza());
@@ -310,8 +313,16 @@ public class LogicaGioco {
                     }
                     break;
                 case "INCASTRA":
-                    interfaccia.inizializzaInterfacciaGraficaAppCellulare();
-                    interfaccia.inizializzaAppIncastra();
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
+                        if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_LUOGO_UCCISIONE)){
+                            interfaccia.inizializzaInterfacciaGraficaAppCellulare();
+                            interfaccia.inizializzaAppIncastra();
+                        } else {
+                            interfaccia.aggiungiTesto("Non posso incastrare nessuno, non ho trovato prove concrete che confermano sia un omicidio da parte di uno dei dipendenti.");
+                        }
+                    } else {
+                        interfaccia.aggiungiTesto("Perche' dovrei incastrare qualcuno? Non e' detto che il direttore sia morto... Dovrei smetterla di essere cosi' pessimista.");
+                    }
                     break;
                 case "MAPPA":
                     //Mostra la mappa a video
