@@ -2,6 +2,9 @@ package Modelli;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LogicaGioco {
 
@@ -20,13 +23,21 @@ public class LogicaGioco {
     }
 
     public void controllaStato() {
+        controllaStatoIntroduzione();
+        controllaStatoFinaleCorretto();
+    }
+    
+    public void controllaStatoIntroduzione(){
         if (interfaccia.controllaStatoIntroduzione()) {
             interfaccia.riproduciIntroduzione();
-            interfaccia.inizializzaInterfacciaUtente();
+            controllaStato();
         }
-
+    }
+    
+    public void controllaStatoFinaleCorretto(){
         if(interfaccia.controllaStatoFinaleCorretto()){
             interfaccia.riproduciFinaleCorretto();
+            controllaStato();
         }
     }
 
@@ -53,7 +64,8 @@ public class LogicaGioco {
                     mappa.caricaOggetti();
                     db.inserisciOggetti(idPartita, mappa.getOggetti());
                     inventario = db.caricaInventario(idPartita);
-                    interfaccia.creaNuovaPartita();
+                    interfaccia.esciDaCreatorePartita();
+                    interfaccia.chiediSaltaIntroduzione();                 
                 }
            }
         });
@@ -103,9 +115,6 @@ public class LogicaGioco {
         });
         interfaccia.getApriMovimento().addActionListener(g -> {
             interfaccia.mostraInterfacciaMovimento();
-        });
-        interfaccia.getPulsanteSalta().addActionListener(g -> {
-            interfaccia.saltaIntroduzione();
         });
         interfaccia.getSu().addActionListener(g -> {
             if (mappa.getCorrente().getNome().equals("Strada") && !azioniEseguite.verificaPresenzaAzione(Azione.GUANTI_EQUIPAGGIATI)) {
@@ -282,7 +291,7 @@ public class LogicaGioco {
             }
         });
         interfaccia.getChiudiCaso().addActionListener(g -> {
-            if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
+            if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
                 interfaccia.inizializzaFinaleCorretto();
             } else {
                 System.out.println("Il codice funziona, ma sei morto");
@@ -316,6 +325,16 @@ public class LogicaGioco {
         public void actionPerformed(ActionEvent e) {
             comando = e.getActionCommand();
             switch (comando) {
+                case "SALTA_FILMATO":
+                    interfaccia.saltaFilmatoIntroduzione();
+                    interfaccia.chiudiChiediSaltaIntroduzione();
+                    interfaccia.creaNuovaPartita();
+                    break;
+                case "VISUALIZZA_FILMATO":
+                    interfaccia.nonSaltareFilmatoIntroduzione();
+                    interfaccia.chiudiChiediSaltaIntroduzione();
+                    interfaccia.creaNuovaPartita();
+                    break;
                 case "SALVA_SI_ED_ESCI":
                     db.salvaPartita(mappa.getCorrente(), inventario, idPartita, azioniEseguite);
                     System.exit(0);

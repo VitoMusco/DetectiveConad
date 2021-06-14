@@ -20,7 +20,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private final int MAX_PARTITE_SALVATE = 4;
     private final ImageIcon menu, selettorePartita;
     private boolean creazioneNuovaPartita = false;
-    private boolean partitaCaricata = false;
+    private boolean saltaFilmatoIntroduzione = false;
     private boolean riproduzioneFinaleCorretto = false;
     private boolean[] partiteSalvate = new boolean[4];
     private Clip audio;
@@ -42,11 +42,12 @@ public class Interfaccia extends javax.swing.JFrame {
 
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
+        disattivaChiediSaltaFilmato();
         disattivaInterfacciaSalvataggio();
         disattivaInterfacciaGraficaAppCellulare();
 
-        SalvaSi.addActionListener(g);
-        SalvaNo.addActionListener(g);
+        SceltaSi.addActionListener(g);
+        SceltaNo.addActionListener(g);
 
         PulsanteAppDinamico1.addActionListener(g);
         PulsanteAppDinamico2.addActionListener(g);
@@ -73,8 +74,9 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare = new javax.swing.JButton();
         GraficaAppCellulare = new javax.swing.JLabel();
         AnnullaSalvataggio = new javax.swing.JButton();
-        SalvaSi = new javax.swing.JButton();
-        SalvaNo = new javax.swing.JButton();
+        SceltaSi = new javax.swing.JButton();
+        SceltaNo = new javax.swing.JButton();
+        SaltaFilmatoLabel = new javax.swing.JLabel();
         SalvaLabel = new javax.swing.JLabel();
         Sinistra = new javax.swing.JButton();
         Destra = new javax.swing.JButton();
@@ -119,7 +121,6 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaCellulare = new javax.swing.JLabel();
         ApriEditor = new javax.swing.JButton();
         ApriTelefono = new javax.swing.JButton();
-        PulsanteSalta = new javax.swing.JButton();
         MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -238,31 +239,34 @@ public class Interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(AnnullaSalvataggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 257, 44, 44));
 
-        SalvaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
-        SalvaSi.setBorder(null);
-        SalvaSi.setContentAreaFilled(false);
-        SalvaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SalvaSi.setMargin(null);
-        SalvaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
-        SalvaSi.addActionListener(new java.awt.event.ActionListener() {
+        SceltaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
+        SceltaSi.setBorder(null);
+        SceltaSi.setContentAreaFilled(false);
+        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SceltaSi.setMargin(null);
+        SceltaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
+        SceltaSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvaSiActionPerformed(evt);
+                SceltaSiActionPerformed(evt);
             }
         });
-        jPanel1.add(SalvaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 130, 70));
+        jPanel1.add(SceltaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 130, 70));
 
-        SalvaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
-        SalvaNo.setBorder(null);
-        SalvaNo.setContentAreaFilled(false);
-        SalvaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SalvaNo.setMargin(null);
-        SalvaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
-        SalvaNo.addActionListener(new java.awt.event.ActionListener() {
+        SceltaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
+        SceltaNo.setBorder(null);
+        SceltaNo.setContentAreaFilled(false);
+        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SceltaNo.setMargin(null);
+        SceltaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
+        SceltaNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvaNoActionPerformed(evt);
+                SceltaNoActionPerformed(evt);
             }
         });
-        jPanel1.add(SalvaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 130, 70));
+        jPanel1.add(SceltaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 130, 70));
+
+        SaltaFilmatoLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
+        jPanel1.add(SaltaFilmatoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 360, 240));
 
         SalvaLabel.setIcon(new ImageIcon("./risorse/immagini/menu/salva.png"));
         SalvaLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
@@ -597,15 +601,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ApriTelefono.setMargin(null);
         jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 120, 144));
-
-        PulsanteSalta.setIcon(new ImageIcon("./risorse/immagini/menu/salta_filmato.png"));
-        PulsanteSalta.setBorder(null);
-        PulsanteSalta.setBorderPainted(false);
-        PulsanteSalta.setContentAreaFilled(false);
-        PulsanteSalta.setEnabled(false);
-        PulsanteSalta.setMargin(null);
-        PulsanteSalta.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/salta_filmato_highlighted.png"));
-        jPanel1.add(PulsanteSalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 190, 90));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -629,13 +624,13 @@ public class Interfaccia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ContinuaPartita1ActionPerformed
 
-    private void SalvaSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvaSiActionPerformed
+    private void SceltaSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SceltaSiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SalvaSiActionPerformed
+    }//GEN-LAST:event_SceltaSiActionPerformed
 
-    private void SalvaNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvaNoActionPerformed
+    private void SceltaNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SceltaNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SalvaNoActionPerformed
+    }//GEN-LAST:event_SceltaNoActionPerformed
 
     private void AnnullaSalvataggioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnullaSalvataggioActionPerformed
         // TODO add your handling code here:
@@ -722,13 +717,13 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteIndaga;
-    private javax.swing.JButton PulsanteSalta;
+    private javax.swing.JLabel SaltaFilmatoLabel;
     private javax.swing.JButton Salva;
     private javax.swing.JButton SalvaEVaiAMenu;
     private javax.swing.JLabel SalvaLabel;
-    private javax.swing.JButton SalvaNo;
-    private javax.swing.JButton SalvaSi;
     private javax.swing.JButton SalvataggiEsci;
+    private javax.swing.JButton SceltaNo;
+    private javax.swing.JButton SceltaSi;
     private javax.swing.JTextArea ScritturaTesto;
     private javax.swing.JTextField ScriviTesto;
     private javax.swing.JButton Sinistra;
@@ -741,6 +736,44 @@ public class Interfaccia extends javax.swing.JFrame {
         setVisible(true);
     }
 
+    public void chiediSaltaIntroduzione(){
+        SaltaFilmatoLabel.setIcon( new ImageIcon("./risorse/immagini/menu/salta_intro.png"));
+        SaltaFilmatoLabel.setEnabled(true);
+        SaltaFilmatoLabel.setVisible(true);
+        SceltaSi.setEnabled(true);
+        SceltaSi.setVisible(true);
+        SceltaNo.setEnabled(true);
+        SceltaNo.setVisible(true);
+        
+        SceltaSi.setActionCommand("VISUALIZZA_FILMATO");
+        SceltaNo.setActionCommand("SALTA_FILMATO");
+    }
+    
+    public void chiudiChiediSaltaIntroduzione(){
+        SaltaFilmatoLabel.setEnabled(false);
+        SaltaFilmatoLabel.setVisible(false);
+        SceltaSi.setEnabled(false);
+        SceltaSi.setVisible(false);
+        SceltaNo.setEnabled(false);
+        SceltaNo.setVisible(false);
+    }
+    
+    public void saltaFilmatoIntroduzione(){
+        saltaFilmatoIntroduzione = true;
+        stoppaAudio();
+        disattivaPulsantiMenu();
+        inizializzaInterfacciaUtente();
+    }
+    
+    public void nonSaltareFilmatoIntroduzione(){
+        saltaFilmatoIntroduzione = false;
+    }
+    
+    public void disattivaChiediSaltaFilmato(){
+        SaltaFilmatoLabel.setEnabled(false);
+        SaltaFilmatoLabel.setVisible(false);
+    }
+    
     public void caricaPartiteSalvate(boolean[] partite) {
         for (int i = 0; i < MAX_PARTITE_SALVATE; i++) {
             this.partiteSalvate[i] = partite[i];
@@ -779,7 +812,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public void caricaPartita() {
-        partitaCaricata = true;
+        saltaFilmatoIntroduzione = true;
         stoppaAudio();
         disattivaPulsantiMenu();
         chiudiSelettorePartita();
@@ -788,7 +821,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
 
     public boolean controllaStatoIntroduzione() {
-        while (!creazioneNuovaPartita && !partitaCaricata) {
+        while (!creazioneNuovaPartita && !riproduzioneFinaleCorretto) {
             if (!creazioneNuovaPartita) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
@@ -796,7 +829,8 @@ public class Interfaccia extends javax.swing.JFrame {
                     Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (creazioneNuovaPartita) {
+            if (creazioneNuovaPartita && !saltaFilmatoIntroduzione) { 
+                creazioneNuovaPartita = false;
                 return true;
             }
         }
@@ -813,6 +847,7 @@ public class Interfaccia extends javax.swing.JFrame {
                 }
             }
             if (riproduzioneFinaleCorretto) {
+                riproduzioneFinaleCorretto = false;
                 return true;
             }
         }
@@ -835,7 +870,6 @@ public class Interfaccia extends javax.swing.JFrame {
     public void riproduciIntroduzione() {
         stoppaAudio();
         disattivaPulsantiMenu();
-        mostraPulsanteSalta();
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/videointroduzione.gif"));
         riproduciAudio("videointroduzione");
         try {
@@ -843,7 +877,6 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        disattivaPulsanteSalta();
         inizializzaInterfacciaUtente();
     }
     
@@ -987,7 +1020,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita4.setEnabled(false);
         ErroreMaxCaratteri.setEnabled(false);
         ErroreNoCaratteri.setEnabled(false);
-        PulsanteSalta.setEnabled(false);
         SalvataggiEsci.setVisible(false);
         NuovaPartita1.setVisible(false);
         NuovaPartita2.setVisible(false);
@@ -1010,7 +1042,6 @@ public class Interfaccia extends javax.swing.JFrame {
         NomePartita.setVisible(false);
         ErroreMaxCaratteri.setVisible(false);
         ErroreNoCaratteri.setVisible(false);
-        PulsanteSalta.setVisible(false);
     }
 
     //Inizializza l'interfaccia grafica sul quale si gioca
@@ -1229,58 +1260,42 @@ public class Interfaccia extends javax.swing.JFrame {
         Sinistra.setEnabled(true);
     }
 
-    public void disattivaPulsanteSalta() {
-        PulsanteSalta.setEnabled(false);
-        PulsanteSalta.setVisible(false);
-    }
-
-    public void mostraPulsanteSalta() {
-        PulsanteSalta.setEnabled(true);
-        PulsanteSalta.setVisible(true);
-    }
-
     public void disattivaInterfacciaSalvataggio() {
         SalvaLabel.setVisible(false);
         AnnullaSalvataggio.setEnabled(false);
-        SalvaSi.setEnabled(false);
-        SalvaNo.setEnabled(false);
+        SceltaSi.setEnabled(false);
+        SceltaNo.setEnabled(false);
         AnnullaSalvataggio.setVisible(false);
-        SalvaSi.setVisible(false);
-        SalvaNo.setVisible(false);
+        SceltaSi.setVisible(false);
+        SceltaNo.setVisible(false);
     }
 
     public void mostraInterfacciaSalvataggio() {
         SalvaLabel.setVisible(true);
         AnnullaSalvataggio.setEnabled(true);
-        SalvaSi.setEnabled(true);
-        SalvaNo.setEnabled(true);
+        SceltaSi.setEnabled(true);
+        SceltaNo.setEnabled(true);
         AnnullaSalvataggio.setVisible(true);
-        SalvaSi.setVisible(true);
-        SalvaNo.setVisible(true);
+        SceltaSi.setVisible(true);
+        SceltaNo.setVisible(true);
     }
 
     public void impostaSalvataggioSenzaUscita() {
-        SalvaSi.setActionCommand("SALVA_SI");
+        SceltaSi.setActionCommand("SALVA_SI");
 
-        SalvaNo.setActionCommand("SALVA_NO");
+        SceltaNo.setActionCommand("SALVA_NO");
     }
 
     public void impostaSalvataggioConUscita() {
-        SalvaSi.setActionCommand("SALVA_SI_ED_ESCI");
+        SceltaSi.setActionCommand("SALVA_SI_ED_ESCI");
 
-        SalvaNo.setActionCommand("SALVA_NO_ED_ESCI");
+        SceltaNo.setActionCommand("SALVA_NO_ED_ESCI");
     }
 
     public void impostaSalvataggioConMenu() {
-        SalvaSi.setActionCommand("SALVA_SI_E_VAI_AL_MENU");
+        SceltaSi.setActionCommand("SALVA_SI_E_VAI_AL_MENU");
 
-        SalvaNo.setActionCommand("SALVA_NO_E_VAI_AL_MENU");
-    }
-
-    public void saltaIntroduzione() {
-        disattivaPulsanteSalta();
-        stoppaAudio();
-        inizializzaInterfacciaUtente();
+        SceltaNo.setActionCommand("SALVA_NO_E_VAI_AL_MENU");
     }
 
     public boolean controllaNomePartita() {
@@ -1605,10 +1620,6 @@ public class Interfaccia extends javax.swing.JFrame {
         return PulsanteIndaga;
     }
 
-    public JButton getPulsanteSalta() {
-        return PulsanteSalta;
-    }
-
     public JButton getSalva() {
         return Salva;
     }
@@ -1617,12 +1628,12 @@ public class Interfaccia extends javax.swing.JFrame {
         return SalvaEVaiAMenu;
     }
 
-    public JButton getSalvaNo() {
-        return SalvaNo;
+    public JButton getSceltaNo() {
+        return SceltaNo;
     }
 
-    public JButton getSalvaSi() {
-        return SalvaSi;
+    public JButton getSceltaSi() {
+        return SceltaSi;
     }
 
     public JButton getSalvataggiEsci() {
