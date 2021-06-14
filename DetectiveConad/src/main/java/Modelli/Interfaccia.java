@@ -45,114 +45,9 @@ public class Interfaccia extends javax.swing.JFrame {
         disattivaInterfacciaSalvataggio();
         disattivaInterfacciaGraficaAppCellulare();
 
-        PulsanteEsci.addActionListener(g);
-        PulsanteEsci.setActionCommand("ESCI");
-
-        PulsanteIndaga.addActionListener(g);
-        PulsanteIndaga.setActionCommand("NUOVA_PARTITA");
-
-        IniziaPartita.addActionListener(g);
-        IniziaPartita.setActionCommand("INIZIA_PARTITA");
-
-        SalvataggiEsci.addActionListener(g);
-        SalvataggiEsci.setActionCommand("MENU_INIZIALE");
-
-        CreaSalvataggioEsci.addActionListener(g);
-        CreaSalvataggioEsci.setActionCommand("CREA_SALVATAGGIO_ESCI");
-
-        NuovaPartita1.addActionListener(g);
-        NuovaPartita1.setActionCommand("CREA_PARTITA");
-
-        NuovaPartita2.addActionListener(g);
-        NuovaPartita2.setActionCommand("CREA_PARTITA");
-
-        NuovaPartita3.addActionListener(g);
-        NuovaPartita3.setActionCommand("CREA_PARTITA");
-
-        NuovaPartita4.addActionListener(g);
-        NuovaPartita4.setActionCommand("CREA_PARTITA");
-
-        ContinuaPartita1.addActionListener(g);
-        ContinuaPartita1.setActionCommand("CONTINUA_PARTITA_1");
-
-        ContinuaPartita2.addActionListener(g);
-        ContinuaPartita2.setActionCommand("CONTINUA_PARTITA_2");
-
-        ContinuaPartita3.addActionListener(g);
-        ContinuaPartita3.setActionCommand("CONTINUA_PARTITA_3");
-
-        ContinuaPartita4.addActionListener(g);
-        ContinuaPartita4.setActionCommand("CONTINUA_PARTITA_4");
-
-        ApriEditor.addActionListener(g);
-        ApriEditor.setActionCommand("APRI_EDITOR");
-
-        ApriTelefono.addActionListener(g);
-        ApriTelefono.setActionCommand("APRI_TELEFONO");
-
-        ApriMovimento.addActionListener(g);
-        ApriMovimento.setActionCommand("APRI_MOVIMENTO");
-
-        PulsanteSalta.addActionListener(g);
-        PulsanteSalta.setActionCommand("SALTA_VIDEO");
-
-        Su.addActionListener(g);
-        Su.setActionCommand("VAI_SU");
-
-        Giu.addActionListener(g);
-        Giu.setActionCommand("VAI_GIU");
-
-        Destra.addActionListener(g);
-        Destra.setActionCommand("VAI_DESTRA");
-
-        Sinistra.addActionListener(g);
-        Sinistra.setActionCommand("VAI_SINISTRA");
-
-        Osserva.addActionListener(g);
-        Osserva.setActionCommand("OSSERVA");
-
-        Fotocamera.addActionListener(g);
-        Fotocamera.setActionCommand("SCATTA_FOTO");
-
-        Esci.addActionListener(g);
-        Esci.setActionCommand("SALVA_ED_ESCI");
-
         SalvaSi.addActionListener(g);
         SalvaNo.addActionListener(g);
 
-        AnnullaSalvataggio.addActionListener(g);
-        AnnullaSalvataggio.setActionCommand("ANNULLA_SALVA_ED_ESCI");
-
-        SalvaEVaiAMenu.addActionListener(g);
-        SalvaEVaiAMenu.setActionCommand("SALVA_E_VAI_AL_MENU");
-
-        Salva.addActionListener(g);
-        Salva.setActionCommand("SALVA");
-
-        Apri.addActionListener(g);
-        Apri.setActionCommand("COMANDO_APRI");
-
-        Flash.addActionListener(g);
-        Flash.setActionCommand("FLASH");
-
-        Prendi.addActionListener(g);
-        Prendi.setActionCommand("PRENDI");
-
-        Incastra.addActionListener(g);
-        Incastra.setActionCommand("INCASTRA");
-
-        Interroga.addActionListener(g);
-        Interroga.setActionCommand("INTERROGA");
-
-        ChiudiCaso.addActionListener(g);
-        ChiudiCaso.setActionCommand("CHIUDI_CASO");
-
-        ChiudiGraficaAppCellulare.addActionListener(g);
-        ChiudiGraficaAppCellulare.setActionCommand("DISATTIVA_INTERFACCIA_APP_CELLULARE");
-        
-        Inventario.addActionListener(g);
-        Inventario.setActionCommand("INVENTARIO");
-        
         PulsanteAppDinamico1.addActionListener(g);
         PulsanteAppDinamico2.addActionListener(g);
         PulsanteAppDinamico3.addActionListener(g);
@@ -1367,7 +1262,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public void impostaSalvataggioSenzaUscita() {
         SalvaSi.setActionCommand("SALVA_SI");
 
-        SalvaNo.setActionCommand("ANNULLA_SALVA_ED_ESCI");
+        SalvaNo.setActionCommand("SALVA_NO");
     }
 
     public void impostaSalvataggioConUscita() {
