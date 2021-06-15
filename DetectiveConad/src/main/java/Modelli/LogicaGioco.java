@@ -302,9 +302,9 @@ public class LogicaGioco {
         });
         interfaccia.getChiudiCaso().addActionListener(g -> {
             if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
-                interfaccia.inizializzaFinaleCorretto();
+                interfaccia.chiediConfermaChiusuraCasoFinaleCorretto();              
             } else if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
-                interfaccia.inizializzaFinaleAlternativo();
+                interfaccia.chiediConfermaChiusuraCasoFinaleAlternativo();
             } else if (azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
                 interfaccia.aggiungiTesto("Come faccio a chiudere il caso se non ho ancora incastrato nessuno? E' chiaramente un omicidio!");
             } else {
@@ -341,12 +341,12 @@ public class LogicaGioco {
             switch (comando) {
                 case "SALTA_FILMATO":
                     interfaccia.saltaFilmatoIntroduzione();
-                    interfaccia.chiudiChiediSaltaIntroduzione();
+                    interfaccia.disattivaFinestraOpzioniSiNo();
                     interfaccia.creaNuovaPartita();
                     break;
                 case "VISUALIZZA_FILMATO":
                     interfaccia.nonSaltareFilmatoIntroduzione();
-                    interfaccia.chiudiChiediSaltaIntroduzione();
+                    interfaccia.disattivaFinestraOpzioniSiNo();
                     interfaccia.creaNuovaPartita();
                     break;
                 case "SALVA_SI_ED_ESCI":
@@ -502,6 +502,17 @@ public class LogicaGioco {
                     } else{
                         interfaccia.aggiungiTesto("Devo smetterla di cercare oggetti che ho gia' in mano!");
                     }
+                    break;
+                case "CHIUDI_CASO_FINALE_CORRETTO":
+                    interfaccia.disattivaFinestraOpzioniSiNo();
+                    interfaccia.inizializzaFinaleCorretto();                   
+                    break;
+                case "CHIUDI_CASO_FINALE_ALTERNATIVO":
+                    interfaccia.disattivaFinestraOpzioniSiNo();
+                    interfaccia.inizializzaFinaleAlternativo();
+                    break;
+                case "ANNULLA_CHIUDI_CASO":
+                    interfaccia.disattivaFinestraOpzioniSiNo();
                     break;
                 default:
                     break;

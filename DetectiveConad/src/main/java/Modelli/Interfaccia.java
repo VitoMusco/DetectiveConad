@@ -43,7 +43,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
-        disattivaChiediSaltaFilmato();
+        disattivaFinestraOpzioniSiNo();
         disattivaInterfacciaSalvataggio();
         disattivaInterfacciaGraficaAppCellulare();
 
@@ -755,20 +755,38 @@ public class Interfaccia extends javax.swing.JFrame {
         setVisible(true);
     }
 
-    public void chiediSaltaIntroduzione(){
-        SaltaFilmatoLabel.setIcon( new ImageIcon("./risorse/immagini/menu/salta_intro.png"));
+    public void attivaFinestraOpzioniSiNo(){
         SaltaFilmatoLabel.setEnabled(true);
         SaltaFilmatoLabel.setVisible(true);
         SceltaSi.setEnabled(true);
         SceltaSi.setVisible(true);
         SceltaNo.setEnabled(true);
         SceltaNo.setVisible(true);
+    }
+    
+    public void chiediSaltaIntroduzione(){
+        SaltaFilmatoLabel.setIcon( new ImageIcon("./risorse/immagini/menu/salta_intro.png"));
+        attivaFinestraOpzioniSiNo();
         
         SceltaSi.setActionCommand("VISUALIZZA_FILMATO");
         SceltaNo.setActionCommand("SALTA_FILMATO");
     }
     
-    public void chiudiChiediSaltaIntroduzione(){
+    public void chiediConfermaChiusuraCasoFinaleCorretto(){
+        SaltaFilmatoLabel.setIcon( new ImageIcon("./risorse/immagini/menu/chiudi_caso.png"));
+        attivaFinestraOpzioniSiNo();
+        SceltaSi.setActionCommand("CHIUDI_CASO_FINALE_CORRETTO");
+        SceltaNo.setActionCommand("ANNULLA_CHIUDI_CASO");
+    }
+    
+    public void chiediConfermaChiusuraCasoFinaleAlternativo(){
+        SaltaFilmatoLabel.setIcon( new ImageIcon("./risorse/immagini/menu/chiudi_caso.png"));
+        attivaFinestraOpzioniSiNo();
+        SceltaSi.setActionCommand("CHIUDI_CASO_FINALE_ALTERNATIVO");
+        SceltaNo.setActionCommand("ANNULLA_CHIUDI_CASO");
+    }
+    
+    public void disattivaFinestraOpzioniSiNo(){
         SaltaFilmatoLabel.setEnabled(false);
         SaltaFilmatoLabel.setVisible(false);
         SceltaSi.setEnabled(false);
@@ -786,11 +804,6 @@ public class Interfaccia extends javax.swing.JFrame {
     
     public void nonSaltareFilmatoIntroduzione(){
         saltaFilmatoIntroduzione = false;
-    }
-    
-    public void disattivaChiediSaltaFilmato(){
-        SaltaFilmatoLabel.setEnabled(false);
-        SaltaFilmatoLabel.setVisible(false);
     }
     
     public void caricaPartiteSalvate(boolean[] partite) {
