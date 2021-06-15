@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class Database {
 
-    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto SMALLINT AUTO_INCREMENT, nome VARCHAR(25), articolo VARCHAR(5), stanza VARCHAR(20), id_partita SMALLINT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
+    public static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto SMALLINT AUTO_INCREMENT, nome VARCHAR(25), stanza VARCHAR(20), id_partita SMALLINT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
     public static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita SMALLINT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
     public static final String CREA_AZIONI = "CREATE TABLE IF NOT EXISTS azioni (id_partita SMALLINT, azione VARCHAR(25), PRIMARY KEY(id_partita, azione));";
 
@@ -56,6 +56,7 @@ public class Database {
                 }
                 risultato.close();
                 stm.close();
+                connessione.close();
                 return id_partita;
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +69,6 @@ public class Database {
         Statement stm;
         Connection connessione = connessioneDb();
         if (connessione != null) {
-
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
@@ -88,7 +88,7 @@ public class Database {
                 stm.close();
                 for (Map.Entry<Oggetto, String> e : o.entrySet()) {
                     stm = connessione.createStatement();
-                    stm.executeUpdate("INSERT INTO oggetti(nome, articolo, stanza, id_partita, raccoglibile) VALUES('" + e.getKey().getNome() + "', '" + e.getKey().getArticolo() + "', '" + e.getValue() + "','" + id_partita + "', '" + e.getKey().isRaccoglibile() + "')");
+                    stm.executeUpdate("INSERT INTO oggetti(nome, stanza, id_partita, raccoglibile) VALUES('" + e.getKey().getNome() + "', '" + e.getValue() + "','" + id_partita + "', '" + e.getKey().isRaccoglibile() + "')");
                     stm.close();
                 }
                 connessione.close();
@@ -133,20 +133,6 @@ public class Database {
         return partita;
     }
 
-    /*public void controlloNomeSalvataggio() {
-        boolean controllo = false;
-        String nome_partita;
-        for (int i = 1; i < 5; i++) {
-            nome_partita = nomePartita(i);
-            if (nome_partita.equals("")) {
-                controllo = true;
-                break;
-            }
-        }
-        if (controllo == true) {
-            System.out.println("C'e' uno slot di salvataggio disponibile"); //esempio
-        }
-    }*/
     public int[] idPartita() {
         int[] id_partite = new int[4];
         int i = 0;
@@ -231,12 +217,12 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT articolo, nome, raccoglibile FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
+                risultato = stm.executeQuery("SELECT nome, raccoglibile FROM oggetti WHERE stanza='inventario' AND id_partita='" + idPartita + "'");
                 while (risultato.next()) {
-                    if(risultato.getBoolean(3)){
-                        appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    if(risultato.getBoolean(2)){
+                        appoggio = new Oggetto(risultato.getString(1));
                     } else{
-                        appoggio = new OggettoNonRaccoglibile(risultato.getString(1), risultato.getString(2));
+                        appoggio = new OggettoNonRaccoglibile(risultato.getString(1));
                     }
                     inventario.getInventario().add(appoggio);
                 }
@@ -258,14 +244,14 @@ public class Database {
             try {
                 stm = connessione.createStatement();
                 ResultSet risultato;
-                risultato = stm.executeQuery("SELECT articolo, nome, stanza, raccoglibile FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
+                risultato = stm.executeQuery("SELECT nome, stanza, raccoglibile FROM oggetti WHERE stanza<>'inventario' AND id_partita='" + idPartita + "'");
                 while (risultato.next()) {
-                    if(risultato.getBoolean(4)){
-                        appoggio = new Oggetto(risultato.getString(1), risultato.getString(2));
+                    if(risultato.getBoolean(3)){
+                        appoggio = new Oggetto(risultato.getString(1));
                     } else{
-                        appoggio = new OggettoNonRaccoglibile(risultato.getString(1), risultato.getString(2));
+                        appoggio = new OggettoNonRaccoglibile(risultato.getString(1));
                     }
-                    oggetti.put(appoggio, risultato.getString(3));
+                    oggetti.put(appoggio, risultato.getString(2));
                 }
                 risultato.close();
                 connessione.close();

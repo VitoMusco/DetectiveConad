@@ -98,14 +98,14 @@ public class Mappa {
     }
 
     public void caricaOggetti(){
-        Oggetto cacciavite = new Oggetto("un","cacciavite");
-        Oggetto torcia = new Oggetto("una", "torcia");
-        Oggetto guanti = new Oggetto("dei", "guanti");
-        Oggetto chiave = new Oggetto("una", "chiave");
-        Oggetto mappa = new OggettoNonRaccoglibile("una", "mappa");
-        Oggetto improntemichele = new OggettoNonRaccoglibile("le","impronte_michele");
-        Oggetto improntevito = new OggettoNonRaccoglibile("le","impronte_vito");
-        Oggetto improntevincenzo = new OggettoNonRaccoglibile("le","impronte_vincenzo");
+        Oggetto cacciavite = new Oggetto("cacciavite");
+        Oggetto torcia = new Oggetto("torcia");
+        Oggetto guanti = new Oggetto("guanti");
+        Oggetto chiave = new Oggetto("chiave");
+        Oggetto mappa = new OggettoNonRaccoglibile("mappa");
+        Oggetto improntemichele = new OggettoNonRaccoglibile("impronte_michele");
+        Oggetto improntevito = new OggettoNonRaccoglibile("impronte_vito");
+        Oggetto improntevincenzo = new OggettoNonRaccoglibile("impronte_vincenzo");
         
         aggiungiOggetto(cacciavite, this.camioncino.getNome());
         aggiungiOggetto(torcia, this.camioncino.getNome());

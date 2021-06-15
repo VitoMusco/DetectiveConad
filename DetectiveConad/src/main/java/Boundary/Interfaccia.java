@@ -260,7 +260,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SceltaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
         SceltaSi.setBorder(null);
         SceltaSi.setContentAreaFilled(false);
-        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SceltaSi.setMargin(null);
         SceltaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
         SceltaSi.addActionListener(new java.awt.event.ActionListener() {
@@ -273,7 +273,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SceltaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
         SceltaNo.setBorder(null);
         SceltaNo.setContentAreaFilled(false);
-        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SceltaNo.setMargin(null);
         SceltaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
         SceltaNo.addActionListener(new java.awt.event.ActionListener() {

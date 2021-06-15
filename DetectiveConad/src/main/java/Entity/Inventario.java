@@ -9,7 +9,7 @@ public class Inventario {
 
     public Inventario() {
         this.inventario = new ArrayList<>();
-        this.oggettoEquipaggiato = new Oggetto("","");
+        this.oggettoEquipaggiato = new Oggetto("");
     }
 
     public void inserisciOggetto(Oggetto o) {
@@ -18,12 +18,6 @@ public class Inventario {
 
     public void rimuoviOggetto(Oggetto o) {
         this.inventario.remove(o);
-    }
-    
-    public void visualizzaInventario() {
-        for (Oggetto o : this.inventario) {
-            o.osservaOggetto();
-        }
     }
 
     public List<Oggetto> getInventario() {

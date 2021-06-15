@@ -4,23 +4,14 @@ import java.util.*;
 
 public class Oggetto {
 
-    private String nome, articolo;
+    private String nome;
 
-    public Oggetto(String a, String n) {
+    public Oggetto(String n) {
         this.nome = n;
-        this.articolo = a;
-    }
-
-    public String osservaOggetto() {
-        return this.articolo + " " + this.nome;
     }
 
     public String getNome() {
         return this.nome;
-    }
-
-    public String getArticolo() {
-        return this.articolo;
     }
 
     public boolean isRaccoglibile() {
