@@ -10,7 +10,6 @@ public class Stanza {
     private Stanza sud;
     private Stanza est;
     private Stanza ovest;
-    private Map<String, Impiegato> impiegati;
     private String nome;
     private String descrizione;
     private int numOsservazioni;
@@ -21,7 +20,6 @@ public class Stanza {
         this.sud = null;
         this.est = null;
         this.ovest = null;
-        this.impiegati = new HashMap<>();
         this.nome = nome;
         this.descrizione = desc;
         this.numOsservazioni = 0;
@@ -37,16 +35,6 @@ public class Stanza {
         this.descrizione = desc;
         this.numOsservazioni = 0;
         this.maxOsservazioni = maxOss;
-    }
-
-    public void inserisciImpiegato(Impiegato impiegato) {
-        this.impiegati.put(impiegato.getNome(), impiegato);
-    }
-
-    public void interrogaImpiegati() {
-        for (Map.Entry<String, Impiegato> e : impiegati.entrySet()) {
-            System.out.println(e.getValue().getNome() + ": " + e.getValue().interroga());
-        }
     }
 
     public void assegnaNord(Stanza s) {
