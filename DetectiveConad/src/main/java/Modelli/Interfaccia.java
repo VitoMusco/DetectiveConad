@@ -18,7 +18,7 @@ import java.util.ListIterator;
 public class Interfaccia extends javax.swing.JFrame {
 
     private final int MAX_PARTITE_SALVATE = 4;
-    private final ImageIcon menu, selettorePartita, finaleCorretto;
+    private final ImageIcon menu, selettorePartita;
     private boolean creazioneNuovaPartita = false;
     private boolean saltaFilmatoIntroduzione = false;
     private boolean riproduzioneFinaleCorretto = false;
@@ -40,7 +40,6 @@ public class Interfaccia extends javax.swing.JFrame {
 
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
-        finaleCorretto = new ImageIcon("./risorse/gif/videofinale.gif");
 
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
@@ -909,7 +908,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public void riproduciFinaleCorretto() {
         stoppaAudio();
         disattivaInterfacciaUtente();
-        MediaLabel.setIcon(finaleCorretto);
+        MediaLabel.setIcon(new ImageIcon("./risorse/gif/videofinale.gif"));
         riproduciAudio("videofinale");
         try {
             TimeUnit.SECONDS.sleep(44);
