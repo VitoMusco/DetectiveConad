@@ -426,27 +426,33 @@ public class LogicaGioco {
                     interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     break;
                 case "INCASTRA_VITO":
-                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VITO)){
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VITO) && !azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO)){
                         interfaccia.aggiungiTesto("Ok, in base alle prove che ho trovato sono in grado di incastrare Vito, sara' lui il killer?");
                         azioniEseguite.inserisciAzione(Azione.INCASTRATO_VITO);
+                    } else if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO)) {
+                        interfaccia.aggiungiTesto("Ho gia' incastrato Vito, non serve che lo faccia di nuovo...");
                     }
                     else{
                         interfaccia.aggiungiTesto("Perche' dovrei incastrare Vito? Non ho trovato nessuna prova che lo coinvolga nei fatti accaduti.");
                     }
                     break;
                 case "INCASTRA_MICHELE":
-                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_MICHELE)){
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_MICHELE) && !azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE)){
                         interfaccia.aggiungiTesto("Ho trovato delle prove per incastrare Michele, saranno sufficienti?");
                         azioniEseguite.inserisciAzione(Azione.INCASTRATO_MICHELE);
+                    } else if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO)) {
+                        interfaccia.aggiungiTesto("Ho gia' incastrato Michele, non serve che lo faccia di nuovo...");
                     }
                     else{
                         interfaccia.aggiungiTesto("Perche' dovrei incastrare Michele? Non ho trovato nessuna prova che lo coinvolga nei fatti accaduti.");
                     }
                     break;
                 case "INCASTRA_VINCENZO":
-                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VINCENZO)){
+                    if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VINCENZO) && !azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
                         interfaccia.aggiungiTesto("Le impronte di Vincenzo erano su quel coltello, scacco matto?");
                         azioniEseguite.inserisciAzione(Azione.INCASTRATO_VINCENZO);
+                    } else if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATA_IMPRONTA_VINCENZO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
+                        interfaccia.aggiungiTesto("Ho gia' incastrato Vincenzo, non serve che lo faccia di nuovo...");
                     }
                     else{
                         interfaccia.aggiungiTesto("Perche' dovrei incastrare Vincenzo? Non ho trovato nessuna prova che lo coinvolga nei fatti accaduti.");
