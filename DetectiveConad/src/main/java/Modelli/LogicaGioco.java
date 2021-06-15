@@ -303,8 +303,12 @@ public class LogicaGioco {
         interfaccia.getChiudiCaso().addActionListener(g -> {
             if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) && azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)) {
                 interfaccia.inizializzaFinaleCorretto();
-            } else if(azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
+            } else if (azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VITO) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_MICHELE) || azioniEseguite.verificaPresenzaAzione(Azione.INCASTRATO_VINCENZO)){
                 interfaccia.inizializzaFinaleAlternativo();
+            } else if (azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
+                interfaccia.aggiungiTesto("Come faccio a chiudere il caso se non ho ancora incastrato nessuno? E' chiaramente un omicidio!");
+            } else {
+                interfaccia.aggiungiTesto("Non posso chiudere gia' chiudere il caso, non ho ancora trovato niente qui.");
             }
         });
         interfaccia.getChiudiGraficaAppCellulare().addActionListener(g -> {
