@@ -28,11 +28,9 @@ public class LogicaGioco {
             controllaStato();
         }
         if(interfaccia.controllaStatoFinale()){
-            System.out.println("finalegiusto");
             interfaccia.riproduciFinaleCorretto();
             controllaStato();
         } else {
-            System.out.println("finalesbagliato");
             interfaccia.riproduciFinaleAlternativo();
             controllaStato();
         }
