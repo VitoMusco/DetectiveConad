@@ -1,5 +1,5 @@
 
-package Control;
+package Client.Control;
 
 import java.io.BufferedReader;
 import java.io.File;

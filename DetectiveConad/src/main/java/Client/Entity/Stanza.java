@@ -1,4 +1,4 @@
-package Entity;
+package Client.Entity;
 
 import java.util.*;
 

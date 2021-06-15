@@ -1,4 +1,4 @@
-package Entity;
+package Client.Entity;
 
 public class OggettoNonRaccoglibile extends Oggetto{
     

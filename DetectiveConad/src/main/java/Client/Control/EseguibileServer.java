@@ -1,4 +1,4 @@
-package Control;
+package Client.Control;
 
 import java.io.IOException;
 import java.net.ServerSocket;

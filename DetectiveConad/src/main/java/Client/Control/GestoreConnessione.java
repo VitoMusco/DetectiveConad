@@ -1,15 +1,13 @@
-package Control;
+package Client.Control;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.Date;
 
 public class GestoreConnessione extends Thread{
     private final Socket socket;
-    int[] oraConnessione = new int[3];
-    Date data = new Date();
+    private long oraConnessione;
     
     public GestoreConnessione(Socket s){
         this.socket = s;
@@ -20,23 +18,29 @@ public class GestoreConnessione extends Thread{
         this.socket = s;
     }
     
+    public void mostraTempoConnessione(){
+        long oraDisconnessione = System.currentTimeMillis();
+        oraDisconnessione = oraDisconnessione - oraConnessione;
+        System.out.println("Il client "+this.getName()+" e' stato connesso per "+oraDisconnessione+" ms");
+    }
+    
     @Override
     public void run(){
         try{
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String in;
             while (true) {
-                String in = input.readLine();
+                in = input.readLine();
                 if (in.equals("disconnessione")){
-                    System.out.println("Il client "+this.getName()+" e' stato connesso per AGGIUNGERE TEMPO QUI");
+                    mostraTempoConnessione();
                     break;
                 } else if (in.equals("connessione")){
-                    oraConnessione[0] = data.getSeconds();
-                    oraConnessione[1] = data.getMinutes();
-                    oraConnessione[2] = data.getHours();
+                    System.out.println("Il client "+this.getName()+" si e' connesso");
+                    oraConnessione = System.currentTimeMillis(); 
                 }
             }
-        } catch (IOException ex){
-            System.err.println(ex);
+        } catch (IOException ex) {
+            mostraTempoConnessione();
         } finally {
             try {
                 socket.close();

@@ -1,9 +1,9 @@
-package Control;
+package Client.Control;
 
-import Entity.Azione;
-import Entity.Inventario;
-import Entity.Mappa;
-import Boundary.Interfaccia;
+import Client.Entity.Azione;
+import Client.Entity.Inventario;
+import Client.Entity.Mappa;
+import Client.Boundary.Interfaccia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -15,6 +15,8 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LogicaGioco {
 
@@ -25,6 +27,8 @@ public class LogicaGioco {
     private Inventario inventario = new Inventario();
     private AzioniEseguite azioniEseguite = new AzioniEseguite();
     private int idPartita;
+    private InetAddress indirizzo;
+    private Socket socket;
 
     public LogicaGioco() {
         interfaccia = new Interfaccia(g);
@@ -35,11 +39,12 @@ public class LogicaGioco {
         while(!connettiAServer()){}
         interfaccia.attivaPulsanteAvviaGioco();
     }
-
+    
     public boolean connettiAServer(){
         try {
-            InetAddress indirizzo = InetAddress.getByName("localhost");
-            Socket socket = new Socket(indirizzo, 6666);
+            indirizzo = InetAddress.getByName("localhost");
+            socket = new Socket(indirizzo, 6666);
+            comunicaConnessioneEffettuata();
             return true;
         } catch (UnknownHostException ex) {
             return false;
@@ -50,17 +55,21 @@ public class LogicaGioco {
         }
     }
     
+    public void comunicaConnessioneEffettuata(){
+        try {
+            PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+            out.println("connessione");
+        } catch (IOException ex) {
+            Logger.getLogger(LogicaGioco.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void disconnettiDalServer(){
         try {
-            InetAddress indirizzo = InetAddress.getByName("localhost");
-            Socket socket = new Socket(indirizzo, 6666);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
             out.println("disconnessione");
-        } catch (UnknownHostException ex) {
-            //GESTISCI ERRORE
         } catch (IOException ex) {
-            //GESTISCI ERRORE
+            Logger.getLogger(LogicaGioco.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -97,6 +106,7 @@ public class LogicaGioco {
             inizializzaGioco();
         });
         interfaccia.getPulsanteEsci().addActionListener(g -> {
+            disconnettiDalServer();
             System.exit(0);
         });
         interfaccia.getPulsanteIndaga().addActionListener(g -> {

@@ -1,6 +1,6 @@
-package Entity;
+package Client.Entity;
 
-import Control.Dialoghi;
+import Client.Control.Dialoghi;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

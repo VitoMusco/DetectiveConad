@@ -1,7 +1,7 @@
-package Boundary;
+package Client.Boundary;
 
-import Entity.Azione;
-import Control.AzioniEseguite;
+import Client.Entity.Azione;
+import Client.Control.AzioniEseguite;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
@@ -11,8 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-import Control.LogicaGioco.GestoreAzioni;
-import Entity.Oggetto;
+import Client.Control.LogicaGioco.GestoreAzioni;
+import Client.Entity.Oggetto;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;

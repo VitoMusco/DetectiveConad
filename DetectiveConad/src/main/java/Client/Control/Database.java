@@ -1,10 +1,10 @@
-package Control;
+package Client.Control;
 
-import Entity.OggettoNonRaccoglibile;
-import Entity.Azione;
-import Entity.Stanza;
-import Entity.Inventario;
-import Entity.Oggetto;
+import Client.Entity.OggettoNonRaccoglibile;
+import Client.Entity.Azione;
+import Client.Entity.Stanza;
+import Client.Entity.Inventario;
+import Client.Entity.Oggetto;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;

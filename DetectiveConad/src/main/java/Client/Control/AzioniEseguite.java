@@ -1,6 +1,6 @@
-package Control;
+package Client.Control;
 
-import Entity.Azione;
+import Client.Entity.Azione;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
