@@ -14,7 +14,6 @@ import javax.swing.*;
 import Client.Control.LogicaGioco.GestoreAzioni;
 import Client.Entity.Oggetto;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
