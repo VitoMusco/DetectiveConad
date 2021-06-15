@@ -860,7 +860,7 @@ public class Interfaccia extends javax.swing.JFrame {
         return false;
     }
     
-    public boolean controllaStatoFinaleCorretto() {
+    public boolean controllaStatoFinale() {
         while (!riproduzioneFinaleCorretto && !riproduzioneFinaleAlternativo) {
             if (!riproduzioneFinaleCorretto) {
                 try {
@@ -869,29 +869,14 @@ public class Interfaccia extends javax.swing.JFrame {
                     Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (riproduzioneFinaleCorretto) {
-                riproduzioneFinaleCorretto = false;
-                return true;
-            }
         }
-        return true;
-    }
-
-    public boolean controllaStatoFinaleAlternativo() {
-        while (!riproduzioneFinaleAlternativo && !riproduzioneFinaleCorretto) {
-            if (!riproduzioneFinaleAlternativo) {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(100);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (riproduzioneFinaleAlternativo) {
-                riproduzioneFinaleAlternativo = false;
-                return true;
-            }
+        if (riproduzioneFinaleCorretto) {
+            riproduzioneFinaleCorretto = false;
+            return true;
+        } else {
+            riproduzioneFinaleAlternativo = false;
+            return false;
         }
-        return true;
     }
     
     public void riproduciIntro() {
@@ -940,7 +925,7 @@ public class Interfaccia extends javax.swing.JFrame {
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/videofinalealternativo.gif"));
         riproduciAudio("videofinalealternativo");
         try {
-            TimeUnit.SECONDS.sleep(24);
+            TimeUnit.SECONDS.sleep(22);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }

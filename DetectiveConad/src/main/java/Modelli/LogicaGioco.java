@@ -27,14 +27,16 @@ public class LogicaGioco {
             interfaccia.riproduciIntroduzione();
             controllaStato();
         }
-        if(interfaccia.controllaStatoFinaleCorretto()){
+        if(interfaccia.controllaStatoFinale()){
+            System.out.println("finalegiusto");
             interfaccia.riproduciFinaleCorretto();
             controllaStato();
-        }
-        if(interfaccia.controllaStatoFinaleAlternativo()){
+        } else {
+            System.out.println("finalesbagliato");
             interfaccia.riproduciFinaleAlternativo();
             controllaStato();
         }
+        
     }
     
     public void resettaStruttureDati() {
