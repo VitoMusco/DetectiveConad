@@ -1,27 +1,36 @@
-package Client.Control;
+package Server.Control;
 
+import Server.Boundary.InterfacciaServer;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextArea;
 
 public class GestoreConnessione extends Thread{
     private final Socket socket;
     private long oraConnessione;
+    private JTextArea areaTesto;
     
     public GestoreConnessione(Socket s){
         this.socket = s;
     }
     
-    public GestoreConnessione(Socket s,String nClient){
+    public GestoreConnessione(Socket s,String nClient,JTextArea a){
         super(nClient);
         this.socket = s;
+        this.areaTesto = a;
     }
     
     public void mostraTempoConnessione(){
         long oraDisconnessione = System.currentTimeMillis();
         oraDisconnessione = oraDisconnessione - oraConnessione;
-        System.out.println("Il client "+this.getName()+" e' stato connesso per "+oraDisconnessione+" ms");
+        areaTesto.append("Il client "+this.getName()+" e' stato connesso per "+oraDisconnessione+" ms\n");
     }
     
     @Override
@@ -35,7 +44,7 @@ public class GestoreConnessione extends Thread{
                     mostraTempoConnessione();
                     break;
                 } else if (in.equals("connessione")){
-                    System.out.println("Il client "+this.getName()+" si e' connesso");
+                    areaTesto.append("Il client "+this.getName()+" si e' connesso\n");
                     oraConnessione = System.currentTimeMillis(); 
                 }
             }
