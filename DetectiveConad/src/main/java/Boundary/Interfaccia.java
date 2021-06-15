@@ -44,6 +44,7 @@ public class Interfaccia extends javax.swing.JFrame {
         menu = new ImageIcon("./risorse/immagini/menu/menu.png");
         selettorePartita = new ImageIcon("./risorse/immagini/menu/salvataggi.png");
 
+        disattivaPulsanteAvviaGioco();
         disattivaInterfacciaMenu();
         disattivaInterfacciaUtente();
         disattivaFinestraOpzioniSiNo();
@@ -68,6 +69,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        PulsanteGioca = new javax.swing.JButton();
         MappaLabel = new javax.swing.JLabel();
         PulsanteAppDinamico1 = new javax.swing.JButton();
         PulsanteAppDinamico2 = new javax.swing.JButton();
@@ -138,6 +140,19 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PulsanteGioca.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteGioca.setIcon(new ImageIcon("./risorse/immagini/connessione/pulsante_gioca.png"));
+        PulsanteGioca.setBorder(null);
+        PulsanteGioca.setContentAreaFilled(false);
+        PulsanteGioca.setMargin(null);
+        PulsanteGioca.setRolloverIcon(new ImageIcon("./risorse/immagini/connessione/pulsante_gioca_highlighted.png"));
+        PulsanteGioca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsanteGiocaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PulsanteGioca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 200, 70));
 
         MappaLabel.setIcon(new ImageIcon("./risorse/immagini/telefono/mappa.png"));
         jPanel1.add(MappaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(995, 100, 250, 320));
@@ -691,6 +706,10 @@ public class Interfaccia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PulsanteAppDinamico8ActionPerformed
 
+    private void PulsanteGiocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteGiocaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsanteGiocaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnnullaSalvataggio;
     private javax.swing.JButton Apri;
@@ -741,6 +760,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteAppDinamico8;
     private javax.swing.JButton PulsanteCrediti;
     private javax.swing.JButton PulsanteEsci;
+    private javax.swing.JButton PulsanteGioca;
     private javax.swing.JButton PulsanteIndaga;
     private javax.swing.JLabel SaltaFilmatoLabel;
     private javax.swing.JButton Salva;
@@ -763,9 +783,20 @@ public class Interfaccia extends javax.swing.JFrame {
     
     public void inizializzaConnessione(){
         ConnessioneLabel.setIcon(new ImageIcon("./risorse/gif/connessione.gif"));
-        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/menu/background_connessione.png"));
+        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/connessione/background_connessione.png"));
     }
 
+    public void attivaPulsanteAvviaGioco(){
+        ConnessioneLabel.setIcon(new ImageIcon("./risorse/immagini/connessione/connesso.png"));
+        PulsanteGioca.setVisible(true);
+        PulsanteGioca.setEnabled(true);
+    }
+    
+    public void disattivaPulsanteAvviaGioco(){
+        PulsanteGioca.setVisible(false);
+        PulsanteGioca.setEnabled(false);
+    }
+    
     public void attivaFinestraOpzioniSiNo(){
         SaltaFilmatoLabel.setEnabled(true);
         SaltaFilmatoLabel.setVisible(true);
@@ -977,6 +1008,7 @@ public class Interfaccia extends javax.swing.JFrame {
         attivaPulsantiMenu();
         ConnessioneLabel.setVisible(false);
         ConnessioneLabel.setEnabled(false);
+        disattivaPulsanteAvviaGioco();
         MediaLabel.setIcon(menu);
     }
 
@@ -1106,7 +1138,7 @@ public class Interfaccia extends javax.swing.JFrame {
         IniziaPartita.setVisible(false);
         NomePartita.setVisible(false);
         ErroreMaxCaratteri.setVisible(false);
-        ErroreNoCaratteri.setVisible(false);
+        ErroreNoCaratteri.setVisible(false);       
     }
 
     //Inizializza l'interfaccia grafica sul quale si gioca
@@ -1547,7 +1579,7 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico3.setVisible(true);
         PulsanteAppDinamico3.setActionCommand("INCASTRA_VINCENZO");
     }
-
+    
     public JButton getPulsanteCrediti(){
         return PulsanteCrediti;
     }
@@ -1728,5 +1760,7 @@ public class Interfaccia extends javax.swing.JFrame {
         return Su;
     }
     
-    
+    public JButton getPulsanteGioca() {
+        return PulsanteGioca;
+    }
 }

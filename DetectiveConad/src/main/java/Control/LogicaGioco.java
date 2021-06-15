@@ -15,9 +15,6 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LogicaGioco {
 
@@ -31,22 +28,26 @@ public class LogicaGioco {
 
     public LogicaGioco() {
         interfaccia = new Interfaccia(g);
+        inizializzaFunzionalitaPulsanti();
         interfaccia.riproduciIntro();
-        interfaccia.inizializzaConnessione();
         interfaccia.riproduciAudio("menu");
-        //connettiAServer();
+        interfaccia.inizializzaConnessione();
+        while(!connettiAServer()){}
+        interfaccia.attivaPulsanteAvviaGioco();
     }
-    
-    //AGGIUSTARE CLIENT
-    /*
-    public void connettiAServer(){
+
+    public boolean connettiAServer(){
         try {
             InetAddress indirizzo = InetAddress.getByName("localhost");
+            Socket socket = new Socket(indirizzo, 6666);
+            return true;
         } catch (UnknownHostException ex) {
-            
+            return false;
+            //GESTISCI ERRORE
+        } catch (IOException ex) {
+            return false;
+            //GESTISCI ERRORE
         }
-        inizializzaGioco();
-        //PROVVISORIO PER IL TEST
     }
     
     public void disconnettiDalServer(){
@@ -62,11 +63,10 @@ public class LogicaGioco {
             //GESTISCI ERRORE
         }
         
-    }*/
+    }
 
     public void inizializzaGioco(){
         db.inizializzaDatabase();
-        inizializzaFunzionalitaPulsanti();
         interfaccia.inizializzaMenu();
     }
     
@@ -93,6 +93,9 @@ public class LogicaGioco {
     }
     
     public void inizializzaFunzionalitaPulsanti(){
+        interfaccia.getPulsanteGioca().addActionListener(g -> {
+            inizializzaGioco();
+        });
         interfaccia.getPulsanteEsci().addActionListener(g -> {
             System.exit(0);
         });
