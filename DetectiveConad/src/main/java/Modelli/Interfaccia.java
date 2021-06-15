@@ -124,6 +124,7 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaCellulare = new javax.swing.JLabel();
         ApriEditor = new javax.swing.JButton();
         ApriTelefono = new javax.swing.JButton();
+        ConnessioneLabel = new javax.swing.JLabel();
         MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -615,6 +616,7 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ApriTelefono.setMargin(null);
         jPanel1.add(ApriTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 120, 144));
+        jPanel1.add(ConnessioneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
         jPanel1.add(MediaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -695,6 +697,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JScrollPane CasellaTesto;
     private javax.swing.JButton ChiudiCaso;
     private javax.swing.JButton ChiudiGraficaAppCellulare;
+    private javax.swing.JLabel ConnessioneLabel;
     private javax.swing.JButton ContinuaPartita1;
     private javax.swing.JButton ContinuaPartita2;
     private javax.swing.JButton ContinuaPartita3;
@@ -753,6 +756,11 @@ public class Interfaccia extends javax.swing.JFrame {
     public void inizializzaFinestra() {
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+    
+    public void inizializzaConnessione(){
+        ConnessioneLabel.setIcon(new ImageIcon("./risorse/gif/connessione.gif"));
+        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/menu/background_connessione.png"));
     }
 
     public void attivaFinestraOpzioniSiNo(){
@@ -901,8 +909,6 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        riproduciAudio("menu");
-        inizializzaMenu();
     }
 
     public void riproduciIntroduzione() {
@@ -966,6 +972,8 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void inizializzaMenu() {
         attivaPulsantiMenu();
+        ConnessioneLabel.setVisible(false);
+        ConnessioneLabel.setEnabled(false);
         MediaLabel.setIcon(menu);
     }
 

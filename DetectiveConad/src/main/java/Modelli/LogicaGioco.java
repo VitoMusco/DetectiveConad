@@ -18,10 +18,28 @@ public class LogicaGioco {
 
     public LogicaGioco() {
         interfaccia.riproduciIntro();
-        db.inizializzaDatabase();
-        inizializzaFunzionalitaPulsanti();
+        interfaccia.inizializzaConnessione();
+        interfaccia.riproduciAudio("menu");
+        connettiAServer();
+        //inizializzaGioco(); una volta connessi al server
+    }
+    
+    public void connettiAServer(){
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        inizializzaGioco();
+        //PROVVISORIO PER IL TEST
     }
 
+    public void inizializzaGioco(){
+        db.inizializzaDatabase();
+        inizializzaFunzionalitaPulsanti();
+        interfaccia.inizializzaMenu();
+    }
+    
     public void controllaStato() {
         if (interfaccia.controllaStatoIntroduzione()) {
             interfaccia.riproduciIntroduzione();
