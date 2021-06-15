@@ -1,5 +1,9 @@
-package Modelli;
+package Control;
 
+import Entity.Azione;
+import Entity.Inventario;
+import Entity.Mappa;
+import Boundary.Interfaccia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
@@ -10,13 +14,14 @@ public class LogicaGioco {
 
     private Mappa mappa = new Mappa();
     private GestoreAzioni g = new GestoreAzioni();
-    private Interfaccia interfaccia = new Interfaccia(g);
+    private Interfaccia interfaccia;
     private Database db = new Database();
     private Inventario inventario = new Inventario();
     private AzioniEseguite azioniEseguite = new AzioniEseguite();
     private int idPartita;
 
     public LogicaGioco() {
+        interfaccia = new Interfaccia(g);
         interfaccia.riproduciIntro();
         interfaccia.inizializzaConnessione();
         interfaccia.riproduciAudio("menu");
@@ -344,7 +349,7 @@ public class LogicaGioco {
         mappa.caricaOggetti(db.caricaOggetti(idPartita));
     }
     
-    class GestoreAzioni implements ActionListener {
+    public class GestoreAzioni implements ActionListener {
 
         String comando;
 

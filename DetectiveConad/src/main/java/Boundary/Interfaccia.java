@@ -1,5 +1,7 @@
-package Modelli;
+package Boundary;
 
+import Entity.Azione;
+import Control.AzioniEseguite;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
@@ -9,7 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-import Modelli.LogicaGioco.GestoreAzioni;
+import Control.LogicaGioco.GestoreAzioni;
+import Entity.Oggetto;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -257,7 +260,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SceltaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
         SceltaSi.setBorder(null);
         SceltaSi.setContentAreaFilled(false);
-        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SceltaSi.setMargin(null);
         SceltaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
         SceltaSi.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +273,7 @@ public class Interfaccia extends javax.swing.JFrame {
         SceltaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
         SceltaNo.setBorder(null);
         SceltaNo.setContentAreaFilled(false);
-        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SceltaNo.setMargin(null);
         SceltaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
         SceltaNo.addActionListener(new java.awt.event.ActionListener() {

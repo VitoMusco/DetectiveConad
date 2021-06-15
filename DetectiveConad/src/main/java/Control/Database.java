@@ -1,5 +1,10 @@
-package Modelli;
+package Control;
 
+import Entity.OggettoNonRaccoglibile;
+import Entity.Azione;
+import Entity.Stanza;
+import Entity.Inventario;
+import Entity.Oggetto;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;

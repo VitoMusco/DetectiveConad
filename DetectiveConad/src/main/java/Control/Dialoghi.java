@@ -1,5 +1,5 @@
 
-package Modelli;
+package Control;
 
 import java.io.BufferedReader;
 import java.io.File;

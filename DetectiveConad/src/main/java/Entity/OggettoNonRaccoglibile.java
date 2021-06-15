@@ -1,4 +1,4 @@
-package Modelli;
+package Entity;
 
 public class OggettoNonRaccoglibile extends Oggetto{
     
