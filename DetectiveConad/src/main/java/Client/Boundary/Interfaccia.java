@@ -135,6 +135,7 @@ public class Interfaccia extends javax.swing.JFrame {
         MediaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Detective Conad");
         setIconImage((new ImageIcon("./risorse/immagini/icone/icona.png")).getImage());
         setName("Detective Conad"); // NOI18N
         setResizable(false);
@@ -522,6 +523,7 @@ public class Interfaccia extends javax.swing.JFrame {
         ScritturaTesto.setEditable(false);
         ScritturaTesto.setBackground(new java.awt.Color(0, 0, 0));
         ScritturaTesto.setColumns(20);
+        ScritturaTesto.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ScritturaTesto.setForeground(new java.awt.Color(255, 255, 255));
         ScritturaTesto.setLineWrap(true);
         ScritturaTesto.setRows(5);
@@ -530,7 +532,7 @@ public class Interfaccia extends javax.swing.JFrame {
         ScritturaTesto.setOpaque(false);
         CasellaTesto.setViewportView(ScritturaTesto);
 
-        jPanel1.add(CasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 920, 540));
+        jPanel1.add(CasellaTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 920, 590));
 
         GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo.png"));
         jPanel1.add(GraficaEditor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 960, 670));
