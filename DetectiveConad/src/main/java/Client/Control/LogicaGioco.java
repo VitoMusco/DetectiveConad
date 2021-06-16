@@ -389,7 +389,7 @@ public class LogicaGioco {
     
     public class GestoreAzioni implements ActionListener {
 
-        String comando;
+        private String comando;
 
         public GestoreAzioni() {
         }
