@@ -71,6 +71,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        PulsanteMenu = new javax.swing.JButton();
         Guida = new javax.swing.JButton();
         PulsanteGioca = new javax.swing.JButton();
         MappaLabel = new javax.swing.JLabel();
@@ -143,6 +144,14 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PulsanteMenu.setForeground(new java.awt.Color(255, 255, 255));
+        PulsanteMenu.setIcon(new ImageIcon("./risorse/immagini/crediti/menu.png"));
+        PulsanteMenu.setBorder(null);
+        PulsanteMenu.setContentAreaFilled(false);
+        PulsanteMenu.setMargin(null);
+        PulsanteMenu.setRolloverIcon(new ImageIcon("./risorse/immagini/crediti/menu_highlighted.png"));
+        jPanel1.add(PulsanteMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 200, 70));
 
         Guida.setIcon(new ImageIcon("./risorse/immagini/interfaccia/guida.png"));
         Guida.setBorder(null);
@@ -616,6 +625,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton PulsanteEsci;
     private javax.swing.JButton PulsanteGioca;
     private javax.swing.JButton PulsanteIndaga;
+    private javax.swing.JButton PulsanteMenu;
     private javax.swing.JLabel SaltaFilmatoLabel;
     private javax.swing.JButton Salva;
     private javax.swing.JButton SalvaEVaiAMenu;
@@ -1026,7 +1036,8 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
         ApriMovimento.setVisible(false);
-        
+        PulsanteMenu.setVisible(false);
+
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
         GraficaCellulare.setEnabled(false);
@@ -1036,7 +1047,8 @@ public class Interfaccia extends javax.swing.JFrame {
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
         ApriMovimento.setEnabled(false);        
-        
+        PulsanteMenu.setEnabled(false);
+
         Esci.setVisible(false);
         Esci.setEnabled(false);
         Flash.setVisible(false);
@@ -1448,6 +1460,20 @@ public class Interfaccia extends javax.swing.JFrame {
         GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo.png"));
     }
     
+    public void mostraCrediti(){
+        disattivaInterfacciaMenu();
+        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/crediti/crediti.png"));
+        PulsanteMenu.setVisible(true);
+        PulsanteMenu.setEnabled(true);
+    }
+    
+    public void esciDaCrediti(){
+        inizializzaMenu();
+        MediaLabel.setIcon(new ImageIcon("./risorse/immagini/menu/menu.png"));
+        PulsanteMenu.setVisible(false);
+        PulsanteMenu.setEnabled(false);
+    }
+    
     public JButton getPulsanteCrediti(){
         return PulsanteCrediti;
     }
@@ -1634,5 +1660,9 @@ public class Interfaccia extends javax.swing.JFrame {
     
     public JButton getGuida() {
         return Guida;
+    }
+    
+    public JButton getPulsanteMenu(){
+        return PulsanteMenu;
     }
 }

@@ -375,6 +375,12 @@ public class LogicaGioco {
             interfaccia.inizializzaInterfacciaGraficaAppCellulare();
             interfaccia.inizializzaPulsantiApp("EQUIPAGGIA",inventario.getInventario(),azioniEseguite);
         });
+        interfaccia.getPulsanteCrediti().addActionListener(g -> {
+            interfaccia.mostraCrediti();
+        });
+        interfaccia.getPulsanteMenu().addActionListener(g -> {
+            interfaccia.esciDaCrediti();
+        });
     }
     
     public void continuaPartita(){
