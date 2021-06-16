@@ -6,10 +6,8 @@ import Client.Entity.Mappa;
 import Client.Boundary.Interfaccia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -578,6 +576,12 @@ public class LogicaGioco {
                     break;
                 case "ANNULLA_CHIUDI_CASO":
                     interfaccia.disattivaFinestraOpzioniSiNo();
+                    break;
+                case "GUIDA":
+                    interfaccia.mostraGuida();
+                    break;
+                case "CHIUDI_GUIDA":
+                    interfaccia.chiudiGuida();
                     break;
                 default:
                     break;

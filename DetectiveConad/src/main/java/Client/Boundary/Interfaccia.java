@@ -49,6 +49,9 @@ public class Interfaccia extends javax.swing.JFrame {
         disattivaFinestraOpzioniSiNo();
         disattivaInterfacciaSalvataggio();
         disattivaInterfacciaGraficaAppCellulare();
+        
+        Guida.addActionListener(g);
+        Guida.setActionCommand("GUIDA");
 
         SceltaSi.addActionListener(g);
         SceltaNo.addActionListener(g);
@@ -68,6 +71,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Guida = new javax.swing.JButton();
         PulsanteGioca = new javax.swing.JButton();
         MappaLabel = new javax.swing.JLabel();
         PulsanteAppDinamico1 = new javax.swing.JButton();
@@ -121,7 +125,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita2 = new javax.swing.JButton();
         ContinuaPartita3 = new javax.swing.JButton();
         ContinuaPartita4 = new javax.swing.JButton();
-        ScriviTesto = new javax.swing.JTextField();
         CasellaTesto = new javax.swing.JScrollPane();
         ScritturaTesto = new javax.swing.JTextArea();
         GraficaEditor = new javax.swing.JLabel();
@@ -140,17 +143,19 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Guida.setIcon(new ImageIcon("./risorse/immagini/interfaccia/guida.png"));
+        Guida.setBorder(null);
+        Guida.setContentAreaFilled(false);
+        Guida.setMargin(null);
+        Guida.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/guida_highlighted.png"));
+        jPanel1.add(Guida, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 40, 40, 40));
+
         PulsanteGioca.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteGioca.setIcon(new ImageIcon("./risorse/immagini/connessione/pulsante_gioca.png"));
         PulsanteGioca.setBorder(null);
         PulsanteGioca.setContentAreaFilled(false);
         PulsanteGioca.setMargin(null);
         PulsanteGioca.setRolloverIcon(new ImageIcon("./risorse/immagini/connessione/pulsante_gioca_highlighted.png"));
-        PulsanteGioca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteGiocaActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteGioca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 200, 70));
 
         MappaLabel.setIcon(new ImageIcon("./risorse/immagini/telefono/mappa.png"));
@@ -160,88 +165,48 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico1.setBorder(null);
         PulsanteAppDinamico1.setContentAreaFilled(false);
         PulsanteAppDinamico1.setMargin(null);
-        PulsanteAppDinamico1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 250, 44));
 
         PulsanteAppDinamico2.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico2.setBorder(null);
         PulsanteAppDinamico2.setContentAreaFilled(false);
         PulsanteAppDinamico2.setMargin(null);
-        PulsanteAppDinamico2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico2ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 150, 250, 44));
 
         PulsanteAppDinamico3.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico3.setBorder(null);
         PulsanteAppDinamico3.setContentAreaFilled(false);
         PulsanteAppDinamico3.setMargin(null);
-        PulsanteAppDinamico3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico3ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 250, 44));
 
         PulsanteAppDinamico4.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico4.setBorder(null);
         PulsanteAppDinamico4.setContentAreaFilled(false);
         PulsanteAppDinamico4.setMargin(null);
-        PulsanteAppDinamico4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico4ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 250, 250, 44));
 
         PulsanteAppDinamico5.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico5.setBorder(null);
         PulsanteAppDinamico5.setContentAreaFilled(false);
         PulsanteAppDinamico5.setMargin(null);
-        PulsanteAppDinamico5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico5ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 300, 250, 44));
 
         PulsanteAppDinamico6.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico6.setBorder(null);
         PulsanteAppDinamico6.setContentAreaFilled(false);
         PulsanteAppDinamico6.setMargin(null);
-        PulsanteAppDinamico6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico6ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 350, 250, 44));
 
         PulsanteAppDinamico7.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico7.setBorder(null);
         PulsanteAppDinamico7.setContentAreaFilled(false);
         PulsanteAppDinamico7.setMargin(null);
-        PulsanteAppDinamico7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico7ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 400, 250, 44));
 
         PulsanteAppDinamico8.setForeground(new java.awt.Color(255, 255, 255));
         PulsanteAppDinamico8.setBorder(null);
         PulsanteAppDinamico8.setContentAreaFilled(false);
         PulsanteAppDinamico8.setMargin(null);
-        PulsanteAppDinamico8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PulsanteAppDinamico8ActionPerformed(evt);
-            }
-        });
         jPanel1.add(PulsanteAppDinamico8, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 450, 250, 44));
 
         ChiudiGraficaAppCellulare.setIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio.png"));
@@ -249,11 +214,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ChiudiGraficaAppCellulare.setContentAreaFilled(false);
         ChiudiGraficaAppCellulare.setMargin(null);
         ChiudiGraficaAppCellulare.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
-        ChiudiGraficaAppCellulare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChiudiGraficaAppCellulareActionPerformed(evt);
-            }
-        });
         jPanel1.add(ChiudiGraficaAppCellulare, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 38, 44, 44));
 
         GraficaAppCellulare.setIcon(new ImageIcon("./risorse/immagini/interfaccia/telefono.png"));
@@ -264,11 +224,6 @@ public class Interfaccia extends javax.swing.JFrame {
         AnnullaSalvataggio.setContentAreaFilled(false);
         AnnullaSalvataggio.setMargin(null);
         AnnullaSalvataggio.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/annulla_salvataggio_highlighted.png"));
-        AnnullaSalvataggio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnnullaSalvataggioActionPerformed(evt);
-            }
-        });
         jPanel1.add(AnnullaSalvataggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 257, 44, 44));
 
         SceltaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
@@ -277,11 +232,6 @@ public class Interfaccia extends javax.swing.JFrame {
         SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SceltaSi.setMargin(null);
         SceltaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
-        SceltaSi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SceltaSiActionPerformed(evt);
-            }
-        });
         jPanel1.add(SceltaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 130, 70));
 
         SceltaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
@@ -290,11 +240,6 @@ public class Interfaccia extends javax.swing.JFrame {
         SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SceltaNo.setMargin(null);
         SceltaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
-        SceltaNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SceltaNoActionPerformed(evt);
-            }
-        });
         jPanel1.add(SceltaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 130, 70));
 
         SaltaFilmatoLabel.setDisabledIcon(new ImageIcon("./risorse/immagini/menu/crea_salvataggio_disabilitato.png"));
@@ -309,11 +254,6 @@ public class Interfaccia extends javax.swing.JFrame {
         Sinistra.setContentAreaFilled(false);
         Sinistra.setMargin(null);
         Sinistra.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/sinistra_highlighted.png"));
-        Sinistra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SinistraActionPerformed(evt);
-            }
-        });
         jPanel1.add(Sinistra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 610, 60, 60));
 
         Destra.setIcon(new ImageIcon("./risorse/immagini/interfaccia/destra.png"));
@@ -321,11 +261,6 @@ public class Interfaccia extends javax.swing.JFrame {
         Destra.setContentAreaFilled(false);
         Destra.setMargin(null);
         Destra.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/destra_highlighted.png"));
-        Destra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DestraActionPerformed(evt);
-            }
-        });
         jPanel1.add(Destra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 60, 60));
 
         Giu.setIcon(new ImageIcon("./risorse/immagini/interfaccia/giu.png"));
@@ -340,11 +275,6 @@ public class Interfaccia extends javax.swing.JFrame {
         Su.setContentAreaFilled(false);
         Su.setMargin(null);
         Su.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/su_highlighted.png"));
-        Su.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SuActionPerformed(evt);
-            }
-        });
         jPanel1.add(Su, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 540, 60, 60));
 
         ApriMovimento.setIcon(new ImageIcon("./risorse/immagini/interfaccia/pulsante_movimento.png"));
@@ -555,11 +485,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita1.setEnabled(false);
         ContinuaPartita1.setMargin(null);
         ContinuaPartita1.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
-        ContinuaPartita1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContinuaPartita1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(ContinuaPartita1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 367, 81));
 
         ContinuaPartita2.setIcon(new ImageIcon("./risorse/immagini/menu/continua_partita.png"));
@@ -588,11 +513,6 @@ public class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita4.setMargin(null);
         ContinuaPartita4.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
         jPanel1.add(ContinuaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 367, 81));
-
-        ScriviTesto.setBackground(new java.awt.Color(0, 0, 0));
-        ScriviTesto.setBorder(null);
-        ScriviTesto.setMargin(null);
-        jPanel1.add(ScriviTesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 650, 820, 30));
 
         CasellaTesto.setBackground(new java.awt.Color(0, 0, 0));
         CasellaTesto.setBorder(null);
@@ -641,74 +561,6 @@ public class Interfaccia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SuActionPerformed
-
-    private void DestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DestraActionPerformed
-
-    private void SinistraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SinistraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SinistraActionPerformed
-
-    private void ContinuaPartita1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuaPartita1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContinuaPartita1ActionPerformed
-
-    private void SceltaSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SceltaSiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SceltaSiActionPerformed
-
-    private void SceltaNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SceltaNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SceltaNoActionPerformed
-
-    private void AnnullaSalvataggioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnullaSalvataggioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnnullaSalvataggioActionPerformed
-
-    private void ChiudiGraficaAppCellulareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChiudiGraficaAppCellulareActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChiudiGraficaAppCellulareActionPerformed
-
-    private void PulsanteAppDinamico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico1ActionPerformed
-
-    private void PulsanteAppDinamico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico2ActionPerformed
-
-    private void PulsanteAppDinamico3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico3ActionPerformed
-
-    private void PulsanteAppDinamico4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico4ActionPerformed
-
-    private void PulsanteAppDinamico5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico5ActionPerformed
-
-    private void PulsanteAppDinamico6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico6ActionPerformed
-
-    private void PulsanteAppDinamico7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico7ActionPerformed
-
-    private void PulsanteAppDinamico8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteAppDinamico8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteAppDinamico8ActionPerformed
-
-    private void PulsanteGiocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsanteGiocaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PulsanteGiocaActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnnullaSalvataggio;
     private javax.swing.JButton Apri;
@@ -736,6 +588,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel GraficaCellulare;
     private javax.swing.JLabel GraficaEditor;
     private javax.swing.JLabel GraficaMovimento;
+    private javax.swing.JButton Guida;
     private javax.swing.JButton Incastra;
     private javax.swing.JButton IniziaPartita;
     private javax.swing.JButton Interroga;
@@ -769,7 +622,6 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton SceltaNo;
     private javax.swing.JButton SceltaSi;
     private javax.swing.JTextArea ScritturaTesto;
-    private javax.swing.JTextField ScriviTesto;
     private javax.swing.JButton Sinistra;
     private javax.swing.JButton Su;
     private javax.swing.JPanel jPanel1;
@@ -1163,22 +1015,22 @@ public class Interfaccia extends javax.swing.JFrame {
     public void disattivaInterfacciaUtente() {
         disattivaPulsantiDinamici();
         
-        ScriviTesto.setVisible(false);
         CasellaTesto.setVisible(false);
         ScritturaTesto.setVisible(false);
         GraficaCellulare.setVisible(false);
         GraficaMovimento.setVisible(false);
         GraficaEditor.setVisible(false);
+        Guida.setVisible(false);            
         ApriEditor.setVisible(false);
         ApriTelefono.setVisible(false);
         ApriMovimento.setVisible(false);
         
-        ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
         GraficaCellulare.setEnabled(false);
         GraficaMovimento.setEnabled(false);
         GraficaEditor.setEnabled(false);
+        Guida.setEnabled(false);
         ApriEditor.setEnabled(false);
         ApriTelefono.setEnabled(false);
         ApriMovimento.setEnabled(false);        
@@ -1304,22 +1156,21 @@ public class Interfaccia extends javax.swing.JFrame {
     //Mostra l'interfaccia dell'editor di testo
     public void mostraEditorTesto() {
         GraficaEditor.setVisible(true);
-        ScriviTesto.setVisible(true);
         CasellaTesto.setVisible(true);
         ScritturaTesto.setVisible(true);
+        Guida.setVisible(true);
 
         GraficaEditor.setEnabled(true);
-        ScriviTesto.setEnabled(true);
         CasellaTesto.setEnabled(true);
         ScritturaTesto.setEnabled(true);
-
+        Guida.setEnabled(true);
+        
         CasellaTesto.setOpaque(true);
         ScritturaTesto.setOpaque(true);
         CasellaTesto.setBackground(Color.black);
         ScritturaTesto.setBackground(Color.black);
 
         ScritturaTesto.setForeground(Color.white);
-        ScriviTesto.setForeground(Color.white);
 
         ApriEditor.setVisible(false);
         ApriEditor.setEnabled(false);
@@ -1328,12 +1179,10 @@ public class Interfaccia extends javax.swing.JFrame {
 
     public void disattivaEditorTesto() {
         GraficaEditor.setVisible(false);
-        ScriviTesto.setVisible(false);
         CasellaTesto.setVisible(false);
         ScritturaTesto.setVisible(false);
 
         GraficaEditor.setEnabled(false);
-        ScriviTesto.setEnabled(false);
         CasellaTesto.setEnabled(false);
         ScritturaTesto.setEnabled(false);
 
@@ -1579,6 +1428,24 @@ public class Interfaccia extends javax.swing.JFrame {
         PulsanteAppDinamico3.setActionCommand("INCASTRA_VINCENZO");
     }
     
+    public void mostraGuida(){
+        Guida.setActionCommand("CHIUDI_GUIDA");
+        CasellaTesto.setVisible(false);
+        ScritturaTesto.setVisible(false);
+        Guida.setIcon(new ImageIcon("./risorse/immagini/interfaccia/chiudi_guida.png"));
+        Guida.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/chiudi_guida_highlighted.png"));
+        GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo_guida.png"));
+    }
+    
+    public void chiudiGuida(){
+        Guida.setActionCommand("GUIDA");
+        CasellaTesto.setVisible(true);
+        ScritturaTesto.setVisible(true);
+        Guida.setIcon(new ImageIcon("./risorse/immagini/interfaccia/guida.png"));
+        Guida.setRolloverIcon(new ImageIcon("./risorse/immagini/interfaccia/guida_highlighted.png"));
+        GraficaEditor.setIcon(new ImageIcon("./risorse/immagini/interfaccia/testo.png"));
+    }
+    
     public JButton getPulsanteCrediti(){
         return PulsanteCrediti;
     }
@@ -1761,5 +1628,9 @@ public class Interfaccia extends javax.swing.JFrame {
     
     public JButton getPulsanteGioca() {
         return PulsanteGioca;
+    }
+    
+    public JButton getGuida() {
+        return Guida;
     }
 }
