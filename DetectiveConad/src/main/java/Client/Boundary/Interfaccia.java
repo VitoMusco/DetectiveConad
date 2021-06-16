@@ -17,19 +17,24 @@ import java.awt.Color;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Interfaccia extends javax.swing.JFrame {
+public final class Interfaccia extends javax.swing.JFrame {
 
     private final int MAX_PARTITE_SALVATE = 4;
     private final ImageIcon menu, selettorePartita;
-    private boolean creazioneNuovaPartita = false;
-    private boolean saltaFilmatoIntroduzione = false;
-    private boolean riproduzioneFinaleCorretto = false;
-    private boolean riproduzioneFinaleAlternativo = false;
-    private boolean[] partiteSalvate = new boolean[4];
+    private boolean creazioneNuovaPartita;
+    private boolean saltaFilmatoIntroduzione;
+    private boolean riproduzioneFinaleCorretto;
+    private boolean riproduzioneFinaleAlternativo;
+    private final boolean[] partiteSalvate;
     private Clip audio;
     GestoreAzioni g;
 
     public Interfaccia(GestoreAzioni gestoreAzioni) {
+        creazioneNuovaPartita = false;
+        saltaFilmatoIntroduzione = false;
+        riproduzioneFinaleCorretto = false;
+        riproduzioneFinaleAlternativo = false;
+        partiteSalvate = new boolean[4];
         g = gestoreAzioni;
         initComponents();
         inizializzaFinestra();
@@ -527,6 +532,8 @@ public class Interfaccia extends javax.swing.JFrame {
         CasellaTesto.setBackground(new java.awt.Color(0, 0, 0));
         CasellaTesto.setBorder(null);
         CasellaTesto.setForeground(new java.awt.Color(255, 255, 255));
+        CasellaTesto.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        CasellaTesto.setToolTipText("");
         CasellaTesto.setAutoscrolls(true);
 
         ScritturaTesto.setEditable(false);
@@ -712,9 +719,7 @@ public class Interfaccia extends javax.swing.JFrame {
     }
     
     public void caricaPartiteSalvate(boolean[] partite) {
-        for (int i = 0; i < MAX_PARTITE_SALVATE; i++) {
-            this.partiteSalvate[i] = partite[i];
-        }
+        System.arraycopy(partite, 0, this.partiteSalvate, 0, MAX_PARTITE_SALVATE);
     }
 
     public void riproduciAudio(String nome) {
@@ -725,11 +730,7 @@ public class Interfaccia extends javax.swing.JFrame {
             audio = AudioSystem.getClip();
             audio.open(audioStream);
             audio.start();
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -770,7 +771,7 @@ public class Interfaccia extends javax.swing.JFrame {
                     Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (creazioneNuovaPartita && !saltaFilmatoIntroduzione) { 
+            if (creazioneNuovaPartita && !saltaFilmatoIntroduzione) {
                 creazioneNuovaPartita = false;
                 return true;
             }

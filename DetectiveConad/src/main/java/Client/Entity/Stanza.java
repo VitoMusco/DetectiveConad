@@ -10,10 +10,10 @@ public class Stanza {
     private Stanza sud;
     private Stanza est;
     private Stanza ovest;
-    private String nome;
-    private String descrizione;
+    private final String nome;
+    private final String descrizione;
     private int numOsservazioni;
-    private int maxOsservazioni;
+    private final int maxOsservazioni;
 
     public Stanza(String nome, String desc, int maxOss) {
         this.nord = null;

@@ -9,24 +9,24 @@ import java.util.Map;
 
 public class Mappa {
 
-    private Dialoghi dialoghi;
-    private Stanza esterno;
-    private Stanza ingresso;
-    private Stanza camioncino;
-    private Stanza cassa;
-    private Stanza studio;
-    private Stanza retro;
-    private Stanza salumeria;
-    private Stanza corridoio1;
-    private Stanza corridoio2;
-    private Stanza corridoio3;
-    private Stanza corridoio4;
-    private Stanza corridoio5;
-    private Stanza corridoio6;
-    private Stanza zona_detersivi;
-    private Stanza zona_frutta;
-    private Stanza zona_frigo;
-    private Stanza condotto;
+    private final Dialoghi dialoghi;
+    private final Stanza esterno;
+    private final Stanza ingresso;
+    private final Stanza camioncino;
+    private final Stanza cassa;
+    private final Stanza studio;
+    private final Stanza retro;
+    private final Stanza salumeria;
+    private final Stanza corridoio1;
+    private final Stanza corridoio2;
+    private final Stanza corridoio3;
+    private final Stanza corridoio4;
+    private final Stanza corridoio5;
+    private final Stanza corridoio6;
+    private final Stanza zona_detersivi;
+    private final Stanza zona_frutta;
+    private final Stanza zona_frigo;
+    private final Stanza condotto;
     private Stanza corrente;
     private Map<Oggetto,String> oggetti;
 
@@ -115,32 +115,12 @@ public class Mappa {
         aggiungiOggetto(chiave, this.retro.getNome());
         aggiungiOggetto(improntevito, this.studio.getNome());
         aggiungiOggetto(improntevincenzo, this.salumeria.getNome());
-        /*
-        Oggetto pila = new Oggetto("una", "pila");
-        
-        Oggetto guanti = new Oggetto("dei", "guanti");
-        Oggetto guanti = new Oggetto("dei", "guanti");
-        Oggetto coltello = new Oggetto("un", "coltello");
-        Oggetto mappa = new Oggetto("una", "mappa");
-        Oggetto monetina = new Oggetto("una", "monetina");
-        Oggetto impronta = new OggettoNonRaccoglibile("una", "impronta");
-        
-        this.ingresso.inserisciOggetto(mappa);
-        this.studio.inserisciOggetto(monetina);
-        this.camioncino.inserisciOggetto(pila);
-        this.camioncino.inserisciOggetto(torcia);
-        this.camioncino.inserisciOggetto(guanti);
-        this.salumeria.inserisciOggetto(coltello);
-        this.studio.inserisciOggetto(impronta);
-        this.salumeria.inserisciOggetto(impronta);
-        this.retro.inserisciOggetto(impronta);
-        */
     }
     
     public void caricaOggetti(Map<Oggetto,String> oggetti){
-        for(Map.Entry<Oggetto,String> o : oggetti.entrySet()){
+        oggetti.entrySet().forEach(o -> {
             aggiungiOggetto(o.getKey(),o.getValue());
-        }
+        });
     }
     
     public Map<Oggetto,String> getOggetti(){
@@ -149,11 +129,9 @@ public class Mappa {
     
     public List<Oggetto> getOggettiStanzaCorrente(){
         List<Oggetto> listaOggetti = new ArrayList<>();
-        for(Map.Entry<Oggetto,String> o : oggetti.entrySet()){
-            if(o.getValue().equals(this.corrente.getNome())){
-                listaOggetti.add(o.getKey());
-            }
-        }
+        oggetti.entrySet().stream().filter(o -> (o.getValue().equals(this.corrente.getNome()))).forEachOrdered(o -> {
+            listaOggetti.add(o.getKey());
+        });
         return listaOggetti;
     }
     

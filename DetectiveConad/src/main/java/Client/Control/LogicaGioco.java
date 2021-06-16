@@ -16,12 +16,12 @@ import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LogicaGioco {
+public final class LogicaGioco {
 
     private Mappa mappa = new Mappa();
-    private GestoreAzioni g = new GestoreAzioni();
-    private Interfaccia interfaccia;
-    private Database db = new Database();
+    private final GestoreAzioni g = new GestoreAzioni();
+    private final Interfaccia interfaccia;
+    private final Database db = new Database();
     private Inventario inventario = new Inventario();
     private AzioniEseguite azioniEseguite = new AzioniEseguite();
     private int idPartita;

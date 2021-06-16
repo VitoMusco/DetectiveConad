@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Dialoghi {
-    private Map<String, String> testi; 
+    private final Map<String, String> testi; 
     
     public Dialoghi() {
         this.testi = new HashMap<>(); 
@@ -23,10 +23,10 @@ public class Dialoghi {
     }
     
     public void prelevaTesti() {
-        Scanner scanner = null;
+        Scanner scanner;
         File file = new File("./risorse/dialoghi/dialoghi.txt");
-        String frase = null, chiave = null;
-        String[] parti = new String[2];
+        String frase, chiave;
+        String[] parti;
         try {
             scanner = new Scanner(new BufferedReader(new FileReader(file)));
             while (scanner.hasNextLine()) {

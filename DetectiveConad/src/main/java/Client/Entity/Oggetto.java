@@ -1,10 +1,8 @@
 package Client.Entity;
 
-import java.util.*;
-
 public class Oggetto {
 
-    private String nome;
+    private final String nome;
 
     public Oggetto(String n) {
         this.nome = n;
@@ -15,11 +13,7 @@ public class Oggetto {
     }
 
     public boolean isRaccoglibile() {
-        if (this instanceof OggettoNonRaccoglibile) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(this instanceof OggettoNonRaccoglibile);
     }
 
 }

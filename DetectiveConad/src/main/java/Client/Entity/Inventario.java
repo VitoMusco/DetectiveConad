@@ -50,9 +50,6 @@ public class Inventario {
     }
     
     public boolean isEquipaggiato(String nome){
-        if(this.oggettoEquipaggiato.getNome().equals(nome)){
-            return true;
-        }
-        return false;
+        return this.oggettoEquipaggiato.getNome().equals(nome);
     }
 }
