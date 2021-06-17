@@ -312,7 +312,7 @@ public final class LogicaGioco {
                 } else if (!inventario.haOggetto("cacciavite") && !azioniEseguite.verificaPresenzaAzione(Azione.GRATA_TROVATA)) {
                     interfaccia.aggiungiTesto("Non vedo niente da aprire qui...");
                 }
-            } else if (mappa.getCorrente().getNome().equals("Salumeria")) {
+            } else if (mappa.getCorrente().getNome().equals("Salumeria") || mappa.getCorrente().getNome().equals("Cellafrigo")) {
                 if (inventario.haOggetto("chiave") && inventario.isEquipaggiato("chiave")) {
                     azioniEseguite.inserisciAzione(Azione.PORTA_APERTA);
                     interfaccia.aggiungiTesto("Ecco qua, ho aperto la porta della salumeria, cosi' non dovro' piu' attraversare quel condotto sporco... Bleah!");

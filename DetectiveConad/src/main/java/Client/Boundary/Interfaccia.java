@@ -248,7 +248,7 @@ public final class Interfaccia extends javax.swing.JFrame {
         SceltaSi.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si.png"));
         SceltaSi.setBorder(null);
         SceltaSi.setContentAreaFilled(false);
-        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SceltaSi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SceltaSi.setMargin(null);
         SceltaSi.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_si_highlighted.png"));
         jPanel1.add(SceltaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 130, 70));
@@ -256,7 +256,7 @@ public final class Interfaccia extends javax.swing.JFrame {
         SceltaNo.setIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no.png"));
         SceltaNo.setBorder(null);
         SceltaNo.setContentAreaFilled(false);
-        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SceltaNo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SceltaNo.setMargin(null);
         SceltaNo.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/pulsante_salva_no_highlighted.png"));
         jPanel1.add(SceltaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 130, 70));
@@ -574,6 +574,7 @@ public final class Interfaccia extends javax.swing.JFrame {
         CasellaTesto.setForeground(new java.awt.Color(255, 255, 255));
         CasellaTesto.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         CasellaTesto.setToolTipText("");
+        CasellaTesto.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         CasellaTesto.setAutoscrolls(true);
 
         ScritturaTesto.setEditable(false);
@@ -1390,7 +1391,8 @@ public final class Interfaccia extends javax.swing.JFrame {
     }
 
     public void aggiungiTesto(String messaggio) {
-        ScritturaTesto.append(messaggio + "\n");
+        ScritturaTesto.append("------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        ScritturaTesto.append(messaggio + "\n");       
     }
 
     public void tornaAMenuIniziale() {
