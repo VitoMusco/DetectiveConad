@@ -27,7 +27,7 @@ public final class Interfaccia extends javax.swing.JFrame {
     private boolean riproduzioneFinaleAlternativo;
     private final boolean[] partiteSalvate;
     private Clip audio;
-    GestoreAzioni g;
+    private GestoreAzioni g;
 
     public Interfaccia(GestoreAzioni gestoreAzioni) {
         creazioneNuovaPartita = false;
