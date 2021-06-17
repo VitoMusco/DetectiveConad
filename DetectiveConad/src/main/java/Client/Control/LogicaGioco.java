@@ -46,10 +46,8 @@ public final class LogicaGioco {
             return true;
         } catch (UnknownHostException ex) {
             return false;
-            //GESTISCI ERRORE
         } catch (IOException ex) {
             return false;
-            //GESTISCI ERRORE
         }
     }
     
@@ -113,15 +111,13 @@ public final class LogicaGioco {
         });
         interfaccia.getIniziaPartita().addActionListener(g -> {
             if (interfaccia.controllaNomePartita() == true) {
-                idPartita = db.inserisciPartita(interfaccia.getNomePartita());
-                if (idPartita != 0) {
-                    mappa = new Mappa();
-                    mappa.caricaOggetti();
-                    db.inserisciOggetti(idPartita, mappa.getOggetti());
-                    inventario = db.caricaInventario(idPartita);
-                    interfaccia.esciDaCreatorePartita();
-                    interfaccia.chiediSaltaIntroduzione();                 
-                }
+                db.inserisciPartita(interfaccia.getNomePartita(),idPartita);
+                mappa = new Mappa();
+                mappa.caricaOggetti();
+                db.inserisciOggetti(idPartita, mappa.getOggetti());
+                inventario = db.caricaInventario(idPartita);
+                interfaccia.esciDaCreatorePartita();
+                interfaccia.chiediSaltaIntroduzione();
            }
         });
         interfaccia.getSalvataggiEsci().addActionListener(g -> {
@@ -131,15 +127,19 @@ public final class LogicaGioco {
             interfaccia.esciDaCreatorePartita();
         });
         interfaccia.getNuovaPartita1().addActionListener(g -> {
+            idPartita = 1;
             interfaccia.inizializzaCreatorePartita();
         });
         interfaccia.getNuovaPartita2().addActionListener(g -> {
+            idPartita = 2;
             interfaccia.inizializzaCreatorePartita();
         });
         interfaccia.getNuovaPartita3().addActionListener(g -> {
+            idPartita = 3;
             interfaccia.inizializzaCreatorePartita();
         });
         interfaccia.getNuovaPartita4().addActionListener(g -> {
+            idPartita = 4;
             interfaccia.inizializzaCreatorePartita();
         });
         interfaccia.getContinuaPartita1().addActionListener(g -> {
@@ -157,6 +157,22 @@ public final class LogicaGioco {
         interfaccia.getContinuaPartita4().addActionListener(g -> {
             idPartita = 4;
             continuaPartita();
+        });
+        interfaccia.getCancellaPartita1().addActionListener(g -> {
+            idPartita = 1;
+            cancellaPartita();
+        });
+        interfaccia.getCancellaPartita2().addActionListener(g -> {
+            idPartita = 2;
+            cancellaPartita();
+        });
+        interfaccia.getCancellaPartita3().addActionListener(g -> {
+            idPartita = 3;
+            cancellaPartita();
+        });
+        interfaccia.getCancellaPartita4().addActionListener(g -> {
+            idPartita = 4;
+            cancellaPartita();
         });
         interfaccia.getApriEditor().addActionListener(g -> {
             interfaccia.mostraEditorTesto();
@@ -391,6 +407,10 @@ public final class LogicaGioco {
         mappa.caricaOggetti(db.caricaOggetti(idPartita));
     }
     
+    public void cancellaPartita(){
+        interfaccia.chiediCancellaPartita();
+    }
+    
     public class GestoreAzioni implements ActionListener {
 
         private String comando;
@@ -436,6 +456,14 @@ public final class LogicaGioco {
                     interfaccia.disattivaInterfacciaSalvataggio();
                     interfaccia.tornaAMenuIniziale();
                     resettaStruttureDati();
+                    break;
+                case "CANCELLA_PARTITA":
+                    db.cancellaPartita(idPartita);
+                    interfaccia.disattivaFinestraOpzioniSiNo();
+                    interfaccia.esciDaSelettorePartita();
+                    break;
+                case "ANNULLA_CANCELLA_PARTITA":
+                    interfaccia.disattivaFinestraOpzioniSiNo();
                     break;
                 case "EQUIPAGGIA_MAPPA":
                     interfaccia.mostraMappa();

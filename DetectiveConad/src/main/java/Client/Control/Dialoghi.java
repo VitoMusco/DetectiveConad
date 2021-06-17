@@ -1,4 +1,3 @@
-
 package Client.Control;
 
 import java.io.BufferedReader;
@@ -15,7 +14,7 @@ public class Dialoghi {
     private final Map<String, String> testi; 
     
     public Dialoghi() {
-        this.testi = new HashMap<>(); 
+        this.testi = new HashMap<>();
     }
     
     public Map<String, String> getTesti(){

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class Database {
 
     private static final String CREA_OGGETTI = "CREATE TABLE IF NOT EXISTS oggetti (id_oggetto SMALLINT AUTO_INCREMENT, nome VARCHAR(25), stanza VARCHAR(20), id_partita SMALLINT, raccoglibile BIT, PRIMARY KEY(id_oggetto), FOREIGN KEY(id_partita) REFERENCES partita(id_partita));";
-    private static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita SMALLINT AUTO_INCREMENT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
+    private static final String CREA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (id_partita SMALLINT, nome_salvataggio VARCHAR(25), stanza_corrente VARCHAR(20), PRIMARY KEY(id_partita));";
     private static final String CREA_AZIONI = "CREATE TABLE IF NOT EXISTS azioni (id_partita SMALLINT, azione VARCHAR(25), PRIMARY KEY(id_partita, azione));";
 
     public Database() {
@@ -39,30 +39,21 @@ public class Database {
         }
     }
 
-    public int inserisciPartita(String nome_partita) {
-        int id_partita = 0;
+    public void inserisciPartita(String nome_partita,int id_partita) {
         Connection connessione = connessioneDb();
         if (connessione != null) {
             try {
                 Statement stm = connessione.createStatement();
                 stm.close();
                 stm = connessione.createStatement();
-                stm.executeUpdate("INSERT INTO partita (nome_salvataggio, stanza_corrente) VALUES('" + nome_partita + "', 'esterno')");
+                stm.executeUpdate("INSERT INTO partita (id_partita, nome_salvataggio, stanza_corrente) VALUES('" + id_partita + "','" + nome_partita + "', 'esterno')");
                 stm.close();
-                stm = connessione.createStatement();
-                ResultSet risultato = stm.executeQuery("SELECT id_partita FROM partita WHERE nome_salvataggio = '" + nome_partita + "'");
-                while (risultato.next()) {
-                    id_partita = risultato.getInt(1);
-                }
-                risultato.close();
-                stm.close();
+                stm = connessione.createStatement();             
                 connessione.close();
-                return id_partita;
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return 0;
     }
 
     public void inserisciOggetti(int id_partita, Map<Oggetto, String> o) {
@@ -302,5 +293,26 @@ public class Database {
             }
         }
         return stanza_corrente;
+    }
+    
+    public void cancellaPartita(int id_partita) {
+        Statement stm;
+        Connection connessione = connessioneDb();
+        if (connessione != null) {
+            try {
+                stm = connessione.createStatement();
+                stm.executeUpdate("DELETE FROM oggetti WHERE id_partita = '" + id_partita + "';");
+                stm.close();
+                stm = connessione.createStatement();
+                stm.executeUpdate("DELETE FROM azioni WHERE id_partita = '" + id_partita + "';");
+                stm.close();
+                stm = connessione.createStatement();
+                stm.executeUpdate("DELETE FROM partita WHERE id_partita = '" + id_partita + "';");
+                stm.close();
+                connessione.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

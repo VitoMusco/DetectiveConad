@@ -131,6 +131,10 @@ public final class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita2 = new javax.swing.JButton();
         ContinuaPartita3 = new javax.swing.JButton();
         ContinuaPartita4 = new javax.swing.JButton();
+        CancellaPartita1 = new javax.swing.JButton();
+        CancellaPartita2 = new javax.swing.JButton();
+        CancellaPartita3 = new javax.swing.JButton();
+        CancellaPartita4 = new javax.swing.JButton();
         CasellaTesto = new javax.swing.JScrollPane();
         ScritturaTesto = new javax.swing.JTextArea();
         GraficaEditor = new javax.swing.JLabel();
@@ -529,6 +533,42 @@ public final class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita4.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/continua_partita_highlighted.png"));
         jPanel1.add(ContinuaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 367, 81));
 
+        CancellaPartita1.setIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita.png"));
+        CancellaPartita1.setBorder(null);
+        CancellaPartita1.setBorderPainted(false);
+        CancellaPartita1.setContentAreaFilled(false);
+        CancellaPartita1.setEnabled(false);
+        CancellaPartita1.setMargin(null);
+        CancellaPartita1.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita_highlighted.png"));
+        jPanel1.add(CancellaPartita1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 260, 81));
+
+        CancellaPartita2.setIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita.png"));
+        CancellaPartita2.setBorder(null);
+        CancellaPartita2.setBorderPainted(false);
+        CancellaPartita2.setContentAreaFilled(false);
+        CancellaPartita2.setEnabled(false);
+        CancellaPartita2.setMargin(null);
+        CancellaPartita2.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita_highlighted.png"));
+        jPanel1.add(CancellaPartita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 260, 81));
+
+        CancellaPartita3.setIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita.png"));
+        CancellaPartita3.setBorder(null);
+        CancellaPartita3.setBorderPainted(false);
+        CancellaPartita3.setContentAreaFilled(false);
+        CancellaPartita3.setEnabled(false);
+        CancellaPartita3.setMargin(null);
+        CancellaPartita3.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita_highlighted.png"));
+        jPanel1.add(CancellaPartita3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, 260, 81));
+
+        CancellaPartita4.setIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita.png"));
+        CancellaPartita4.setBorder(null);
+        CancellaPartita4.setBorderPainted(false);
+        CancellaPartita4.setContentAreaFilled(false);
+        CancellaPartita4.setEnabled(false);
+        CancellaPartita4.setMargin(null);
+        CancellaPartita4.setRolloverIcon(new ImageIcon("./risorse/immagini/menu/cancella_partita_highlighted.png"));
+        jPanel1.add(CancellaPartita4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 260, 81));
+
         CasellaTesto.setBackground(new java.awt.Color(0, 0, 0));
         CasellaTesto.setBorder(null);
         CasellaTesto.setForeground(new java.awt.Color(255, 255, 255));
@@ -585,6 +625,10 @@ public final class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton ApriEditor;
     private javax.swing.JButton ApriMovimento;
     private javax.swing.JButton ApriTelefono;
+    private javax.swing.JButton CancellaPartita1;
+    private javax.swing.JButton CancellaPartita2;
+    private javax.swing.JButton CancellaPartita3;
+    private javax.swing.JButton CancellaPartita4;
     private javax.swing.JScrollPane CasellaTesto;
     private javax.swing.JButton ChiudiCaso;
     private javax.swing.JButton ChiudiGraficaAppCellulare;
@@ -691,6 +735,13 @@ public final class Interfaccia extends javax.swing.JFrame {
         SceltaNo.setActionCommand("ANNULLA_CHIUDI_CASO");
     }
     
+    public void chiediCancellaPartita(){
+        SaltaFilmatoLabel.setIcon(new ImageIcon("./risorse/immagini/menu/chiedi_cancella_partita.png"));
+        attivaFinestraOpzioniSiNo();
+        SceltaSi.setActionCommand("CANCELLA_PARTITA");
+        SceltaNo.setActionCommand("ANNULLA_CANCELLA_PARTITA");
+    }
+    
     public void chiediConfermaChiusuraCasoFinaleAlternativo(){
         SaltaFilmatoLabel.setIcon( new ImageIcon("./risorse/immagini/menu/chiudi_caso.png"));
         attivaFinestraOpzioniSiNo();
@@ -761,7 +812,7 @@ public final class Interfaccia extends javax.swing.JFrame {
         inizializzaInterfacciaUtente();
         mostraTesto("Vediamo... dove ero rimasto? Ah ecco!");
     }
-
+    
     public boolean controllaStatoIntroduzione() {
         while (!creazioneNuovaPartita && !riproduzioneFinaleCorretto && !riproduzioneFinaleAlternativo) {
             if (!creazioneNuovaPartita) {
@@ -882,6 +933,8 @@ public final class Interfaccia extends javax.swing.JFrame {
         if (partiteSalvate[0]) {
             ContinuaPartita1.setEnabled(true);
             ContinuaPartita1.setVisible(true);
+            CancellaPartita1.setEnabled(true);
+            CancellaPartita1.setVisible(true);
         } else {
             NuovaPartita1.setEnabled(true);
             NuovaPartita1.setVisible(true);
@@ -889,6 +942,8 @@ public final class Interfaccia extends javax.swing.JFrame {
         if (partiteSalvate[1]) {
             ContinuaPartita2.setEnabled(true);
             ContinuaPartita2.setVisible(true);
+            CancellaPartita2.setEnabled(true);
+            CancellaPartita2.setVisible(true);
         } else {
             NuovaPartita2.setEnabled(true);
             NuovaPartita2.setVisible(true);
@@ -896,6 +951,8 @@ public final class Interfaccia extends javax.swing.JFrame {
         if (partiteSalvate[2]) {
             ContinuaPartita3.setEnabled(true);
             ContinuaPartita3.setVisible(true);
+            CancellaPartita3.setEnabled(true);
+            CancellaPartita3.setVisible(true);
         } else {
             NuovaPartita3.setEnabled(true);
             NuovaPartita3.setVisible(true);
@@ -903,6 +960,8 @@ public final class Interfaccia extends javax.swing.JFrame {
         if (partiteSalvate[3]) {
             ContinuaPartita4.setEnabled(true);
             ContinuaPartita4.setVisible(true);
+            CancellaPartita4.setEnabled(true);
+            CancellaPartita4.setVisible(true);
         } else {
             NuovaPartita4.setEnabled(true);
             NuovaPartita4.setVisible(true);
@@ -926,6 +985,10 @@ public final class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita2.setEnabled(false);
         ContinuaPartita3.setEnabled(false);
         ContinuaPartita4.setEnabled(false);
+        CancellaPartita1.setEnabled(false);
+        CancellaPartita2.setEnabled(false);
+        CancellaPartita3.setEnabled(false);
+        CancellaPartita4.setEnabled(false);
         SalvataggiEsci.setVisible(false);
         NuovaPartita1.setVisible(false);
         NuovaPartita2.setVisible(false);
@@ -935,6 +998,10 @@ public final class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita2.setVisible(false);
         ContinuaPartita3.setVisible(false);
         ContinuaPartita4.setVisible(false);
+        CancellaPartita1.setVisible(false);
+        CancellaPartita2.setVisible(false);
+        CancellaPartita3.setVisible(false);
+        CancellaPartita4.setVisible(false);
         esciDaCreatorePartita();
     }
 
@@ -979,6 +1046,10 @@ public final class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita2.setEnabled(false);
         ContinuaPartita3.setEnabled(false);
         ContinuaPartita4.setEnabled(false);
+        CancellaPartita1.setEnabled(false);
+        CancellaPartita2.setEnabled(false);
+        CancellaPartita3.setEnabled(false);
+        CancellaPartita4.setEnabled(false);
         ErroreMaxCaratteri.setEnabled(false);
         ErroreNoCaratteri.setEnabled(false);
         SalvataggiEsci.setVisible(false);
@@ -990,6 +1061,10 @@ public final class Interfaccia extends javax.swing.JFrame {
         ContinuaPartita2.setVisible(false);
         ContinuaPartita3.setVisible(false);
         ContinuaPartita4.setVisible(false);
+        CancellaPartita1.setVisible(false);
+        CancellaPartita2.setVisible(false);
+        CancellaPartita3.setVisible(false);
+        CancellaPartita4.setVisible(false);
         CreaSalvataggioLabel.setEnabled(false);
         CreaSalvataggioEsci.setEnabled(false);
         IniziaPartita.setEnabled(false);
@@ -1523,6 +1598,22 @@ public final class Interfaccia extends javax.swing.JFrame {
         return ContinuaPartita4;
     }
 
+    public JButton getCancellaPartita1() {
+        return CancellaPartita1;
+    }
+
+    public JButton getCancellaPartita2() {
+        return CancellaPartita2;
+    }
+
+    public JButton getCancellaPartita3() {
+        return CancellaPartita3;
+    }
+
+    public JButton getCancellaPartita4() {
+        return CancellaPartita4;
+    }
+    
     public JButton getCreaSalvataggioEsci() {
         return CreaSalvataggioEsci;
     }
