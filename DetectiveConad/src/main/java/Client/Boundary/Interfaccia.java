@@ -866,7 +866,7 @@ public final class Interfaccia extends javax.swing.JFrame {
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/videointroduzione.gif"));
         riproduciAudio("videointroduzione");
         try {
-            TimeUnit.SECONDS.sleep(38);
+            TimeUnit.SECONDS.sleep(35);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -879,7 +879,7 @@ public final class Interfaccia extends javax.swing.JFrame {
         MediaLabel.setIcon(new ImageIcon("./risorse/gif/videofinale.gif"));
         riproduciAudio("videofinale");
         try {
-            TimeUnit.SECONDS.sleep(44);
+            TimeUnit.SECONDS.sleep(43);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
