@@ -266,6 +266,8 @@ public final class LogicaGioco {
                 interfaccia.aggiungiTesto("Ma cosa sto dicendo! Quel tipo di macchia non si vede con i raggi UV! Forse hanno fatto bene a non prendermi nella scientifica alla fine...");
                 interfaccia.aggiungiTesto("Qui deve essere stata pulita una grossa macchia di sangue, avranno ucciso qui il direttore? Mi avvicino alla soluzione del caso...");
                 azioniEseguite.inserisciAzione(Azione.TROVATO_LUOGO_UCCISIONE);
+            } else if (mappa.getCorrente().getNome().equals("Condotto") && azioniEseguite.verificaPresenzaAzione(Azione.FLASH_ATTIVATO)) {
+                interfaccia.aggiungiTesto("Mamma mia com'e' sporco questo condotto, forse era meglio quando non si vedeva niente");
             } else {
                 interfaccia.aggiungiTesto(mappa.osservaStanza());
             }
@@ -481,7 +483,11 @@ public final class LogicaGioco {
                     break;
                  case "PRENDI_CHIAVE":
                     if(!inventario.haOggetto("chiave")){
-                        interfaccia.aggiungiTesto("Ma guarda un po' tu! Quali erano le possibilita' che trovassi la chiave proprio dove c'e' il corpo del direttore?");
+                        if(azioniEseguite.verificaPresenzaAzione(Azione.TROVATO_CADAVERE)){
+                            interfaccia.aggiungiTesto("Ma guarda un po' tu! Quali erano le possibilita' che trovassi la chiave che apre la porta della cella frigorifera proprio dove c'e' il corpo del direttore?");
+                        } else {
+                            interfaccia.aggiungiTesto("Aspetta un attimo, ma questa e' la chiave che apre la porta della cella frigorifera che aveva solo il direttore! Se la chiave e' qui allora lui deve essere vicino!");
+                        }
                         inventario.inserisciOggetto(mappa.prendiOggetto("chiave"));
                         interfaccia.chiudiInterfacciaGraficaAppCellulare();
                     }
