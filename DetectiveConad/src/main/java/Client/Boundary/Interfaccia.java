@@ -930,7 +930,15 @@ public final class Interfaccia extends javax.swing.JFrame {
     public void inizializzaSelettorePartita() {
         disattivaPulsantiMenu();
         SalvataggiEsci.setEnabled(true);
+        inizializzaPulsantiSelettorePartita();
+        SalvataggiEsci.setVisible(true);
+        MediaLabel.setIcon(selettorePartita);
+    }
+    
+    public void inizializzaPulsantiSelettorePartita(){
         if (partiteSalvate[0]) {
+            NuovaPartita1.setEnabled(false);
+            NuovaPartita1.setVisible(false);
             ContinuaPartita1.setEnabled(true);
             ContinuaPartita1.setVisible(true);
             CancellaPartita1.setEnabled(true);
@@ -938,8 +946,14 @@ public final class Interfaccia extends javax.swing.JFrame {
         } else {
             NuovaPartita1.setEnabled(true);
             NuovaPartita1.setVisible(true);
+            ContinuaPartita1.setEnabled(false);
+            ContinuaPartita1.setVisible(false);
+            CancellaPartita1.setEnabled(false);
+            CancellaPartita1.setVisible(false);
         }
         if (partiteSalvate[1]) {
+            NuovaPartita2.setEnabled(false);
+            NuovaPartita2.setVisible(false);
             ContinuaPartita2.setEnabled(true);
             ContinuaPartita2.setVisible(true);
             CancellaPartita2.setEnabled(true);
@@ -947,8 +961,14 @@ public final class Interfaccia extends javax.swing.JFrame {
         } else {
             NuovaPartita2.setEnabled(true);
             NuovaPartita2.setVisible(true);
+            ContinuaPartita2.setEnabled(false);
+            ContinuaPartita2.setVisible(false);
+            CancellaPartita2.setEnabled(false);
+            CancellaPartita2.setVisible(false);
         }
         if (partiteSalvate[2]) {
+            NuovaPartita3.setEnabled(false);
+            NuovaPartita3.setVisible(false);
             ContinuaPartita3.setEnabled(true);
             ContinuaPartita3.setVisible(true);
             CancellaPartita3.setEnabled(true);
@@ -956,8 +976,14 @@ public final class Interfaccia extends javax.swing.JFrame {
         } else {
             NuovaPartita3.setEnabled(true);
             NuovaPartita3.setVisible(true);
+            ContinuaPartita3.setEnabled(false);
+            ContinuaPartita3.setVisible(false);
+            CancellaPartita3.setEnabled(false);
+            CancellaPartita3.setVisible(false);
         }
         if (partiteSalvate[3]) {
+            NuovaPartita4.setEnabled(false);
+            NuovaPartita4.setVisible(false);
             ContinuaPartita4.setEnabled(true);
             ContinuaPartita4.setVisible(true);
             CancellaPartita4.setEnabled(true);
@@ -965,9 +991,11 @@ public final class Interfaccia extends javax.swing.JFrame {
         } else {
             NuovaPartita4.setEnabled(true);
             NuovaPartita4.setVisible(true);
+            ContinuaPartita4.setEnabled(false);
+            ContinuaPartita4.setVisible(false);
+            CancellaPartita4.setEnabled(false);
+            CancellaPartita4.setVisible(false);
         }
-        SalvataggiEsci.setVisible(true);
-        MediaLabel.setIcon(selettorePartita);
     }
 
     public void esciDaSelettorePartita() {

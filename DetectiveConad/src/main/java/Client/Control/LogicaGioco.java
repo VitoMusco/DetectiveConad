@@ -106,7 +106,7 @@ public final class LogicaGioco {
             System.exit(0);
         });
         interfaccia.getPulsanteIndaga().addActionListener(g -> {
-            interfaccia.caricaPartiteSalvate(db.controlloIdPartite());
+            interfaccia.caricaPartiteSalvate(db.getPartiteSalvate());
             interfaccia.inizializzaSelettorePartita();
         });
         interfaccia.getIniziaPartita().addActionListener(g -> {
@@ -460,7 +460,8 @@ public final class LogicaGioco {
                 case "CANCELLA_PARTITA":
                     db.cancellaPartita(idPartita);
                     interfaccia.disattivaFinestraOpzioniSiNo();
-                    interfaccia.esciDaSelettorePartita();
+                    interfaccia.caricaPartiteSalvate(db.getPartiteSalvate());
+                    interfaccia.inizializzaPulsantiSelettorePartita();
                     break;
                 case "ANNULLA_CANCELLA_PARTITA":
                     interfaccia.disattivaFinestraOpzioniSiNo();

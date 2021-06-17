@@ -124,8 +124,8 @@ public class Database {
         return partita;
     }
 
-    public int[] idPartita() {
-        int[] id_partite = new int[4];
+    public boolean[] getPartiteSalvate() {
+        boolean[] id_partite = new boolean[4];
         int i = 0;
         Statement stm;
         Connection connessione = connessioneDb();
@@ -135,7 +135,7 @@ public class Database {
                 ResultSet risultato;
                 risultato = stm.executeQuery("SELECT id_partita FROM partita");
                 while (risultato.next()) {
-                    id_partite[i] = risultato.getInt(1);
+                    id_partite[risultato.getInt(1)-1] = true;
                     i++;
                 }
                 risultato.close();
@@ -146,19 +146,6 @@ public class Database {
             }
         }
         return id_partite;
-    }
-
-    public boolean[] controlloIdPartite() {
-        boolean[] presenza_Id = new boolean[4];
-        int[] id_partite = idPartita();
-        for (int i = 0; i < 4; i++) {
-            if (id_partite[i] != 0) {
-                presenza_Id[i] = true;
-            } else {
-                presenza_Id[i] = false;
-            }
-        }
-        return presenza_Id;
     }
 
     public void salvaPartita(Stanza corrente, Inventario inventario, int id_partita, AzioniEseguite azioni) {
